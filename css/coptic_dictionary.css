@@ -1,0 +1,134 @@
+@font-face {
+    font-family: 'antinoouRegular';
+    src: url('antinoou-webfont.eot');
+    src: url('antinoou-webfont.eot?#iefix') format('embedded-opentype'),
+         url('antinoou-webfont.woff') format('woff'),
+         url('antinoou-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'antinoouItalic';
+    src: url('antinoouitalic-webfont.eot');
+    src: url('antinoouitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('antinoouitalic-webfont.woff') format('woff'),
+         url('antinoouitalic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+	/*background-image: url(../img/parchment.jpg);
+	background-color: #E3CA9C;*/
+	background-color: #5791b7;
+	font-size: 12pt;
+}
+
+.anti{font-family: antinoouRegular, sans-serif;}
+#orths td{font-family: antinoouRegular, sans-serif;}
+#results td{font-family: antinoouRegular, sans-serif;}
+#senses td{font-family: antinoouRegular, sans-serif;}
+.entrylist td{font-family: antinoouRegular, sans-serif;}
+.sense_cell{min-width: 200px;}
+#results td.pos_cell{min-width: 200px; color: grey; font-size: small}
+.orth_cell{min-width: 100px;}
+.second_orth_cell{min-width: 100px;color: grey}
+
+.bibl{color: gray}
+.trans{}
+.dialect{color:darkred}
+.morphology{color:gray; font-style: italic}
+
+.page-main-header{border-bottom: 0px !important; margin: 30px 0 10px 0 !important}
+.page-header{border-bottom: 0px !important; margin: 30px 0 10px 0 !important}
+#inc{font-size: small; width:90%; text-align:center} /*border-bottom: 1px solid gray; */
+footer div{font-size: small;}
+table a {color: #0d0d9d !important}
+table td {vertical-align: bottom}
+ol{margin: 0px !important}
+
+#search {width:340px}
+#search td{padding: 4px}
+#search td > div{margin-top: 4px}
+#search input:not([type=radio]):not([type=submit]), #search select{    float:right;
+    clear:both; height: 16pt; width: 160px}
+#lang{float:right !important; clear:both}
+.content, #search {border: 1px solid black; background-color: rgba(255, 255, 255, 0.5); padding: 12px; margin-left: 4px; margin-top:4px; min-height: 250px }
+.related_orth, .orth_cell, .second_orth_cell, .pos_cell{vertical-align:top}
+.orth_entry, .morphology, .dialect, .annis_link{padding:4px}
+#senses {margin-top: 5px; margin-bottom: 10px}
+.tag{font-family: antinoouRegular, sans-serif; color: #3b7577;    margin-top: 4px;
+    margin-bottom: 6px;}
+.see_also{margin-top: 6pt;}
+.etym{font-family: antinoouRegular, sans-serif; }
+#definition,#coptic{font-family: antinoouRegular, sans-serif; }
+
+
+
+.holder {
+  position: relative;
+}
+
+#coptic:valid + .placeholder {
+  display: none;
+}
+
+.placeholder {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  color: lightgrey;
+  
+}
+
+.placeholder span {
+  color: red;
+}
+
+@font-face {
+	font-family: 'annistools';
+	src:url('annistools.eot?-528qpn');
+	src:url('annistools.eot?#iefix-528qpn') format('embedded-opentype'),
+		url('annistools.ttf?-528qpn') format('truetype'),
+		url('annistools.woff?-528qpn') format('woff'),
+		url('annistools.svg?-528qpn#annistools') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+.icon-annis:before {
+	content: "\e608";
+	font-family: 'annistools';
+	color: #6d2020;
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'annistools';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	content: "\e608";
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.footer{background-color:rgba(80,43,7,0.5);	; padding: 5px; color:white; margin-top:50px; line-height: 1}
+.footer a{color: orange}
+.footer a:hover{color: pink}
+
+.logos{padding: 5px; background-color:rgba(255, 255, 255, 0.5); margin-top:5px}
+
+.kellia{font-family: 'Open Sans', sans-serif; font-size:14pt;
+     border: 3px solid grey;padding:3px; margin-top: 2px}
+.ftext{display:inline-block}
+.navbar-form{margin-bottom: 0px !important}
+.navbar-nav > li > a{line-height: 10px !important;}

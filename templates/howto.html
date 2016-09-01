@@ -1,0 +1,29 @@
+<div class="content">
+<h3>Main search form</h3>
+<p>
+From the dictionary's main page you can run a configurable search using the following fields:
+</p>
+<ul>
+	<li>
+	<b>Coptic word</b> - enter Coptic text in utf-8 characters. You can also use regular expression wildcards:
+		<ul>
+		<li>Words starting in some prefix: <a class="anti" href="results.cgi?coptic=ⲙⲛⲧ.*&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲙⲛⲧ.*</a></li>
+		<li>Words ending in some suffix: <a class="anti" href="results.cgi?coptic=.*ϩⲏⲧ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">.*ϩⲏⲧ</a></li>
+		<li>Wildcard in middle: <a class="anti" href="results.cgi?coptic=ⲥ.ⲧⲙ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲥ.ⲧⲙ</a></li>
+		<li>Optional character: <a class="anti" href="results.cgi?coptic=ⲥⲱⲧⲉ?ⲙ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲥⲱⲧⲉ?ⲙ</a></li>
+		<li>For complete documentation on regular expressions see: <a href="http://www.regular-expressions.info/">http://www.regular-expressions.info/</a></ul>
+	</li>
+	<li><b>Dialect</b> - select one of the dialect sigla or use <i>any</i> for any dialect</li>
+	<li><b>Scriptorium Tag</b> - part of speech tag to limit the search by, based on the inventory described <a href="https://github.com/CopticScriptorium/tagger-part-of-speech/blob/master/scriptorium_tagset_documentation.pdf">here</a></li>
+	<li><b>Search in definitions</b> - you can search within definitions in either English, French or German, or in any language. Searches can be restricted to exact sequences of words within definitions, or else to definitions containing all of the entered words in any order.</li>
+</ul>
+<h3>Quick search bar</h3>
+<p>
+You can quickly search for words without returning to the main search page by using the quick search bar at the top. You can enter:</p>
+
+	<ul>
+	<li>A Coptic word - this will search for your word in any dialect</li>
+	<li>English/French/German words - this will search for definitions containing all of these words in some language</li>
+	<li>A combination of Coptic and definition words - searches for entries matching both, in any dialect and definition language</li>
+	</ul>
+</div>
