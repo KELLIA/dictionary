@@ -35,7 +35,12 @@ def process_entry(id, super_id, entry):
     # ||| separates forms
     # \n separates orth-geo pairs
     # ~ separates orth from geo
+
+    # SEARCHSTRING -- "search" column in db
+    # similar to orthstring but forms are stripped of anything but coptic letters and spaces
+    # morphological info not included
     orthstring = ""
+    search_string = "\n"
     for form in forms:
         orths = form.findall('{http://www.tei-c.org/ns/1.0}orth')
         if form.text is not None:
@@ -72,13 +77,20 @@ def process_entry(id, super_id, entry):
 
             else:
                 orth_text = orth.text
+
+            search_text = re.sub(u'[^ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱϣϥⳉϧϩϫϭϯ ]', u'', orth_text)
+
             for geo in geos:
                 orthstring += orth_text + "~" + geo + "\n"
+                search_string += search_text + "~" + geo + "\n"
             if len(geos) == 0:
                 orthstring += orth_text + "~\n"
+                search_string += search_text + "~\n"
 
         orthstring += "|||"
+        #search_string += "|||"
     orthstring = re.sub(r'\|\|\|$', '', orthstring)
+    #search_string = re.sub(r'\|\|\|$', '', search_string)
 
     first_orth_re = re.search(r'\n(.*?)~', orthstring)
     if first_orth_re is not None:
@@ -211,7 +223,7 @@ def process_entry(id, super_id, entry):
 
 
 
-    row = (id, super_id, orthstring, pos_string, de, en, fr, etym_string, ascii_orth)
+    row = (id, super_id, orthstring, pos_string, de, en, fr, etym_string, ascii_orth, search_string)
     return row
 
 
@@ -298,9 +310,7 @@ with con:
     cur = con.cursor()
 
     cur.execute("DROP TABLE IF EXISTS entries")
-    cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT)")
-    cur.execute("DROP TABLE IF EXISTS lemmas")
-    cur.execute("CREATE TABLE lemmas(Id INT, Word TEXT, POS TEXT, Lemma TEXT)")
+    cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT, Search TEXT)")
 
     super_id = 1
     entry_id = 1
@@ -313,12 +323,12 @@ with con:
         for child in body:
             if child.tag == "{http://www.tei-c.org/ns/1.0}entry":
                 row = process_entry(entry_id, super_id, child)
-                cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
+                cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
                 super_id += 1
                 entry_id += 1
             elif child.tag == "{http://www.tei-c.org/ns/1.0}superEntry":
                 rows = process_super_entry(entry_id, super_id, child)
-                cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+                cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
                 super_id += 1
                 entry_id += len(rows)
 

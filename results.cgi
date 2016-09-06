@@ -56,49 +56,74 @@ def sense_list(sense_string):
 def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang):
 	sql_command = 'SELECT * FROM entries WHERE '
 	constraints = []
+	parameters = []
 
-	#what's in the 'Name' column--based on word, word_search_type, dialect
+	#what's in the 'Search' column--based on word, word_search_type, dialect
 	if len(word) > 0:
 		if dialect == 'any':
 			word_search_string = r'.*\n' + word + r'~.*'
 		else:
 			word_search_string = r'.*\n' + word + r'~' + dialect + r'?\n.*'
 
-		word_constraint = "entries.name REGEXP '" + word_search_string + "'"
+		word_constraint = "entries.search REGEXP ?"
 		constraints.append(word_constraint)
+		parameters.append(word_search_string)
+		
 	elif dialect != 'any':
-		#dialect_search_string = r'%~' + dialect + '\n%'
-		# the two lines below were an attempt to allow words with unspecified dialect to be retrieved
-		# but somehow this broke things so that sense constraints weren't applied??
-		#unspecified_dialect_search_string = r'%~\\n%'
-		#dialect_constraint = "(entries.name LIKE '" + dialect_search_string + "' OR entries.name LIKE '" + unspecified_dialect_search_string + "')"
-		#dialect_constraint = "entries.name LIKE ('" + dialect_search_string + "' OR '" + unspecified_dialect_search_string + "')"
-		#dialect_constraint = "entries.name LIKE '" + dialect_search_string + "'"
-		dialect_constraint = "entries.name REGEXP  '" + r'.*~' + dialect + r'?\n' + "'"
+		dialect_constraint = "entries.search REGEXP ?"
 		constraints.append(dialect_constraint)
+		parameters.append(r'.*~' + dialect + r'?\n')
 
 	# POS column, based on pos
 	if pos != 'any':
-		pos_constraint = "entries.POS = '" + pos + "'"
+		pos_constraint = "entries.POS = ?"
 		constraints.append(pos_constraint)
+		parameters.append(pos)
 
 	# one or all of the sense columns--which is specified by def_lang, search within it based on definition and def_search_type
 	if def_search_type == 'exact sequence':
 		def_search_string = r'.*\b' + definition + r'\b.*'
 		if def_lang == 'any':
-			def_constraint = "(entries.en REGEXP '" + def_search_string + "' OR entries.de REGEXP '" + def_search_string + "' OR entries.fr REGEXP '" + def_search_string + "')"
-		else:
-			def_constraint = "entries." + def_lang + " REGEXP '" + def_search_string + "'"
-		constraints.append(def_constraint)
+			def_constraint = "(entries.en REGEXP ? OR entries.de REGEXP ? OR entries.fr REGEXP ?)"
+			constraints.append(def_constraint)
+			parameters.append(def_search_string)
+			parameters.append(def_search_string)
+			parameters.append(def_search_string)
+		elif def_lang == 'en':
+			def_constraint = "entries.en REGEXP ?"
+			constraints.append(def_constraint)
+			parameters.append(def_search_string)
+		elif def_lang == 'fr':
+			def_constraint = "entries.fr REGEXP ?"
+			constraints.append(def_constraint)
+			parameters.append(def_search_string)
+		elif def_lang == 'de':
+			def_constraint = "entries.de REGEXP ?"
+			constraints.append(def_constraint)
+			parameters.append(def_search_string)
+
 	elif def_search_type == 'all words':
 		words = definition.split(' ')
 		for one_word in words:
 			def_search_string = r'.*\b' + one_word + r'\b.*'
 			if def_lang == 'any':
-				def_constraint = "(entries.en REGEXP '" + def_search_string + "' OR entries.de REGEXP '" + def_search_string + "' OR entries.fr REGEXP '" + def_search_string + "')"
-			else:
-				def_constraint = "entries." + def_lang + " REGEXP '" + def_search_string + "'"
-			constraints.append(def_constraint)
+				def_constraint = "(entries.en REGEXP ? OR entries.de REGEXP ? OR entries.fr REGEXP ?)"
+				constraints.append(def_constraint)
+				parameters.append(def_search_string)
+				parameters.append(def_search_string)
+				parameters.append(def_search_string)
+			elif def_lang == 'en':
+				def_constraint = "entries.en REGEXP ?"
+				constraints.append(def_constraint)
+				parameters.append(def_search_string)
+			elif def_lang == 'fr':
+				def_constraint = "entries.fr REGEXP ?"
+				constraints.append(def_constraint)
+				parameters.append(def_search_string)
+			elif def_lang == 'de':
+				def_constraint = "entries.de REGEXP ?"
+				constraints.append(def_constraint)
+				parameters.append(def_search_string)
 
 	sql_command += " AND ".join(constraints)
 	sql_command += " ORDER BY ascii"
@@ -111,7 +136,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang):
 	con.create_function("REGEXP", 2, lambda expr, item : re.search(expr.lower(), item.lower()) is not None)
 	with con:
 		cur = con.cursor()
-		cur.execute(sql_command)
+		cur.execute(sql_command, parameters)
 		rows = cur.fetchall()
 
 		if len(rows) == 1:
@@ -123,8 +148,8 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang):
 			tablestring = '<div class="content">\nSearch had ' + str(len(rows)) + ' results - showing first 100'
 			rows = rows[:100]
 		elif len(rows) == 0 and len(word) > 0:  # no matches found
-			tablestring = '<div class="content">\n' + str(len(rows)) + ' results for <span class="anti">' + word + "</span>\n"
-			if lemma_exists(word):
+			tablestring = '<div class="content">\n' + str(len(rows)) + ' results for <span class="anti">' + word.encode("utf8") + "</span>\n"
+			if lemma_exists(word.encode("utf8")):
 				tablestring += "<br/>This may be a form of:<br/>\n"
 				tablestring += '<table id="results" class="entrylist">'
 				rows = get_lemmas_for_word(word)
@@ -180,7 +205,7 @@ if __name__ == "__main__":
 		word = " ".join(separated[0])
 		definition = " ".join(separated[1])
 		
-	
+	word = word.decode("utf8")
 	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang)
 	wrapped = wrap(results_page)
 	print wrapped
