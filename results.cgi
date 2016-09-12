@@ -53,7 +53,7 @@ def sense_list(sense_string):
 	return sense_html
 		
 
-def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang):
+def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc=""):
 	sql_command = 'SELECT * FROM entries WHERE '
 	constraints = []
 	parameters = []
@@ -139,20 +139,21 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang):
 		cur.execute(sql_command, parameters)
 		rows = cur.fetchall()
 
+		tablestring = '<div class="content">\n' + search_desc.encode("utf8") + "<br/>\b"
 		if len(rows) == 1:
 			row = rows[0]
 			entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
 			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
 			return '<script>window.location = "' + entry_url + '";</script>'
 		elif len(rows) > 100:
-			tablestring = '<div class="content">\nSearch had ' + str(len(rows)) + ' results - showing first 100'
+			tablestring += 'Search had ' + str(len(rows)) + ' results - showing first 100'
 			rows = rows[:100]
 		elif len(rows) == 0 and len(word) > 0:  # no matches found
-			tablestring = '<div class="content">\n' + str(len(rows)) + ' results for <span class="anti">' + word.encode("utf8") + "</span>\n"
+			tablestring += str(len(rows)) + ' results for <span class="anti">' + word.encode("utf8") + "</span>\n"
 			if lemma_exists(word.encode("utf8")):
 				tablestring += "<br/>This may be a form of:<br/>\n"
 				tablestring += '<table id="results" class="entrylist">'
-				rows = get_lemmas_for_word(word)
+				rows = get_lemmas_for_word(word.encode("utf8"))
 				for row in rows:
 					tablestring += "<tr>"
 
@@ -164,17 +165,17 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang):
 					tablestring += '<td class="orth_cell">' + '<a href="' + link.encode("utf8") + '">'
 					tablestring += orth.encode("utf8")
 					tablestring += "</a>" + "</td>"
-					tablestring += '<td class="pos_cell">' + '(for '+word +'/' + lem_pos + ')</td>'
+					tablestring += '<td class="pos_cell">' + '(for '+word.encode("utf8") +'/' + lem_pos + ')</td>'
 
 					tablestring += "</tr>"
 				tablestring += "</table>\n</div>\n"
 				return tablestring
 		else:
-			tablestring = '<div class="content">\n' + str(len(rows)) + ' Results'
+			tablestring += str(len(rows)) + ' Results'
 		tablestring += '<table id="results" class="entrylist">'
 		for row in rows:
 			tablestring += "<tr>"
-			
+
 			orth = first_orth(row[2])
 			second = second_orth(row[2])
 			link = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
@@ -204,8 +205,17 @@ if __name__ == "__main__":
 		def_search_type = "all words"
 		word = " ".join(separated[0])
 		definition = " ".join(separated[1])
-		
+	
 	word = word.decode("utf8")
-	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang)
+	word_desc = " for '" + word +"'" if len(word)  > 0 else ""
+	dialect_desc = " in dialect " + dialect + " or unspecified" if dialect != "any" and len(dialect)  > 0 else ""
+	definition_desc = " definitions matching <i>" + definition + "</i> in language <i>"  + def_lang + "</i>" if len(definition)  > 0 else ""
+	pos_desc = " restricted to POS tag " + pos if pos != "any" else ""
+	search_desc = "You searched " + word_desc + dialect_desc + definition_desc + pos_desc
+	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc)
 	wrapped = wrap(results_page)
+	
+	if len(quick_string) > 0:
+		quick_target = 'placeholder="Quick Search"'
+		wrapped = wrapped.replace(quick_target, quick_target + ' value="' + quick_string + '"')
 	print wrapped
