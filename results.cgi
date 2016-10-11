@@ -207,6 +207,7 @@ if __name__ == "__main__":
 		definition = " ".join(separated[1])
 	
 	word = word.decode("utf8")
+	definition = definition.decode("utf8")
 	word_desc = " for '" + word +"'" if len(word)  > 0 else ""
 	dialect_desc = " in dialect " + dialect + " or unspecified" if dialect != "any" and len(dialect)  > 0 else ""
 	definition_desc = " definitions matching <i>" + definition + "</i> in language <i>"  + def_lang + "</i>" if len(definition)  > 0 else ""
