@@ -19,6 +19,27 @@ def first_orth(orthstring):
 	else:
 		return "NONE"
 
+def second_orth(orthstring):
+	first_search = re.search(r'\n(.*?)~', orthstring)
+	if first_search is not None:
+		first = first_search.group(1)
+	else:
+		first = ""
+
+	second_orth = re.search(r'\n(.*?)[^\n]*\n(.*?)~', orthstring)
+	sub_entries = re.findall(r'\n(.*?)~', orthstring)
+	distinct_entries = set([])
+	for entry in sub_entries:
+		if entry.encode("utf8") != first.encode("utf8"):
+			distinct_entries.add(entry)
+	count_sub_entries = len(distinct_entries)
+	dots = ", ..." if count_sub_entries > 2 else ""
+
+	if second_orth is not None:
+		if second_orth.group(2) != first:
+			return second_orth.group(2) + dots
+	return "--"
+
 def sense_list(sense_string):
 	senses = sense_string.split("|||")
 	sense_html = "<ol>"
@@ -102,9 +123,12 @@ def related(related_entries):
 		tablestring += "<tr>"
 			
 		orth = first_orth(entry[2])
+		second = second_orth(entry[2])
+		
 		link = "entry.cgi?entry=" + str(entry[0]) + "&super=" + str(entry[1])
 			
 		tablestring += '<td class="related_orth">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
+		tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"
 			
 		sense = sense_list(entry[5])
 		tablestring += '<td class="related_sense">' + sense + "</td>"
@@ -159,5 +183,3 @@ if __name__ == "__main__":
 			
 	wrapped = wrap(entry_page)
 	print wrapped
-			
-		

@@ -32,7 +32,7 @@ body{
 .entrylist td{font-family: antinoouRegular, sans-serif;}
 .sense_cell{min-width: 200px;}
 #results td.pos_cell{min-width: 200px; color: grey; font-size: small}
-.orth_cell{min-width: 100px;}
+.orth_cell,.related_orth{min-width: 100px;}
 .second_orth_cell{min-width: 100px;color: grey}
 
 .bibl{color: gray}
