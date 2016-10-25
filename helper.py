@@ -12,14 +12,19 @@ def make_active(html_input,button_id):
 
 def wrap(html_input):
 	wrapper = open(os.path.dirname(__file__) + os.sep + "templates" + os.sep + "wrapper.html",'r').read()
-	wrapped = wrapper.replace("**pagecontent**",html_input)
 	calling_script = __main__.__file__
+	bug_report = ""
+	bug_string = """<div id="bug_report">
+				Found a bug or a problem? Please report it at: <a href="https://github.com/KELLIA/dictionary/issues">https://github.com/KELLIA/dictionary/issues</a>
+				</div>"""
 	if calling_script.endswith("results.cgi"):
 		title = "Search results"
 		activate = "none"
+		bug_report += bug_string
 	elif calling_script.endswith("entry.cgi"):
 		title = "Entry detail"
 		activate = "none"
+		bug_report += bug_string
 	elif calling_script.endswith("search.cgi"):
 		title = "Search"
 		activate = "home"
@@ -32,6 +37,8 @@ def wrap(html_input):
 	else:
 		title = calling_script
 		activate = "home"
+
+	wrapped = wrapper.replace("**pagecontent**",html_input+bug_report)
 
 	titled = wrapped.replace("**pagetitle**",title)
 
