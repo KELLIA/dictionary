@@ -66,7 +66,7 @@ def process_orthstring(orthstring):
 		for distinct_orth in orth_geo_dict:
 			geo_string = " ".join(orth_geo_dict[orth])
 			annis_query = get_annis_query(orth)
-			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="morphology">' + gramstring.encode("utf8") + '</td><td class="dialect">' + geo_string.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + '"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td></tr>'
+			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="morphology">' + gramstring.encode("utf8") + '</td><td class="dialect">' + geo_string.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td></tr>'
 	orth_html += "</table>"
 	return orth_html
 	
