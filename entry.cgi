@@ -13,14 +13,14 @@ cgitb.enable()
 print "Content-type: text/html\n"
 
 def first_orth(orthstring):
-	first_orth = re.search(r'\n(.*?)~', orthstring)
+	first_orth = re.search(r'(?:^|\n)([^\n].*?)~', orthstring)
 	if first_orth is not None:
 		return first_orth.group(1)
 	else:
 		return "NONE"
 
 def second_orth(orthstring):
-	first_search = re.search(r'\n(.*?)~', orthstring)
+	first_search = re.search(r'(?:^|\n)([^\n].*?)~', orthstring)
 	if first_search is not None:
 		first = first_search.group(1)
 	else:
@@ -95,6 +95,7 @@ def process_sense(de, en, fr):
 				word = xr.group(1)
 				link = '<a href="results.cgi?coptic=' + word + '">' + word + "</a>"
 				ref_bibl = re.sub(r'xr. #(.*?)#', r'xr. ' + link, ref_bibl)
+			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new">\1</a>',ref_bibl)
 			
 			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
