@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
+<?xml-model href="Coptic_Lemma_Schema.xsd"?> 
+<TEI
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML"
+  xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Title</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Koptische Lemmaliste ⲟ</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <entry>
+          <form>
+            <usg type="geo">B</usg>
+            <orth>ⲟ̄</orth>
+            <gramGrp>
+              <pos>Zahlzeichen</pos>
+              <note>fünfzehnter Buchstabe des Alphabeths ⲟⲩ</note>
+            </gramGrp>
+          </form>
+        <form>
+          <usg type="geo">F</usg>
+          <orth>ⲟ̄</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>fünfzehnter Buchstabe des Alphabeths ⲟⲩ</note>
+          </gramGrp>
+        </form>
+        <form>
+          <usg type="geo">S</usg>
+          <orth>ⲟ̄</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>selten</note>
+            <note>fünfzehnter Buchstabe des Alphabeths ⲟⲩ</note>
+          </gramGrp>
+        </form>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Siebzig</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>seventy</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>soixante-dix</quote>
+            </cit>
+            <cit>
+              <bibl>CD 253a; KoptHWb 139; DELC 154; ChLCS 35b</bibl>
+            </cit>
+          </sense>
+        </entry>
+      <entry>
+        <form>
+          <usg type="geo">S</usg>
+          <orth>ⲟ</orth>
+        </form>
+        <form>
+          <usg type="geo">S</usg>
+          <orth>ⲱ</orth>
+        </form>
+        <form>
+          <usg type="geo">B</usg>
+          <orth>ⲟ</orth>
+        </form>
+        <form>
+          <usg type="geo">B</usg>
+          <orth>ⲱ</orth>
+        </form>
+        <form>
+          <usg type="geo">Ak</usg>
+          <orth>ⲟ</orth>
+        </form>
+        <form>
+          <usg type="geo">Ak</usg>
+          <orth>ⲱ</orth>
+        </form>
+          <gramGrp>
+            <pos>Adj.</pos>
+          </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>groß</quote>
+           </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>great</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>grand</quote>
+          </cit>
+          <cit>
+            <bibl>CD 253ab; CED 120; KoptHWb 139; DELC 154; ChLCS 35b</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <superEntry>
+      <entry n="1">
+        <form>ⲟⲃ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Ekel (?), Abneigung (?)</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>disgust (?), revulsion (?)</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>dégoût (?)</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254a; KoptHWb 139, 528</bibl>
+          </cit>
+        </sense>
+      </entry>
+        <entry n="2" type="compound">          
+          <form>ϯ ⲟⲃ</form>
+          <gramGrp>
+            <pos>Vb.</pos>
+            <subc>Kompositverb</subc>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ϯ">geben, zahlen, verkaufen</ref></xr>
+          <sense>
+            <ref type="Greek">προσοχθίζειν</ref>
+            <cit type="translation" xml:lang="de">
+              <quote>sich ekeln, ablehnen</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>reject, to be wroth with</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>rejeter, repousser</quote>
+            </cit>
+            <cit>
+              <bibl>CD 254a; KoptHWb 139; ChLCS 35b</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </superEntry>
+      <entry>
+        <form>ⲟⲃⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Kanal, Wasserlauf</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>channel, watercourse</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>canal, chenal</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254a; ChLCS 35b</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲃⲛ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Alaun</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>alum</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>alun</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254a; CED 120; KoptHWb 139; DELC 154; ChLCS 35b</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲃϩⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>f.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Zahn</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>tooth</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>dent</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254a; CED 120; KoptHWb 139; DELC 154; ChLCS 35b</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <superEntry>
+      <entry n="1">
+        <form>ⲟⲉⲓⲕ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Brot</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>bread, loaf</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>pain</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254ab; CED 120; KoptHWb 140; DELC 154-155; ChLCS 35b</bibl>
+          </cit>
+        </sense>
+      </entry>
+        <entry n="2" type="compound">
+          <form type="lemma">ⲁⲧⲟⲉⲓⲕ</form>
+          <gramGrp>
+            <pos>Adj.</pos>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>brotlos</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>without bread</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>sans pain</quote>
+            </cit>
+            <cit>
+              <bibl>CD 254b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="3" type="compound">
+          <form type="lemma"><orth>ⲥⲁ ⲛⲱⲓⲕ</orth><usg type="geo">B</usg></form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Brotverkäufer</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>bread-seller</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>vendeur de pain</quote>
+            </cit>
+            <cit>
+              <bibl>CD 254b</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </superEntry>
+      <entry type="hom">
+        <form>ⲟⲉⲓⲕ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Schilf, Rohr</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>reed</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>jonc, roseau</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254b; CED 120; KoptHWb 140; DELC 155; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲕⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Sesam</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>sesame</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>sésame</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254b; CED 121; KoptHWb 140, 528; DELC 155; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry type="foreign">
+        <form>ⲟⲉⲓⲗⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Widder</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>ram</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>bélier</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254b; CED 121; KoptHWb 140; DELC 155; ChLCS 36a</bibl>
+            </cit>
+        </sense>
+      </entry>
+      <superEntry>
+      <entry n="1">
+        <form>
+          <usg type="geo">S</usg>
+          <orth>ⲟⲙⲉ</orth></form>
+        <form>
+          <usg type="geo">B</usg>
+          <orth>ⲟⲙⲓ</orth>
+        </form>
+        <form type="inflected">
+          <usg type="geo">S</usg>
+          <orth>ⲁⲙ-</orth>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <subc>Status nominalis</subc>
+          </gramGrp>
+        </form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>f.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Schlamm, Lehm, Ton</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>clay, mud</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>boue, argile, glaise</quote>
+          </cit>
+          <cit>
+            <bibl>CD 254b-255a; CED 121; KoptHWb 141; DELC 155; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+        </entry>
+        <entry n="1">
+          <form>
+            <usg type="geo">S</usg>
+            <orth>ⲟⲙⲉ</orth></form>
+          <form>
+            <usg type="geo">B</usg>
+            <orth>ⲟⲙⲓ</orth>
+          </form>
+          <form type="inflected">
+            <usg type="geo">S</usg>
+            <orth>ⲁⲙ-</orth>
+            <gramGrp>
+              <pos>Subst.</pos>
+              <subc>Status nominalis</subc>
+            </gramGrp>
+          </form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Schlamm, Lehm, Ton</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>clay, mud</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>boue, argile, glaise</quote>
+            </cit>
+            <cit>
+              <bibl>CD 254b-255a; CED 121; KoptHWb 141; DELC 155; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="compound">
+          <form type="lemma">ⲁⲙⲡⲏⲣϣ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+            </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Roterde, Ton</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>red clay</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>argile rouge</quote>
+            </cit>
+            <cit>
+              <bibl>CD 255a; KoptHWb 141; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+          </entry>
+        <entry n="3" type="compound">
+          <form type="lemma">ⲁⲙϩⲁⲧ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>weißer Lehm</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>white clay</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>argile blanche</quote>
+            </cit>
+            <cit>
+              <bibl>CD 255a; KoptHWb 141; DELC 155; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="4" type="compound">
+          <form type="lemma">ⲁⲙⲧⲱϩ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Lehm mit Stroh gemagert</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>clay mixed with straw</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>bauge, pisé, argile mêlée de paille</quote>
+            </cit>
+            <cit>
+              <bibl>KoptHWb 141; DELC 155; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="5" type="compound">
+          <form type="lemma">ⲟⲩⲁⲙⲟⲙⲉ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+          </gramGrp>
+          <sense n="1">
+            <cit type="translation" xml:lang="de">
+              <quote>Schlammfresser (ein Wurm?)</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>eartheater (a rodent or devouring animal, worm?)</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>mangeur de terre (ver?)</quote>
+            </cit>
+            <cit>
+              <bibl>KoptHWb 141; DELC 155; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+          <sense n="2">
+            <cit type="translation" xml:lang="de">
+              <quote>"Schlammfresser": Wundfraß, Geschwür</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>"eartheater": rodent ulcer, gangrene</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>"mangeur de terre": ulcèr, gangrène</quote>
+            </cit>
+            <cit>
+              <bibl>CD 255a; KoptHWb 141; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="6" type="compound">          
+          <form>ⲣⲟⲩⲁⲙⲟⲙⲉ</form>
+          <gramGrp>
+            <pos>Vb.</pos>
+            <subc>Kompositverb</subc>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ⲉⲓⲣⲉ">machen, tun</ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>fressen, nagen (vom Geschwür)</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>eat, spread (as gangrene)</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>ronger (gangrène)</quote>
+            </cit>
+            <cit>
+              <bibl>CD 255a; KoptHWb 141; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+       </superEntry>
+      <entry>
+        <form>ⲟⲉⲓⲙⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>f.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Haken</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>hook</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>hameçon, crochet</quote>
+          </cit>
+          <cit>
+            <bibl>CD 255ab; CED 121; KoptHWb 140; DELC 155; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>
+          <usg type="geo">S</usg>
+          <orth>ⲟⲛ</orth></form>
+        <form>
+            <usg type="geo">B</usg>
+            <orth>ⲟⲛ</orth></form>
+          <form>
+          <usg type="geo">A</usg>
+          <orth>ⲁⲛ</orth>
+        </form>
+        <form>
+          <usg type="geo">L</usg>
+          <orth>ⲁⲛ</orth>
+        </form>
+        <form>
+          <usg type="geo">S</usg>
+          <orth>ⲁⲛ</orth>
+        </form>
+        <form>
+          <usg type="geo">F</usg>
+          <orth>ⲁⲛ</orth>
+        </form>
+        <form>
+          <usg type="geo">Ak</usg>
+          <orth>ⲁⲛ</orth>
+        </form>
+          <gramGrp>
+            <pos>Adv.</pos>
+          </gramGrp>
+        <sense n="1">
+          <cit type="translation" xml:lang="de">
+            <quote>wieder, auch, noch (einmal)</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>again, also, still</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>de nouveau, aussi, encore (une fois)</quote>
+          </cit>
+          <cit>
+            <bibl>CD 255b; CED 121; KoptHWb 141; DELC 155; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+        <sense n="2">
+          <cit type="translation" xml:lang="de">
+            <quote>auch, weiterhin</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>also, further</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>encore, en outre</quote>
+          </cit>
+          <cit>
+            <bibl>CD 255b; KoptHWb 141</bibl>
+          </cit>
+        </sense>
+        <sense n="3">
+          <cit type="translation" xml:lang="de">
+            <quote>noch</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>still, yet</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>encore</quote>
+          </cit>
+          <cit>
+            <bibl>CD 255b; KoptHWb 141</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲛⲧⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <number>pl.</number>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Bedeutung unbekannt</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>meaning unknown</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>sens inconnu</quote>
+          </cit>
+          <cit>
+            <bibl>CD 256a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲉⲓⲡⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>f.</gen>
+        </gramGrp>
+        <xr type="cf"> <ref target="#ⲣⲧⲟⲃ">Artabe</ref></xr>
+        <xr type="cf"> <ref target="#ⲱⲡ">zählen</ref></xr>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>'Oipe', ein Maß von 1/6 Artabe</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>ephah, a mesure of grain, one sixth of the artaba</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>'boisseau', une mesure</quote>
+          </cit>
+          <cit>
+            <bibl>CD 256ab; CED 121; KoptHWb 140; DELC 155; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry type="foreign">
+        <form>
+          <orth n="1">ⲟⲣⲃⲉ</orth>
+        </form>
+        <form>
+          <orth n="2">ⲟⲗⲃⲉ</orth>
+        </form>
+        <gramGrp>
+          <pos>Subst.</pos>
+        </gramGrp>
+        <etym>
+          <note>aramäisches Lehnwort?</note>
+        </etym>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Oblate, Waffel, Ölkuchen</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>wafer, thin cake</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>galette</quote>
+          </cit>
+          <cit>
+            <bibl>CD 256b; CED 121; KoptHWb 141; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <superEntry>
+        <entry n="1">
+          <form>ⲟⲥⲉ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Schaden, Verlust, Strafe, Buße</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>loss, damage, fine</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>dommage, tort, perte, amende</quote>
+            </cit>
+            <cit>
+              <bibl>CD 256b; CED 122; KoptHWb 141, 529; DELC 155-156; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="compound">          
+          <form>ϯ ⲟⲥⲉ</form>
+          <gramGrp>
+            <pos>Vb.</pos>
+            <subc>Kompositverb</subc>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ϯ">geben, zahlen, verkaufen</ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Schaden erleiden, etwas verlieren, bestraft werden</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>suffer loss, hurt, be fined</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>perdre</quote>
+            </cit>
+            <cit>
+              <bibl>CD 256b-257a; KoptHWb 141; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="3" type="compound">
+          <form type="lemma">ⲙⲛⲧⲟⲥⲉ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Verlust</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>loss</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>perte</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257a</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </superEntry>
+      <entry>
+        <form>
+        <usg type="geo">B</usg>
+        <orth n="1">ⲟⲥⲓ</orth>
+        </form>
+        <form>
+          <usg type="geo">B</usg>
+          <orth n="2">ⲟⲥ</orth>
+        </form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Tamariske</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>tamarisk</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>tamaris</quote>
+          </cit>
+          <cit>
+            <bibl>CD 257a; CED 122; KoptHWb 141, 529; DELC 156</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲥⲕ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Bedeutung unbekannt (zwischen Metallobjekten)</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>meaning unknown (among metal objects)</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>sens inconnu (entre des objets de métal)</quote>
+          </cit>
+          <cit>
+            <bibl>CD 257a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲟⲧ</form>
+        <gramGrp>
+          <pos>Vb.</pos>
+          <subc>Qualitativ</subc>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>schnauben, zornig sein, seufzen</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>snort, groan</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>renifler, gémir, soupirer</quote>
+          </cit>
+          <cit>
+            <bibl>CD 257a; KoptHWb 142, 529; DELC 156; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲟⲧⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>f.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Scheide, Gebärmutter, Mutterleib</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>vulva, womb</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>vulve, matrice, sein (de la mère)</quote>
+          </cit>
+          <cit>
+            <bibl>CD 257a; CED 122; KoptHWb 142, 529; DELC 156; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲟⲩϣ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Brei, Grütze</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>gruel (of bread or lentils)</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>bouillie, gruau</quote>
+          </cit>
+          <cit>
+            <bibl>CD 257a; CED 122; KoptHWb 142, 529; DELC 156; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <superEntry>
+        <entry n="1">
+          <form>ⲟⲉⲓϣ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ⲱϣ">rufen</ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Schrei, Ruf, Geschrei</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>cry</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>cri, appel</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b; CED 122; KoptHWb 140, 528; DELC 155; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="compound">
+          <form type="lemma">ⲁϣⲟⲉⲓϣ</form>
+          <gramGrp>
+            <pos>Adj.</pos>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ⲁϣⲁⲓ">viel werden, sich vermehren</ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>gesprächig, schwatzhaft</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>much crying, loquacious</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>loquace, bavard</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b; KoptHWb 140; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="3" type="compound">
+          <form type="lemma">ⲧⲁϣⲉⲟⲉⲓϣ</form>
+          <gramGrp>
+            <pos>Vb.</pos>
+            <subc>Kompositverb</subc>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ⲧⲁϣⲟ"> increase </ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>ausrufen, verkündigen, predigen</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>increase crying, proclaim, preach</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>publier, annoncer, proclamer, prêcher</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b; CED 122; KoptHWb 140; DELC 224; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="4" type="hom">
+          <form type="lemma">ⲧⲁϣⲉⲟⲉⲓϣ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ⲧⲁϣⲟ"> increase </ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Verkündigung, Predigt</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>preaching, proclamation</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>proclamation, prédication</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b; KoptHWb 140; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="5" type="hom">
+          <form type="lemma">ⲣⲉϥⲧⲁϣⲉⲟⲉⲓϣ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ⲣⲉϥ "> man who . . . </ref></xr>
+          <xr type="cf"> <ref target="#ⲧⲁϣⲟ"> increase </ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Prediger, Verkünder, Herold</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>preacher, herald</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>proclamateur, héraut</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="6" type="hom">
+          <form type="lemma">ⲙⲛⲧⲣⲉϥⲧⲁϣⲉⲟⲉⲓϣ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ⲙⲛⲧ">pref. to nn. or adj. forming abstracts</ref></xr>
+          <xr type="cf"> <ref target="#ⲣⲉϥ "> man who . . . </ref></xr>
+          <xr type="cf"> <ref target="#ⲧⲁϣⲟ"> increase </ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Verkündigung</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>proclamation</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>proclamation</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="7" type="compound">
+          <form><orth>ϩⲓⲱⲓϣ</orth><usg type="geo">B</usg></form>          
+          <form> <orth>ϩⲓⲁⲓϣ</orth><usg type="geo">F</usg></form> 
+          <gramGrp>
+            <pos>Vb.</pos>
+            <subc>Kompositverb</subc>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">werfen, verbreiten</ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>ausrufen, verkündigen, predigen</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>throw a cry, proclaim, preach</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>annoncer, proclamer, prêcher</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b; KoptHWb 140</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="8" type="hom">
+          <form type="lemma"><orth>ϩⲓⲱⲓϣ</orth><usg type="geo">B</usg></form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Verkündigung, Predigt</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>preaching, announcement</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>proclamation, prédication</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b; KoptHWb 140</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="9" type="compound">
+          <form type="lemma"><orth>ⲣⲉϥϩⲓⲱⲓϣ</orth><usg type="geo">B</usg></form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ⲣⲉϥ"> the one who . . . </ref></xr>
+          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref></xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Prediger</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>preacher</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>pasteur</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="10" type="compound">
+          <form type="lemma"><orth>ϫⲓⲛϩⲓⲱⲓϣ</orth><usg type="geo">B</usg></form>
+                    <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref></xr>
+          <xr type="cf"> <ref target="#ϭⲓⲛ"> act of, manner of </ref></xr>         
+          
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Verkündigung</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>annunciation</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>annonciation</quote>
+            </cit>
+            <cit>
+              <bibl>CD 257b</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </superEntry>
+      <entry>
+        <form>ⲟⲓϩ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Vieh, Rinderherde (?)</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>cattle (?)</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>bétail, troupeau (?)</quote>
+          </cit>
+          <cit>
+            <bibl>CD 257b; CED 123; KoptHWb 528; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟⲟϩ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense n="1">
+          <cit type="translation" xml:lang="de">
+            <quote>Mond</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>moon</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>lune</quote>
+          </cit>
+          <cit>
+            <bibl>CD 257b; CED 123; KoptHWb 142; DELC 156; ChLCS 36a</bibl>
+          </cit>
+        </sense>
+        <sense n="2">
+          <cit type="translation" xml:lang="de">
+            <quote>Silber (in der Alchemie)</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>moon (in Alchimic recipes)</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>argent (dans l'alchimie)</quote>
+          </cit>
+          <cit>
+            <bibl>CD 257b; KoptHWb 142; DELC 156</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry>
+        <form>ⲟϩⲉ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>m.</gen>
+        </gramGrp>
+        <sense n="1">
+          <cit type="translation" xml:lang="de">
+            <quote>Hof, (Vieh)hürde</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>yard (of house), fold (for cattle)</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>cour, enclos, bergerie</quote>
+          </cit>
+          <cit>
+            <bibl>CD 258a; CED 123; KoptHWb 142; DELC 156; ChLCS 36b</bibl>
+          </cit>
+        </sense>
+        <sense n="2">
+          <cit type="translation" xml:lang="de">
+            <quote>Weide</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>pasture</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>pâturage</quote>
+          </cit>
+          <cit>
+            <bibl>CD 258a; KoptHWb 142</bibl>
+          </cit>
+        </sense>
+        <sense n="3">
+          <cit type="translation" xml:lang="de">
+            <quote>Herde</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>flock, herd</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>troupeau</quote>
+          </cit>
+          <cit>
+            <bibl>CD 258a; KoptHWb 142; DELC 156</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <superEntry>
+        <entry n="1">
+          <form><orth>ⲟϫⲓ</orth><usg type="geo">B</usg></form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Ungerechtigkeit, Betrug</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>iniquity</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>iniquité, injustice</quote>
+            </cit>
+            <cit>
+              <bibl>CD 258b; KoptHWb 143, 529; DELC 156</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="hom">
+          <form><orth>ⲟϫⲓ</orth><usg type="geo">B</usg></form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>ungerechte Person, Betrüger</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>iniquitous person</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>personne injuste</quote>
+            </cit>
+            <cit>
+              <bibl>CD 258b; KoptHWb 143; DELC 156</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="3" type="compound">
+          <form type="lemma"><orth>ⲙⲉⲧⲟϫⲓ</orth><usg type="geo">B</usg></form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Ungerechtigkeit</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>iniquity</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>iniquité</quote>
+            </cit>
+            <cit>
+              <bibl>CD 258b</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </superEntry>
+     </body>
+  </text>
+</TEI>

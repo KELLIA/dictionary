@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    xmlns:ns1="http://www.tei-c.org/ns/1.0" targetNamespace="http://www.tei-c.org/ns/1.0"
+    vc:minVersion="1.1">
+
+    <xs:override schemaLocation="http://www.tei-c.org/release/xml/tei/custom/schema/xsd/tei_all.xsd">
+        <xs:element name="body">
+            <xs:complexType>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="ns1:superEntry"/>
+                    <xs:element ref="ns1:entry"/>
+                </xs:choice>
+            </xs:complexType>
+        </xs:element>
+        <xs:element name="superEntry">
+            <xs:annotation>
+                <xs:documentation>groups a sequence of entries within any kind of lexical resource, such
+                    as a dictionary or lexicon which function as a single unit, for
+                    example a set of homographs. [9.1. ]</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="unbounded" ref="ns1:entry"/>
+                </xs:sequence>
+                <xs:attributeGroup ref="ns1:att.global.attributes"/>
+                <xs:attributeGroup ref="ns1:att.entryLike.attributes"/>
+                <xs:attributeGroup ref="ns1:att.sortable.attributes"/>
+            </xs:complexType>
+        </xs:element>
+
+        <xs:element name="gramGrp">
+            <xs:complexType>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element name="pos" minOccurs="1" maxOccurs="1">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Subst."/>
+                                <xs:enumeration value="Subst.?"/>
+                                <xs:enumeration value="Adj."/>
+                                <xs:enumeration value="Adj.?"/>
+                                <xs:enumeration value="Adv."/>
+                                <xs:enumeration value="Adv.?"/>
+                                <xs:enumeration value="Vb."/>
+                                <xs:enumeration value="Vb.?"/>
+                                <xs:enumeration value="Präp."/>
+                                <xs:enumeration value="Pron."/>
+                                <xs:enumeration value="Dem. Pron."/>
+                                <xs:enumeration value="Selbst. Pers. Pron."/>
+                                <xs:enumeration value="Poss. Pron."/>
+                                <xs:enumeration value="Präfixpronomen (Präsens I)"/>
+                                <xs:enumeration value="Suffixpronomen"/>
+                                <xs:enumeration value="Interr. Pron."/>
+                                <xs:enumeration value="Partikel"/>
+                                <xs:enumeration value="Partikel, enklitisch"/>
+                                <xs:enumeration value="Konj."/>
+                                <xs:enumeration value="Zahlwort"/>
+                                <xs:enumeration value="Zahlzeichen"/>
+                                <xs:enumeration value="Interjektion"/>
+                                <xs:enumeration value="Satzkonverter"/>
+                                <xs:enumeration value="Präfix"/>
+                                <xs:enumeration value="Präfix der Ordinalzahlen"/>
+                                <xs:enumeration value="Nominalpräfix"/>
+                                <xs:enumeration value="Possessivpräfix"/>
+                                <xs:enumeration value="Verbalpräfix"/>
+                                <xs:enumeration value="Adjektivpräfix"/>
+                                <xs:enumeration value="bestimmter Artikel"/>
+                                <xs:enumeration value="unbestimmter Artikel"/>
+                                <xs:enumeration value="Possessivartikel"/>
+                                <xs:enumeration value="Demonstrativartikel"/>
+                                <xs:enumeration value="Kompositum"/>
+                                <xs:enumeration value="unpersönlicher Ausdruck"/>
+
+                                <xs:enumeration value="?"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element ref="ns1:note" minOccurs="0"/>
+                    <xs:element name="subc" minOccurs="0" maxOccurs="1">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="?"/>
+                                <xs:enumeration value="Imperativ"/>
+                                <xs:enumeration value="Infinitiv"/>
+                                <xs:enumeration value="Qualitativ"/>
+                                <xs:enumeration value="Qualitativ?"/>
+                                <xs:enumeration value="Suffixkonjugation"/>
+                                <xs:enumeration value="Hilfsverb"/>
+                                <xs:enumeration value="Kompositverb"/>
+                                <xs:enumeration value="Kompositverb (?)"/>
+                                <xs:enumeration value="Obsolete Relativform"/>
+                                <xs:enumeration value="Umstandsatzkonverter"/>
+                                <xs:enumeration value="Relativkonverter"/>
+                                <xs:enumeration value="Präterialkonverter"/>
+                                <xs:enumeration value="Fokalisierungskonverter"/>
+                                <xs:enumeration value="Participium conjunctum"/>
+                                <xs:enumeration value="Frageadverb"/>
+                                <xs:enumeration value="Fragepronomen"/>
+                                <xs:enumeration value="Fragepartikel"/>
+                                <xs:enumeration value="Indefinitpronomen"/>
+                                <xs:enumeration value="Reflexivpronomen"/>
+                                <xs:enumeration value="1. Pers."/>
+                                <xs:enumeration value="2. Pers. "/>
+                                <xs:enumeration value="3. Pers."/>
+                                <xs:enumeration value="Völkername"/>
+                                <xs:enumeration value="Göttername"/>
+                                <xs:enumeration value="Name einer Sache oder Institution"/>
+                                <xs:enumeration value="Ortsname"/>
+                                <xs:enumeration value="Titel"/>
+                                <xs:enumeration value="Imperfekt ⲛⲉ(ⲣⲉ)-"/>
+                                <xs:enumeration value="Perfekt ⲁ-"/>
+                                <xs:enumeration value="Perfekt relativ (ⲉ)ⲛⲧⲁ-"/>
+                                <xs:enumeration value="Perfekt II ⲉⲛⲧⲁ-"/>
+                                <xs:enumeration value="Perfekt neg. ⲙⲡⲉ-"/>
+                                <xs:enumeration value="Relativpräfix des Perfekts ⲁϩ-"/>
+                                <xs:enumeration value="Aorist ϣⲁ(ⲣⲉ)-"/>
+                                <xs:enumeration value="Aorist neg. ⲙⲉ(ⲣⲉ)-"/>
+                                <xs:enumeration value="Futur III ⲉ(ⲣⲉ)-"/>
+                                <xs:enumeration value="Futur III neg. ⲛⲛⲉ-"/>
+                                <xs:enumeration value="Futur I / II ⲛⲁ-"/>
+                                <xs:enumeration value="Kompletiv neg. ⲙⲡⲁ(ⲧⲉ)-"/>
+                                <xs:enumeration value="Konjunktiv ⲛ(ⲧⲉ)-"/>
+                                <xs:enumeration value="Temporalis ⲛⲧⲉⲣⲉ-"/>
+                                <xs:enumeration value="Konditionalis ⲉⲣϣⲁⲛ-"/>
+                                <xs:enumeration value="Limitativ ϣⲁⲛⲧⲉ-"/>
+                                <xs:enumeration value="Kausativer Imperativ ⲙⲁⲣⲉ-"/>
+                                <xs:enumeration value="Kausativer Imperativ neg. ⲙⲡⲣⲧⲣⲉ-"/>
+                                <xs:enumeration value="Kausativer Konjunktiv (ⲛ)ⲧⲁⲣⲉ-"/>
+                                <xs:enumeration value="Kausativer Infinitiv ⲧⲣⲉ-"/>
+                                <xs:enumeration value="Imperativpräfix ⲁ-"/>
+                                <xs:enumeration value="Negierter Imperativ ⲙⲡⲣ-"/>
+                                <xs:enumeration value="Negiertes Futur im Bedingungssatz ⲁⲛⲛⲉ- (B)"/>
+                                <xs:enumeration value="Status nominalis"/>
+                                <xs:enumeration value="Status pronominalis"/>
+                                <xs:enumeration value="nach Konsonanten und Doppelvokalen"/>
+                                <xs:enumeration value="nach Konsonanten"/>
+                                <xs:enumeration value="nach Doppelvokalen"/>
+                                <xs:enumeration value="nach ⲛ"/>
+                                <xs:enumeration value="zur Bildung von Ortsangaben"/>
+                                <xs:enumeration value="im negativen Bedingungssatz"/>
+                                <xs:enumeration value="Negativpräfix zur Bildung von Adjektiven"/>
+                                <xs:enumeration value="Unpersönlich"/>
+                                <xs:enumeration value="Adjektivverb"/>
+                                <xs:enumeration value="Negationspartikel"/>
+                                <xs:enumeration value="Genitivpartikel"/>
+                                <xs:enumeration value="Kopula"/>
+                                <xs:enumeration
+                                    value="Negativpräfix zur Bildung von Substantiven f."/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="gen" minOccurs="0" maxOccurs="1">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="m."/>
+                                <xs:enumeration value="f."/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="gram" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>if compound "noun + prep./adv.": gram type=collocPrep(collocAdv)/ ⲙⲛ-/gram</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                    <xs:attribute name="type" type="xs:string"/>
+                                </xs:extension>
+                            </xs:simpleContent>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="number" minOccurs="0" maxOccurs="1">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="sg."/>
+                                <xs:enumeration value="pl."/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:choice>
+            </xs:complexType>
+        </xs:element>
+
+        <xs:element name="entry">
+            <xs:annotation>
+                <xs:documentation>if compound: attribute "type=compound" </xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+
+                <xs:sequence>
+                    <xs:element name="form" maxOccurs="unbounded" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>if compound:
+1) "verb + noun": form/ⲣϪⲟⲓ/form; form type=lemma/ⲉⲓⲣⲉ/form 
+2) "verb + verb": form type=lemma/ϫⲓϯ /form
+2) "noun/pref. + noun": form type=lemma/ⲣⲉϥϫⲱ (ⲙⲁ ⲛϫⲟ)/form
+3) "noun + prep.": form/ ϫⲓ (ⲙⲛ-)/ form
+</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType mixed="true">
+                            <xs:all maxOccurs="1">
+                                <xs:element name="usg" type="ns1:usgType" maxOccurs="1"
+                                    minOccurs="0"/>
+
+                                <xs:element name="orth" maxOccurs="1" minOccurs="0">
+                                    <xs:annotation>
+                                        <xs:documentation>if non-sahidic: orth/ⲣⲉϥϯ ⲟⲩⲃⲉ-/orth
+if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟⲩϥ/orth</xs:documentation>
+                                    </xs:annotation>
+                                    <xs:complexType>
+                                        <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                                <xs:attribute name="n" type="xs:integer">
+                                                </xs:attribute>
+                                            </xs:extension>
+                                        </xs:simpleContent>
+                                    </xs:complexType>
+                                </xs:element>
+
+                                <xs:element ref="ns1:note" minOccurs="0"/>
+                                <xs:element ref="ns1:gramGrp" minOccurs="0"/>
+                            </xs:all>
+                            <xs:attribute name="type">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="lemma"/>
+                                        <xs:enumeration value="inflected"/>
+                                        <xs:enumeration value="compound"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
+
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="ns1:gramGrp" minOccurs="0"/>
+                    <xs:element name="etym" minOccurs="0">
+                        <xs:complexType>
+                            <xs:choice maxOccurs="unbounded">
+                                <xs:element name="ref">
+                                    <xs:complexType>
+                                        <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                                <xs:attribute name="targetLang" type="xs:string"/>
+                                                <xs:attribute name="type" type="xs:string"/>
+                                                <xs:attribute name="target" type="xs:string"/>
+                                            </xs:extension>
+                                        </xs:simpleContent>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element ref="ns1:note"/>
+                                <xs:element name="xr" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="ref" maxOccurs="unbounded">
+                                                <xs:complexType>
+                                                  <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:attribute name="target"/>
+                                                  </xs:extension>
+                                                  </xs:simpleContent>
+                                                </xs:complexType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                        <xs:attribute name="type">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="cf"/>
+                                                  <xs:enumeration value="syn"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:attribute>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="xr" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="ref" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                                <xs:attribute name="target"/>
+                                            </xs:extension>
+                                        </xs:simpleContent>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                            <xs:attribute name="type">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="cf"/>
+                                        <xs:enumeration value="syn"/>
+                                        <xs:enumeration value="ant"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="sense" minOccurs="1" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:all>
+                                <xs:element name="ref" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                                <xs:attribute name="type">
+                                                  <xs:simpleType>
+                                                  <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="Greek"/>
+                                                  </xs:restriction>
+                                                  </xs:simpleType>
+                                                </xs:attribute>
+                                            </xs:extension>
+                                        </xs:simpleContent>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="cit" minOccurs="3" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:choice minOccurs="1" maxOccurs="unbounded">
+                                            <xs:element name="quote" type="xs:string"/>
+                                            <xs:element name="def" type="xs:string"/>
+                                            <xs:element name="bibl" type="xs:string"
+                                                default="CD XXXa/b; KoptHWb XXX; ChLCS XXa/b; CED XXX; DELC XXXa/b"/>
+                                            <xs:element name="note" type="xs:string"/>
+                                        </xs:choice>
+                                        <xs:attribute name="type">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="translation"/>
+                                                  <xs:enumeration value="example"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:attribute>
+                                        <xs:attribute ref="xml:lang"/>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="xr" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="ref" maxOccurs="unbounded">
+                                                <xs:complexType>
+                                                  <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:attribute name="target"/>
+                                                  </xs:extension>
+                                                  </xs:simpleContent>
+                                                </xs:complexType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                        <xs:attribute name="type">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="cf"/>
+                                                  <xs:enumeration value="syn"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:attribute>
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element ref="ns1:note" minOccurs="0"/>
+                            </xs:all>
+                            <xs:attribute name="n" type="xs:integer"/>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="ns1:note" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="type">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="hom"/>
+                            <xs:enumeration value="compound"/>
+                            <xs:enumeration value="foreign"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="n" type="xs:integer"/>
+            </xs:complexType>
+        </xs:element>
+    </xs:override>
+
+    <xs:complexType name="usgType">
+        <xs:simpleContent>
+            <xs:extension base="ns1:usgValueType">
+                <xs:attribute name="type">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="geo"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="usgValueType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="L"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="Ak"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

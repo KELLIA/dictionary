@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
+<?xml-model href="Coptic_Lemma_Schema.xsd"?>
+<TEI
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:math="http://www.w3.org/1998/Math/MathML"
+    xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Koptische Lemmaliste ⳉ</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry>
+                <form>
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲟ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <xr type="cf"> <ref target="#ϩⲓⲏ">Weg</ref></xr>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Weg</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>road, path</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>route, chemin</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 628a; CED 267; KoptHWb 352; DELC 321a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="compound">                
+                <form>
+                    <usg type="geo">A</usg>
+                    <orth>ϫⲓⳉⲛⲟⲟϥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Kompositverb</subc>
+                </gramGrp>
+                <xr type="cf"> <ref target="#ϫⲓ">nehmen, erhalten</ref></xr>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>empfangen</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>conceive</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>concevoir</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 628b; KoptHWb 381; DELC 321ab</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="compound">
+                <form>
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲁⲣⲃⲉⲗ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Adj.</pos>
+                </gramGrp>
+                <xr type="cf"> <ref target="#ⲃⲁⲗ">Auge</ref></xr>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>starräugig</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>hard-eyed</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>au regard fixe</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 628b; KoptHWb 384</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲣⲏⲁⲣⲓⲧ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.?</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>unbekannte Bedeutung</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>unknown meaning</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>signification inconnue</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 628b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <superEntry>
+                <entry n="1">
+                    <form>
+                        <usg type="geo">A</usg>
+                        <orth>ⳉⲓ(ⲉⲓ)ⲧ</orth>
+                    </form>
+                    <gramGrp>
+                        <pos>Subst.</pos>
+                        <gen>m.</gen>
+                    </gramGrp>
+                    <sense>
+                        <cit type="translation" xml:lang="de">
+                            <quote>Tenne</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="en">
+                            <quote>threshing-floor</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="fr">
+                            <quote>aire de battage</quote>
+                        </cit>
+                        <cit>
+                            <bibl>CD 629a; CED 267; KoptHWb 395; DELC 321b</bibl>
+                        </cit>
+                    </sense>
+                </entry>
+                <entry n="2" type="compound">
+                    <form>
+                        <usg type="geo">A</usg>
+                        <orth>ⳉ(ⲉ)ⲃⲉⳉⲓⲧ</orth>
+                    </form>
+                    <gramGrp>
+                        <pos>Subst.</pos>
+                        <gen>f.</gen>
+                    </gramGrp>
+                    <sense>
+                        <cit type="translation" xml:lang="de">
+                            <quote>Tenne</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="en">
+                            <quote>threshing-floor</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="fr">
+                            <quote>aire de battage</quote>
+                        </cit>
+                        <cit>
+                            <bibl>CD 629a; CED 267; KoptHWb 395; DELC 321b</bibl>
+                        </cit>
+                    </sense>
+                </entry>
+            </superEntry>
+            <entry>
+                <form>
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲁⲧⲉ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>ausrupfen</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>pluck out</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>arracher</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 629a; CED 267; KoptHWb 394; DELC 321b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲱϣϥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>zerbrochen sein, zerstört werden</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>be broken, be destroyed</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>être brisé, être détruit</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 629b; CDC 93b; KoptHWb 405</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⳉⲧⲱⲣϣ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Rost, Pflanzenfäulnis (Braunfäule?)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>rust, red blight</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>rouille (oxydation ou maladie)</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 629b; CDC 93b; CED 267; KoptHWb 407</bibl>
+                    </cit>
+                </sense>
+            </entry>
+        </body>
+    </text>
+</TEI>

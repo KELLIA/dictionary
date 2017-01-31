@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
+<?xml-model href="Coptic_Lemma_Schema.xsd"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Title</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Koptische Lemmaliste ⲅ</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <entry>
+        <form>
+          <orth>ⲅ</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>dritter Buchstabe des Alphabets ⲅⲁⲙⲙⲁ</note>
+          </gramGrp>
+        </form>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>drei</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>three</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>trois</quote>
+          </cit>
+          <cit>
+            <bibl>CD 48a; KoptHWb 31; DELC 35; ChLCS 10a</bibl>
+          </cit>
+        </sense>
+      </entry>
+    </body>
+  </text>
+</TEI>

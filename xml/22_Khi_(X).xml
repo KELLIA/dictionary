@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
+<?xml-model href="Coptic_Lemma_Schema.xsd"?>
+<TEI
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:math="http://www.w3.org/1998/Math/MathML"
+    xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Koptische Lemmaliste ⲭ</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲁⲑⲏⲟⲩ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <xr type="cf"> <ref target="#ⲕⲱ">legen</ref></xr>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Fenster</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>window</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>fenêtre</quote>
+                    </cit>
+                    <cit>
+                        <bibl>KoptHWb 72</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="compound">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲁⲕⲕⲁⲙⲁⲩ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <xr type="cf"> <ref target="#ⲕⲟⲩⲕ">ein Vogel</ref></xr>
+                <xr type="cf"> <ref target="#ⲙⲟⲩⲗⲁϫ">Nachtrabe</ref></xr>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>kleine Nachteule</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>small night owl</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>petit oiseau de nuit</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b; CED 226; KoptHWb 59, 507; DELC 246a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="foreign">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲉⲗⲙⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                    <note>arabisches Lehnwort</note>
+                </gramGrp>
+              <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Brustwarze</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>nipple (of breast)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>téton (de la poitrine)</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b; CED 226; KoptHWb 508; DELC 246a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲗⲟⲙⲗⲉⲙ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+                <xr type="cf"> <ref target="#ⲕⲗⲟⲙ">Krone</ref></xr>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>krönen</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>crown</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>couronner</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b; CED 226; KoptHWb 62; DELC 246a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="compound">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲉⲗⲭⲁⲭⲱϥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <number>pl.</number>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Abszess, Geschwulst, Tumor</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>abscess, tumour</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>abcès, tumeur</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b; CDC 80a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲁⲛⲥⲣⲱϥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>ein Ackerschläding (Heuschrecke?)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>a field parasite (grasshopper?)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>un parasite des champs (sauterelle ?)</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b; KoptHWb 65; DELC 246a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>(ⲭⲱⲣ)</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>zerstören</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>destroy</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>détruire</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b; DELC 246b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>ⲭⲏⲣⲉ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Pflugschar</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>ploughshare</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>soc de charrue</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b; ChLCS 20b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲁⲣⲉⲃ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Adj.?</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>niedrig</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>lowly</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>modeste</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b; CED 226; KoptHWb 510; DELC 246b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲣⲟⲃⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Sichel</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>sickle</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>faucille</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b-517a; CDC 80a; CED 226; KoptHWb 67; DELC 246b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲣⲟⲃⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Sichel</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>sickle</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>faucille</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 516b-517a; CDC 80a; CED 226; KoptHWb 67; DELC 246b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲁⲣⲟⲩⲕⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Eidechse</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>lizard</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>lézard</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517a; KoptHWb 68; DELC 247a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲣⲓⲙ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Wüstenrand</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>desert edge</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>bord du desert</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>ⲭⲣⲓⲥ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <number>pl.</number>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Hüftgelenk</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>hip joint</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>articulation de la hanche</quote>
+                    </cit>
+                    <cit>
+                        <bibl>KoptHWb 74</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲣⲱⲟⲩⲛⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Ziziphus-Baum</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>ziziphus (tree)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>arbre jujubier</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>ⲭⲉⲣⲭⲉⲙ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Krankheit (lues cauteriata)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>disease (lues cauteriata)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>maladie (lues cauteriata)</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517a; ChLCS 20b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲣⲟϣ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Klaps</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>slap</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>tape</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517a; KoptHWb 68, 511</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲣⲱϣ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Runzel</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>wrinkle</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>ride</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517a; CED 226; KoptHWb 68; DELC 247b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲁⲣⲱϫⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Hammer, Schlegel</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>mallet</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>maillet</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517a; KoptHWb 69; DELC 247b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">A</usg>
+                    <orth>ⲭⲁⲥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Gazelle</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>gazelle</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>gazelle</quote>
+                    </cit>
+                    <cit>
+                        <bibl>KoptHWb 74</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲟⲥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Rülpser, Erbrechen</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>eructation, vomiting</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>éructation, vomissement</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517b; CED 226; KoptHWb 70, 511; DELC 247b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲟⲩⲥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <subc>Ortsname</subc>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Kusch</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>Kush</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>Kouch</quote>
+                    </cit>
+                    <cit>
+                        <bibl>DELC 247b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲁⲧⲏⲣ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Kompass</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>compass</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>compas</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲟⲩⲁⲓⲛ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Marmor</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>marble</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>marbre</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517b; KoptHWb 72</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">Ak</usg>
+                    <orth>ⲭⲫⲟⲩⲣⲓⲥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <note>ägyptisches Lehnwort im Griechischen (?)</note>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Mistkäfer</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>dung beetle</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>bousier</quote>
+                    </cit>
+                    <cit>
+                        <bibl>KoptHWb 67, 382</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>ⲭⲁϥ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>unbekannte Bedeutung</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>meaning unknown</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>signification inconnue</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ⲭⲓϥⲧ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Flohkraut (Pflanze der Gattung "Pulicaria")</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>flowering plant of the genus "Pulicaria"</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>pulicaire (plante du genre "pulicaria")</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 517b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+        </body>
+    </text>
+</TEI>

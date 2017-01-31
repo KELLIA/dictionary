@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
+<?xml-model href="Coptic_Lemma_Schema.xsd"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
+<teiHeader>
+    <fileDesc>
+        <titleStmt>
+            <title>Title</title>
+        </titleStmt>
+        <publicationStmt>
+            <p>Koptische Lemmaliste ⲑ</p>
+        </publicationStmt>
+        <sourceDesc>
+            <p>Information about the source</p>
+        </sourceDesc>
+    </fileDesc>
+</teiHeader>
+<text>
+    <body>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑ̄</orth>
+                <gramGrp>
+                    <pos>Zahlzeichen</pos>
+                    <note>achter Buchstabe des Alphabeths ⲑⲏⲧⲁ</note>
+                </gramGrp>
+            </form>
+            <form>
+                <usg type="geo">F</usg>
+                <orth>ⲑ̄</orth>
+                <gramGrp>
+                    <pos>Zahlzeichen</pos>
+                    <note>achter Buchstabe des Alphabeths ⲑⲏⲧⲁ</note>
+                </gramGrp>
+            </form>
+            <form>
+                <usg type="geo">S</usg>
+                <orth>ⲑ̄</orth>
+                <gramGrp>
+                    <pos>Zahlzeichen</pos>
+                    <note>selten</note>
+                    <note>achter Buchstabe des Alphabeths ⲑⲏⲧⲁ</note>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>neun</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>nine</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>neuf</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 68a; KoptHWb 47; DELC 56</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲱⲃⲓ</orth>
+                <gramGrp>
+                    <pos>Subst.?</pos>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Bedeutung unbekannt</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>meaning unknown</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>sens inconnu</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 68a</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth n="1">ⲑⲱⲃϣ (ⲉⲃⲟⲗ)</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <form>
+                <usg type="geo">B</usg>
+                <orth n="2">ⲑⲱϣⲡ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>erstaunt sein, verblüfft sein</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>be asthonished, stare with astonishment</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>être impressioné, s'étonner, regarder fixement</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 68b; DELC 57</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry type="hom">
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲱⲃϣ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <ref type="Greek">στερέωμα</ref>
+                <cit type="translation" xml:lang="de">
+                    <quote>Einfluß (astrologisch)</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>influence (astrological)</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>influence (astrologique)</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 68b</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth n="1">ⲑⲱⲕ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <form>
+                <usg type="geo">B</usg>
+                <orth n="2">ⲑⲟⲕ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Schiffsmast</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>mast of ship</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>mât de navire</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 68b</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲁⲗⲓϩⲓ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>ein Fruchtbaum</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>a fruit-tree</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>un arbre à fruits</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 68b</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲟⲩⲙⲉ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Sternzeichen: Jungfrau</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>zodiacal sign: Virgo</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>signe zodiacal: Vierge</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 68b; CED 43; DELC 57</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲙⲓⲥ</orth>
+            </form>
+            <form>
+                <usg type="geo">F</usg>
+                <orth>ⲑⲉⲙⲓⲥ</orth>
+            </form>
+            <gramGrp>
+                <pos>Subst.</pos>
+                <number>pl.</number>
+            </gramGrp>
+            <etym>
+                <ref targetLang="el">ἀτμίς (?)</ref>
+            </etym>
+            <sense>
+                <ref type="Greek">χνοῦς, χοῦς</ref>
+                <cit type="translation" xml:lang="de">
+                    <quote>Staub</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>dust</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>poussière</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 68b; CED 43; DELC 58</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth n="1">ⲑⲏⲛⲓ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <form>
+                <usg type="geo">B</usg>
+                <orth n="2">ⲑⲉⲛⲓ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <xr type="syn">
+                <ref target="#ϯⲟⲩⲱ">sprießen</ref>
+            </xr>
+            <sense>
+                <ref type="Greek">εὐθηνεῖν</ref>
+                <cit type="translation" xml:lang="de">
+                    <quote>sprießen, wachsen</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>sprout, grow</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>pousser, croître</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69a</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲁⲛⲛⲟ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>etw. schaffen, durchführen</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>accomplish, perform</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>accomplir, exécuter</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69a</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲣⲓⲙ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Quecksilber</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>quicksilver</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>mercure</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69a</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲁⲣⲙⲓ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Lederschild, Harnisch</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>leathern shield, cuirass</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>cuirasse ou bouclier en cuir</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69a</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲣⲁⲛ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <ref type="Greek">κασσίτερος, -τέρινος</ref>
+                <cit type="translation" xml:lang="de">
+                    <quote>Zinn</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>tin</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>étain</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69a; CED 43; DELC 58</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲉⲣϣ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Leinsamen</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>linseed</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>graines de lin</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69a; CED 43; DELC 58</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲱⲣϣ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>verwundert sein</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>stare in astonishment</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>être stupéfié</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69a</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲟⲩⲥ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Spitze (des Bartes)</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>point (of beard)</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>extremité du menton (pointe de la barbe)</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69b; CED 43; DELC 58</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲟⲩⲑⲟⲩ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>die Hautkrankheit Lentigo haben</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>to have the skin disease lentigo</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>avoir le lentigo (maladie de la peau)</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69b</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth n="1">ⲑⲟⲩⲉⲗⲟ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                    <note>T-Kausativ</note>
+                </gramGrp>
+            </form>
+            <form>
+                <usg type="geo">B</usg>
+                <orth n="2">ⲧⲟⲩⲗⲟ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                    <note>T-Kausativ</note>
+                </gramGrp>
+            </form>
+            <xr type="cf">
+                <ref target="#ⲟⲩⲱⲱⲗⲉ">fließen</ref>
+            </xr>
+            <sense>
+                <ref type="Greek">κατακλύζειν, ἐπικλύζειν</ref>
+                <cit type="translation" xml:lang="de">
+                    <quote>überschwemmen, untergehen lassen</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>overflow, submerge</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote> déborder, submerger</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69b; CED 43</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>*(ⲑⲓϥⲓ)</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+            </form>
+            <form type="inflected">
+                <orth>ⲑⲁϥ⸗</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Status pronominalis</subc>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>wegnehmen</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>take out, away</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>amener (de force)</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69b; CED 43; DELC 58</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲓϥⲓ</orth>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Schwellung, Tumor</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>swelling, tumour</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>enflure, tumeur</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69b</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲟϥⲧⲉϥ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Tropfen auf Tropfen fallen lassen</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>let fall drop by drop</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>tomber goutte par goutte</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69b; CED 44; DELC 59</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲑⲟϩ</orth>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Infinitiv</subc>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>böse werden</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>become bad</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>devenir méchant</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 69b</bibl>
+                </cit>
+            </sense>
+        </entry>
+    </body>
+</text>
+</TEI>

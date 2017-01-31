@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
+<?xml-model href="Coptic_Lemma_Schema.xsd"?> 
+<TEI
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML"
+  xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Title</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Koptische Lemmaliste Ⲝ</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <entry>
+          <form>
+            <usg type="geo">B</usg>
+            <orth>ⲝ̄</orth>
+            <gramGrp>
+              <pos>Zahlzeichen</pos>
+              <note>14er Buchstabe des Alphabeths ⲝⲓ</note>
+            </gramGrp>
+          </form>
+        <form>
+          <usg type="geo">F</usg>
+          <orth>ⲝ̄</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>14er Buchstabe des Alphabeths ⲝⲓ</note>
+          </gramGrp>
+        </form>
+        <form>
+          <usg type="geo">S</usg>
+          <orth>ⲝ̄</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>selten</note>
+            <note>14er Buchstabe des Alphabeths ⲝⲓ</note>
+          </gramGrp>
+        </form>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>sechzig</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>sixty</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>soixante</quote>
+            </cit>
+            <cit>
+              <bibl>CD 253a; KoptHWb 138; DELC 154</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </body>
+  </text>
+</TEI>

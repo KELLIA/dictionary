@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
+<?xml-model href="Coptic_Lemma_Schema.xsd"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
+<teiHeader>
+    <fileDesc>
+        <titleStmt>
+            <title>Title</title>
+        </titleStmt>
+        <publicationStmt>
+            <p>Koptische Lemmaliste ⲏ</p>
+        </publicationStmt>
+        <sourceDesc>
+            <p>Information about the source</p>
+        </sourceDesc>
+    </fileDesc>
+</teiHeader>
+<text>
+    <body>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲏ︦</orth>
+                <gramGrp>
+                    <pos>Zahlzeichen</pos>
+                    <note>siebenter Buchstabe des Alphabeths ϩⲏⲧⲁ</note>
+                </gramGrp>
+            </form>
+            <form>
+                <usg type="geo">F</usg>
+                <orth>ⲏ︦</orth>
+                <gramGrp>
+                    <pos>Zahlzeichen</pos>
+                    <note>siebenter Buchstabe des Alphabeths ϩⲏⲧⲁ</note>
+                </gramGrp>
+            </form>
+            <form>
+                <usg type="geo">S</usg>
+                <orth>ⲏ︦</orth>
+                <gramGrp>
+                    <pos>Zahlzeichen</pos>
+                    <note>selten</note>
+                    <note>siebenter Buchstabe des Alphabeths ϩⲏⲧⲁ</note>
+                </gramGrp>
+            </form>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Acht</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>eight</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>huit</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 66a; KoptHWb 46; DELC 52; ChLCS 12b</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <superEntry>
+            <entry n="1">
+                <form>ⲏⲓ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense n="1">
+                    <cit type="translation" xml:lang="de">
+                        <quote>Haus</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>house</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>maison</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66a; KoptHWb 46</bibl>
+                    </cit>
+                </sense>
+                <sense n="2">
+                    <cit type="translation" xml:lang="de">
+                        <quote>Haushalt, Familie</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>household, family</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>famille</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66a; KoptHWb 46; DELC 52-53; ChLCS 12b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="2" type="compound">
+                <form type="lemma">ⲙⲉⲥϩⲛⲏⲓ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+                <xr type="cf"> <ref target="#ⲙⲁⲥ"> bearing, producing</ref></xr>
+                <sense>
+                    <ref type="Greek">οἰκογενής</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>im Hause Geborener</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>born in the house</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>né dans la maison</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66a; DELC 53; ChLCS 12b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="3" type="compound">
+                <form type="lemma">ⲣⲙⲛⲏⲓ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense n="1">
+                    <ref type="Greek">οἰκεῖος, οἰκιακός, οἶκος, οἰκέτης, αὐτόχθων</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Haushaltsmitglied, Hausdiener, Verwandter</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>member of household, domestic, kinsman</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>personne de la même maison, domestique</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66b; KoptHWb 46; DELC 53</bibl>
+                    </cit>
+                </sense>
+                <sense n="2">
+                    <cit type="translation" xml:lang="de">
+                        <quote>Hausvorsteher (im Kloster)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>monastic superintendent, warden</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>supérieur (dans un monastère), directeur</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66b; KoptHWb 46</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="4" type="compound">
+                <form type="lemma">ⲙⲉⲧⲣⲉⲙϧⲉⲛⲏⲓ</form>
+                <form>
+                    <usg type="geo">B</usg>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <ref type="Greek">οἰκειότης</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Verwandschaft</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>kinship</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>parenté</quote> 
+                    </cit>
+                    <cit>
+                        <bibl>CD 66b; KoptHWb 46</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="5" type="compound">                
+                <form>ⲣⲣⲙⲛⲏⲓ</form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                    <subc>Kompositverb</subc>
+                </gramGrp>
+                <xr type="cf"> <ref target="#ⲉⲓⲣⲉ">machen, tun</ref></xr>
+                <sense>
+                    <ref type="Greek">οἰκειοῦν</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>verwandt sein</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>be akin</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>être parent, apparenté</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66b; KoptHWb 46; DELC 53; ChLCS 12b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="6" type="compound">
+                <form type="lemma">ϫⲙⲡⲏⲓ</form>
+                <form>
+                    <usg type="geo">A</usg>
+                </form>
+                <form>
+                    <usg type="geo">L</usg>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+                <sense>
+                    <ref type="Greek">δῶμα</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Dach</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>roof</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>toit</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66b; KoptHWb 46; DELC 53</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="7" type="hom">
+                <form>ⲏⲓ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <ref type="Greek">ζεῦγος</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Paar</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>pair, couple</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>paire, couple</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66b; KoptHWb 46; DELC 53; ChLCS 12b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+        </superEntry>
+        <entry type="hom">
+            <form>
+                <usg type="geo">Ak</usg>
+                <orth>ⲏⲓ</orth>
+            </form>
+            <gramGrp>
+                <pos>Interjektion</pos>
+            </gramGrp>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>O!</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>oh!</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>oh!</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 66b; KoptHWb 46; DELC 52</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>ⲏⲗⲗⲉ</form>
+            <gramGrp>
+                <pos>Subst.</pos>
+                <gen>f.</gen>
+            </gramGrp>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>ein Maß</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>a measure</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>une mesure</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 66b; KoptHWb 46</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">Ak</usg>
+                <orth>ⲏⲛ</orth>
+            </form>
+            <gramGrp>
+                <pos>Subst.</pos>
+                <gen>m.</gen>
+            </gramGrp>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Affe, Pavian</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>ape</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>singe, babouin</quote>
+                </cit>
+                <cit type="example">
+                    <quote>ⲡⲁⲛⲁ ⲑⲟⲟⲩⲧ</quote>
+                    <quote>Affe Thot</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 66b; KoptHWb 46</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">B</usg>
+                <orth>ⲏⲣ</orth>
+            </form>
+            <gramGrp>
+                <pos>Subst.</pos>
+                <gen>m.</gen>
+            </gramGrp>
+            <xr type="cf">
+                <ref target="#ⲉⲣⲏⲩ">Genosse, Gefährte</ref>
+            </xr>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Genosse, Gefährte</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>friend, companion</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>ami, compagnon</quote>
+                </cit>
+                <cit>
+                    <bibl>CED 42; KoptHWb 46, 503</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <superEntry>
+            <entry n="1">
+                <form>ⲏⲣⲡ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <ref type="Greek">οἶνος</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Wein</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>wine</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>vin</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66b-67a; KoptHWb 46</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="1">
+                <form>ⲏⲣⲡ</form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <ref type="Greek">οἶνος</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Wein</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>wine</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>vin</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 66b-67a; KoptHWb 46</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="2" type="compound">
+                <form type="lemma">
+                    <usg type="geo">S</usg>
+                    <orth>ⲥⲁⲩⲏⲣⲡ</orth>
+                </form>
+                <form type="lemma">
+                    <usg type="geo">B</usg>
+                    <orth>ⲥⲁⲩⲏⲣⲡ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <ref type="Greek">οἰνοποτής</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Weintrinker</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>wine-drinker</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>buveur du vin</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 67b; ChLCS 12b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="3" type="compound">
+                <form type="lemma">
+                    <orth>ⲣⲉϥⲥⲉⲏⲣⲡ</orth>
+                    <usg type="geo">S</usg>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <ref type="Greek">οἰνοποτής</ref>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Weintrinker</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>wine-drinker</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>buveur du vin</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 67b; ChLCS 12b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry n="4" type="compound">
+                <form type="lemma">ⲥⲁⲛⲏⲣⲡ</form>
+                <form>
+                    <usg type="geo">S</usg>
+                </form>
+                <form>
+                    <usg type="geo">F</usg>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Weinhändler</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>wine-dealer</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>viticulteur, marchand de vin</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 67b; ChLCS 12b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+        </superEntry>
+        <entry>
+            <form>ⲏⲥⲉ</form>
+            <gramGrp>
+                <pos>Subst.</pos>
+                <subc>Göttername</subc>
+                <gen>f.</gen>
+            </gramGrp>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>die Göttin Isis</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>the goddess Isis</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>la déesse Isis</quote>
+                </cit>
+                <cit>
+                    <bibl>KoptHWb 46; DELC 55</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>
+                <usg type="geo">Ak</usg>
+                <orth>ⲏⲟⲩ</orth>
+            </form>
+            <gramGrp>
+                <pos>Subst.</pos>
+                <number>pl.</number>
+            </gramGrp>
+            <sense>
+                <cit type="translation" xml:lang="de">
+                    <quote>Glieder</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>limbs</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>membres</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 67b; KoptHWb 46</bibl>
+                </cit>
+            </sense>
+        </entry>
+        <entry>
+            <form>ⲏϭⲉ</form>
+            <gramGrp>
+                <pos>Subst.</pos>
+                <gen>m.</gen>
+            </gramGrp>
+            <sense>
+                <ref type="Greek">πράσον</ref>
+                <cit type="translation" xml:lang="de">
+                    <quote>Lauch</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>leek</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>poireau</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 67b; KoptHWb 46; DELC 56; ChLCS 12b</bibl>
+                </cit>
+            </sense>
+        </entry>
+    </body>
+</text>
+</TEI>

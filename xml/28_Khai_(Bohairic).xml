@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="Coptic_Lemma_Schema.xsd"?>
+<TEI
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:math="http://www.w3.org/1998/Math/MathML"
+    xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Koptische Lemmaliste ϧ</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry type="hom">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Partikel</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Appositionspartikel vor einem Pronomen bzw. Artikel</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>particle of apposition before pronoun or article</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>particule d'apposition devant un pronom ou un article</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 629ab; KoptHWb 347; DELC 282ab; ChLCS 86a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="hom">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Ferse</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>heel</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>talon</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 629b-630a; KoptHWb 348; DELC 282b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲉ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Bellen</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>woof</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>aboiement</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630a; KoptHWb 350</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="hom">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Natron</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>nitre</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>nitre</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630a; KoptHWb 357</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="hom">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Atemluft der Nase</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>beath of nose</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>souffle du nez</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630a; KoptHWb 357</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="hom">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Bootshaken</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>boat hook</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>gaffe</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630a; KoptHWb 357</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲏⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Sonne</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>sun</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>soleil</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630a; CED 267; KoptHWb 357; DELC 282b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁⲓⲣⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Schlange</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>serpent</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>serpent</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631a; KoptHWb 359</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">Ak</usg>
+                    <orth>ϧⲉⲗ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>unbekannte Bedeutung (der Zusammenhang ist verloren)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>unknown meaning (the context ist lost)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>signification inconnue (le contexte est perdu)</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630a; KoptHWb 363</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲉⲗ(ⲗ)ⲟⲧ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Schlucht, Wadi</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>ravine, wady</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>ravin, vallée</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630a; CDC 93b; CED 267; KoptHWb 368; DELC 282b-283a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲉⲙⲥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>unbekannte Bedeutung (ein Titel)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>unknown meaning (a title)</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>signification inconnue (un titre)</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630b; KoptHWb 373</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <superEntry>
+                <entry n="1">
+                    <form>
+                        <usg type="geo">B</usg>
+                        <orth>ϧⲟⲙϧⲉⲙ</orth>
+                    </form>
+                    <gramGrp>
+                        <pos>Vb.</pos>
+                    </gramGrp>
+                    <sense n="1">
+                        <cit type="translation" xml:lang="de">
+                            <quote>zerdrückt werden, zerbrochen werden, zerstört werden</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="en">
+                            <quote>be crushed, be broken, be destroyed</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="fr">
+                            <quote>être écrasé, être brisé, être détruit</quote>
+                        </cit>
+                        <cit>
+                            <bibl>CD 630b</bibl>
+                        </cit>
+                    </sense>
+                    <sense n="2">
+                        <cit type="translation" xml:lang="de">
+                            <quote>zerdrücken, brechen, zerstören</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="en">
+                            <quote>crush, break, destroy</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="fr">
+                            <quote>écraser, briser, détruire</quote>
+                        </cit>
+                        <cit>
+                            <bibl>CD 630b; CED 268; KoptHWb 374; DELC 283a</bibl>
+                        </cit>
+                    </sense>
+                </entry>
+                <entry n="2">
+                    <form>
+                        <usg type="geo">B</usg>
+                        <orth>ϧⲟⲙϧⲉⲙ</orth>
+                    </form>
+                    <gramGrp>
+                        <pos>Subst.</pos>
+                        <gen>m.</gen>
+                    </gramGrp>
+                    <sense>
+                        <cit type="translation" xml:lang="de">
+                            <quote>Zerdrücken, Bruch, Zerstörung</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="en">
+                            <quote>crushing, fracture, destruction</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="fr">
+                            <quote>écrasement, fracture, destruction</quote>
+                        </cit>
+                        <cit>
+                            <bibl>CD 630b</bibl>
+                        </cit>
+                    </sense>
+                </entry>
+            </superEntry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲉⲛⲓ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>(sich) streiten</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>quarrel</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>se disputer</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 630b; CED 268; KoptHWb 376; DELC 283a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲱⲣ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>zerstören</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>destroy</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>détruire</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631a; CED 268; KoptHWb 385; DELC 283a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲟⲣⲡⲥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>f.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Handvoll</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>handful</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>poignée</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631a; CED 268; KoptHWb 387; DELC 283a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲟⲣⲧ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Irrer, Wahnsinniger</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>madman</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>fou</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631a</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲣⲟϯ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Kind</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>child</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>enfant</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631ab; CED 268; KoptHWb 388; DELC 283ab</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲣⲱϯ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <number>pl.</number>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Jugularvenen</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>jugular veins</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>veines jugulaires</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631b; CED 268; KoptHWb 388; DELC 283b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲱⲥ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                </gramGrp>
+                <sense>
+                 <cit type="translation" xml:lang="de">
+                    <quote>unbekannte Bedeutung</quote>
+                </cit>
+                <cit type="translation" xml:lang="en">
+                    <quote>unknown meaning</quote>
+                </cit>
+                <cit type="translation" xml:lang="fr">
+                    <quote>signification inconnue</quote>
+                </cit>
+                <cit>
+                    <bibl>CD 631b; KoptHWb 392</bibl>
+                </cit>
+                </sense>
+            </entry>
+            <entry type="hom">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>(ϧⲱⲧ)</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>unsichere Bedeutung</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>uncertain meaning</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>signification incertaine</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry type="hom">
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲱⲧ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Kleidung, Gewand zum Wechseln</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>cloth, change of raiment</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>vêtement, robe de rechange</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631b; KoptHWb 397</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁϧ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Subst.</pos>
+                    <gen>m.</gen>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>Hals, Nacken</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>neck</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>cou, nuque</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631b; CDC 93b; CED 268; KoptHWb 406; DELC 283b</bibl>
+                    </cit>
+                </sense>
+            </entry>
+            <entry>
+                <form>
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲱϧ</orth>
+                </form>
+                <gramGrp>
+                    <pos>Vb.</pos>
+                </gramGrp>
+                <sense>
+                    <cit type="translation" xml:lang="de">
+                        <quote>festigen, stärken</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>tighten, strenghten</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>renforcer</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631b; KoptHWb 407</bibl>
+                    </cit>
+                </sense>
+            </entry>
+        </body>
+    </text>
+</TEI>
