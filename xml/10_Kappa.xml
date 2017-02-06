@@ -3377,20 +3377,6 @@
                         <bibl>CD 103b; KoptHWb 61; ChLCS 16b</bibl>
                     </cit>
                 </sense>
-                <sense n="3">
-                    <cit type="translation" xml:lang="de">
-                        <quote>Knie</quote>
-                    </cit>
-                    <cit type="translation" xml:lang="en">
-                        <quote>knee</quote>
-                    </cit>
-                    <cit type="translation" xml:lang="fr">
-                        <quote>genou</quote>
-                    </cit>
-                    <cit>
-                        <bibl>CD 103b; KoptHWb 61; ChLCS 16b</bibl>
-                    </cit>
-                </sense>
             </entry>
             <entry n="1">
                 <form>
@@ -3416,20 +3402,6 @@
                     </cit>
                 </sense>
                 <sense n="2">
-                    <cit type="translation" xml:lang="de">
-                        <quote>Knie</quote>
-                    </cit>
-                    <cit type="translation" xml:lang="en">
-                        <quote>knee</quote>
-                    </cit>
-                    <cit type="translation" xml:lang="fr">
-                        <quote>genou</quote>
-                    </cit>
-                    <cit>
-                        <bibl>CD 103b; KoptHWb 61; ChLCS 16b</bibl>
-                    </cit>
-                </sense>
-                <sense n="3">
                     <cit type="translation" xml:lang="de">
                         <quote>Knie</quote>
                     </cit>
