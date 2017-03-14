@@ -29,5 +29,5 @@ Amir Zeldes
 
 #### Funding agencies
 
-Deutsche Forschungsgemeinschaft (DFG)  
-The National Endowment for the Humanities (NEH)  
+  * [Deutsche Forschungsgemeinschaft](http://dfg.de) (DFG)  
+  * [The National Endowment for the Humanities](https://www.neh.gov) (NEH)  
