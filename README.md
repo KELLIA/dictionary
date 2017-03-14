@@ -22,10 +22,10 @@ Amir Zeldes
 
 #### Projects
 
-[Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache](https://www.saw-leipzig.de/de/projekte/strukturen-und-transformationen-des-wortschatzes-der-aegyptischen-sprache) (BBAW)
-[KELLIA](http://kellia.uni-goettingen.de/) (BBAW, Georgetown, Göttingen, Münster, Pacific)  
-[Coptic Scriptorium](http://copticscriptorium.org/) (Georgetown, Pacific)  
-[Sonderforschungsbereich (SFB) 1136](http://www.uni-goettingen.de/de/517150.html) - Bildung und Religion in Kulturen des Mittelmeerraums und seiner Umwelt von der Antike bis zum Mittelalter und zum Klassischen Islam - [Teilprojekt B 05](http://www.uni-goettingen.de/de/521144.html) (Universität Göttingen)  
+  * [Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache](https://www.saw-leipzig.de/de/projekte/strukturen-und-transformationen-des-wortschatzes-der-aegyptischen-sprache) (BBAW)
+  * [KELLIA](http://kellia.uni-goettingen.de/) (BBAW, Georgetown, Göttingen, Münster, Pacific)  
+  * [Coptic Scriptorium](http://copticscriptorium.org/) (Georgetown, Pacific)  
+  * [Sonderforschungsbereich (SFB) 1136](http://www.uni-goettingen.de/de/517150.html) - Bildung und Religion in Kulturen des Mittelmeerraums und seiner Umwelt von der Antike bis zum Mittelalter und zum Klassischen Islam - [Teilprojekt B 05](http://www.uni-goettingen.de/de/521144.html) (Universität Göttingen)  
 
 #### Funding agencies
 
