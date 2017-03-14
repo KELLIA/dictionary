@@ -4,7 +4,7 @@
 import os, re, platform
 import __main__
 import unicodedata
-from base64 import b64encode
+from base64 import urlsafe_b64encode
 import sqlite3 as lite
 
 def make_active(html_input,button_id):
@@ -70,8 +70,7 @@ def get_annis_query(coptic):
 	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
 	corpus_list = "_c=YXBvcGh0aGVnbWF0YS5wYXRydW0sYmVzYS5sZXR0ZXJzLGRvYy5wYXB5cmksc2FoaWRpY2EuMWNvcmludGhpYW5zLHNhaGlkaWNhLm1hcmssc2FoaWRpY2EubnQsc2hlbm91dGUuYTIyLHNoZW5vdXRlLmFicmFoYW0ub3VyLmZhdGhlcixzaGVub3V0ZS5lYWdlcm5lc3Msc2hlbm91dGUuZm94"  # List of scriptorium corpora
 	segmentation = "_bt=bm9ybV9ncm91cA"  # Norm segmentation
-	#query = "_q=bGVtbWE9IuKygSI"
-	query = "_q=" + b64encode('lemma="'+ coptic + '"') 
+	query = "_q=" + urlsafe_b64encode('lemma="'+ coptic + '"')
 	return annis_base + "&".join([query,corpus_list,segmentation])
 
 
@@ -79,7 +78,6 @@ def lemma_exists(word):
 	lemma_count = len(generic_query("select lemmas.Word from lemmas where lemmas.Word = ? and not lemmas.lemma = lemmas.word;",(word.decode("utf8"),)))>0
 	if lemma_count > 0:
 		lemma = get_lemmas_for_word(word)[0][0]
-		#lemma = lemma.decode("utf8")
 		regex_word = '.*\n' + lemma + '~.*'
 		regex_word = regex_word
 		found = generic_query("SELECT * FROM entries WHERE entries.name REGEXP ? ORDER BY ascii", (regex_word,))
