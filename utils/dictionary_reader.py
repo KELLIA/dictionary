@@ -15,7 +15,7 @@ def check_chars(word):
                    u'ⲕ': 'J', u'ⲹ': 'J', u'ⲗ': 'K', u'ⲙ': 'L', u'ⲛ': 'M', u'ⲝ': 'N', u'ⲟ': 'O', u'ⲡ': 'P', u'ⲣ': 'Q', u'ⲥ': 'R',
                    u'ⲧ': 'S', u'ⲩ': 'T', u'ⲫ': 'U', u'ⲭ': 'V', u'ⲯ': 'W', u'ⲱ': 'X', u'ϣ': 'Y', u'ϥ': 'Z', u'ⳉ': 'a',
                    u'ϧ': 'b', u'ϩ': 'c', u'ϫ': 'd', u'ϭ': 'e', u'ϯ': 'SI'}
-    expected_chars = u'()[]?,.*/ -– 	︤̅ˉ̣︦̄̈ ⸗= o'
+    expected_chars = u'()[]?,.*/ -–     ︤̅ˉ̣︦̄̈ ⸗= o'
     for char in word:
         if char not in mapping and char not in expected_chars:
             print word + "\t" + char
@@ -150,13 +150,14 @@ def process_entry(id, super_id, entry):
                     elif lang == 'fr':
                         fr += quote_text
                     if definition is not None:
-                        definition_text = definition.text + ";;;"
-                        if lang == 'de':
-                            de += definition_text
-                        elif lang == 'en':
-                            en += definition_text
-                        elif lang == 'fr':
-                            fr += definition_text
+                        if definition.text is not None:
+                            definition_text = definition.text + ";;;"
+                            if lang == 'de':
+                                de += definition_text
+                            elif lang == 'en':
+                                en += definition_text
+                            elif lang == 'fr':
+                                fr += definition_text
             elif sense_child.tag == '{http://www.tei-c.org/ns/1.0}ref':
                 ref = "ref: " + sense_child.text + " "
                 de += ref
