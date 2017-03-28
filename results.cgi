@@ -122,8 +122,6 @@ def retrieve_related(word):
 		return tablestring
 	
 	
-		
-
 def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc=""):
 	sql_command = 'SELECT * FROM entries WHERE '
 	constraints = []
@@ -210,7 +208,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 		cur.execute(sql_command, parameters)
 		rows = cur.fetchall()
 
-		tablestring = '<div class="content">\n' + search_desc.encode("utf8") + "<br/>\b"
+		tablestring = '<div class="content">\n' + search_desc.encode("utf8") + "<br/>\n"
 		if len(rows) == 1:
 			row = rows[0]
 			entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
