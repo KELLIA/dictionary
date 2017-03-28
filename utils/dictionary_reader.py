@@ -220,7 +220,8 @@ def process_entry(id, super_id, entry):
     xrs = entry.findall("{http://www.tei-c.org/ns/1.0}xr")
     for xr in xrs:
         for ref in xr:
-            etym_string += xr.attrib['type'] + ". " + ref.attrib['target'] + "# " + ref.text + " "
+            ref_target = re.sub(u'[^ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱϣϥⳉϧϩϫϭϯ ]', u'', ref.attrib['target']).strip()
+            etym_string += xr.attrib['type'] + ". " + "#" + ref_target + "# " + ref.text + " "
 
 
 
