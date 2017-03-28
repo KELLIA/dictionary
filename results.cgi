@@ -6,7 +6,7 @@ import re
 import cgi, cgitb
 import os, platform
 from helper import wrap, lemma_exists, get_lemmas_for_word
-from helper import separate_coptic
+from helper import separate_coptic, strip_hyphens
 from operator import itemgetter
 cgitb.enable()
 
@@ -70,7 +70,7 @@ def retrieve_related(word):
 		cur.execute(sql_command, parameters)
 		rows = cur.fetchall()
 		
-		tablestring = '<div class="content">\n' + "Entries related to '" + word.encode("utf8") + "'<br/>\b"
+		tablestring = '<div class="content">\n' + "Entries related to '" + word.encode("utf8") + "'<br/>"
 		if len(rows) == 1:
 			row = rows[0]
 			entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
@@ -121,7 +121,7 @@ def retrieve_related(word):
 		tablestring += "</table>\n</div>\n"
 		return tablestring
 	
-	
+
 def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc=""):
 	sql_command = 'SELECT * FROM entries WHERE '
 	constraints = []
@@ -277,6 +277,7 @@ if __name__ == "__main__":
 		definition = " ".join(separated[1])
 	
 	word = word.decode("utf8")
+	word = strip_hyphens(word)
 	definition = definition.decode("utf8")
 	word_desc = " for '" + word +"'" if len(word)  > 0 else ""
 	dialect_desc = " in dialect " + dialect + " or unspecified" if dialect != "any" and len(dialect)  > 0 else ""

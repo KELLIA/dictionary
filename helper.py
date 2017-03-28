@@ -60,9 +60,15 @@ def separate_coptic(search_text):
 			coptic_words.append(word)
 		else:
 			non_coptic_words.append(word)
-	
+
 	return (coptic_words, non_coptic_words)
 	
+
+def strip_hyphens(text):
+	text = re.sub(r'-', '', text)
+	text = re.sub(ur"\u2E17","",text)
+	return text
+
 
 def get_annis_query(coptic):
 	coptic = coptic.encode("utf8").replace("-","")
