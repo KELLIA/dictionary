@@ -75,7 +75,7 @@ def retrieve_related(word):
 			row = rows[0]
 			entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
 			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
-			return '<script>window.location = "' + entry_url + '";</script>'
+			#return '<script>window.location = "' + entry_url + '";</script>'
 # 		elif len(rows) > 100:
 # 			tablestring += 'Search had ' + str(len(rows)) + ' results - showing first 100'
 # 			rows = rows[:100]
@@ -285,15 +285,17 @@ if __name__ == "__main__":
 	pos_desc = " restricted to POS tag " + pos if pos != "any" else ""
 	search_desc = "You searched " + word_desc + dialect_desc + definition_desc + pos_desc
 	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc)
-	
+
 	### related entry stuff
 	if word != "": # nothing to do if no coptic word searched?
 		if related == "false":
 			link = "results.cgi?coptic=" + word + "&dialect=" + dialect + "&pos=" + pos + "&definition=" + definition + "&def_search_type=" + def_search_type + "&lang=" + def_lang + "&related=true"
 			#results_page += '<a href="' + link.encode("utf8") + '">Include related entries</a>'
-			results_page = results_page[:-8] + '<a href="' + link.encode("utf8") + '">Include related entries</a></div>\n'
+			if not "window.location" in results_page:  # No need to retrieve related if we are redirecting due to a unique entry being found
+				results_page = results_page[:-8] + '<a href="' + link.encode("utf8") + '">Include related entries</a></div>\n'
 		elif related == "true":
-			results_page += retrieve_related(word)
+			if not "window.location" in results_page:  # No need to retrieve related if we are redirecting due to a unique entry being found
+				results_page += retrieve_related(word)
 	
 	
 	wrapped = wrap(results_page)
