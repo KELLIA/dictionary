@@ -6,7 +6,7 @@ import re
 import cgi, cgitb
 import os, platform
 from helper import wrap, lemma_exists, get_lemmas_for_word
-from helper import separate_coptic
+from helper import separate_coptic, strip_hyphens
 from operator import itemgetter
 cgitb.enable()
 
@@ -51,7 +51,76 @@ def sense_list(sense_string):
 			sense_html += "<li>" + definition.group(1).encode("utf8") + "</li>"
 	sense_html += "</ol>"
 	return sense_html
+	
+	
+def retrieve_related(word):
+	sql_command = 'SELECT * FROM entries WHERE entries.etym REGEXP ?'
+	parameters = [r'.*cf\. #' + word + '#.*']
+	sql_command += " ORDER BY ascii"
+	
+	if platform.system() == 'Linux':
+		con = lite.connect('alpha_kyima_rc1.db')
+	else:
+		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
+
+	con.create_function("REGEXP", 2, lambda expr, item : re.search(expr.lower(), item.lower()) is not None)
+	
+	with con:
+		cur = con.cursor()
+		cur.execute(sql_command, parameters)
+		rows = cur.fetchall()
 		
+		tablestring = '<div class="content">\n' + "Entries related to '" + word.encode("utf8") + "'<br/>"
+		if len(rows) == 1:
+			row = rows[0]
+			entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
+			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
+			#return '<script>window.location = "' + entry_url + '";</script>'
+# 		elif len(rows) > 100:
+# 			tablestring += 'Search had ' + str(len(rows)) + ' results - showing first 100'
+# 			rows = rows[:100]
+		elif len(rows) == 0 and len(word) > 0:  # no matches found
+			tablestring += str(len(rows)) + ' results for <span class="anti">' + word.encode("utf8") + "</span>\n"
+			if lemma_exists(word.encode("utf8")):
+				tablestring += "<br/>This may be a form of:<br/>\n"
+				tablestring += '<table id="results" class="entrylist">'
+				rows = get_lemmas_for_word(word.encode("utf8"))
+				for row in rows:
+					tablestring += "<tr>"
+
+					orth = row[0]
+					link = "results.cgi?coptic=" + row[0]
+					lem_pos = str(row[1])
+					#print lem_pos
+
+					tablestring += '<td class="orth_cell">' + '<a href="' + link.encode("utf8") + '">'
+					tablestring += orth.encode("utf8")
+					tablestring += "</a>" + "</td>"
+					tablestring += '<td class="pos_cell">' + '(for '+word.encode("utf8") +'/' + lem_pos + ')</td>'
+
+					tablestring += "</tr>"
+				tablestring += "</table>\n</div>\n"
+				return tablestring
+		else:
+			tablestring += str(len(rows)) + ' Results'
+		tablestring += '<table id="results" class="entrylist">'
+		for row in rows:
+			tablestring += "<tr>"
+
+			orth = first_orth(row[2])
+			second = second_orth(row[2])
+			link = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
+			
+			tablestring += '<td class="orth_cell">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
+			tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"
+			
+			sense = sense_list(row[5])
+			tablestring += '<td class="sense_cell">' + sense + "</td>"
+			
+			tablestring += "</tr>"
+		tablestring += "</table>\n</div>\n"
+		return tablestring
+	
 
 def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc=""):
 	sql_command = 'SELECT * FROM entries WHERE '
@@ -131,7 +200,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
 	else:
-		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
 
 	con.create_function("REGEXP", 2, lambda expr, item : re.search(expr.lower(), item.lower()) is not None)
 	with con:
@@ -139,7 +208,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 		cur.execute(sql_command, parameters)
 		rows = cur.fetchall()
 
-		tablestring = '<div class="content">\n' + search_desc.encode("utf8") + "<br/>\b"
+		tablestring = '<div class="content">\n' + search_desc.encode("utf8") + "<br/>\n"
 		if len(rows) == 1:
 			row = rows[0]
 			entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
@@ -199,6 +268,7 @@ if __name__ == "__main__":
 	definition = form.getvalue("definition", "")
 	def_search_type = form.getvalue("def_search_type", "exact sequence")
 	def_lang = form.getvalue("lang", "any")
+	related = form.getvalue("related", "false") 
 	quick_string = form.getvalue("quick_search", "")
 	if quick_string != "":
 		separated = separate_coptic(quick_string)
@@ -207,6 +277,7 @@ if __name__ == "__main__":
 		definition = " ".join(separated[1])
 	
 	word = word.decode("utf8")
+	word = strip_hyphens(word)
 	definition = definition.decode("utf8")
 	word_desc = " for '" + word +"'" if len(word)  > 0 else ""
 	dialect_desc = " in dialect " + dialect + " or unspecified" if dialect != "any" and len(dialect)  > 0 else ""
@@ -214,6 +285,19 @@ if __name__ == "__main__":
 	pos_desc = " restricted to POS tag " + pos if pos != "any" else ""
 	search_desc = "You searched " + word_desc + dialect_desc + definition_desc + pos_desc
 	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc)
+
+	### related entry stuff
+	if word != "": # nothing to do if no coptic word searched?
+		if related == "false":
+			link = "results.cgi?coptic=" + word + "&dialect=" + dialect + "&pos=" + pos + "&definition=" + definition + "&def_search_type=" + def_search_type + "&lang=" + def_lang + "&related=true"
+			#results_page += '<a href="' + link.encode("utf8") + '">Include related entries</a>'
+			if not "window.location" in results_page:  # No need to retrieve related if we are redirecting due to a unique entry being found
+				results_page = results_page[:-8] + '<a href="' + link.encode("utf8") + '">Include related entries</a></div>\n'
+		elif related == "true":
+			if not "window.location" in results_page:  # No need to retrieve related if we are redirecting due to a unique entry being found
+				results_page += retrieve_related(word)
+	
+	
 	wrapped = wrap(results_page)
 	
 	if len(quick_string) > 0:
