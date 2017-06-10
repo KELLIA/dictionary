@@ -139,3 +139,59 @@ ol{margin: 0px !important}
     margin: 4px;
     border: 1px solid gray;
 }
+
+.freq_icon{color: #6d2020;
+position: relative;
+top: -3px;
+}
+
+
+/* Image dict_tooltip */
+.dict_tooltip
+{
+  text-decoration:none;
+  position:relative;
+}
+
+
+.dict_tooltip span
+{
+  display:none;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  color:black;
+  background:white;
+}
+
+
+.dict_tooltip span img
+{
+  float:left;
+  margin:0px 8px 8px 0;
+}
+
+
+.dict_tooltip:hover span
+{
+  display:block;
+  position:absolute;
+  left:0;
+  top: 0px;
+  z-index:1000;
+  min-width:400px;
+  max-width:600px;
+  min-height:80px;
+  border:1px solid black;
+  margin-left:32px;
+  overflow:hidden;
+  padding:8px;
+}
+
+.expandable {
+    margin-top: 0px;
+    position: relative;
+    top: -3px;
+    left: 3px;
+    display: inline-block;
+}

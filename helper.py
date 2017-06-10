@@ -74,7 +74,7 @@ def get_annis_query(coptic):
 	coptic = coptic.encode("utf8").replace("-","")
 
 	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
-	corpus_list = "_c=YXBvcGh0aGVnbWF0YS5wYXRydW0sYmVzYS5sZXR0ZXJzLGRvYy5wYXB5cmksc2FoaWRpY2EuMWNvcmludGhpYW5zLHNhaGlkaWNhLm1hcmssc2FoaWRpY2EubnQsc2hlbm91dGUuYTIyLHNoZW5vdXRlLmFicmFoYW0ub3VyLmZhdGhlcixzaGVub3V0ZS5lYWdlcm5lc3Msc2hlbm91dGUuZm94"  # List of scriptorium corpora
+	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixzaGVub3V0ZS5hYnJhaGFtLm91ci5mYXRoZXIsYXBvcGh0aGVnbWF0YS5wYXRydW0sc2FoaWRpY2EubnQsc2hlbm91dGUuZWFnZXJuZXNzLHNhaGlkaWNhLjFjb3JpbnRoaWFucyxzaGVub3V0ZS5mb3gsc2FoaWRpY2EubWFyayxkb2MucGFweXJpLHNhaGlkaWMub3Q"  # List of scriptorium corpora
 	segmentation = "_bt=bm9ybV9ncm91cA"  # Norm segmentation
 	query = "_q=" + urlsafe_b64encode('lemma="'+ coptic + '"')
 	return annis_base + "&".join([query,corpus_list,segmentation])

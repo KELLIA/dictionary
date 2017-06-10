@@ -66,7 +66,20 @@ def process_orthstring(orthstring):
 		for distinct_orth in orth_geo_dict:
 			geo_string = " ".join(orth_geo_dict[orth])
 			annis_query = get_annis_query(orth)
-			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="morphology">' + gramstring.encode("utf8") + '</td><td class="dialect">' + geo_string.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td></tr>'
+			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="morphology">' + \
+						 gramstring.encode("utf8") + '</td><td class="dialect">' + geo_string.encode("utf8") + \
+						 '</td><td class="annis_link"><a href="' + annis_query + \
+						 '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td>'
+			freq_data = get_freqs(distinct_orth)
+			freq_info = """	<td><div class="expandable">
+					            <a class="dict_tooltip" href="">
+					            <i class="fa fa-sort-numeric-asc freq_icon">&nbsp;</i>
+            					<span><b>ANNIS frequencies:</b><br/>**freqs**</span>
+            					</a>
+          					</div></td></tr>"""
+
+			freq_info = freq_info.replace("**freqs**",freq_data)
+			orth_html += freq_info
 	orth_html += "</table>"
 	return orth_html
 	
@@ -137,6 +150,38 @@ def related(related_entries):
 		tablestring += "</tr>"
 	tablestring += "</table>"
 	return tablestring
+
+
+def get_freqs(item):
+	item = item.replace("-","")#.replace("⸗".encode("utf8"),"")
+	output = "<ul>\n"
+	if platform.system() == 'Linux':
+		con = lite.connect('alpha_kyima_rc1.db')
+	else:
+		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+
+	with con:
+		cur = con.cursor()
+
+		sql = "SELECT word_freq, word_rank FROM lemmas WHERE word = ?;"
+		cur.execute(sql,(item,))
+		res = cur.fetchone()
+		if res is not None:
+			freq, rank = res
+			output += "<li>Word form frequency per 10,000: "+str(freq)+" (# "+str(rank)+")</li>\n"
+		else:
+			output += "<li>Not found as word form in ANNIS</li>\n"
+		sql = "SELECT lemma_freq, lemma_rank FROM lemmas WHERE word = ?;"
+		cur.execute(sql, (item,))
+		res = cur.fetchone()
+		if res is not None:
+			freq, rank = res
+			output += "<li>Lemma frequency per 10,000: "+str(freq)+" (# "+str(rank)+")</li>\n"
+		else:
+			output += "<li>Not found as lemma in ANNIS</li>\n"
+
+	return output + "</ul>\n"
+
 
 if __name__ == "__main__":
 	form = cgi.FieldStorage()
