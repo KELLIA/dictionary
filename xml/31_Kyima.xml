@@ -1351,7 +1351,7 @@
           <form type="lemma"><usg type="geo">B</usg>
             <orth>ϫⲱⲗ ˉ(ⲉⲃⲟⲗ)</orth>
           </form>
-          <form type="lemma"><usg type="geo">L</usg>
+          <form><usg type="geo">L</usg>
             <orth>ϫⲱⲗ ˉ(ⲉⲃⲟⲗ)</orth>
           </form>
           <gramGrp>
@@ -1377,7 +1377,7 @@
           <form type="lemma"><usg type="geo">B</usg>
             <orth>ϫⲱⲗ ˉ(ⲉⲃⲟⲗ)</orth>
           </form>
-          <form type="lemma"><usg type="geo">L</usg>
+          <form><usg type="geo">L</usg>
             <orth>ϫⲱⲗ ˉ(ⲉⲃⲟⲗ)</orth>
           </form>
           <gramGrp>
@@ -1404,7 +1404,7 @@
           <form type="lemma"><usg type="geo">B</usg>
             <orth>ϫⲓⲛϫⲱⲗˉ(ⲉⲃⲟⲗ)</orth>
           </form>
-          <form type="lemma"><usg type="geo">L</usg>
+          <form><usg type="geo">L</usg>
             <orth>ϫⲓⲛϫⲱⲗˉ(ⲉⲃⲟⲗ)</orth>
           </form>
           <gramGrp>
@@ -2160,12 +2160,12 @@
           </sense>
         </entry>
         <entry n="4" type="compound">       
-          <form type="lemma"><orth>ϩⲓⲟⲩⲉ</orth><usg type="geo">B</usg></form>
-          <form>ϩⲓϭⲗⲁ(ϩ)</form>
+          <form type="lemma">ϩⲓϭⲗⲁ(ϩ)</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
+          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">schlagen, werfen, stoßen, setzen</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>stoßen, schieben</quote>
@@ -2328,7 +2328,7 @@
           <form type="lemma"><usg type="geo">A</usg>
             <orth>ⲁⲡϭⲗⲁ</orth>
           </form>
-          <form type="lemma"><usg type="geo">L</usg>
+          <form><usg type="geo">L</usg>
             <orth>ⲁⲡϭⲗⲁ</orth>
           </form>
           <gramGrp>
@@ -2354,7 +2354,7 @@
           <form type="lemma"><usg type="geo">A</usg>
             <orth>ⲙⲛⲧⲁⲡϭⲗⲁ</orth>
           </form>
-          <form type="lemma"><usg type="geo">L</usg>
+          <form><usg type="geo">L</usg>
             <orth>ⲙⲛⲧⲁⲡϭⲗⲁ</orth>
           </form>
           <gramGrp>
@@ -4842,11 +4842,11 @@
           </sense>
         </entry>
         <entry n="3">
-          <form type="lemma">ⲙⲟⲟⲛⲉ</form>
-          <form>ⲙⲁⲛϭⲁⲙⲟⲩⲗ</form>
+          <form type="lemma">ⲙⲁⲛϭⲁⲙⲟⲩⲗ</form>
           <gramGrp>
             <pos>Subst.</pos>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲙⲟⲟⲛⲉ">pasture, feed</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Kamelhirte, Kameltreiber</quote>
@@ -7573,11 +7573,11 @@
           </sense>
         </entry>
         <entry n="3" type="compound">
-          <form type="lemma">ⲥⲱϣ</form>
-          <form>ϣⲥϭⲉⲣⲱⲃ</form>
+          <form type="lemma">ϣⲥϭⲉⲣⲱⲃ</form>
           <gramGrp>
             <pos>Subst.</pos>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲥⲱϣ">strike </ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Rutenschlag</quote>

@@ -3673,7 +3673,7 @@
         </entry>
         <superEntry>
             <entry n="1">
-                <form>ⲕⲱⲗⲉⲙ</form>
+                <form><orth>ⲕⲱⲗⲉⲙ</orth><usg>F</usg></form>
                 <gramGrp>
                     <pos>Vb.</pos>
                 </gramGrp>
@@ -3707,7 +3707,7 @@
                 </sense>
             </entry>
             <entry n="2">
-                <form>ⲕⲱⲗⲉⲙ</form>
+                <form><orth>ⲕⲱⲗⲉⲙ</orth><usg>F</usg></form>
                 <gramGrp>
                     <pos>Subst.</pos>
                     <gen>m.</gen>
@@ -6518,7 +6518,7 @@
             </sense>
         </entry>
         <entry>
-            <form>ⲕⲏⲛⲉ</form>
+            <form>ⲕⲏⲡⲉ</form>
             <gramGrp>
                 <pos>Subst.</pos>
                 <gen>f.</gen>
@@ -10327,7 +10327,7 @@
                         <quote>tournant, circuit, alentours</quote>
                     </cit>
                     <cit>
-                        <bibl>CD 126a</bibl>
+                        <bibl>CD 126a, KoptHWb 72</bibl>
                     </cit>
                 </sense>
                 <sense n="2">
@@ -10346,7 +10346,7 @@
                 </sense>
                 <sense n="3">
                     <cit type="translation" xml:lang="de">
-                        <quote>Suche, Erkundigung, Untersuchung</quote>
+                        <quote>Suche, Erkundigung, Untersuchung, Befragung</quote>
                     </cit>
                     <cit type="translation" xml:lang="en">
                         <quote>seeking, inquiry</quote>
@@ -10355,7 +10355,7 @@
                         <quote>recherche, enquête</quote>
                     </cit>
                     <cit>
-                        <bibl>CD 126a</bibl>
+                        <bibl>CD 126a, KoptHWb 72</bibl>
                     </cit>
                 </sense>
             </entry>
@@ -12211,7 +12211,7 @@
                     <quote>angle, coin</quote>
                 </cit>
                 <cit>
-                    <bibl>CD 132a; ChLCS 20a</bibl>
+                    <bibl>CD 132a; KoptHWb 73; ChLCS 20a</bibl>
                 </cit>
             </sense>
             <sense n="2">

@@ -1608,8 +1608,7 @@
           </sense> 
         </entry>
         <entry type="compound">
-          <form type="lemma">ϭⲓⲛⲁⲗⲉ</form>
-          <form>
+          <form type="lemma">
             <usg type="geo">S</usg>
             <orth>ϭⲓⲛⲁⲗⲉ</orth>
             <gramGrp>
@@ -1890,7 +1889,7 @@
             <cit>
               <bibl>CD 5a; KoptHWb 3; ChLCS 3b</bibl>
             </cit></sense>
-          
+         
         </entry>
         <entry n="2" type="compound">
           <form type="lemma">ⲙⲛⲧⲁⲗⲟⲩ</form>
@@ -8565,18 +8564,6 @@
               <pos>Vb.</pos>
               <subc>Infinitiv</subc>
             </gramGrp></form>
-          <form type="inflected">
-            <usg type="geo">S</usg>            
-            <gramGrp>
-              <pos>Vb.</pos>
-              <subc>Qualitativ</subc>
-            </gramGrp></form>
-          <form type="inflected">
-            <usg type="geo">F</usg>            
-            <gramGrp>
-              <pos>Vb.</pos>
-              <subc>Qualitativ</subc>
-            </gramGrp></form>
           <form type="inflected">  
           <orth>ⲁⲥⲱⲟⲩ</orth>
             <usg type="geo">S</usg>            
@@ -9221,7 +9208,6 @@
             <orth>ⲙⲛⲧⲁⲧ-</orth></form>
 <form>
             <usg type="geo">B</usg>
-          </form><form>
             <orth>ⲙⲉⲧⲁⲧ-</orth></form>
             <gramGrp>
               <pos>Nominalpräfix</pos>

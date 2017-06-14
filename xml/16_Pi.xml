@@ -1024,7 +1024,7 @@
           </gramGrp>
           <sense n="1">
             <cit type="translation" xml:lang="de">
-              <quote>übereinkommen, zufriedengestellt werden, sich entscheiden</quote>
+              <quote>trennen, befreien, erlösen, erretten, entscheiden, (sich) auseinandersetzen, übereinkommen, beenden, sterben</quote>
             </cit>
             <cit type="translation" xml:lang="en">
               <quote>be agreed, reach satisfaction, decide</quote>
@@ -3415,7 +3415,7 @@
         </entry>
       </superEntry>
       <entry>
-        <form>ⳡⲉⲣⲙⲟⲟⲩ</form>
+        <form>ⲯⲉⲣⲙⲟⲟⲩ</form>
                 <gramGrp>
           <pos>Subst.</pos>
           <number>pl.</number>
@@ -3439,10 +3439,10 @@
       <superEntry>
         <entry n="1">
           <form>
-            <orth n="1">ⳡⲓⲥ</orth>
+            <orth n="1">ⲯⲓⲥ</orth>
           </form>
           <form>
-            <orth n="2">ⳡⲓⲧ</orth>
+            <orth n="2">ⲯⲓⲧ</orth>
           </form>
           <gramGrp>
             <pos>Subst.</pos>
@@ -3465,10 +3465,10 @@
         </entry>
         <entry n="2">
           <form>
-            <orth n="1">ⳡⲓⲧⲉ</orth>
+            <orth n="1">ⲯⲓⲧⲉ</orth>
           </form>
           <form>
-            <orth n="2">ⳡⲓⲥⲉ</orth>
+            <orth n="2">ⲯⲓⲥⲉ</orth>
           </form>
           <gramGrp>
             <pos>Subst.</pos>

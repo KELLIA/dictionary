@@ -1105,10 +1105,10 @@
           </sense>
         </entry>
         <entry n="3" type="compound">
-          <form type="lemma">ⲥⲁⲛⲉⲃⲓⲱ</form>
+          <form type="lemma">ⲥⲁ ⲛⲉⲃⲓⲱ</form>
           <form>
             <usg type="geo">S</usg>
-            <orth>ⲥⲁⲛⲉⲃⲓⲱ</orth>
+            <orth>ⲥⲁ ⲛⲉⲃⲓⲱ</orth>
             <gramGrp>
               <pos>Subst.</pos>
               <gen>m.</gen>
@@ -4013,8 +4013,7 @@
           </sense>
         </entry>
         <entry n="5" type="compound">
-          <form type="lemma">ⲟⲩⲱⲙ</form>
-          <form>
+          <form type="lemma">
             <usg type="geo">S</usg>
             <orth>ⲟⲩⲉⲙⲉⲣⲱⲧⲉ</orth>
             <gramGrp>

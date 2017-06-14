@@ -1245,7 +1245,7 @@
                 <form type="lemma">
                     <orth n="1">ⲡⲁϣⲙⲟⲩ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲡⲉϣⲙⲟⲩ</orth>
                 </form>
                 <gramGrp>
@@ -1865,7 +1865,7 @@
                 </gramGrp>
                 <sense n="1">
                     <cit type="translation" xml:lang="de">
-                        <quote>ruhen</quote>
+                        <quote>ruhen, (sich) schonen</quote>
                     </cit>
                     <cit type="translation" xml:lang="en">
                         <quote>rest</quote>
@@ -2052,7 +2052,7 @@
                 <form type="lemma">
                     <orth n="1">ⲁⲧⲙⲟⲕⲙⲉⲕ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲁⲧⲙⲁⲕⲙⲉⲕ</orth>
                 </form>
                 <gramGrp>
@@ -2077,7 +2077,7 @@
                 <form type="lemma">
                     <orth n="1">ϭⲓⲛⲙⲟⲕⲙⲉⲕ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ϭⲓⲛⲙⲁⲕⲙⲉⲕ</orth>
                 </form>
                 <gramGrp>
@@ -4233,7 +4233,7 @@
                         <quote>faire aborder, arrimer</quote>
                     </cit>
                     <cit>
-                        <bibl>CD 173b-174a; ChLCS 26a</bibl>
+                        <bibl>CD 173b-174a; KoptHWb 94; ChLCS 26a</bibl>
                     </cit>
                 </sense>
             </entry>
@@ -6386,7 +6386,7 @@
                 <form type="lemma">
                     <orth n="1">ⲁⲧⲙⲟⲣⲧ</orth>                 
                 </form>
-                <form type="lemma">                
+                <form>                
                     <orth n="2">ⲁⲧⲙⲁⲣⲧ</orth>
                 </form>
                 <gramGrp>
@@ -6647,7 +6647,7 @@
                 <form type="lemma">
                     <orth n="1">ϥⲁⲓⲙⲉⲣⲉϩ</orth>              
                 </form>
-                <form type="lemma">                    
+                <form>                    
                     <orth n="2">ϥⲁⲓⲙⲉⲣϩ</orth>
                 </form>
                 <gramGrp>
@@ -8259,7 +8259,7 @@
                     <orth>ϯⲙⲁϯ</orth>
                     <usg type="geo">B</usg>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth>ϯⲙⲁϯ</orth>
                     <usg type="geo">F</usg>
                 </form>
@@ -9012,7 +9012,7 @@
                 </sense>
             </entry>
             <entry n="2" type="compound">
-                <form type="lemma">ⲃⲱⲕ</form>
+                <form type="lemma">ⲃⲱⲕ ⲛ(ⲧ)ⲙⲧⲱ</form>
                 <form>
                     <orth>ⲃⲱⲕ ⲛ(ⲧ)ⲙⲧⲱ</orth>
                 </form>
@@ -9020,6 +9020,7 @@
                     <pos>Vb.</pos>
                     <subc>Kompositverb</subc>
                 </gramGrp>
+                <xr type="cf"> <ref target="#ⲃⲱⲕ"> go, depart </ref></xr>
                 <sense>
                     <cit type="translation" xml:lang="de">
                         <quote>in die Tiefe sinken, sinken (vom Schiff)</quote>
@@ -9974,7 +9975,7 @@
                 <form type="lemma">
                     <orth n="1">ⲉⲙⲁⲩ</orth>        
                 </form>
-                <form type="lemma">                   
+                <form>                   
                     <orth n="2">ⲉⲛⲙⲁⲩ</orth>
                 </form>
                 <gramGrp>
@@ -10209,8 +10210,7 @@
                 </sense>
             </entry>
             <entry n="5" type="compound">
-                <form type="lemma">ⲙⲟⲩϩ</form>
-                <form>ⲙⲉϩⲙⲟⲟⲩ</form>
+                <form type="lemma">ⲙⲉϩⲙⲟⲟⲩ</form>
                 <gramGrp>
                     <pos>Vb.</pos>
                     <subc>Kompositverb</subc>

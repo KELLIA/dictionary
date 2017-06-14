@@ -5178,12 +5178,12 @@
           </sense>
         </entry>
         <entry n="4" type="compound">
-          <form type="lemma">ϣⲱⲡⲉ</form>
-          <form>ϣⲱⲡⲉ ⲛⲥⲟⲗⲥⲗ</form>
+          <form type="lemma">ϣⲱⲡⲉ ⲛⲥⲟⲗⲥⲗ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
+          <xr type="cf"> <ref target="#ϣⲱⲡⲉ"> become, befall, be, exist</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>getröstet werden, sein</quote>
@@ -15348,7 +15348,7 @@
           <xr type="cf"> <ref target="#ⲥⲱϩⲙ">stürzen, fallen, verzagen</ref></xr>
           <sense n="1">
             <cit type="translation" xml:lang="de">
-              <quote>brennen, heiß sein</quote>
+              <quote>brennen, heiß sein; ermüden, verzagen, verzweifeln, überdrüssig werden, sich ärgern</quote>
             </cit>
             <cit type="translation" xml:lang="en">
               <quote>burn, be hot</quote>
@@ -17179,8 +17179,7 @@
           </sense>
         </entry>
         <entry n="4" type="compound">
-          <form type="lemma">ⲟⲩⲱϩ</form>
-          <form>ⲟⲩⲉϩⲥⲁϩⲛⲉ</form>
+          <form type="lemma">ⲟⲩⲉϩⲥⲁϩⲛⲉ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>

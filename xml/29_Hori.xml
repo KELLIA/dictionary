@@ -9236,12 +9236,13 @@
                     </sense>
                 </entry>
                 <entry n="2" type="compound">
-                    <form type="lemma">ⲣ</form>
-                    <form>ⲉⲓⲣⲉ ⲙⲡϩⲁⲡ</form>
+                    <form type="lemma">ⲣϩⲁⲡ</form>
+                    <form>ⲉⲓⲣⲉ ⲙⲡϩⲁⲡ</form>                    
                     <gramGrp>
                         <pos>Vb.</pos>
                         <subc>Kompositverb</subc>
                     </gramGrp>
+                    <xr type="cf"> <ref target="#ⲉⲓⲣⲉ"> act; become, befall; do </ref></xr>                    
                     <sense>
                         <cit type="translation" xml:lang="de">
                             <quote>richten, ahnden, verklagen</quote>
@@ -9327,7 +9328,7 @@
                     <form type="lemma"><orth>ϩⲓⲟⲩⲓ ⲉⲡϩⲁⲡ</orth>
                     <usg type="geo">B</usg>
                     </form>
-                    <form type="lemma"><orth>ϩⲓⲟⲩⲓ ⲉⲡϩⲁⲡ</orth>
+                    <form><orth>ϩⲓⲟⲩⲓ ⲉⲡϩⲁⲡ</orth>
                         <usg type="geo">F</usg>
                     </form>
                     <gramGrp>
@@ -14272,13 +14273,13 @@
                     <usg type="geo">S</usg>
                         <note>(rare)</note>
                     </form>
-                    <form type="lemma"><orth>ϭⲛϩⲏⲩ</orth>
+                    <form><orth>ϭⲛϩⲏⲩ</orth>
                         <usg type="geo">A</usg>
                     </form>
-                    <form type="lemma"><orth>ϭⲛϩⲏⲩ</orth>
+                    <form><orth>ϭⲛϩⲏⲩ</orth>
                         <usg type="geo">L</usg>
                     </form>
-                    <form type="lemma"><orth>ϭⲛϩⲏⲩ</orth>
+                    <form><orth>ϭⲛϩⲏⲩ</orth>
                         <usg type="geo">F</usg>
                     </form>
                     <gramGrp>
@@ -15174,7 +15175,7 @@
                     <form type="lemma"><orth>ϩⲁϣⲥ</orth>
                     <usg type="geo">L</usg>
                     </form>
-                    <form type="lemma"><orth>ϩⲁϣⲥ</orth>
+                    <form><orth>ϩⲁϣⲥ</orth>
                         <usg type="geo">F</usg>
                     </form>
                     <gramGrp>
@@ -15350,7 +15351,7 @@
                     <form type="lemma"><orth>ϭⲁⲡϩⲟϥ</orth>
                     <usg type="geo">B</usg>
                     </form>
-                    <form type="lemma"><orth>ϭⲁⲡϩⲟϥ</orth>
+                    <form><orth>ϭⲁⲡϩⲟϥ</orth>
                         <usg type="geo">F</usg>
                     </form>
                     <gramGrp>

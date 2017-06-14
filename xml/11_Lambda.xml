@@ -1574,7 +1574,7 @@
                 </sense>
             </entry>
             <entry n="5">
-                <form>ⲕⲟⲕⲗⲕ</form>
+                <form>ⲗⲟⲕⲗⲕ</form>
                 <gramGrp>
                     <pos>Vb.</pos>
                 </gramGrp>
@@ -1922,10 +1922,10 @@
                 <form type="lemma">
                     <orth n="1">ⲣⲉϥⲗⲱⲕⲥ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲣⲉϥⲗⲱϭⲥ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="3">ⲣⲉϥⲗⲟⲩⲝ</orth>
                 </form>
                 <gramGrp>
@@ -1950,10 +1950,10 @@
                 <form type="lemma">
                     <orth n="1">ϣⲥ ⲛⲗⲱⲕⲥ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ϣⲥ ⲛⲗⲱϭⲥ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="3">ϣⲥ ⲛⲗⲟⲩⲝ</orth>
                 </form>
                 <gramGrp>
@@ -2581,10 +2581,10 @@
                 <form type="lemma">
                     <orth n="1">ⲱϣⲗⲟⲩⲗⲁⲓ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲉϣⲗⲟⲩⲗⲁⲓ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="3">ϣⲗⲟⲩⲗⲁⲓ</orth>
                 </form>
                 <gramGrp>
@@ -2610,10 +2610,10 @@
                 <form type="lemma">
                     <orth n="1">ⲱϣⲗⲟⲩⲗⲁⲓ ⲉⲃⲟⲗ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲉϣⲗⲟⲩⲗⲁⲓ ⲉⲃⲟⲗ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="3">ϣⲗⲟⲩⲗⲁⲓ ⲉⲃⲟⲗ</orth>
                 </form>
                 <gramGrp>
@@ -3007,13 +3007,13 @@
             </entry>
             <entry n="2" type="compound">
                 <form type="lemma">
-                    <orth n="1">ⲁⲧⲗⲱⲱⲙⲉ</orth>
+                    <orth>ⲁⲧⲗⲱⲱⲙⲉ</orth>
                 </form>
-                <form type="lemma">
-                    <orth n="2">ⲁⲧⲗⲱⲱⲙ</orth>
+                <form>
+                    <orth>ⲁⲧⲗⲱⲱⲙ</orth>
                 </form>
-                <form type="lemma">
-                    <orth n="3">ⲁⲧⲗⲱⲙ</orth>
+                <form>
+                    <orth>ⲁⲧⲗⲱⲙ</orth>
                 </form>
                 <gramGrp>
                     <pos>Adj.</pos>
@@ -4042,7 +4042,7 @@
                 <form type="lemma">
                     <orth n="1">ⲙⲛⲧⲁⲧⲗⲱⲱⲥ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲙⲛⲧⲁⲧⲗⲱⲥ</orth>
                 </form>
                 <gramGrp>
@@ -4421,13 +4421,13 @@
                 <form type="lemma">
                     <orth n="1">ⲁⲧⲗⲁⲁⲩ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲁⲧⲗⲁⲁⲩⲉ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="3">ⲁⲧⲗⲁⲩⲉ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="4">ⲁⲧⲗⲁⲟⲩⲉ</orth>
                 </form>
                 <gramGrp>
@@ -4545,13 +4545,13 @@
                 <form type="lemma">
                     <orth n="1">ⲙⲛⲧⲗⲁⲁⲩ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲙⲛⲧⲗⲁⲁⲩⲉ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="3">ⲙⲛⲧⲗⲁⲩⲉ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="4">ⲙⲛⲧⲗⲁⲟⲩⲉ</orth>
                 </form>
                 <gramGrp>
@@ -4781,7 +4781,7 @@
                 <form type="lemma">
                     <orth n="1">ϭⲓⲥⲗⲁⲩⲟ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ϭⲓⲥⲗⲁⲃⲱ</orth>
                 </form>
                 
@@ -6095,7 +6095,7 @@
                 <form type="lemma">
                     <orth n="1">ⲙⲛⲧⲗⲟϭ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <orth n="2">ⲙⲛⲧⲗⲟϭ</orth>
                 </form>
                 <gramGrp>

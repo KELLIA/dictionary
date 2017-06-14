@@ -780,8 +780,7 @@
           </sense>
         </entry>
         <entry n="4" type="compound">
-          <form type="lemma">ⲣ</form>
-          <form>ⲣⲟⲩⲱ</form>
+          <form type="lemma">ⲣⲟⲩⲱ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -1601,8 +1600,7 @@
           </sense>
         </entry>
         <entry n="2" type="compound">
-          <form type="lemma">ⲉⲓⲟⲡⲉ</form>
-          <form>ⲉⲓⲉⲡⲟⲩⲟⲉⲓⲉ</form>
+          <form type="lemma">ⲉⲓⲉⲡⲟⲩⲟⲉⲓⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -4395,8 +4393,7 @@
           </sense>
         </entry>
         <entry n="4">
-          <form type="lemma">ⲣⲟ</form>
-          <form>ⲟⲩⲛⲣⲟ</form>
+          <form type="lemma">ⲟⲩⲛⲣⲟ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -4418,8 +4415,7 @@
           </sense>
         </entry>
          <entry n="5">
-          <form type="lemma">ϣⲁϫⲉ</form>
-          <form>
+           <form type="lemma">
             <usg type="geo">B</usg>
             <orth>ⲟⲩⲱⲛ ⲛⲥⲁϫⲓ</orth>
           </form>
@@ -4427,7 +4423,8 @@
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
-          <sense>
+           <xr type="cf"> <ref target="#ϣⲁϫⲉ">saying, word, affair</ref></xr>
+           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Aufgabe, Rätsel</quote>
             </cit>
@@ -4467,8 +4464,7 @@
           </sense>
         </entry>
         <entry n="8" type="compound">
-          <form type="lemma">ⲧⲱ</form>
-          <form>
+          <form type="lemma">
             <usg type="geo">Ak</usg>
             <orth>ⲟⲩⲁⲛⲧⲱ</orth>
           </form>
@@ -4476,6 +4472,7 @@
             <pos>Adj.</pos>
             <subc>Participium conjunctum</subc>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲧⲟ">land, earth</ref></xr>          
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Öffner der Erde</quote>
@@ -5999,8 +5996,7 @@
           </sense>
         </entry>
         <entry n="2" type="compound">
-          <form type="lemma">ⲙⲟⲟⲩ</form>
-          <form>
+          <form type="lemma">
             <usg type="geo">B</usg>
             <orth>ⲙⲟⲩⲃⲉⲣⲧ</orth>
           </form>
@@ -6008,6 +6004,7 @@
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲙⲟⲟⲩ">water</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Rosenwasser</quote>
@@ -6408,7 +6405,7 @@
           <form type="lemma">
             <orth n="1">ⲙⲛⲧⲟⲩⲥⲏ</orth>
           </form>
-          <form type="lemma">
+          <form>
             <orth n="2">ⲙⲛⲧⲱⲥⲏ</orth>
           </form>
           <gramGrp>
@@ -7327,12 +7324,12 @@
           </sense>
         </entry>
         <entry n="3" type="compound">
-          <form type="lemma">ⲟⲩⲱⲙ</form>
-          <form>ⲟⲩⲟ(ⲟ)ⲧⲉ ⲛⲟⲩⲱⲙ</form>
+          <form type="lemma">ⲟⲩⲟ(ⲟ)ⲧⲉ ⲛⲟⲩⲱⲙ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲟⲩⲱⲙ">food, eating</ref></xr>         
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>essbare Kräuter</quote>
@@ -7371,12 +7368,12 @@
           </sense>
         </entry>
         <entry n="5" type="compound">
-          <form type="lemma">ⲥⲁ</form>
-          <form>ⲥⲁ ⲛⲟⲩⲟ(ⲟ)ⲧⲉ</form>
+          <form type="lemma">ⲥⲁ ⲛⲟⲩⲟ(ⲟ)ⲧⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲥⲁ"> man (woman) </ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Gärtner, Gemüsehändler</quote>
@@ -7462,13 +7459,13 @@
           </sense>
         </entry>
         <entry n="2" type="compound">
-          <form type="lemma">ⲟⲩⲁ</form>
-          <form>
+          <form type="lemma">
             <orth>ⲟⲩⲁ ⲛⲟⲩⲱⲧ</orth>
           </form>
           <gramGrp>
             <pos>Adj.</pos>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲟⲩⲁ">one, someone</ref></xr>
           <sense n="1">
             <cit type="translation" xml:lang="de">
               <quote>jeder einzelne</quote>
@@ -7499,13 +7496,13 @@
           </sense>
         </entry>
         <entry n="3">
-          <form type="lemma">ⲟⲩⲁ</form>
-          <form>ⲙⲛⲧⲟⲩⲁ ⲛⲟⲩⲱⲧ</form>
+          <form type="lemma">ⲙⲛⲧⲟⲩⲁ ⲛⲟⲩⲱⲧ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
           </gramGrp>
           <xr type="cf"> <ref target="#ⲙⲛⲧ-">Präfix</ref></xr>
+          <xr type="cf"> <ref target="#ⲟⲩⲁ">one, someone</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Einheit</quote>
@@ -8509,8 +8506,7 @@
           </sense>
         </entry>
         <entry n="5" type="compound">
-          <form type="lemma">ⲙⲓⲥⲉ</form>
-          <form>
+          <form type="lemma">
             <usg type="geo">B</usg>
             <orth>ⲙⲁⲥⲟⲩⲧⲁϩ</orth>
           </form>
@@ -9321,11 +9317,11 @@
           </sense>
         </entry>
         <entry n="5" type="compound">
-          <form type="lemma">ⲧⲱⲡ</form>
-          <form>ⲧⲁⲡⲟⲩⲱϣ</form>
+          <form type="lemma">ⲧⲁⲡⲟⲩⲱϣ</form>
           <gramGrp>
             <pos>Subst.</pos>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲧⲱⲡ">stitch, stop, caulk </ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Fuge, Spalt</quote>
@@ -10209,12 +10205,12 @@
           </sense>
         </entry>
         <entry n="2" type="compound">
-          <form type="lemma">ⲥⲓⲙ</form>
-          <form>ⲥⲓⲙ ⲛⲟⲩⲟⲟϩⲉ</form>
+          <form type="lemma">ⲥⲓⲙ ⲛⲟⲩⲟⲟϩⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲥⲓⲙ">grass, fodder, herbs</ref></xr>                  
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Skorpionskraut (Name einer Pflanze)</quote>
@@ -11155,12 +11151,12 @@
           </sense>
         </entry>
         <entry n="4" type="compound">
-          <form type="lemma">ⲗⲁⲥ</form>
-          <form>ⲗⲁⲥ ⲛⲟⲩϩⲟⲟⲣ</form>
+          <form type="lemma">ⲗⲁⲥ ⲛⲟⲩϩⲟⲟⲣ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲗⲁⲥ">tongue</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Hundszunge (Pflanze)</quote>

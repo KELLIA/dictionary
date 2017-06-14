@@ -522,8 +522,7 @@
           </sense>
         </entry>
         <entry n="9" type="compound">
-          <form type="lemma">ϫⲱⲕ</form>
-          <form>
+          <form type="lemma">
             <usg type="geo">B</usg>
             <orth>ϫⲉⲕ ⲣⲱ⸗</orth>
           </form>
@@ -531,6 +530,7 @@
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
+          <xr type="cf"> <ref target="#ϫⲱⲕ">complete, finish </ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>(sich) den Mund füllen, zufriedenstellen, erstatten</quote>
@@ -2032,9 +2032,9 @@
         </entry>
         <entry n="2" type="compound">
           <form type="lemma">
-            <orth n="1">ⲛⲧⲣⲟⲙⲡⲉ</orth>
+            <orth n="1">ⲛ ⲧⲣⲟⲙⲡⲉ</orth>
           </form>
-          <form type="lemma">
+          <form>
             <orth n="2">ⲧⲣⲟⲙⲡⲉ</orth>
           </form>
           <gramGrp>
@@ -2344,8 +2344,7 @@
           </sense>
         </entry>
         <entry n="4" type="compound">
-          <form type="lemma">ⲧⲁⲩⲟ</form>
-          <form>ⲧⲁⲩⲉ ⲣⲓⲛ⸗</form>
+          <form type="lemma">ⲧⲁⲩⲉ ⲣⲓⲛ⸗</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -2601,7 +2600,7 @@
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲙⲟⲟⲛⲉ">hüten</ref></xr>
+          <xr type="cf"> <ref target="#ⲙⲟⲟⲛⲉ">pasture, feed</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Schweinehirt</quote>
@@ -3363,12 +3362,11 @@
           </sense>
         </entry>
         <entry n="7" type="compound">
-          <form type="lemma">ⲥⲱⲣ</form>
-          <form>
-            <orth n="1">ⲥⲱⲣ ⲛⲣⲁⲧ⸗</orth>
+          <form type="lemma">
+            <orth n="2">ⲥⲣ ⲣⲁⲧ⸗</orth>
           </form>
           <form>
-            <orth n="2">ⲥⲣ ⲣⲁⲧ⸗</orth>
+            <orth n="1">ⲥⲱⲣ ⲛⲣⲁⲧ⸗</orth>
           </form>
           <gramGrp>
             <pos>Vb.</pos>

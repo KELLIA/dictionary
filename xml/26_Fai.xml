@@ -231,9 +231,9 @@
                </cit>
              </sense>
            </entry>
-           <entry n="2" type="compound">             
-             <form type="lemma"><orth>ⲗⲁϥⲱⲓ</orth><usg type="geo">B</usg></form>             
-             <form type="lemma"><orth>ⲣⲁⲧϥⲱ</orth><usg type="geo">S</usg></form>
+           <entry n="2" type="compound">      
+             <form type="lemma"><orth>ⲣⲁⲧϥⲱ</orth><usg type="geo">S</usg></form>             
+             <form><orth>ⲗⲁϥⲱⲓ</orth><usg type="geo">B</usg></form>             
              <gramGrp>
                <pos>Adj.</pos>
               </gramGrp>

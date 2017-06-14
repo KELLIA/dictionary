@@ -2249,15 +2249,16 @@
                     </sense>
                 </entry>
                 <entry n="5" type="compound">
-                    <form type="lemma">ϣⲃⲏⲣ</form>
-                    <form>
+                    <form></form>
+                    <form type="lemma">
                         <usg type="geo">B</usg>
                         <orth>ϣⲫⲏⲣ ⲛⲱⲛϧ</orth>
-                    </form>
+                    </form>          
                     <gramGrp>
                         <pos>Subst.</pos>
                         <gen>m.</gen>
                     </gramGrp>
+                      <xr type="cf"> <ref target="#ϣⲃⲏⲣ">friend, comrade</ref></xr>
                     <sense>
                         <cit type="translation" xml:lang="de">
                             <quote>Lebensgefährte</quote>
@@ -3299,7 +3300,13 @@
                             <bibl>CD 530a; CDC 81a; CED 229; KoptHWb 294; DELC 251a; ChLCS 73a</bibl>
                         </cit>
                     </sense>
-                    <sense n="2">
+                </entry>
+                <entry n="2">
+                    <form>ⲱⲣϣ</form>
+                    <gramGrp>
+                        <pos>Vb.</pos>
+                    </gramGrp>
+                    <sense n="1">
                         <cit type="translation" xml:lang="de">
                             <quote>(ver)brannt sein, entflammt sein</quote>
                         </cit>
@@ -3313,7 +3320,7 @@
                             <bibl>CD 530a; CDC 81a; ChLCS 73a</bibl>
                         </cit>
                     </sense>
-                    <sense n="3">
+                    <sense n="2">
                         <cit type="translation" xml:lang="de">
                             <quote>(ver)brennen</quote>
                         </cit>
@@ -3328,7 +3335,7 @@
                         </cit>
                     </sense>
                 </entry>
-                <entry n="2">
+                <entry n="3">
                     <form type="lemma">
                         <usg type="geo">B</usg>
                         <orth>ϫⲓⲛϩⲣⲟϣ</orth>
@@ -5117,12 +5124,12 @@
                     </sense>
                 </entry>
                 <entry n="4" type="compound">
-                    <form type="lemma">ⲥⲁϣ</form>
-                    <form>ϣⲥ ⲛ(ⲉ)ⲓϥⲧ</form>
+                    <form type="lemma">ϣⲥ ⲛ(ⲉ)ⲓϥⲧ</form>
                     <gramGrp>
                         <pos>Subst.</pos>
                         <gen>m.</gen>
                     </gramGrp>
+                    <xr type="cf"> <ref target="#ⲥⲁϣ">stroke, blow, sore</ref></xr>                   
                     <sense>
                         <cit type="translation" xml:lang="de">
                             <quote>Schlag/Wunde eines Nagels</quote>
@@ -5547,12 +5554,12 @@
                     </sense>
                 </entry>
                 <entry n="3" type="compound">
-                    <form type="lemma">ⲣⲁ</form>
-                    <form>ⲣⲁⲱϩⲥ</form>
+                    <form type="lemma">ⲣⲁⲱϩⲥ</form>
                     <gramGrp>
                         <pos>Subst.</pos>
                         <gen>m.</gen>
                     </gramGrp>
+                    <xr type="cf"> <ref target="#ⲣⲁ">state, condition</ref></xr>
                     <sense>
                         <cit type="translation" xml:lang="de">
                             <quote>Ernten</quote>
@@ -5636,12 +5643,13 @@
                     </sense>
                 </entry>
                 <entry n="7" type="compound">
-                    <form type="lemma">ϫⲁⲓ-</form>
-                    <form>ϫⲁⲓⲟϩⲥ</form>
+                    <form>ϫⲁⲓ-</form>
+                    <form type="lemma">ϫⲁⲓⲟϩⲥ</form>
                     <gramGrp>
                         <pos>Adj.</pos>
                         <subc>Participium conjunctum</subc>
                     </gramGrp>
+                    <xr type="cf"> <ref target="#ϫⲓ">receive, take </ref></xr>                   
                     <sense>
                         <cit type="translation" xml:lang="de">
                             <quote>Sichelträger, Schnitter</quote>

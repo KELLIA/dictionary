@@ -299,12 +299,12 @@
                </sense>
             </entry>
             <entry n="5" type="compound">
-               <form type="lemma">ⲉⲓ</form>
-               <form>ⲉⲓ ⲉⲡⲧⲉ</form>
+               <form type="lemma">ⲉⲓ ⲉⲡⲧⲉ</form>
                <gramGrp>
                   <pos>Vb.</pos>
                   <subc>Kompositverb</subc>
                </gramGrp>
+               <xr type="cf"> <ref target="#ⲉⲓ"> come, go</ref></xr>
                <sense>
                   <cit type="translation" xml:lang="de">
                      <quote>altern</quote>
@@ -9372,8 +9372,7 @@
                </sense>
             </entry>
             <entry n="5" type="compound">
-               <form type="lemma">ⲉ-</form>
-               <form>ⲉⲧⲡⲉ</form>
+               <form type="lemma">ⲉ ⲧⲡⲉ</form>
                <gramGrp>
                   <pos>Adv.</pos>
                </gramGrp>
@@ -9436,8 +9435,7 @@
                </sense>
             </entry>
             <entry n="8" type="compound">
-               <form type="lemma">ⲛ-</form>
-               <form>ⲛⲧⲡⲉ</form>
+               <form type="lemma">ⲛ ⲧⲡⲉ</form>
                <gramGrp>
                   <pos>Adv.</pos>
                </gramGrp>
@@ -9457,8 +9455,7 @@
                </sense>
             </entry>
             <entry n="9" type="compound">
-               <form type="lemma">ϩⲛ-</form>
-               <form>ϩⲛⲧⲡⲉ</form>
+               <form type="lemma">ϩⲛ ⲧⲡⲉ</form>
                <gramGrp>
                   <pos>Adv.</pos>
                </gramGrp>
@@ -9478,8 +9475,7 @@
                </sense>
             </entry>
             <entry n="10" type="compound">
-               <form type="lemma">ⲥⲁ-</form>
-               <form>ⲥⲁⲧⲡⲉ</form>
+               <form type="lemma">ⲥⲁⲧⲡⲉ</form>
                <gramGrp>
                   <pos>Adv.</pos>
                </gramGrp>
@@ -9499,8 +9495,7 @@
                </sense>
             </entry>
             <entry n="11" type="compound">
-               <form type="lemma">ϩⲓ-</form>
-               <form>ϩⲓⲧⲡⲉ</form>
+               <form type="lemma">ϩⲓ ⲧⲡⲉ</form>
                <gramGrp>
                   <pos>Adv.</pos>
                </gramGrp>
@@ -9765,7 +9760,7 @@
                </sense>
             </entry>
             <entry n="4" type="compound">
-               <form>ⲧⲁⲡⲟⲩⲱϣ</form>
+               <form type="lemma">ⲧⲁⲡⲟⲩⲱϣ</form>
                <gramGrp>
                   <pos>Subst.</pos>
                   <gen>m.</gen>
@@ -10962,8 +10957,7 @@
                </sense>
             </entry>
             <entry n="12" type="compound">
-               <form type="lemma">ⲃⲱⲗ</form>
-               <form>ⲃⲱⲗ ϣⲧⲱⲣⲉ ⲉⲃⲟⲗ</form>
+               <form type="lemma">ⲃⲱⲗϣⲧⲱⲣⲉ ⲉⲃⲟⲗ</form>
                <gramGrp>
                   <pos>Vb.</pos>
                   <subc>Kompositverb</subc>
@@ -11174,7 +11168,7 @@
                      <quote>unaufhörlich</quote>
                   </cit>
                   <cit type="translation" xml:lang="en">
-                     <quote>unceasing</quote>
+                     <quote>continuous, incessant</quote>
                   </cit>
                   <cit type="translation" xml:lang="fr">
                      <quote>incessant</quote>
@@ -11482,7 +11476,7 @@
                      <subc>Status nominalis</subc>
                   </gramGrp>
                </form>
-               <form type="lemma">
+               <form type="inflected">
                   <orth>ϩⲁⲧⲟⲟⲧ⸗</orth>
                   <gramGrp>
                      <pos>Präp.</pos>
@@ -11513,7 +11507,7 @@
                      <subc>Status nominalis</subc>
                   </gramGrp>
                </form>
-               <form type="lemma">
+               <form type="inflected">
                   <orth>ϩⲓⲧⲟⲟⲧ⸗</orth>
                   <gramGrp>
                      <pos>Präp.</pos>
@@ -11544,7 +11538,7 @@
                      <subc>Status nominalis</subc>
                   </gramGrp>
                </form>
-               <form type="lemma">
+               <form type="inflected">
                   <orth>ⲉⲃⲟⲗ ϩⲓⲧⲟⲟⲧ⸗</orth>
                   <gramGrp>
                      <pos>Präp.</pos>
@@ -12064,8 +12058,7 @@
                </sense>
             </entry>
             <entry n="5" type="compound">
-               <form type="lemma">ⲛⲕⲁ</form>
-               <form>ⲛⲕⲁ ⲛⲧⲱⲣⲡ</form>
+               <form type="lemma">ⲛⲕⲁ ⲛⲧⲱⲣⲡ</form>
                <gramGrp>
                   <pos>Subst.</pos>
                   <gen>m.</gen>
@@ -12334,7 +12327,7 @@
                   <usg type="geo">B</usg>
                   <orth>ⲁⲛⲧⲱⲧⲉⲣ</orth>
                </form>
-               <form type="lemma">
+               <form>
                   <usg type="geo">L</usg>
                   <orth>ⲁⲛⲧⲱⲧⲉⲣ</orth>
                </form>
@@ -13835,6 +13828,7 @@
                      <bibl>CD 439a; KoptHWb 248; ChLCS 62a</bibl>
                   </cit>
                </sense>
+               
             </entry>
             <entry n="2" type="hom">
                <form>ⲧⲁⲁⲧⲉ</form>
@@ -14138,7 +14132,7 @@
                   <usg type="geo">B</usg>
                   <orth>ⲙⲉⲧⲑⲁⲧϩⲏⲧ</orth>
                </form>
-               <form type="lemma">
+               <form>
                   <usg type="geo">F</usg>
                   <orth>ⲙⲉⲧⲑⲁⲧϩⲏⲧ</orth>
                </form>
@@ -14538,20 +14532,21 @@
             <entry n="2" type="compound">
                <form type="lemma">
                   <usg type="geo">A</usg>
-                  <orth>ⲛⲟⲩϩⲛⲧⲟⲩⲱ⸗</orth>
+                  <orth>ⲛⲟⲩϩ ⲛⲧⲟⲩⲱ⸗</orth>
                </form>
-               <form type="lemma">
+               <form>
                   <usg type="geo">F</usg>
-                  <orth>ⲛⲟⲩϩⲛⲧⲟⲩⲱ⸗</orth>
+                  <orth>ⲛⲟⲩϩ ⲛⲧⲟⲩⲱ⸗</orth>
                </form>
-               <form type="lemma">
+               <form>
                   <usg type="geo">M</usg>
-                  <orth>ⲛⲟⲩϩⲛⲧⲟⲩⲱ⸗</orth>
+                  <orth>ⲛⲟⲩϩ ⲛⲧⲟⲩⲱ⸗</orth>
                </form>
                <gramGrp>
                   <pos>Vb.</pos>
                   <subc>Kompositverb</subc>
                </gramGrp>
+               <xr type="cf"> <ref target="#ⲛⲟⲩϩ"> turn, return </ref></xr>
                <sense>
                   <cit type="translation" xml:lang="de">
                      <quote>(sich) setzen (zum Essen)</quote>
@@ -15752,12 +15747,12 @@
                </sense>
             </entry>
             <entry n="2" type="compound">
-               <form type="lemma">ϭⲟⲡ</form>
-               <form>ϭⲟⲡ ⲛⲧⲟⲟⲩⲉ</form>
+               <form type="lemma">ϭⲟⲡ ⲛⲧⲟⲟⲩⲉ</form>
                <gramGrp>
                   <pos>Subst.</pos>
                   <gen>f.</gen>
                </gramGrp>
+               <xr type="cf"> <ref target="#ϭⲟⲡ"> sole of foot, foot </ref></xr>
                <sense>
                   <cit type="translation" xml:lang="de">
                      <quote>Sohle</quote>
@@ -16420,8 +16415,7 @@
                </sense>
             </entry>
             <entry n="4" type="compound">
-               <form type="lemma">ϣⲉ</form>
-               <form>
+               <form type="lemma">
                   <usg type="geo">B</usg>
                   <orth>ϣⲉ ⲛⲑⲱⲟⲩϯ</orth>
                </form>
@@ -16429,6 +16423,7 @@
                   <pos>Subst.</pos>
                   <gen>m.</gen>
                </gramGrp>
+               <xr type="cf"> <ref target="#ϣⲉ">Holz</ref></xr>
                <sense>
                   <cit type="translation" xml:lang="de">
                      <quote>Gong, Glocke</quote>
@@ -17381,8 +17376,7 @@
                </sense>
             </entry>
             <entry n="4" type="compound">
-               <form type="lemma">ⲥⲓⲧⲉ</form>
-               <form>ⲥⲉⲧⲧⲁϥ</form>
+               <form type="lemma">ⲥⲉⲧⲧⲁϥ</form>
                <gramGrp>
                   <pos>Vb.</pos>
                   <subc>Kompositverb</subc>

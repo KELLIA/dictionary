@@ -172,12 +172,12 @@
           </sense>
         </entry>
         <entry n="6" type="compound">
-          <form type="lemma">ϣⲱⲡⲉ</form>
-          <form>ϣⲱⲡⲉ ⲛϫⲁ(ⲉ)ⲓⲉ</form>
+          <form type="lemma">ϣⲱⲡⲉ ⲛϫⲁ(ⲉ)ⲓⲉ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
+          <xr type="cf"> <ref target="#ϣⲱⲡⲉ"> become, befall, be, exist</ref></xr>         
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>zur Wüste werden</quote>
@@ -1090,7 +1090,7 @@
       </superEntry>
       <superEntry>
         <entry n="1">
-          <form>ϫⲟⲓ</form>
+          <form>ϫⲟⲓ</form>   
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -5503,12 +5503,12 @@
           </sense>
         </entry>
         <entry n="5" type="compound">
-          <form type="lemma">ⲙⲟⲩⲣ</form>
-          <form>ⲙⲟⲩⲣϫⲛⲁϩ</form>
+          <form type="lemma">ⲙⲟⲩⲣϫⲛⲁϩ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
           </gramGrp>
+          <xr type="cf"> <ref target="#ⲙⲟⲩⲣ">bind, gird, tie</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Skapulier (Mönchsgewand)</quote>
@@ -12014,8 +12014,7 @@
           </sense>
         </entry>
         <entry n="6" type="compound">
-          <form type="lemma">ⲉⲓⲟⲡⲉ</form>
-          <form>ⲉⲓⲉⲡϫⲏϭⲉ</form>
+          <form type="lemma">ⲉⲓⲉⲡϫⲏϭⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>

@@ -2080,11 +2080,11 @@
         </sense>
     </entry>
     <entry n="4" type="hom">
-        <form type="lemma">(ⲉ)ⲙⲃⲟⲕⲓ</form>
-        <form>
+        <form type="lemma">
             <usg type="geo">B</usg>
             <orth>ⲙⲃⲟⲕⲓ</orth>
         </form>
+        <form>(ⲉ)ⲙⲃⲟⲕⲓ</form>
         <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -2106,11 +2106,11 @@
         </sense>
     </entry>
     <entry n="5" type="hom">
-        <form type="lemma">(ⲉ)ⲙⲃⲟⲕⲓ</form>
-        <form>
+         <form type="lemma">
             <usg type="geo">B</usg>
             <orth>ⲙⲃⲟⲕⲓ</orth>
         </form>
+        <form>(ⲉ)ⲙⲃⲟⲕⲓ</form>
         <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
@@ -4571,8 +4571,7 @@
         </sense>
     </entry>
     <entry n="4" type="compound">
-        <form type="lemma">ⲉⲃⲟⲗ</form>
-        <form>
+        <form type="lemma">
             <orth>ⲉⲃⲟⲗ ϫⲉ-</orth>
             <gramGrp>
                 <pos>Konj.</pos>
@@ -6463,8 +6462,7 @@
         </sense>
     </entry>
     <entry n="4" type="compound">
-        <form type="lemma">ⲙⲁⲛⲉ</form>
-        <form>
+        <form type="lemma">
             <usg type="geo">S</usg>
             <orth>ⲙⲁⲛⲉⲃⲁⲁⲙⲡⲉ</orth>
             <gramGrp>
@@ -6652,8 +6650,7 @@
         </sense>
     </entry>
     <entry n="2">
-        <form type="lemma">ⲃⲱⲱⲛ</form>
-        <form>
+        <form type="lemma">
             <usg type="geo">S</usg>
             <orth>ⲃⲟⲟⲛⲉ</orth>
             <gramGrp>
@@ -6960,9 +6957,9 @@
         </sense>
     </entry>
     <entry n="9" type="compound">
-        <form type="lemma">ⲙⲛⲧⲣⲉϥⲉⲓⲉⲣⲃⲟⲟⲛⲉ</form>
-        <form>
+        <form type="lemma">
             <usg type="geo">S</usg>
+            <orth>ⲙⲛⲧⲣⲉϥⲉⲓⲉⲣⲃⲟⲟⲛⲉ</orth>
             <gramGrp>
                 <pos>Subst.</pos>
                 <gen>f.</gen>
@@ -8276,9 +8273,9 @@
         </sense>
     </entry>
     <entry n="5" type="compound">
-        <form type="lemma">ⲙⲉⲧⲉⲙⲃⲉⲣⲓ</form>
-        <form>
+        <form type="lemma">
             <usg type="geo">B</usg>
+            <orth>ⲙⲉⲧⲉⲙⲃⲉⲣⲓ</orth>
             <gramGrp>
                 <pos>Subst.</pos>
                 <gen>f.</gen>
@@ -8549,8 +8546,7 @@
         </sense>
     </entry>
     <entry n="2" type="compound">
-        <form type="lemma">ϩⲟⲙⲛⲧ</form>
-        <form>
+        <form type="lemma">
             <usg type="geo">S</usg>
             <orth>ϩⲟⲙⲛⲧ(ⲛ)ⲃⲁⲣⲱⲧ</orth>
             <gramGrp>
@@ -8558,6 +8554,7 @@
                 <gen>m.</gen>
             </gramGrp>
         </form>
+        <xr type="cf"> <ref target="#ϩⲟⲙⲛⲧ">copper, bronze; money</ref></xr>
         <sense>
             <ref type="Greek">χαλκὸς στίλβων, χαλκολίβανον</ref>
             <cit type="translation" xml:lang="de">

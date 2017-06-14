@@ -153,9 +153,9 @@
                 </sense>
             </entry>
             <entry n="4" type="compound">
-                <form type="lemma">ⲙⲉⲧⲣⲉⲙϧⲉⲛⲏⲓ</form>
-                <form>
+                <form type="lemma">
                     <usg type="geo">B</usg>
+                    <orth>ⲙⲉⲧⲣⲉⲙϧⲉⲛⲏⲓ</orth>
                 </form>
                 <gramGrp>
                     <pos>Subst.</pos>
@@ -201,12 +201,13 @@
                 </sense>
             </entry>
             <entry n="6" type="compound">
-                <form type="lemma">ϫⲙⲡⲏⲓ</form>
-                <form>
+                <form type="lemma">
                     <usg type="geo">A</usg>
+                    <orth>ϫⲙⲡⲏⲓ</orth>
                 </form>
                 <form>
                     <usg type="geo">L</usg>
+                    <orth>ϫⲙⲡⲏⲓ</orth>
                 </form>
                 <gramGrp>
                     <pos>Subst.</pos>
@@ -223,7 +224,7 @@
                         <quote>toit</quote>
                     </cit>
                     <cit>
-                        <bibl>CD 66b; KoptHWb 46; DELC 53</bibl>
+                        <bibl>CD 66b; KoptHWb 423; DELC 53</bibl>
                     </cit>
                 </sense>
             </entry>
@@ -399,7 +400,7 @@
                     <usg type="geo">S</usg>
                     <orth>ⲥⲁⲩⲏⲣⲡ</orth>
                 </form>
-                <form type="lemma">
+                <form>
                     <usg type="geo">B</usg>
                     <orth>ⲥⲁⲩⲏⲣⲡ</orth>
                 </form>
@@ -449,12 +450,13 @@
                 </sense>
             </entry>
             <entry n="4" type="compound">
-                <form type="lemma">ⲥⲁⲛⲏⲣⲡ</form>
-                <form>
+                <form type="lemma">
                     <usg type="geo">S</usg>
+                    <orth>ⲥⲁ ⲛⲏⲣⲡ</orth>
                 </form>
                 <form>
                     <usg type="geo">F</usg>
+                    <orth>ⲥⲁ ⲛⲏⲣⲡ</orth>
                 </form>
                 <gramGrp>
                     <pos>Subst.</pos>

@@ -500,14 +500,14 @@
         </sense>
         </entry>
         <entry n="2" type="compound">
-          <form type="lemma">ϭⲱⲃⲉ ⲛϣⲁ (once)</form>
-          <form>
+          <form type="lemma">
             <usg type="geo">S</usg>
-            <orth n="1">ϭⲃϣⲁ</orth>
+            <orth>ϭⲃϣⲁ</orth>
           </form>
+          <form><orth>ϭⲱⲃⲉ ⲛϣⲁ </orth><note>(once)</note></form>          
           <form>
             <usg type="geo">S</usg>
-            <orth n="2">ϫⲉϥϣⲁ</orth>
+            <orth>ϫⲉϥϣⲁ</orth>
           </form>
           <gramGrp>
             <pos>Subst.</pos>
@@ -1947,12 +1947,12 @@
           </sense>
         </entry>
         <entry n="9" type="compound">
-          <form type="lemma">ⲇⲓ</form>
-          <form>ⲇⲓ ϣⲃⲉⲓⲱ</form>
+          <form type="lemma">ⲇⲓϣⲃⲉⲓⲱ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
+          <xr type="cf"> <ref target="#ϫⲓ">receive, take </ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>sich rächen, vergolten werden</quote>
@@ -2099,8 +2099,7 @@
           </sense>
         </entry>
         <entry n="3" type="compound">
-          <form type="lemma">ⲣ</form>
-          <form>ⲣϣⲃⲏⲣ</form>
+          <form type="lemma">ⲣϣⲃⲏⲣ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -5681,11 +5680,11 @@
         </entry>
         <entry n="9" type="compound">  
          <form type="lemma"><orth>ϫⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">A</usg></form>
-          <form type="lemma"><orth>ϭⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">A</usg></form>
-          <form type="lemma"><orth>ϫⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">L</usg><note>(?)</note></form>
-          <form type="lemma"><orth>ϭⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">L</usg><note>(?)</note></form>          
-          <form type="lemma"><orth>ϫⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">B</usg></form>
-          <form type="lemma"><orth>ϭⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">B</usg></form>          
+          <form><orth>ϭⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">A</usg></form>
+          <form><orth>ϫⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">L</usg><note>(?)</note></form>
+          <form><orth>ϭⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">L</usg><note>(?)</note></form>          
+          <form><orth>ϫⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">B</usg></form>
+          <form><orth>ϭⲓ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">B</usg></form>          
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -5707,8 +5706,8 @@
         </entry>
         <entry n="10" type="hom"> 
           <form type="lemma"><orth>ϭⲓⲛⲉ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">S</usg></form>
-          <form type="lemma"><orth>ϭⲓⲛⲉ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">A</usg></form>
-          <form type="lemma"><orth>ϭⲓⲛⲉ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">F</usg></form>
+          <form><orth>ϭⲓⲛⲉ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">A</usg></form>
+          <form><orth>ϭⲓⲛⲉ ⲙⲡϣⲓⲛⲉ</orth><usg type="geo">F</usg></form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>

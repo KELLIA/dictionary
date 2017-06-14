@@ -6128,17 +6128,17 @@
       </entry>
       <superEntry>
         <entry n="1">
-          <form>
+          <form type="lemma">
             <usg type="geo">L</usg>
-            <orth n="1">ⲛⲟⲩⲟⲩϩ</orth>
+            <orth n="1">ⲛⲟⲩϩ</orth>
           </form>
           <form>
             <usg type="geo">L</usg>
-            <orth n="2">ⲛⲟⲩϩⲟⲩ</orth>
+            <orth n="2">ⲛⲟⲩⲟⲩϩ</orth>
           </form>
           <form>
             <usg type="geo">L</usg>
-            <orth n="3">ⲛⲟⲩϩ</orth>
+            <orth n="3">ⲛⲟⲩϩⲟⲩ</orth>
           </form>
           <gramGrp>
             <pos>Vb.</pos>
@@ -7633,7 +7633,7 @@
           <form type="lemma">
             <orth n="1">ϥⲁⲓⲛⲁϩⲃ</orth>
           </form>
-          <form type="lemma">
+          <form>
             <orth n="2">ϥⲁⲓⲛⲁϩⲃⲉϥ</orth>
           </form>
           <gramGrp>
