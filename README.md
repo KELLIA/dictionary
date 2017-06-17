@@ -3,6 +3,8 @@ The dictionary comprised of the XML Coptic lexicon created by the BBAW and inter
 
 Licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
+The virtual keyboard component on the search page is available under a BSD License - HTML Virtual Keyboard Interface Script (http://www.greywyvern.com/code/javascript/keyboard)
+
 #### Lexicon preparation
 
 This lexicon primarily represents work by Frank Feder, who prepared and revised the original Coptic word list, in collaboration with Maxim Kupreyev, who extended and standardized the dictionary. We thank all of following people who contributed to compiling the lexical data:  

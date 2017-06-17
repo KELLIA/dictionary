@@ -45,14 +45,15 @@ body{
 footer div{font-size: small;}
 table a {color: #0d0d9d !important}
 table td {vertical-align: bottom}
+#search table td {vertical-align: top}
 ol{margin: 0px !important}
 
 #search {width:340px}
 #search td{padding: 4px}
 #search td > div{margin-top: 4px}
-#search input:not([type=radio]):not([type=submit]), #search select{    float:right;
+#search input:not([type=radio]):not([type=submit]), #search select{    float:left;
     clear:both; height: 16pt; width: 160px}
-#lang{float:right !important; clear:both}
+#lang{float:left !important; clear:both}
 .content, #search {border: 1px solid black; background-color: rgba(255, 255, 255, 0.5); padding: 12px; margin-left: 4px; margin-top:4px; min-height: 250px }
 .related_orth, .orth_cell, .second_orth_cell, .pos_cell{vertical-align:top}
 .orth_entry, .morphology, .dialect, .annis_link{padding:4px}
@@ -188,6 +189,11 @@ top: -3px;
   padding:8px;
 }
 
+.dict_tooltip:hover #kbd
+{
+  min-width:320px;
+}
+
 .expandable {
     margin-top: 0px;
     position: relative;
@@ -195,3 +201,12 @@ top: -3px;
     left: 3px;
     display: inline-block;
 }
+
+.help_icon{
+color: black;
+position: relative;
+top: 3px;
+}
+
+.keyboard_table tr:nth-child(even) { background: #FFF; font-family: antinoouRegular }
+.keyboard_table tr:nth-child(odd) { background: #EEE; }

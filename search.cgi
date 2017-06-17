@@ -16,7 +16,8 @@ if __name__ == "__main__":
 	<table>
 	<tr>
 	<td>
-        Coptic Word: </td><td><input type="text" name="coptic" id="coptic"></td></tr>
+        Coptic Word: </td><td><input type="text" name="coptic" id="coptic" class="keyboardInput" lang="cop">
+        </td></tr>
 	<tr>
         <td>Dialect:</td>
         <td><select name="dialect" id="dialect_select" class="search_dropdown">
@@ -67,9 +68,13 @@ if __name__ == "__main__":
 		</td></tr></table>
         <input type="submit" value="Search" class="search_button" id="search_submit">
     </form>
-
 """
 
 	wrapped = wrap(search_page)
+	kbd_include = """
+	<script type="text/javascript" src="js/keyboard.js" charset="UTF-8"></script>
+	<link rel="stylesheet" type="text/css" href="css/keyboard.css?version=2">
+	"""
+	wrapped = wrapped.replace("<head>\n","<head>"+kbd_include)
 	print wrapped
 	
