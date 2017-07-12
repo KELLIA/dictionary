@@ -3189,7 +3189,7 @@
         </sense>
       </entry>
         <entry n="4" type="compound">
-          <form type="lemma">ϣⲁⲉⲛⲉϩ</form>
+          <form type="lemma">(ⲛ)ϣⲁⲉⲛⲉϩ</form>
           <form>
             <usg type="geo">S</usg>
             <orth>(ⲛ)ϣⲁⲉⲛⲉϩ</orth>
@@ -3221,7 +3221,7 @@
           </sense>
         </entry>
         <entry n="5" type="compound">
-          <form type="lemma">ϣⲁⲉⲛⲉϩ</form>
+          <form type="lemma">(ⲛ)ϣⲁⲉⲛⲉϩ</form>
           <form>
             <usg type="geo">S</usg>
             <orth>(ⲛ)ϣⲁⲉⲛⲉϩ</orth>
@@ -4013,7 +4013,8 @@
           </sense>
         </entry>
         <entry n="5" type="compound">
-          <form type="lemma">
+          <form type="lemma">ⲟⲩⲉⲙⲉⲣⲱⲧⲉ</form>
+          <form>
             <usg type="geo">S</usg>
             <orth>ⲟⲩⲉⲙⲉⲣⲱⲧⲉ</orth>
             <gramGrp>

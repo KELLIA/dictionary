@@ -61,88 +61,8 @@
         <superEntry>
             <entry n="1">
                 <form>
-                    <usg type="geo">S</usg>
-                    <orth n="1">ⲃⲁ</orth>
-                </form>
-                <form>
-                    <usg type="geo">S</usg>
-                    <orth n="2">ⲃⲟⲓ</orth>
-                </form>
-                <form>
-                    <usg type="geo">B</usg>
-                    <orth n="1">ⲃⲁ</orth>
-                </form>
-                <form>
-                    <usg type="geo">B</usg>
-                    <orth n="2">ⲃⲟⲓ</orth>
-                </form>
-                <form>
-                    <usg type="geo">A</usg>
-                    <orth n="1">ⲃⲁ</orth>
-                </form>
-                <form>
-                    <usg type="geo">A</usg>
-                    <orth n="2">ⲃⲟⲓ</orth>
-                </form>
-                <form>
-                    <usg type="geo">L</usg>
-                    <orth n="1">ⲃⲁ</orth>
-                </form>
-                <form>
-                    <usg type="geo">L</usg>
-                    <orth n="2">ⲃⲟⲓ</orth>
-                </form>
-                <form>
-                    <usg type="geo">F</usg>
-                    <orth n="1">ⲃⲁ</orth>
-                </form>
-                <form>
-                    <usg type="geo">F</usg>
-                    <orth n="2">ⲃⲟⲓ</orth>
-                </form>
-                <form>
-                    <usg type="geo">S</usg>
-                    <orth>ⲃⲁⲉ</orth>
-                </form>
-                <form>
-                    <usg type="geo">A</usg>
-                    <orth>ⲃⲁⲉ</orth>
-                </form>
-                <form>
-                    <usg type="geo">L</usg>
-                    <orth>ⲃⲁⲉ</orth>
-                </form>
-                <form>
-                    <usg type="geo">S</usg>
-                    <orth>ⲃⲁⲉⲓ</orth>
-                </form>
-                <form>
-                    <usg type="geo">F</usg>
-                    <orth>ⲃⲁⲉⲓ</orth>
-                </form>
-                <form>
                     <usg type="geo">B</usg>
                     <orth>ⲃⲁⲓ</orth>
-                </form>
-                <form>
-                    <usg type="geo">F</usg>
-                    <orth>ⲃⲉ(ⲉ)ⲓ</orth>
-                </form>
-                <form type="inflected">
-                    <usg type="geo">S</usg>
-                    <orth>ⲃⲁⲓⲉ</orth>
-                    <gramGrp>
-                        <pos>Subst.</pos>
-                        <number>pl.</number>
-                    </gramGrp>
-                </form>
-                <form>
-                    <usg type="geo">L</usg>
-                    <orth>ⲃⲁⲉⲓⲏ</orth>
-                    <gramGrp>
-                        <pos>Subst.</pos>
-                        <number>pl.</number>
-                    </gramGrp>
                 </form>
                 <gramGrp>
                     <pos>Subst.</pos>
@@ -150,15 +70,15 @@
                 </gramGrp>
                 <sense>
                     <ref type="Greek">βάϊον, βάϊς</ref>
-                    <note>ägyptisches Lehnwort</note>
+                    <note>Egyptian loanword, Crum refers to Kircher's "Lingua aegyptiaca restituta" 141, where it is given as "Lanceola scriptoris" ("writing stick") (</note>
                     <cit type="translation" xml:lang="de">
-                        <quote>Palmenzweig</quote>
+                        <quote>Palmenzweig (als Schreibzeug = "lanceola scriptoris")</quote>
                     </cit>
                     <cit type="translation" xml:lang="en">
-                        <quote>branch of date-palm</quote>
+                        <quote>branch of date-palm (as a writing tool = "lanceola scriptoris")</quote>
                     </cit>
                     <cit type="translation" xml:lang="fr">
-                        <quote>branch du palmier (dépouillée des ses feuilles)</quote>
+                        <quote>branch du palmier (comme outil d'écriture = "lanceola scriptoris")</quote>
                     </cit>
                     <cit>
                         <bibl>CD 27b-28a; CED 20; KoptHWb 19, 492; DELC 24; ChLCS 6b</bibl>
@@ -341,28 +261,27 @@
             <form>
                 <usg type="geo">S</usg>
                 <orth>ⲃⲁ-</orth>
-                <note>usprünglich Subst. m.</note>
             </form>
             <form>
                 <usg type="geo">B</usg>
                 <orth>ⲃⲁ-</orth>
-                <note>usprünglich Subst. m.</note>
             </form>
             <form>
                 <usg type="geo">A</usg>
                 <orth>ⲃⲁ-</orth>
-                <note>usprünglich Subst. m.</note>
             </form>
             <form>
                 <usg type="geo">L</usg>
                 <orth>ⲃⲁ-</orth>
-                <note>usprünglich Subst. m.</note>
             </form>
             <form>
                 <usg type="geo">F</usg>
                 <orth>ⲃⲁ-</orth>
-                <note>usprünglich Subst. m.</note>
             </form>
+            <gramGrp>
+                <pos>Nominalpräfix</pos>
+                <note>usprünglich Subst. m.</note>
+            </gramGrp>
             <sense>
                 <cit xml:lang="de">
                     <def>Präfix zur Bildung von Ziegennamen</def>
@@ -2080,11 +1999,11 @@
         </sense>
     </entry>
     <entry n="4" type="hom">
-        <form type="lemma">
+        <form type="lemma">(ⲉ)ⲙⲃⲟⲕⲓ</form>
+        <form>
             <usg type="geo">B</usg>
-            <orth>ⲙⲃⲟⲕⲓ</orth>
+            <orth>(ⲉ)ⲙⲃⲟⲕⲓ</orth>
         </form>
-        <form>(ⲉ)ⲙⲃⲟⲕⲓ</form>
         <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -2106,11 +2025,11 @@
         </sense>
     </entry>
     <entry n="5" type="hom">
-         <form type="lemma">
+          <form type="lemma">(ⲉ)ⲙⲃⲟⲕⲓ</form>      
+         <form >
             <usg type="geo">B</usg>
-            <orth>ⲙⲃⲟⲕⲓ</orth>
+             <orth>(ⲉ)ⲙⲃⲟⲕⲓ</orth>
         </form>
-        <form>(ⲉ)ⲙⲃⲟⲕⲓ</form>
         <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
@@ -4468,7 +4387,7 @@
         </sense>
     </entry>
     <entry n="2" type="compound">
-        <form type="lemma">ⲡⲃⲟⲗ</form>
+        <form type="lemma">(ⲙ)ⲡⲃⲟⲗ</form>
         <form>
             <orth>(ⲙ)ⲡⲃⲟⲗ</orth>
             <gramGrp>
@@ -4729,7 +4648,7 @@
         </sense>
     </entry>
     <entry n="7" type="compound">
-        <form type="lemma">ⲛⲥⲁⲃⲏⲗ</form>
+        <form type="lemma">ⲛⲥⲁⲃⲏⲗ (ⲉ-)</form>
         <form>
             <usg type="geo">S</usg>
             <orth>ⲛⲥⲁⲃⲏⲗ (ⲉ-)</orth>
@@ -4779,7 +4698,7 @@
         </sense>
     </entry>
     <entry type="compound">
-        <form type="lemma">ⲛⲥⲁⲃⲏⲗ</form>
+        <form type="lemma">ⲛⲥⲁⲃⲏⲗ (ⲉ-)</form>
         <form>
             <usg type="geo">S</usg>
             <orth>ⲛⲥⲁⲃⲏⲗ (ⲉ-)</orth>
@@ -4821,7 +4740,7 @@
         </sense>
     </entry>
     <entry type="compound">
-        <form type="lemma">ⲛⲥⲁⲃⲏⲗ</form>
+        <form type="lemma">ⲛⲥⲁⲃⲏⲗ (ϫⲉ)</form>
         <form>
             <usg type="geo">S</usg>
             <orth>ⲛⲥⲁⲃⲏⲗ (ϫⲉ)</orth>
@@ -5582,6 +5501,7 @@
         <usg type="geo">S</usg>
         <orth>ⲃⲟⲗⲃⲗ (ⲉⲃⲟⲗ)</orth>
         <gramGrp>
+                <pos>Vb.</pos>
             <gram type="collocAdv">ⲉⲃⲟⲗ</gram>
         </gramGrp>
     </form>
@@ -5622,6 +5542,7 @@
         <usg type="geo">S</usg>
         <orth>ⲃⲟⲗⲃⲗ (ⲉⲃⲟⲗ)</orth>
         <gramGrp>
+            <pos>Vb.</pos>
             <gram type="collocPrep">ⲛⲥⲁ-</gram>
         </gramGrp>
     </form>
@@ -5945,6 +5866,10 @@
             <usg type="geo">B</usg>
             <orth>ⲙⲉⲧⲃⲉⲗⲗⲉ</orth>
         </form>
+        <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+        </gramGrp>
         <xr type="cf">
             <ref target="#ⲙⲛⲧ-">Nominalpräfix</ref>
         </xr>
@@ -6462,7 +6387,8 @@
         </sense>
     </entry>
     <entry n="4" type="compound">
-        <form type="lemma">
+        <form type="lemma">ⲙⲁⲛⲉⲃⲁⲁⲙⲡⲉ</form>            
+        <form >
             <usg type="geo">S</usg>
             <orth>ⲙⲁⲛⲉⲃⲁⲁⲙⲡⲉ</orth>
             <gramGrp>
@@ -6650,7 +6576,8 @@
         </sense>
     </entry>
     <entry n="2">
-        <form type="lemma">
+        <form type="lemma">ⲃⲟⲟⲛⲉ</form>
+        <form>
             <usg type="geo">S</usg>
             <orth>ⲃⲟⲟⲛⲉ</orth>
             <gramGrp>
@@ -6914,6 +6841,7 @@
         </sense>
     </entry>
     <entry n="8" type="compound">
+        
         <form type="lemma">ⲣⲉϥⲉⲓⲉⲣⲃⲟⲟⲛⲉ</form>
         <form>
             <usg type="geo">S</usg>
@@ -6957,7 +6885,8 @@
         </sense>
     </entry>
     <entry n="9" type="compound">
-        <form type="lemma">
+        <form type="lemma">ⲙⲛⲧⲣⲉϥⲉⲓⲉⲣⲃⲟⲟⲛⲉ</form>
+        <form>
             <usg type="geo">S</usg>
             <orth>ⲙⲛⲧⲣⲉϥⲉⲓⲉⲣⲃⲟⲟⲛⲉ</orth>
             <gramGrp>
@@ -8273,7 +8202,8 @@
         </sense>
     </entry>
     <entry n="5" type="compound">
-        <form type="lemma">
+        <form type="lemma">ⲙⲉⲧⲉⲙⲃⲉⲣⲓ</form>
+        <form>
             <usg type="geo">B</usg>
             <orth>ⲙⲉⲧⲉⲙⲃⲉⲣⲓ</orth>
             <gramGrp>
@@ -8546,7 +8476,8 @@
         </sense>
     </entry>
     <entry n="2" type="compound">
-        <form type="lemma">
+        <form type="lemma">ϩⲟⲙⲛⲧ(ⲛ)ⲃⲁⲣⲱⲧ</form>
+        <form>
             <usg type="geo">S</usg>
             <orth>ϩⲟⲙⲛⲧ(ⲛ)ⲃⲁⲣⲱⲧ</orth>
             <gramGrp>
@@ -11221,6 +11152,10 @@
             <usg type="geo">B</usg>
             <orth>ϣⲗⲱⲙⲃⲏϫ</orth>
         </form>
+        <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+        </gramGrp>
         <sense>
             <ref type="Greek">καταρράκτης</ref>
             <cit type="translation" xml:lang="de">

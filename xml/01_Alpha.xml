@@ -1544,6 +1544,7 @@
         <entry type="compound">
           <form >ⲁⲗⲉ (ϣⲟⲩϩⲏⲛⲉ)</form>
             <gramGrp>
+              <pos>Vb.</pos>
               <gram type="collocNoun">ϣⲟⲩϩⲏⲛⲉ</gram>
             </gramGrp>
           <xr type="cf"> <ref target="#ϣⲟⲩϩⲏⲛⲉ">Weihrauch</ref></xr>
@@ -4349,6 +4350,7 @@
         <entry>
           <form type="compound">ⲁⲙⲁϩⲧⲉ (ϩⲓϫⲛ-)</form> 
             <gramGrp>
+              <pos>Vb.</pos>
               <gram type="collocPrep">ϩⲓϫⲛ-</gram>
             </gramGrp>          
           <sense>
@@ -9599,9 +9601,12 @@
       </entry>
         <entry>
           <form>
-            <usg type="geo">S</usg>
-            <orth>ⲁⲩⲁⲛ ⲁⲩⲁⲛ</orth>
-            <note>distributiv</note></form>
+            <usg type="geo">S</usg>  
+            <orth>ⲁⲩⲁⲛ ⲁⲩⲁⲛ</orth></form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <note>distributiv</note>           
+          </gramGrp>
         <sense n="3">
           <ref type="Greek">ποικίλος, ποικιλία, ποίκιλμα</ref>
           <cit type="translation" xml:lang="de">

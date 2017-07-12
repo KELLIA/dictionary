@@ -359,7 +359,7 @@ if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟ�
                                         </xs:attribute>
                                     </xs:complexType>
                                 </xs:element>
-                                <xs:element ref="ns1:note" minOccurs="0"/>
+                                <xs:element ref="ns1:note" minOccurs="0" maxOccurs="unbounded"/>
                             </xs:all>
                             <xs:attribute name="n" type="xs:integer"/>
                         </xs:complexType>

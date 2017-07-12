@@ -153,7 +153,8 @@
                 </sense>
             </entry>
             <entry n="4" type="compound">
-                <form type="lemma">
+                <form type="lemma">ⲙⲉⲧⲣⲉⲙϧⲉⲛⲏⲓ</form>
+                <form>
                     <usg type="geo">B</usg>
                     <orth>ⲙⲉⲧⲣⲉⲙϧⲉⲛⲏⲓ</orth>
                 </form>
@@ -201,7 +202,8 @@
                 </sense>
             </entry>
             <entry n="6" type="compound">
-                <form type="lemma">
+                <form type="lemma">ϫⲙⲡⲏⲓ</form>
+                <form>
                     <usg type="geo">A</usg>
                     <orth>ϫⲙⲡⲏⲓ</orth>
                 </form>
@@ -396,7 +398,8 @@
                 </sense>
             </entry>
             <entry n="2" type="compound">
-                <form type="lemma">
+                <form type="lemma">ⲥⲁⲩⲏⲣⲡ</form>
+                <form>
                     <usg type="geo">S</usg>
                     <orth>ⲥⲁⲩⲏⲣⲡ</orth>
                 </form>
@@ -450,7 +453,8 @@
                 </sense>
             </entry>
             <entry n="4" type="compound">
-                <form type="lemma">
+                <form type="lemma">ⲥⲁ ⲛⲏⲣⲡ</form>
+                <form>
                     <usg type="geo">S</usg>
                     <orth>ⲥⲁ ⲛⲏⲣⲡ</orth>
                 </form>

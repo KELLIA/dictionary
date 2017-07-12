@@ -2200,6 +2200,10 @@
       <superEntry>
         <entry n="1">
           <form>ⲡⲉⲓⲣⲉ</form>
+          <form>
+            <usg type="geo">L</usg>
+            <orth>ⲡⲣⲓⲉ</orth>
+          </form>
           <gramGrp>
             <pos>Vb.</pos>
           </gramGrp>
@@ -2221,11 +2225,16 @@
         <entry n="2">
           <form>
             <usg type="geo">B</usg>
-            <orth>ⲫⲓⲣⲓ</orth>
-          </form><form>
-            <usg type="geo">L</usg>
-            <orth>ⲡⲣⲓⲉ</orth>
+            <orth>ⲫⲓⲣⲓ (ⲉ)</orth>
           </form>
+            <form>
+              <usg type="geo">B</usg>
+              <orth>ⲫⲉⲣ- (ⲉ)</orth>
+            </form>
+          <gramGrp>
+            <pos>Vb.</pos>
+            <gram type="collocPrep">ⲛⲥⲁ-</gram>
+          </gramGrp>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>aüßern, erzählen, verkünden</quote>
@@ -4350,6 +4359,7 @@
         </entry>
         <entry n="9" type="compound">          
           <form>ⲣⲡⲁϣⲉ</form>
+          <gramGrp><pos>Vb.</pos></gramGrp>
           <xr type="cf"> <ref target="#ⲉⲓⲣⲉ">machen, tun</ref></xr>
           <sense>
             <cit type="translation" xml:lang="de">

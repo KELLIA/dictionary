@@ -1242,7 +1242,8 @@
                 </sense>
             </entry>
             <entry n="8" type="compound">
-                <form type="lemma">
+                <form type="lemma">ⲡⲁϣⲙⲟⲩ</form>
+                <form>
                     <orth n="1">ⲡⲁϣⲙⲟⲩ</orth>
                 </form>
                 <form>
@@ -2049,7 +2050,8 @@
                 </sense>
             </entry>
             <entry n="3" type="compound">
-                <form type="lemma">
+                <form type="lemma">ⲁⲧⲙⲟⲕⲙⲉⲕ</form>
+                <form>
                     <orth n="1">ⲁⲧⲙⲟⲕⲙⲉⲕ</orth>
                 </form>
                 <form>
@@ -2074,7 +2076,8 @@
                 </sense>
             </entry>
             <entry n="4" type="compound">
-                <form type="lemma">
+                <form type="lemma">ϭⲓⲛⲙⲟⲕⲙⲉⲕ</form>
+                <form>
                     <orth n="1">ϭⲓⲛⲙⲟⲕⲙⲉⲕ</orth>
                 </form>
                 <form>
@@ -6383,7 +6386,8 @@
                 </sense>
             </entry>
             <entry n="2" type="compound">
-                <form type="lemma">
+                <form type="lemma">ⲁⲧⲙⲟⲣⲧ</form>
+                <form>
                     <orth n="1">ⲁⲧⲙⲟⲣⲧ</orth>                 
                 </form>
                 <form>                
@@ -6644,7 +6648,8 @@
                 </sense>
             </entry>
             <entry n="2" type="compound">
-                <form type="lemma">
+                <form type="lemma">ϥⲁⲓⲙⲉⲣⲉϩ</form>
+                <form>
                     <orth n="1">ϥⲁⲓⲙⲉⲣⲉϩ</orth>              
                 </form>
                 <form>                    
@@ -8021,8 +8026,18 @@
                 </sense>
             </entry>
             <entry n="9" type="compound">
+                <form type="lemma">ⲙⲟⲉⲓⲧ ⲙⲙⲟⲟϣⲉ</form>
                 <form>
-                    <orth>ⲙⲟⲉⲓⲧ ⲙⲙⲟⲟϣⲉ</orth>
+                    <orth>ⲙⲟⲉⲓⲧ ⲙⲙⲟⲟϣⲉ</orth><usg>S</usg>
+                </form>
+                <form>
+                    <orth>ⲙⲟⲉⲓⲧ ⲙⲟϣⲓ</orth><usg>S</usg>
+                </form>
+                <form>
+                    <orth>ⲙⲱⲓⲧ ⲙⲙⲟⲟϣⲉ</orth><usg>B</usg>
+                </form>
+                <form>
+                    <orth>ⲙⲱⲓⲧ ⲙⲟϣⲓ</orth><usg>B</usg>
                 </form>
                 <gramGrp>
                     <pos>Subst.</pos>
@@ -8255,7 +8270,8 @@
                 </sense>
             </entry>
             <entry n="5" type="compound">
-                <form type="lemma">
+                <form type="lemma">ϯⲙⲁϯ</form>
+                <form>
                     <orth>ϯⲙⲁϯ</orth>
                     <usg type="geo">B</usg>
                 </form>
@@ -9972,7 +9988,8 @@
                 </sense>
             </entry>
             <entry n="5" type="compound">
-                <form type="lemma">
+                <form type="lemma">ⲉⲙⲁⲩ</form>
+                <form>
                     <orth n="1">ⲉⲙⲁⲩ</orth>        
                 </form>
                 <form>                   
@@ -10211,6 +10228,7 @@
             </entry>
             <entry n="5" type="compound">
                 <form type="lemma">ⲙⲉϩⲙⲟⲟⲩ</form>
+                <form>ⲙⲉϩⲙⲟⲟⲩ</form>
                 <gramGrp>
                     <pos>Vb.</pos>
                     <subc>Kompositverb</subc>

@@ -522,7 +522,8 @@
           </sense>
         </entry>
         <entry n="9" type="compound">
-          <form type="lemma">
+          <form type="lemma">ϫⲉⲕ ⲣⲱ⸗</form>
+          <form>
             <usg type="geo">B</usg>
             <orth>ϫⲉⲕ ⲣⲱ⸗</orth>
           </form>
@@ -2031,7 +2032,8 @@
           </sense>
         </entry>
         <entry n="2" type="compound">
-          <form type="lemma">
+          <form type="lemma">ⲛ ⲧⲣⲟⲙⲡⲉ</form>
+          <form>
             <orth n="1">ⲛ ⲧⲣⲟⲙⲡⲉ</orth>
           </form>
           <form>
@@ -2345,6 +2347,7 @@
         </entry>
         <entry n="4" type="compound">
           <form type="lemma">ⲧⲁⲩⲉ ⲣⲓⲛ⸗</form>
+          <form>ⲧⲁⲩⲉ ⲣⲓⲛ⸗</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -3362,7 +3365,8 @@
           </sense>
         </entry>
         <entry n="7" type="compound">
-          <form type="lemma">
+          <form type="lemma">ⲥⲣ ⲣⲁⲧ⸗</form>
+          <form>
             <orth n="2">ⲥⲣ ⲣⲁⲧ⸗</orth>
           </form>
           <form>
@@ -3800,7 +3804,8 @@
           </sense>
         </entry>
         <entry n="3" type="compound">
-          <form type="lemma"><orth>ⲙⲫⲣⲏϯ</orth><usg type="geo">B</usg></form>
+          <form type="lemma">ⲙⲫⲣⲏϯ</form>
+          <form><orth>ⲙⲫⲣⲏϯ</orth><usg type="geo">B</usg></form>
           <form>
             <usg type="geo">A</usg>
             <orth>ⲙⲡⲣⲏⲧⲉ</orth>
