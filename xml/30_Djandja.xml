@@ -173,6 +173,7 @@
         </entry>
         <entry n="6" type="compound">
           <form type="lemma">ϣⲱⲡⲉ ⲛϫⲁ(ⲉ)ⲓⲉ</form>
+          <form>ϣⲱⲡⲉ ⲛϫⲁ(ⲉ)ⲓⲉ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -3741,6 +3742,7 @@
       </sense>
       </entry>
         <entry n="2">
+          <form type="lemma">ϫⲓⲛϫⲱⲗϩ</form>
           <form><orth>ϫⲓⲛϫⲱⲗϩ</orth><usg type="geo">B</usg></form>
           <gramGrp>
             <pos>Subst.</pos>
@@ -5504,6 +5506,7 @@
         </entry>
         <entry n="5" type="compound">
           <form type="lemma">ⲙⲟⲩⲣϫⲛⲁϩ</form>
+          <form>ⲙⲟⲩⲣϫⲛⲁϩ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
@@ -12015,6 +12018,7 @@
         </entry>
         <entry n="6" type="compound">
           <form type="lemma">ⲉⲓⲉⲡϫⲏϭⲉ</form>
+          <form>ⲉⲓⲉⲡϫⲏϭⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>

@@ -1347,12 +1347,13 @@
             </cit>
           </sense>
         </entry>
-        <entry n="3">    
-          <form type="lemma"><usg type="geo">B</usg>
-            <orth>ϫⲱⲗ ˉ(ⲉⲃⲟⲗ)</orth>
+        <entry n="3"> 
+          <form type="lemma">ϫⲱⲗ (ⲉⲃⲟⲗ)</form>
+          <form><usg type="geo">B</usg>
+            <orth>ϫⲱⲗ (ⲉⲃⲟⲗ)</orth>
           </form>
           <form><usg type="geo">L</usg>
-            <orth>ϫⲱⲗ ˉ(ⲉⲃⲟⲗ)</orth>
+            <orth>ϫⲱⲗ (ⲉⲃⲟⲗ)</orth>
           </form>
           <gramGrp>
             <pos>Vb.</pos>
@@ -1373,12 +1374,13 @@
             </cit>
           </sense>
         </entry>
-        <entry n="4" type="hom">       
-          <form type="lemma"><usg type="geo">B</usg>
-            <orth>ϫⲱⲗ ˉ(ⲉⲃⲟⲗ)</orth>
+        <entry n="4" type="hom">     
+          <form type="lemma">ϫⲱⲗ (ⲉⲃⲟⲗ)</form>
+          <form><usg type="geo">B</usg>
+            <orth>ϫⲱⲗ (ⲉⲃⲟⲗ)</orth>
           </form>
           <form><usg type="geo">L</usg>
-            <orth>ϫⲱⲗ ˉ(ⲉⲃⲟⲗ)</orth>
+            <orth>ϫⲱⲗ (ⲉⲃⲟⲗ)</orth>
           </form>
           <gramGrp>
             <pos>Subst.</pos>
@@ -1400,8 +1402,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="5" type="compound">       
-          <form type="lemma"><usg type="geo">B</usg>
+        <entry n="5" type="compound">     
+          <form type="lemma">ϫⲓⲛϫⲱⲗˉ(ⲉⲃⲟⲗ)</form>
+          <form><usg type="geo">B</usg>
             <orth>ϫⲓⲛϫⲱⲗˉ(ⲉⲃⲟⲗ)</orth>
           </form>
           <form><usg type="geo">L</usg>
@@ -2204,6 +2207,7 @@
           </sense>
         </entry>
         <entry n="6" type="hom">
+          <form type="lemma">ϩⲓϭⲗⲁ(ϩ)</form>
           <form><orth>ϩⲓϭⲗⲁ(ϩ)</orth><usg type="geo">B</usg></form>          
           <gramGrp>
             <pos>Subst.</pos>
@@ -2325,7 +2329,8 @@
           </sense>
         </entry>
         <entry n="3" type="compound">        
-          <form type="lemma"><usg type="geo">A</usg>
+          <form type="lemma">ⲁⲡϭⲗⲁ</form>
+          <form><usg type="geo">A</usg>
             <orth>ⲁⲡϭⲗⲁ</orth>
           </form>
           <form><usg type="geo">L</usg>
@@ -2351,7 +2356,8 @@
           </sense>
         </entry>
         <entry n="4" type="compound">    
-          <form type="lemma"><usg type="geo">A</usg>
+          <form type="lemma">ⲙⲛⲧⲁⲡϭⲗⲁ</form>
+          <form><usg type="geo">A</usg>
             <orth>ⲙⲛⲧⲁⲡϭⲗⲁ</orth>
           </form>
           <form><usg type="geo">L</usg>

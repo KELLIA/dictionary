@@ -1601,6 +1601,7 @@
         </entry>
         <entry n="2" type="compound">
           <form type="lemma">ⲉⲓⲉⲡⲟⲩⲟⲉⲓⲉ</form>
+          <form>ⲉⲓⲉⲡⲟⲩⲟⲉⲓⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -4415,7 +4416,8 @@
           </sense>
         </entry>
          <entry n="5">
-           <form type="lemma">
+           <form type="lemma">ⲟⲩⲱⲛ ⲛⲥⲁϫⲓ</form>
+           <form>
             <usg type="geo">B</usg>
             <orth>ⲟⲩⲱⲛ ⲛⲥⲁϫⲓ</orth>
           </form>
@@ -4464,7 +4466,8 @@
           </sense>
         </entry>
         <entry n="8" type="compound">
-          <form type="lemma">
+          <form type="lemma">ⲟⲩⲁⲛⲧⲱ</form>
+          <form>
             <usg type="geo">Ak</usg>
             <orth>ⲟⲩⲁⲛⲧⲱ</orth>
           </form>
@@ -5996,7 +5999,8 @@
           </sense>
         </entry>
         <entry n="2" type="compound">
-          <form type="lemma">
+          <form type="lemma">ⲙⲟⲩⲃⲉⲣⲧ</form>
+          <form>
             <usg type="geo">B</usg>
             <orth>ⲙⲟⲩⲃⲉⲣⲧ</orth>
           </form>
@@ -6402,7 +6406,8 @@
           </sense>
         </entry>
         <entry n="3" type="compound">
-          <form type="lemma">
+          <form type="lemma">ⲙⲛⲧⲟⲩⲥⲏ</form>
+          <form>
             <orth n="1">ⲙⲛⲧⲟⲩⲥⲏ</orth>
           </form>
           <form>
@@ -7325,6 +7330,7 @@
         </entry>
         <entry n="3" type="compound">
           <form type="lemma">ⲟⲩⲟ(ⲟ)ⲧⲉ ⲛⲟⲩⲱⲙ</form>
+          <form>ⲟⲩⲟ(ⲟ)ⲧⲉ ⲛⲟⲩⲱⲙ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -7459,7 +7465,8 @@
           </sense>
         </entry>
         <entry n="2" type="compound">
-          <form type="lemma">
+          <form type="lemma">ⲟⲩⲁ ⲛⲟⲩⲱⲧ</form>
+          <form>
             <orth>ⲟⲩⲁ ⲛⲟⲩⲱⲧ</orth>
           </form>
           <gramGrp>
@@ -8506,7 +8513,8 @@
           </sense>
         </entry>
         <entry n="5" type="compound">
-          <form type="lemma">
+          <form type="lemma">ⲙⲁⲥⲟⲩⲧⲁϩ</form>
+          <form>
             <usg type="geo">B</usg>
             <orth>ⲙⲁⲥⲟⲩⲧⲁϩ</orth>
           </form>
