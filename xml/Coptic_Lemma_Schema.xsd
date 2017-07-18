@@ -229,7 +229,7 @@ if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟ�
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:attribute>
-
+                            <xs:attribute ref="xml:id"/>
                         </xs:complexType>
                     </xs:element>
                     <xs:element ref="ns1:gramGrp" minOccurs="0"/>
@@ -376,6 +376,7 @@ if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟ�
                     </xs:simpleType>
                 </xs:attribute>
                 <xs:attribute name="n" type="xs:integer"/>
+                <xs:attribute ref="xml:id"/>
             </xs:complexType>
         </xs:element>
     </xs:override>
