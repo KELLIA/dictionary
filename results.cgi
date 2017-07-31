@@ -262,14 +262,14 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 			
 if __name__ == "__main__":
 	form = cgi.FieldStorage()
-	word = form.getvalue("coptic", "")
-	dialect = form.getvalue("dialect", "any")
-	pos = form.getvalue("pos", "any")
-	definition = form.getvalue("definition", "")
-	def_search_type = form.getvalue("def_search_type", "exact sequence")
-	def_lang = form.getvalue("lang", "any")
-	related = form.getvalue("related", "false") 
-	quick_string = form.getvalue("quick_search", "")
+	word = cgi.escape(form.getvalue("coptic", ""))
+	dialect = cgi.escape(form.getvalue("dialect", "any"))
+	pos = cgi.escape(form.getvalue("pos", "any"))
+	definition = cgi.escape(form.getvalue("definition", ""))
+	def_search_type = cgi.escape(form.getvalue("def_search_type", "exact sequence"))
+	def_lang = cgi.escape(form.getvalue("lang", "any"))
+	related = cgi.escape(form.getvalue("related", "false"))
+	quick_string = cgi.escape(form.getvalue("quick_search", ""))
 	if quick_string != "":
 		separated = separate_coptic(quick_string)
 		def_search_type = "all words"
