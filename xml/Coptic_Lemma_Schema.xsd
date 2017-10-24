@@ -190,18 +190,12 @@
                 <xs:sequence>
                     <xs:element name="form" maxOccurs="unbounded" minOccurs="1">
                         <xs:annotation>
-                            <xs:documentation>if compound:
-1) "verb + noun": form/ⲣϪⲟⲓ/form; form type=lemma/ⲉⲓⲣⲉ/form 
-2) "verb + verb": form type=lemma/ϫⲓϯ /form
-2) "noun/pref. + noun": form type=lemma/ⲣⲉϥϫⲱ (ⲙⲁ ⲛϫⲟ)/form
-3) "noun + prep.": form/ ϫⲓ (ⲙⲛ-)/ form
-</xs:documentation>
+                            <xs:documentation></xs:documentation>
                         </xs:annotation>
                         <xs:complexType mixed="true">
                             <xs:all maxOccurs="1">
                                 <xs:element name="usg" type="ns1:usgType" maxOccurs="1"
                                     minOccurs="0"/>
-
                                 <xs:element name="orth" maxOccurs="1" minOccurs="0">
                                     <xs:annotation>
                                         <xs:documentation>if non-sahidic: orth/ⲣⲉϥϯ ⲟⲩⲃⲉ-/orth
@@ -216,7 +210,18 @@ if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟ�
                                         </xs:simpleContent>
                                     </xs:complexType>
                                 </xs:element>
-
+                                
+                                <xs:element name="oRef" maxOccurs="1" minOccurs="0">
+                                    <xs:complexType>
+                                        <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                                <xs:attribute name="n" type="xs:integer">
+                                                </xs:attribute>
+                                            </xs:extension>
+                                        </xs:simpleContent>
+                                    </xs:complexType>
+                                </xs:element> 
+                                
                                 <xs:element ref="ns1:note" minOccurs="0"/>
                                 <xs:element ref="ns1:gramGrp" minOccurs="0"/>
                             </xs:all>
@@ -394,6 +399,7 @@ if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟ�
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
+
 
     <xs:simpleType name="usgValueType">
         <xs:restriction base="xs:string">

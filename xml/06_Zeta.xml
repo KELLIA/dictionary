@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
 <?xml-model href="Coptic_Lemma_Schema.xsd"?>
-<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -17,8 +18,8 @@
   </teiHeader>
   <text>
     <body>
-      <entry>
-        <form>
+      <entry xml:id="C779">
+        <form type="lemma" xml:id="CF2882">
           <usg type="geo">B</usg>
           <orth>ⲍ︦</orth>
           <gramGrp>
@@ -26,7 +27,15 @@
             <note>sechster Buchstabe des Alphabeths ⲍⲏⲧⲁ</note>
           </gramGrp>
         </form>
-        <form>
+        <form xml:id="CF2883">
+          <usg type="geo">B</usg>
+          <orth>ⲍ︦</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>sechster Buchstabe des Alphabeths ⲍⲏⲧⲁ</note>
+          </gramGrp>
+        </form>
+        <form xml:id="CF2884">
           <usg type="geo">F</usg>
           <orth>ⲍ︦</orth>
           <gramGrp>
@@ -34,7 +43,7 @@
             <note>sechster Buchstabe des Alphabeths ⲍⲏⲧⲁ</note>
           </gramGrp>
         </form>
-        <form>
+        <form xml:id="CF2885">
           <usg type="geo">S</usg>
           <orth>ⲍ︦</orth>
           <gramGrp>
@@ -58,8 +67,15 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>
+      <entry xml:id="C780">
+        <form type="lemma" xml:id="CF2886">
+          <usg type="geo">B</usg>
+          <orth>ⲍⲁⲍ</orth>
+          <gramGrp>
+            <pos>Subst.</pos>
+          </gramGrp>
+        </form>
+        <form xml:id="CF2887">
           <usg type="geo">B</usg>
           <orth>ⲍⲁⲍ</orth>
           <gramGrp>
@@ -83,8 +99,16 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>
+      <entry xml:id="C781">
+        <form type="lemma" xml:id="CF2888">
+          <usg type="geo">B</usg>
+          <orth>ⲍⲉⲛⲍⲉⲛ</orth>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+        </form>
+        <form xml:id="CF2889">
           <usg type="geo">B</usg>
           <orth>ⲍⲉⲛⲍⲉⲛ</orth>
           <gramGrp>
@@ -102,7 +126,7 @@
             <note>Coptic?</note>
           </cit>
           <cit type="translation" xml:lang="fr">
-            <quote>lézard, caméléon</quote>    
+            <quote>lézard, caméléon</quote>
           </cit>
           <cit>
             <bibl>CD 65b</bibl>
@@ -112,4 +136,3 @@
     </body>
   </text>
 </TEI>
-

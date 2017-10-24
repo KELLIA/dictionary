@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
 <?xml-model href="Coptic_Lemma_Schema.xsd"?>
-<TEI
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns:math="http://www.w3.org/1998/Math/MathML"
-    xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -21,8 +18,12 @@
     </teiHeader>
     <text>
         <body>
-            <entry>
-                <form>
+            <entry xml:id="C6295">
+                <form type="lemma" xml:id="CF14600">
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲟ</orth>
+                </form>
+                <form xml:id="CF14601">
                     <usg type="geo">A</usg>
                     <orth>ⳉⲟ</orth>
                 </form>
@@ -30,7 +31,9 @@
                     <pos>Subst.</pos>
                     <gen>m.</gen>
                 </gramGrp>
-                <xr type="cf"> <ref target="#ϩⲓⲏ">Weg</ref></xr>
+                <xr type="cf">
+                    <ref target="#ϩⲓⲏ">Weg</ref>
+                </xr>
                 <sense>
                     <cit type="translation" xml:lang="de">
                         <quote>Weg</quote>
@@ -46,8 +49,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry type="compound">                
-                <form>
+            <entry type="compound" xml:id="C6296">
+                <form type="lemma" xml:id="CF14602">
+                    <usg type="geo">A</usg>
+                    <orth>ϫⲓⳉⲛⲟⲟϥ</orth>
+                </form>
+                <form xml:id="CF14603">
                     <usg type="geo">A</usg>
                     <orth>ϫⲓⳉⲛⲟⲟϥ</orth>
                 </form>
@@ -55,7 +62,9 @@
                     <pos>Vb.</pos>
                     <subc>Kompositverb</subc>
                 </gramGrp>
-                <xr type="cf"> <ref target="#ϫⲓ">nehmen, erhalten</ref></xr>
+                <xr type="cf">
+                    <ref target="#ϫⲓ">nehmen, erhalten</ref>
+                </xr>
                 <sense>
                     <cit type="translation" xml:lang="de">
                         <quote>empfangen</quote>
@@ -71,15 +80,21 @@
                     </cit>
                 </sense>
             </entry>
-            <entry type="compound">
-                <form>
+            <entry type="compound" xml:id="C6297">
+                <form type="lemma" xml:id="CF14604">
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲁⲣⲃⲉⲗ</orth>
+                </form>
+                <form xml:id="CF14605">
                     <usg type="geo">A</usg>
                     <orth>ⳉⲁⲣⲃⲉⲗ</orth>
                 </form>
                 <gramGrp>
                     <pos>Adj.</pos>
                 </gramGrp>
-                <xr type="cf"> <ref target="#ⲃⲁⲗ">Auge</ref></xr>
+                <xr type="cf">
+                    <ref target="#ⲃⲁⲗ">Auge</ref>
+                </xr>
                 <sense>
                     <cit type="translation" xml:lang="de">
                         <quote>starräugig</quote>
@@ -95,8 +110,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6298">
+                <form type="lemma" xml:id="CF14606">
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲣⲏⲁⲣⲓⲧ</orth>
+                </form>
+                <form xml:id="CF14607">
                     <usg type="geo">A</usg>
                     <orth>ⳉⲣⲏⲁⲣⲓⲧ</orth>
                 </form>
@@ -119,8 +138,12 @@
                 </sense>
             </entry>
             <superEntry>
-                <entry n="1">
-                    <form>
+                <entry n="1" xml:id="C6299">
+                    <form type="lemma" xml:id="CF14608">
+                        <usg type="geo">A</usg>
+                        <orth>ⳉⲓ(ⲉⲓ)ⲧ</orth>
+                    </form>
+                    <form xml:id="CF14609">
                         <usg type="geo">A</usg>
                         <orth>ⳉⲓ(ⲉⲓ)ⲧ</orth>
                     </form>
@@ -143,8 +166,12 @@
                         </cit>
                     </sense>
                 </entry>
-                <entry n="2" type="compound">
-                    <form>
+                <entry n="2" type="compound" xml:id="C6300">
+                    <form type="lemma" xml:id="CF14610">
+                        <usg type="geo">A</usg>
+                        <orth>ⳉ(ⲉ)ⲃⲉⳉⲓⲧ</orth>
+                    </form>
+                    <form xml:id="CF14611">
                         <usg type="geo">A</usg>
                         <orth>ⳉ(ⲉ)ⲃⲉⳉⲓⲧ</orth>
                     </form>
@@ -168,8 +195,12 @@
                     </sense>
                 </entry>
             </superEntry>
-            <entry>
-                <form>
+            <entry xml:id="C6301">
+                <form type="lemma" xml:id="CF14612">
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲁⲧⲉ</orth>
+                </form>
+                <form xml:id="CF14613">
                     <usg type="geo">A</usg>
                     <orth>ⳉⲁⲧⲉ</orth>
                 </form>
@@ -191,8 +222,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6302">
+                <form type="lemma" xml:id="CF14614">
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⲱϣϥ</orth>
+                </form>
+                <form xml:id="CF14615">
                     <usg type="geo">A</usg>
                     <orth>ⳉⲱϣϥ</orth>
                 </form>
@@ -214,8 +249,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6303">
+                <form type="lemma" xml:id="CF14616">
+                    <usg type="geo">A</usg>
+                    <orth>ⳉⳉⲧⲱⲣϣ</orth>
+                </form>
+                <form xml:id="CF14617">
                     <usg type="geo">A</usg>
                     <orth>ⳉⳉⲧⲱⲣϣ</orth>
                 </form>

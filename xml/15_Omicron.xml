@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
 <?xml-model href="Coptic_Lemma_Schema.xsd"?> 
-<TEI
-  xmlns:xi="http://www.w3.org/2001/XInclude"
-  xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns:math="http://www.w3.org/1998/Math/MathML"
-  xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -21,16 +18,24 @@
   </teiHeader>
   <text>
     <body>
-      <entry>
-          <form>
-            <usg type="geo">B</usg>
-            <orth>ⲟ̄</orth>
-            <gramGrp>
-              <pos>Zahlzeichen</pos>
-              <note>fünfzehnter Buchstabe des Alphabeths ⲟⲩ</note>
-            </gramGrp>
-          </form>
-        <form>
+      <entry xml:id="C2733">
+        <form type="lemma" xml:id="CF7275">
+          <usg type="geo">B</usg>
+          <orth>ⲟ̄</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>fünfzehnter Buchstabe des Alphabeths ⲟⲩ</note>
+          </gramGrp>
+        </form>
+        <form xml:id="CF7276">
+          <usg type="geo">B</usg>
+          <orth>ⲟ̄</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>fünfzehnter Buchstabe des Alphabeths ⲟⲩ</note>
+          </gramGrp>
+        </form>
+        <form xml:id="CF7277">
           <usg type="geo">F</usg>
           <orth>ⲟ̄</orth>
           <gramGrp>
@@ -38,7 +43,7 @@
             <note>fünfzehnter Buchstabe des Alphabeths ⲟⲩ</note>
           </gramGrp>
         </form>
-        <form>
+        <form xml:id="CF7278">
           <usg type="geo">S</usg>
           <orth>ⲟ̄</orth>
           <gramGrp>
@@ -47,53 +52,57 @@
             <note>fünfzehnter Buchstabe des Alphabeths ⲟⲩ</note>
           </gramGrp>
         </form>
-          <sense>
-            <cit type="translation" xml:lang="de">
-              <quote>Siebzig</quote>
-            </cit>
-            <cit type="translation" xml:lang="en">
-              <quote>seventy</quote>
-            </cit>
-            <cit type="translation" xml:lang="fr">
-              <quote>soixante-dix</quote>
-            </cit>
-            <cit>
-              <bibl>CD 253a; KoptHWb 139; DELC 154; ChLCS 35b</bibl>
-            </cit>
-          </sense>
-        </entry>
-      <entry>
-        <form>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Siebzig</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>seventy</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>soixante-dix</quote>
+          </cit>
+          <cit>
+            <bibl>CD 253a; KoptHWb 139; DELC 154; ChLCS 35b</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry xml:id="C2734">
+        <form type="lemma" xml:id="CF7279">
           <usg type="geo">S</usg>
           <orth>ⲟ</orth>
         </form>
-        <form>
+        <form xml:id="CF7280">
+          <usg type="geo">S</usg>
+          <orth>ⲟ</orth>
+        </form>
+        <form xml:id="CF7281">
           <usg type="geo">S</usg>
           <orth>ⲱ</orth>
         </form>
-        <form>
+        <form xml:id="CF7282">
           <usg type="geo">B</usg>
           <orth>ⲟ</orth>
         </form>
-        <form>
+        <form xml:id="CF7283">
           <usg type="geo">B</usg>
           <orth>ⲱ</orth>
         </form>
-        <form>
+        <form xml:id="CF7284">
           <usg type="geo">Ak</usg>
           <orth>ⲟ</orth>
         </form>
-        <form>
+        <form xml:id="CF7285">
           <usg type="geo">Ak</usg>
           <orth>ⲱ</orth>
         </form>
-          <gramGrp>
-            <pos>Adj.</pos>
-          </gramGrp>
+        <gramGrp>
+          <pos>Adj.</pos>
+        </gramGrp>
         <sense>
           <cit type="translation" xml:lang="de">
             <quote>groß</quote>
-           </cit>
+          </cit>
           <cit type="translation" xml:lang="en">
             <quote>great</quote>
           </cit>
@@ -106,33 +115,37 @@
         </sense>
       </entry>
       <superEntry>
-      <entry n="1">
-        <form>ⲟⲃ</form>
-        <gramGrp>
-          <pos>Subst.</pos>
-        </gramGrp>
-        <sense>
-          <cit type="translation" xml:lang="de">
-            <quote>Ekel (?), Abneigung (?)</quote>
-          </cit>
-          <cit type="translation" xml:lang="en">
-            <quote>disgust (?), revulsion (?)</quote>
-          </cit>
-          <cit type="translation" xml:lang="fr">
-            <quote>dégoût (?)</quote>
-          </cit>
-          <cit>
-            <bibl>CD 254a; KoptHWb 139, 528</bibl>
-          </cit>
-        </sense>
-      </entry>
-        <entry n="2" type="compound">          
-          <form>ϯ ⲟⲃ</form>
+        <entry n="1" xml:id="C2735">
+          <form type="lemma" xml:id="CF7286">ⲟⲃ</form>
+          <form xml:id="CF7287">ⲟⲃ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Ekel (?), Abneigung (?)</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>disgust (?), revulsion (?)</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>dégoût (?)</quote>
+            </cit>
+            <cit>
+              <bibl>CD 254a; KoptHWb 139, 528</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="compound" xml:id="C2736">
+          <form type="lemma" xml:id="CF7288"><orth>ϯⲟⲃ</orth><oRef>ϯ ⲟⲃ</oRef></form>
+          <form xml:id="CF7289"><orth>ϯⲟⲃ</orth><oRef>ϯ ⲟⲃ</oRef></form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
-          <xr type="cf"> <ref target="#ϯ">geben, zahlen, verkaufen</ref></xr>
+          <xr type="cf">
+            <ref target="#ϯ">geben, zahlen, verkaufen</ref>
+          </xr>
           <sense>
             <ref type="Greek">προσοχθίζειν</ref>
             <cit type="translation" xml:lang="de">
@@ -150,8 +163,9 @@
           </sense>
         </entry>
       </superEntry>
-      <entry>
-        <form>ⲟⲃⲉ</form>
+      <entry xml:id="C2737">
+        <form type="lemma" xml:id="CF7290">ⲟⲃⲉ</form>
+        <form xml:id="CF7291">ⲟⲃⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
         </gramGrp>
@@ -170,8 +184,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲃⲛ</form>
+      <entry xml:id="C2738">
+        <form type="lemma" xml:id="CF7292">ⲟⲃⲛ</form>
+        <form xml:id="CF7293">ⲟⲃⲛ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -191,8 +206,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲃϩⲉ</form>
+      <entry xml:id="C2739">
+        <form type="lemma" xml:id="CF7294">ⲟⲃϩⲉ</form>
+        <form xml:id="CF7295">ⲟⲃϩⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>f.</gen>
@@ -213,29 +229,31 @@
         </sense>
       </entry>
       <superEntry>
-      <entry n="1">
-        <form>ⲟⲉⲓⲕ</form>
-        <gramGrp>
-          <pos>Subst.</pos>
-          <gen>m.</gen>
-        </gramGrp>
-        <sense>
-          <cit type="translation" xml:lang="de">
-            <quote>Brot</quote>
-          </cit>
-          <cit type="translation" xml:lang="en">
-            <quote>bread, loaf</quote>
-          </cit>
-          <cit type="translation" xml:lang="fr">
-            <quote>pain</quote>
-          </cit>
-          <cit>
-            <bibl>CD 254ab; CED 120; KoptHWb 140; DELC 154-155; ChLCS 35b</bibl>
-          </cit>
-        </sense>
-      </entry>
-        <entry n="2" type="compound">
-          <form type="lemma">ⲁⲧⲟⲉⲓⲕ</form>
+        <entry n="1" xml:id="C2740">
+          <form type="lemma" xml:id="CF7296">ⲟⲉⲓⲕ</form>
+          <form xml:id="CF7297">ⲟⲉⲓⲕ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Brot</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>bread, loaf</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>pain</quote>
+            </cit>
+            <cit>
+              <bibl>CD 254ab; CED 120; KoptHWb 140; DELC 154-155; ChLCS 35b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="compound" xml:id="C2741">
+          <form type="lemma" xml:id="CF7298">ⲁⲧⲟⲉⲓⲕ</form>
+          <form xml:id="CF7299">ⲁⲧⲟⲉⲓⲕ</form>
           <gramGrp>
             <pos>Adj.</pos>
           </gramGrp>
@@ -254,8 +272,15 @@
             </cit>
           </sense>
         </entry>
-        <entry n="3" type="compound">
-          <form type="lemma"><orth>ⲥⲁ ⲛⲱⲓⲕ</orth><usg type="geo">B</usg></form>
+        <entry n="3" type="compound" xml:id="C2742">
+          <form type="lemma" xml:id="CF7300">
+            <orth>ⲥⲁ ⲛⲱⲓⲕ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7301">
+            <orth>ⲥⲁ ⲛⲱⲓⲕ</orth>
+            <usg type="geo">B</usg>
+          </form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -276,8 +301,9 @@
           </sense>
         </entry>
       </superEntry>
-      <entry type="hom">
-        <form>ⲟⲉⲓⲕ</form>
+      <entry type="hom" xml:id="C2743">
+        <form type="lemma" xml:id="CF7302">ⲟⲉⲓⲕ</form>
+        <form xml:id="CF7303">ⲟⲉⲓⲕ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -297,8 +323,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲕⲉ</form>
+      <entry xml:id="C2744">
+        <form type="lemma" xml:id="CF7304">ⲟⲕⲉ</form>
+        <form xml:id="CF7305">ⲟⲕⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -318,8 +345,9 @@
           </cit>
         </sense>
       </entry>
-      <entry type="foreign">
-        <form>ⲟⲉⲓⲗⲉ</form>
+      <entry type="foreign" xml:id="C2745">
+        <form type="lemma" xml:id="CF7306">ⲟⲉⲓⲗⲉ</form>
+        <form xml:id="CF7307">ⲟⲉⲓⲗⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -336,54 +364,64 @@
           </cit>
           <cit>
             <bibl>CD 254b; CED 121; KoptHWb 140; DELC 155; ChLCS 36a</bibl>
-            </cit>
+          </cit>
         </sense>
       </entry>
       <superEntry>
-      <entry n="1">
-        <form>
-          <usg type="geo">S</usg>
-          <orth>ⲟⲙⲉ</orth></form>
-        <form>
-          <usg type="geo">B</usg>
-          <orth>ⲟⲙⲓ</orth>
-        </form>
-        <form type="inflected">
-          <usg type="geo">S</usg>
-          <orth>ⲁⲙ-</orth>
-          <gramGrp>
-            <pos>Subst.</pos>
-            <subc>Status nominalis</subc>
-          </gramGrp>
-        </form>
-        <gramGrp>
-          <pos>Subst.</pos>
-          <gen>f.</gen>
-        </gramGrp>
-        <sense>
-          <cit type="translation" xml:lang="de">
-            <quote>Schlamm, Lehm, Ton</quote>
-          </cit>
-          <cit type="translation" xml:lang="en">
-            <quote>clay, mud</quote>
-          </cit>
-          <cit type="translation" xml:lang="fr">
-            <quote>boue, argile, glaise</quote>
-          </cit>
-          <cit>
-            <bibl>CD 254b-255a; CED 121; KoptHWb 141; DELC 155; ChLCS 36a</bibl>
-          </cit>
-        </sense>
-        </entry>
-        <entry n="1">
-          <form>
+        <entry n="1" xml:id="C2746">
+          <form type="lemma" xml:id="CF7308">
             <usg type="geo">S</usg>
-            <orth>ⲟⲙⲉ</orth></form>
-          <form>
+            <orth>ⲟⲙⲉ</orth>
+          </form>
+          <form xml:id="CF7309">
+            <usg type="geo">S</usg>
+            <orth>ⲟⲙⲉ</orth>
+          </form>
+          <form xml:id="CF7310">
             <usg type="geo">B</usg>
             <orth>ⲟⲙⲓ</orth>
           </form>
-          <form type="inflected">
+          <form type="inflected" xml:id="CF7311">
+            <usg type="geo">S</usg>
+            <orth>ⲁⲙ-</orth>
+            <gramGrp>
+              <pos>Subst.</pos>
+              <subc>Status nominalis</subc>
+            </gramGrp>
+          </form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Schlamm, Lehm, Ton</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>clay, mud</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>boue, argile, glaise</quote>
+            </cit>
+            <cit>
+              <bibl>CD 254b-255a; CED 121; KoptHWb 141; DELC 155; ChLCS 36a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="1" xml:id="C2747">
+          <form type="lemma" xml:id="CF7312">
+            <usg type="geo">S</usg>
+            <orth>ⲟⲙⲉ</orth>
+          </form>
+          <form xml:id="CF7313">
+            <usg type="geo">S</usg>
+            <orth>ⲟⲙⲉ</orth>
+          </form>
+          <form xml:id="CF7314">
+            <usg type="geo">B</usg>
+            <orth>ⲟⲙⲓ</orth>
+          </form>
+          <form type="inflected" xml:id="CF7315">
             <usg type="geo">S</usg>
             <orth>ⲁⲙ-</orth>
             <gramGrp>
@@ -410,12 +448,13 @@
             </cit>
           </sense>
         </entry>
-        <entry n="2" type="compound">
-          <form type="lemma">ⲁⲙⲡⲏⲣϣ</form>
+        <entry n="2" type="compound" xml:id="C2748">
+          <form type="lemma" xml:id="CF7316">ⲁⲙⲡⲏⲣϣ</form>
+          <form xml:id="CF7317">ⲁⲙⲡⲏⲣϣ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
-            </gramGrp>
+          </gramGrp>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Roterde, Ton</quote>
@@ -430,9 +469,10 @@
               <bibl>CD 255a; KoptHWb 141; ChLCS 36a</bibl>
             </cit>
           </sense>
-          </entry>
-        <entry n="3" type="compound">
-          <form type="lemma">ⲁⲙϩⲁⲧ</form>
+        </entry>
+        <entry n="3" type="compound" xml:id="C2749">
+          <form type="lemma" xml:id="CF7318">ⲁⲙϩⲁⲧ</form>
+          <form xml:id="CF7319">ⲁⲙϩⲁⲧ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -452,8 +492,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="4" type="compound">
-          <form type="lemma">ⲁⲙⲧⲱϩ</form>
+        <entry n="4" type="compound" xml:id="C2750">
+          <form type="lemma" xml:id="CF7320">ⲁⲙⲧⲱϩ</form>
+          <form xml:id="CF7321">ⲁⲙⲧⲱϩ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -473,8 +514,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="5" type="compound">
-          <form type="lemma">ⲟⲩⲁⲙⲟⲙⲉ</form>
+        <entry n="5" type="compound" xml:id="C2751">
+          <form type="lemma" xml:id="CF7322">ⲟⲩⲁⲙⲟⲙⲉ</form>
+          <form xml:id="CF7323">ⲟⲩⲁⲙⲟⲙⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
@@ -508,13 +550,16 @@
             </cit>
           </sense>
         </entry>
-        <entry n="6" type="compound">          
-          <form>ⲣⲟⲩⲁⲙⲟⲙⲉ</form>
+        <entry n="6" type="compound" xml:id="C2752">
+          <form type="lemma" xml:id="CF7324">ⲣⲟⲩⲁⲙⲟⲙⲉ</form>
+          <form xml:id="CF7325">ⲣⲟⲩⲁⲙⲟⲙⲉ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲉⲓⲣⲉ">machen, tun</ref></xr>
+          <xr type="cf">
+            <ref target="#ⲉⲓⲣⲉ">machen, tun</ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>fressen, nagen (vom Geschwür)</quote>
@@ -530,9 +575,10 @@
             </cit>
           </sense>
         </entry>
-       </superEntry>
-      <entry>
-        <form>ⲟⲉⲓⲙⲉ</form>
+      </superEntry>
+      <entry xml:id="C2753">
+        <form type="lemma" xml:id="CF7326">ⲟⲉⲓⲙⲉ</form>
+        <form xml:id="CF7327">ⲟⲉⲓⲙⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>f.</gen>
@@ -552,36 +598,42 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>
+      <entry xml:id="C2754">
+        <form type="lemma" xml:id="CF7328">
           <usg type="geo">S</usg>
-          <orth>ⲟⲛ</orth></form>
-        <form>
-            <usg type="geo">B</usg>
-            <orth>ⲟⲛ</orth></form>
-          <form>
+          <orth>ⲟⲛ</orth>
+        </form>
+        <form xml:id="CF7329">
+          <usg type="geo">S</usg>
+          <orth>ⲟⲛ</orth>
+        </form>
+        <form xml:id="CF7330">
+          <usg type="geo">B</usg>
+          <orth>ⲟⲛ</orth>
+        </form>
+        <form xml:id="CF7331">
           <usg type="geo">A</usg>
           <orth>ⲁⲛ</orth>
         </form>
-        <form>
+        <form xml:id="CF7332">
           <usg type="geo">L</usg>
           <orth>ⲁⲛ</orth>
         </form>
-        <form>
+        <form xml:id="CF7333">
           <usg type="geo">S</usg>
           <orth>ⲁⲛ</orth>
         </form>
-        <form>
+        <form xml:id="CF7334">
           <usg type="geo">F</usg>
           <orth>ⲁⲛ</orth>
         </form>
-        <form>
+        <form xml:id="CF7335">
           <usg type="geo">Ak</usg>
           <orth>ⲁⲛ</orth>
         </form>
-          <gramGrp>
-            <pos>Adv.</pos>
-          </gramGrp>
+        <gramGrp>
+          <pos>Adv.</pos>
+        </gramGrp>
         <sense n="1">
           <cit type="translation" xml:lang="de">
             <quote>wieder, auch, noch (einmal)</quote>
@@ -625,8 +677,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲛⲧⲉ</form>
+      <entry xml:id="C2755">
+        <form type="lemma" xml:id="CF7336">ⲟⲛⲧⲉ</form>
+        <form xml:id="CF7337">ⲟⲛⲧⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <number>pl.</number>
@@ -646,14 +699,19 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲉⲓⲡⲉ</form>
+      <entry xml:id="C2756">
+        <form type="lemma" xml:id="CF7338">ⲟⲉⲓⲡⲉ</form>
+        <form xml:id="CF7339">ⲟⲉⲓⲡⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>f.</gen>
         </gramGrp>
-        <xr type="cf"> <ref target="#ⲣⲧⲟⲃ">Artabe</ref></xr>
-        <xr type="cf"> <ref target="#ⲱⲡ">zählen</ref></xr>
+        <xr type="cf">
+          <ref target="#ⲣⲧⲟⲃ">Artabe</ref>
+        </xr>
+        <xr type="cf">
+          <ref target="#ⲱⲡ">zählen</ref>
+        </xr>
         <sense>
           <cit type="translation" xml:lang="de">
             <quote>'Oipe', ein Maß von 1/6 Artabe</quote>
@@ -669,11 +727,14 @@
           </cit>
         </sense>
       </entry>
-      <entry type="foreign">
-        <form>
+      <entry type="foreign" xml:id="C2757">
+        <form type="lemma" xml:id="CF7340">
           <orth n="1">ⲟⲣⲃⲉ</orth>
         </form>
-        <form>
+        <form xml:id="CF7341">
+          <orth n="1">ⲟⲣⲃⲉ</orth>
+        </form>
+        <form xml:id="CF7342">
           <orth n="2">ⲟⲗⲃⲉ</orth>
         </form>
         <gramGrp>
@@ -698,8 +759,9 @@
         </sense>
       </entry>
       <superEntry>
-        <entry n="1">
-          <form>ⲟⲥⲉ</form>
+        <entry n="1" xml:id="C2758">
+          <form type="lemma" xml:id="CF7343">ⲟⲥⲉ</form>
+          <form xml:id="CF7344">ⲟⲥⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -719,13 +781,16 @@
             </cit>
           </sense>
         </entry>
-        <entry n="2" type="compound">          
-          <form>ϯ ⲟⲥⲉ</form>
+        <entry n="2" type="compound" xml:id="C2759">
+          <form type="lemma" xml:id="CF7345"><orth>ϯⲟⲥⲉ</orth><oRef>ϯ ⲟⲥⲉ</oRef></form>
+          <form xml:id="CF7346"><orth>ϯⲟⲥⲉ</orth><oRef>ϯ ⲟⲥⲉ</oRef></form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
-          <xr type="cf"> <ref target="#ϯ">geben, zahlen, verkaufen</ref></xr>
+          <xr type="cf">
+            <ref target="#ϯ">geben, zahlen, verkaufen</ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Schaden erleiden, etwas verlieren, bestraft werden</quote>
@@ -741,8 +806,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="3" type="compound">
-          <form type="lemma">ⲙⲛⲧⲟⲥⲉ</form>
+        <entry n="3" type="compound" xml:id="C2760">
+          <form type="lemma" xml:id="CF7347">ⲙⲛⲧⲟⲥⲉ</form>
+          <form xml:id="CF7348">ⲙⲛⲧⲟⲥⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
@@ -763,12 +829,16 @@
           </sense>
         </entry>
       </superEntry>
-      <entry>
-        <form>
-        <usg type="geo">B</usg>
-        <orth n="1">ⲟⲥⲓ</orth>
+      <entry xml:id="C2761">
+        <form type="lemma" xml:id="CF7349">
+          <usg type="geo">B</usg>
+          <orth n="1">ⲟⲥⲓ</orth>
         </form>
-        <form>
+        <form xml:id="CF7350">
+          <usg type="geo">B</usg>
+          <orth n="1">ⲟⲥⲓ</orth>
+        </form>
+        <form xml:id="CF7351">
           <usg type="geo">B</usg>
           <orth n="2">ⲟⲥ</orth>
         </form>
@@ -791,8 +861,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲥⲕ</form>
+      <entry xml:id="C2762">
+        <form type="lemma" xml:id="CF7352">ⲟⲥⲕ</form>
+        <form xml:id="CF7353">ⲟⲥⲕ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -812,8 +883,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲟⲧ</form>
+      <entry xml:id="C2763">
+        <form type="lemma" xml:id="CF7354">ⲟⲟⲧ</form>
+        <form xml:id="CF7355">ⲟⲟⲧ</form>
         <gramGrp>
           <pos>Vb.</pos>
           <subc>Qualitativ</subc>
@@ -833,8 +905,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲟⲧⲉ</form>
+      <entry xml:id="C2764">
+        <form type="lemma" xml:id="CF7356">ⲟⲟⲧⲉ</form>
+        <form xml:id="CF7357">ⲟⲟⲧⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>f.</gen>
@@ -854,8 +927,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲟⲩϣ</form>
+      <entry xml:id="C2765">
+        <form type="lemma" xml:id="CF7358">ⲟⲟⲩϣ</form>
+        <form xml:id="CF7359">ⲟⲟⲩϣ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -876,13 +950,16 @@
         </sense>
       </entry>
       <superEntry>
-        <entry n="1">
-          <form>ⲟⲉⲓϣ</form>
+        <entry n="1" xml:id="C2766">
+          <form type="lemma" xml:id="CF7360">ⲟⲉⲓϣ</form>
+          <form xml:id="CF7361">ⲟⲉⲓϣ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲱϣ">rufen</ref></xr>
+          <xr type="cf">
+            <ref target="#ⲱϣ">rufen</ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Schrei, Ruf, Geschrei</quote>
@@ -898,12 +975,15 @@
             </cit>
           </sense>
         </entry>
-        <entry n="2" type="compound">
-          <form type="lemma">ⲁϣⲟⲉⲓϣ</form>
+        <entry n="2" type="compound" xml:id="C2767">
+          <form type="lemma" xml:id="CF7362">ⲁϣⲟⲉⲓϣ</form>
+          <form xml:id="CF7363">ⲁϣⲟⲉⲓϣ</form>
           <gramGrp>
             <pos>Adj.</pos>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲁϣⲁⲓ">viel werden, sich vermehren</ref></xr>
+          <xr type="cf">
+            <ref target="#ⲁϣⲁⲓ">viel werden, sich vermehren</ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>gesprächig, schwatzhaft</quote>
@@ -919,13 +999,16 @@
             </cit>
           </sense>
         </entry>
-        <entry n="3" type="compound">
-          <form type="lemma">ⲧⲁϣⲉⲟⲉⲓϣ</form>
+        <entry n="3" type="compound" xml:id="C2768">
+          <form type="lemma" xml:id="CF7364">ⲧⲁϣⲉⲟⲉⲓϣ</form>
+          <form xml:id="CF7365">ⲧⲁϣⲉⲟⲉⲓϣ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲧⲁϣⲟ"> increase </ref></xr>
+          <xr type="cf">
+            <ref target="#ⲧⲁϣⲟ"> increase </ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>ausrufen, verkündigen, predigen</quote>
@@ -941,13 +1024,16 @@
             </cit>
           </sense>
         </entry>
-        <entry n="4" type="hom">
-          <form type="lemma">ⲧⲁϣⲉⲟⲉⲓϣ</form>
+        <entry n="4" type="hom" xml:id="C2769">
+          <form type="lemma" xml:id="CF7366">ⲧⲁϣⲉⲟⲉⲓϣ</form>
+          <form xml:id="CF7367">ⲧⲁϣⲉⲟⲉⲓϣ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲧⲁϣⲟ"> increase </ref></xr>
+          <xr type="cf">
+            <ref target="#ⲧⲁϣⲟ"> increase </ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Verkündigung, Predigt</quote>
@@ -963,14 +1049,19 @@
             </cit>
           </sense>
         </entry>
-        <entry n="5" type="hom">
-          <form type="lemma">ⲣⲉϥⲧⲁϣⲉⲟⲉⲓϣ</form>
+        <entry n="5" type="hom" xml:id="C2770">
+          <form type="lemma" xml:id="CF7368">ⲣⲉϥⲧⲁϣⲉⲟⲉⲓϣ</form>
+          <form xml:id="CF7369">ⲣⲉϥⲧⲁϣⲉⲟⲉⲓϣ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲣⲉϥ "> man who . . . </ref></xr>
-          <xr type="cf"> <ref target="#ⲧⲁϣⲟ"> increase </ref></xr>
+          <xr type="cf">
+            <ref target="#ⲣⲉϥ "> man who . . . </ref>
+          </xr>
+          <xr type="cf">
+            <ref target="#ⲧⲁϣⲟ"> increase </ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Prediger, Verkünder, Herold</quote>
@@ -986,15 +1077,22 @@
             </cit>
           </sense>
         </entry>
-        <entry n="6" type="hom">
-          <form type="lemma">ⲙⲛⲧⲣⲉϥⲧⲁϣⲉⲟⲉⲓϣ</form>
+        <entry n="6" type="hom" xml:id="C2771">
+          <form type="lemma" xml:id="CF7370">ⲙⲛⲧⲣⲉϥⲧⲁϣⲉⲟⲉⲓϣ</form>
+          <form xml:id="CF7371">ⲙⲛⲧⲣⲉϥⲧⲁϣⲉⲟⲉⲓϣ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲙⲛⲧ">pref. to nn. or adj. forming abstracts</ref></xr>
-          <xr type="cf"> <ref target="#ⲣⲉϥ "> man who . . . </ref></xr>
-          <xr type="cf"> <ref target="#ⲧⲁϣⲟ"> increase </ref></xr>
+          <xr type="cf">
+            <ref target="#ⲙⲛⲧ">pref. to nn. or adj. forming abstracts</ref>
+          </xr>
+          <xr type="cf">
+            <ref target="#ⲣⲉϥ "> man who . . . </ref>
+          </xr>
+          <xr type="cf">
+            <ref target="#ⲧⲁϣⲟ"> increase </ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Verkündigung</quote>
@@ -1010,14 +1108,26 @@
             </cit>
           </sense>
         </entry>
-        <entry n="7" type="compound">
-          <form><orth>ϩⲓⲱⲓϣ</orth><usg type="geo">B</usg></form>          
-          <form> <orth>ϩⲓⲁⲓϣ</orth><usg type="geo">F</usg></form> 
+        <entry n="7" type="compound" xml:id="C2772">
+          <form type="lemma" xml:id="CF7372">
+            <orth>ϩⲓⲱⲓϣ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7373">
+            <orth>ϩⲓⲱⲓϣ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7374">
+            <orth>ϩⲓⲁⲓϣ</orth>
+            <usg type="geo">F</usg>
+          </form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
           </gramGrp>
-          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">werfen, verbreiten</ref></xr>
+          <xr type="cf">
+            <ref target="#ϩⲓⲟⲩⲉ">werfen, verbreiten</ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>ausrufen, verkündigen, predigen</quote>
@@ -1033,13 +1143,22 @@
             </cit>
           </sense>
         </entry>
-        <entry n="8" type="hom">
-          <form type="lemma"><orth>ϩⲓⲱⲓϣ</orth><usg type="geo">B</usg></form>
+        <entry n="8" type="hom" xml:id="C2773">
+          <form type="lemma" xml:id="CF7375">
+            <orth>ϩⲓⲱⲓϣ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7376">
+            <orth>ϩⲓⲱⲓϣ</orth>
+            <usg type="geo">B</usg>
+          </form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
-          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref></xr>
+          <xr type="cf">
+            <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Verkündigung, Predigt</quote>
@@ -1055,14 +1174,25 @@
             </cit>
           </sense>
         </entry>
-        <entry n="9" type="compound">
-          <form type="lemma"><orth>ⲣⲉϥϩⲓⲱⲓϣ</orth><usg type="geo">B</usg></form>
+        <entry n="9" type="compound" xml:id="C2774">
+          <form type="lemma" xml:id="CF7377">
+            <orth>ⲣⲉϥϩⲓⲱⲓϣ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7378">
+            <orth>ⲣⲉϥϩⲓⲱⲓϣ</orth>
+            <usg type="geo">B</usg>
+          </form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
-          <xr type="cf"> <ref target="#ⲣⲉϥ"> the one who . . . </ref></xr>
-          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref></xr>
+          <xr type="cf">
+            <ref target="#ⲣⲉϥ"> the one who . . . </ref>
+          </xr>
+          <xr type="cf">
+            <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Prediger</quote>
@@ -1078,15 +1208,26 @@
             </cit>
           </sense>
         </entry>
-        <entry n="10" type="compound">
-          <form type="lemma"><orth>ϫⲓⲛϩⲓⲱⲓϣ</orth><usg type="geo">B</usg></form>
-                    <gramGrp>
+        <entry n="10" type="compound" xml:id="C2775">
+          <form type="lemma" xml:id="CF7379">
+            <orth>ϫⲓⲛϩⲓⲱⲓϣ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7380">
+            <orth>ϫⲓⲛϩⲓⲱⲓϣ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
           </gramGrp>
-          <xr type="cf"> <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref></xr>
-          <xr type="cf"> <ref target="#ϭⲓⲛ"> act of, manner of </ref></xr>         
-          
+          <xr type="cf">
+            <ref target="#ϩⲓⲟⲩⲉ">strike, cast, lay </ref>
+          </xr>
+          <xr type="cf">
+            <ref target="#ϭⲓⲛ"> act of, manner of </ref>
+          </xr>
+
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>Verkündigung</quote>
@@ -1103,8 +1244,9 @@
           </sense>
         </entry>
       </superEntry>
-      <entry>
-        <form>ⲟⲓϩ</form>
+      <entry xml:id="C2776">
+        <form type="lemma" xml:id="CF7381">ⲟⲓϩ</form>
+        <form xml:id="CF7382">ⲟⲓϩ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -1124,8 +1266,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟⲟϩ</form>
+      <entry xml:id="C2777">
+        <form type="lemma" xml:id="CF7383">ⲟⲟϩ</form>
+        <form xml:id="CF7384">ⲟⲟϩ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -1159,8 +1302,9 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form>ⲟϩⲉ</form>
+      <entry xml:id="C2778">
+        <form type="lemma" xml:id="CF7385">ⲟϩⲉ</form>
+        <form xml:id="CF7386">ⲟϩⲉ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -1209,8 +1353,15 @@
         </sense>
       </entry>
       <superEntry>
-        <entry n="1">
-          <form><orth>ⲟϫⲓ</orth><usg type="geo">B</usg></form>
+        <entry n="1" xml:id="C2779">
+          <form type="lemma" xml:id="CF7387">
+            <orth>ⲟϫⲓ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7388">
+            <orth>ⲟϫⲓ</orth>
+            <usg type="geo">B</usg>
+          </form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
@@ -1230,8 +1381,15 @@
             </cit>
           </sense>
         </entry>
-        <entry n="2" type="hom">
-          <form><orth>ⲟϫⲓ</orth><usg type="geo">B</usg></form>
+        <entry n="2" type="hom" xml:id="C2780">
+          <form type="lemma" xml:id="CF7389">
+            <orth>ⲟϫⲓ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7390">
+            <orth>ⲟϫⲓ</orth>
+            <usg type="geo">B</usg>
+          </form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -1251,8 +1409,15 @@
             </cit>
           </sense>
         </entry>
-        <entry n="3" type="compound">
-          <form type="lemma"><orth>ⲙⲉⲧⲟϫⲓ</orth><usg type="geo">B</usg></form>
+        <entry n="3" type="compound" xml:id="C2781">
+          <form type="lemma" xml:id="CF7391">
+            <orth>ⲙⲉⲧⲟϫⲓ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <form xml:id="CF7392">
+            <orth>ⲙⲉⲧⲟϫⲓ</orth>
+            <usg type="geo">B</usg>
+          </form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
@@ -1262,7 +1427,7 @@
               <quote>Ungerechtigkeit</quote>
             </cit>
             <cit type="translation" xml:lang="en">
-              <quote>iniquity</quote>
+              <quote>inequity, injustice</quote>
             </cit>
             <cit type="translation" xml:lang="fr">
               <quote>iniquité</quote>
@@ -1273,6 +1438,6 @@
           </sense>
         </entry>
       </superEntry>
-     </body>
+    </body>
   </text>
 </TEI>
