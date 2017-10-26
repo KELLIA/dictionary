@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
 <?xml-model href="Coptic_Lemma_Schema.xsd"?> 
-<TEI
-  xmlns:xi="http://www.w3.org/2001/XInclude"
-  xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns:math="http://www.w3.org/1998/Math/MathML"
-  xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -22,28 +19,30 @@
   <text>
     <body>
       <superEntry>
-      <entry n="1">
-        <form>ϥⲓ</form>
-        <gramGrp>
-          <pos>Vb.</pos>
-         </gramGrp>
-        <sense>
-          <cit type="translation" xml:lang="de">
-            <quote>aufheben, tragen, nehmen</quote>
-           </cit>
-          <cit type="translation" xml:lang="en">
-            <quote>bear, carry, take</quote>
-           </cit>
-          <cit type="translation" xml:lang="fr">
-            <quote>lever, porter, ôter</quote>
-          </cit>
-          <cit>
-            <bibl>CD 620a-623a; CED 265; KoptHWb 344; DELC 280a; ChLCS 85a-b</bibl>
-          </cit>
-        </sense>
-      </entry>
-        <entry n="2" type="compound">
-          <form type="lemma">ϥⲓⲧⲟⲟⲧ</form>
+        <entry n="1" xml:id="C6260">
+          <form type="lemma" xml:id="CF14529">ϥⲓ</form>
+          <form xml:id="CF14530">ϥⲓ</form>
+          <gramGrp>
+            <pos>Vb.</pos>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>aufheben, tragen, nehmen</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>bear, carry, take</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>lever, porter, ôter</quote>
+            </cit>
+            <cit>
+              <bibl>CD 620a-623a; CED 265; KoptHWb 344; DELC 280a; ChLCS 85a-b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="compound" xml:id="C6261">
+          <form type="lemma" xml:id="CF14531">ϥⲓⲧⲟⲟⲧ</form>
+          <form xml:id="CF14532">ϥⲓⲧⲟⲟⲧ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -62,8 +61,10 @@
               <bibl>CD 620b; KoptHWb 344; ChLCS 85b</bibl>
             </cit>
           </sense>
-        </entry><entry n="3" type="compound">
-          <form type="lemma">ϥⲓ ⲙⲛ</form>
+        </entry>
+        <entry n="3" type="compound" xml:id="C6262">
+          <form type="lemma" xml:id="CF14533">ϥⲓ ⲙⲛ</form>
+          <form xml:id="CF14534">ϥⲓ ⲙⲛ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -83,8 +84,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="4" type="compound">
-          <form type="lemma">ϥⲓ ϩⲁ-</form>
+        <entry n="4" type="compound" xml:id="C6263">
+          <form type="lemma" xml:id="CF14535">ϥⲓ ϩⲁ-</form>
+          <form xml:id="CF14536">ϥⲓ ϩⲁ-</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -104,8 +106,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="5" type="compound">
-          <form type="lemma">ϥⲓ ⲉⲃⲟⲗ</form>
+        <entry n="5" type="compound" xml:id="C6264">
+          <form type="lemma" xml:id="CF14537">ϥⲓ ⲉⲃⲟⲗ</form>
+          <form xml:id="CF14538">ϥⲓ ⲉⲃⲟⲗ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -125,8 +128,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="6" type="compound">
-          <form type="lemma">ϥⲓ ⲙⲙⲁⲩ</form>
+        <entry n="6" type="compound" xml:id="C6265">
+          <form type="lemma" xml:id="CF14539">ϥⲓ ⲙⲙⲁⲩ</form>
+          <form xml:id="CF14540">ϥⲓ ⲙⲙⲁⲩ</form>
           <gramGrp>
             <pos>Vb.</pos>
             <subc>Kompositverb</subc>
@@ -146,8 +150,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="7" type="compound">
-          <form type="lemma">ⲙⲛⲧϥⲓ</form>
+        <entry n="7" type="compound" xml:id="C6266">
+          <form type="lemma" xml:id="CF14541">ⲙⲛⲧϥⲓ</form>
+          <form xml:id="CF14542">ⲙⲛⲧϥⲓ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
@@ -167,8 +172,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="8" type="compound">
-          <form type="lemma">ⲃⲁⲓⲥⲛⲁⲩ</form>
+        <entry n="8" type="compound" xml:id="C6267">
+          <form type="lemma" xml:id="CF14543">ⲃⲁⲓⲥⲛⲁⲩ</form>
+          <form xml:id="CF14544">ⲃⲁⲓⲥⲛⲁⲩ</form>
           <gramGrp>
             <pos>Subst.</pos>
           </gramGrp>
@@ -187,9 +193,10 @@
             </cit>
           </sense>
         </entry>
-        </superEntry>   
-      <entry>
-        <form>ϥⲟ</form>
+      </superEntry>
+      <entry xml:id="C6268">
+        <form type="lemma" xml:id="CF14545">ϥⲟ</form>
+        <form xml:id="CF14546">ϥⲟ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>f.</gen>
@@ -209,117 +216,147 @@
           </cit>
         </sense>
       </entry>
-         <superEntry>
-           <entry n="1" type="hom">
-             <form>ϥⲱ</form>
-             <gramGrp>
-               <pos>Subst.</pos>
-               <gen>m.</gen>
-             </gramGrp>
-             <sense>
-               <cit type="translation" xml:lang="de">
-                 <quote>Haar</quote>
-               </cit>
-               <cit type="translation" xml:lang="en">
-                 <quote>hair</quote>
-               </cit>
-               <cit type="translation" xml:lang="fr">
-                 <quote>Cheveux</quote>
-               </cit>
-               <cit>
-                 <bibl>CD 623a; CED 265; KoptHWb 345; DELC 280b; ChLCS 85b</bibl>
-               </cit>
-             </sense>
-           </entry>
-           <entry n="2" type="compound">    
-             <form type="lemma">ⲣⲁⲧϥⲱ</form>
-             <form><orth>ⲣⲁⲧϥⲱ</orth><usg type="geo">S</usg></form>             
-             <form><orth>ⲗⲁϥⲱⲓ</orth><usg type="geo">B</usg></form>             
-             <gramGrp>
-               <pos>Adj.</pos>
-              </gramGrp>
-             <xr type="cf"> <ref target="#ⲣⲱⲧ"> grow, sprout, be covered with a growth (as vegetation, hair) </ref></xr>
-             <sense>
-               <cit type="translation" xml:lang="de">
-                 <quote>behaart</quote>
-               </cit>
-               <cit type="translation" xml:lang="en">
-                 <quote>hairy</quote>
-               </cit>
-               <cit type="translation" xml:lang="fr">
-                 <quote>poilu</quote>
-               </cit>
-               <cit>
-                 <bibl>CD 623b; KoptHWb 345; DELC 280b; ChLCS 85b</bibl>
-               </cit>
-             </sense>
-           </entry>
-           <entry n="3" type="compound">      
-            <form type="lemma"><orth>ⲥⲕ ϥⲱⲟⲩ</orth><usg type="geo">F</usg></form>
-             <gramGrp>
-               <pos>Vb.</pos>
-               <subc>Kompositverb</subc>
-             </gramGrp>
-             <sense>
-               <cit type="translation" xml:lang="de">
-                 <quote>das Haar kämmen</quote>
-               </cit>
-               <cit type="translation" xml:lang="en">
-                 <quote>comb hair</quote>
-               </cit>
-               <cit type="translation" xml:lang="fr">
-                 <quote>peigner des cheveux</quote>
-               </cit>
-               <cit>
-                 <bibl>CD 623b; KoptHWb 345; DELC 280b</bibl>
-               </cit>
-             </sense>
-           </entry>
-           <entry n="4">
-             <form type="lemma">ⲟⲩⲉϩϥⲱ</form>
-             <gramGrp>
-               <pos>Vb.</pos>
-               <subc>Kompositverb</subc>
-             </gramGrp>
-             <xr type="cf"> <ref target="#ⲟⲩⲱϩ">put, place, add, be placed, stay, dwell</ref></xr>
-             <sense>
-               <cit type="translation" xml:lang="de">
-                 <quote>Haar wachsen zu lassen</quote>
-               </cit>
-               <cit type="translation" xml:lang="en">
-                 <quote>let hair grow</quote>
-               </cit>
-               <cit type="translation" xml:lang="fr">
-                 <quote>se laisser pousser les cheveux</quote>
-               </cit>
-               <cit>
-                 <bibl>CD 623b; ChLCS 85b</bibl>
-               </cit>
-             </sense>
-           </entry>
-         </superEntry>   
-    <entry type="hom">
-      <form>ϥⲱ</form>
-      <gramGrp>
-        <pos>Subst.</pos>
-      </gramGrp>
-      <sense>
-        <cit type="translation" xml:lang="de">
-          <quote>Bedeutung unbekannt</quote>
-        </cit>
-        <cit type="translation" xml:lang="en">
-          <quote>meaning unknown</quote>
-        </cit>
-        <cit type="translation" xml:lang="fr">
-          <quote>sens inconnu</quote>
-        </cit>
-        <cit>
-          <bibl>CD 623b</bibl>
-        </cit>
-      </sense>
-    </entry>
-      <entry>
-        <form><orth>ϥⲟⲩⲕⲁⲥⲓ</orth><usg type="geo">B</usg></form>
+      <superEntry>
+        <entry n="1" type="hom" xml:id="C6269">
+          <form type="lemma" xml:id="CF14547">ϥⲱ</form>
+          <form xml:id="CF14548">ϥⲱ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Haar</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>hair</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>Cheveux</quote>
+            </cit>
+            <cit>
+              <bibl>CD 623a; CED 265; KoptHWb 345; DELC 280b; ChLCS 85b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="compound" xml:id="C6270">
+          <form type="lemma" xml:id="CF14549">ⲣⲁⲧϥⲱ</form>
+          <form xml:id="CF14550">
+            <orth>ⲣⲁⲧϥⲱ</orth>
+            <usg type="geo">S</usg>
+          </form>
+          <form xml:id="CF14551">
+            <orth>ⲗⲁϥⲱⲓ</orth>
+            <usg type="geo">B</usg>
+          </form>
+          <gramGrp>
+            <pos>Adj.</pos>
+          </gramGrp>
+          <xr type="cf">
+            <ref target="#ⲣⲱⲧ"> grow, sprout, be covered with a growth (as vegetation, hair) </ref>
+          </xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>behaart</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>hairy</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>poilu</quote>
+            </cit>
+            <cit>
+              <bibl>CD 623b; KoptHWb 345; DELC 280b; ChLCS 85b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="3" type="compound" xml:id="C6271">
+          <form type="lemma" xml:id="CF14552">
+            <orth>ⲥⲕϥⲱⲟⲩ</orth>
+            <usg type="geo">F</usg>
+          </form>
+          <form xml:id="CF14553">
+            <orth>ⲥⲕϥⲱⲟⲩ</orth>
+            <usg type="geo">F</usg>
+          </form>
+          <gramGrp>
+            <pos>Vb.</pos>
+            <subc>Kompositverb</subc>
+          </gramGrp>
+          <xr type="cf">
+            <ref target="#ⲥⲱⲕ">flow (as water, hair), blow (as wind, smoke), move on swiftly, glide, draw, be drawn</ref>
+          </xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>das Haar kämmen</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>comb hair</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>peigner des cheveux</quote>
+            </cit>
+            <cit>
+              <bibl>CD 623b; KoptHWb 345; DELC 280b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="4" xml:id="C6272">
+          <form type="lemma" xml:id="CF14554">ⲟⲩⲉϩϥⲱ</form>
+          <form xml:id="CF14555">ⲟⲩⲉϩϥⲱ</form>
+          <gramGrp>
+            <pos>Vb.</pos>
+            <subc>Kompositverb</subc>
+          </gramGrp>
+          <xr type="cf">
+            <ref target="#ⲟⲩⲱϩ">put, place, add, be placed, stay, dwell</ref>
+          </xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Haar wachsen zu lassen</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>let hair grow</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>se laisser pousser les cheveux</quote>
+            </cit>
+            <cit>
+              <bibl>CD 623b; ChLCS 85b</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </superEntry>
+      <entry type="hom" xml:id="C6273">
+        <form type="lemma" xml:id="CF14556">ϥⲱ</form>
+        <form xml:id="CF14557">ϥⲱ</form>
+        <gramGrp>
+          <pos>Subst.</pos>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>Bedeutung unbekannt</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>meaning unknown</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>sens inconnu</quote>
+          </cit>
+          <cit>
+            <bibl>CD 623b</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <entry xml:id="C6274">
+        <form type="lemma" xml:id="CF14558">
+          <orth>ϥⲟⲩⲕⲁⲥⲓ</orth>
+          <usg type="geo">B</usg>
+        </form>
+        <form xml:id="CF14559">
+          <orth>ϥⲟⲩⲕⲁⲥⲓ</orth>
+          <usg type="geo">B</usg>
+        </form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>f.</gen>
@@ -339,95 +376,114 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-         <form><orth>ϥⲓⲕⲟϩⲓ</orth><usg type="geo">B</usg></form>
-         <gramGrp>
-           <pos>Subst.</pos>
-           <gen>f.</gen>
-         </gramGrp>
-         <sense>
-           <cit type="translation" xml:lang="de">
-             <quote>ein Gerät des Webers, Rolle (?)</quote>
-           </cit>
-           <cit type="translation" xml:lang="en">
-             <quote>weaver's tool, cylinder (?)</quote>
-           </cit>
-           <cit type="translation" xml:lang="fr">
-             <quote>l'outil de tisserand, cylindre (?)</quote>
-           </cit>
-           <cit>
-             <bibl>CD 623b; KoptHWb 345</bibl>
-           </cit>
-         </sense>
-       </entry>
-        <superEntry>
-          <entry n="1">
-            <form>ϥⲛⲧ</form>
-         <gramGrp>
-              <pos>Subst.</pos>
-              <gen>f.</gen>
-            </gramGrp>
-            <sense>
-              <cit type="translation" xml:lang="de">
-                <quote>Wurm</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>worm</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>ver</quote>
-              </cit>
-              <cit>
-                <bibl>CD 623b; CED 266; KoptHWb 345; DELC 280b; ChLCS 85b</bibl>
-              </cit>
-            </sense>
-          </entry>
-          <entry n="1">
-            <form>ϥⲛⲧ</form>
-            <gramGrp>
-              <pos>Subst.</pos>
-              <gen>m.</gen>
-            </gramGrp>
-            <sense>
-              <cit type="translation" xml:lang="de">
-                <quote>Wurm</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>worm</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>ver</quote>
-              </cit>
-              <cit>
-                <bibl>CD 623b; CED 266; KoptHWb 345; DELC 280b; ChLCS 85b</bibl>
-              </cit>
-            </sense>
-          </entry>
-          <entry n="2" type="compound">            
-            <form>ⲣϥⲛⲧ</form>
-            <gramGrp>
-              <pos>Vb.</pos>
-              <subc>Kompositverb</subc>
-            </gramGrp>
-            <xr type="cf"> <ref target="#ⲉⲓⲣⲉ">machen, tun</ref></xr>
-            <sense>
-              <cit type="translation" xml:lang="de">
-                <quote>Würmer bekommen, von Würmern zerfressen werden</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>produce worms, be worm-eaten</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>se décomposer, être mangé par les vers</quote>
-              </cit>
-              <cit>
-                <bibl>CD 623b; KoptHWb 345; ChLCS 85b</bibl>
-              </cit>
-            </sense>
-          </entry>
-        </superEntry>
-      <entry>
-        <form><orth>ϥⲣⲉ</orth><usg type="geo">B</usg></form>
+      <entry xml:id="C6275">
+        <form type="lemma" xml:id="CF14560">
+          <orth>ϥⲓⲕⲟϩⲓ</orth>
+          <usg type="geo">B</usg>
+        </form>
+        <form xml:id="CF14561">
+          <orth>ϥⲓⲕⲟϩⲓ</orth>
+          <usg type="geo">B</usg>
+        </form>
+        <gramGrp>
+          <pos>Subst.</pos>
+          <gen>f.</gen>
+        </gramGrp>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>ein Gerät des Webers, Rolle (?)</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>weaver's tool, cylinder (?)</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>l'outil de tisserand, cylindre (?)</quote>
+          </cit>
+          <cit>
+            <bibl>CD 623b; KoptHWb 345</bibl>
+          </cit>
+        </sense>
+      </entry>
+      <superEntry>
+        <entry n="1" xml:id="C6276">
+          <form type="lemma" xml:id="CF14562">ϥⲛⲧ</form>
+          <form xml:id="CF14563">ϥⲛⲧ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Wurm</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>worm</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>ver</quote>
+            </cit>
+            <cit>
+              <bibl>CD 623b; CED 266; KoptHWb 345; DELC 280b; ChLCS 85b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="1" xml:id="C6277">
+          <form type="lemma" xml:id="CF14564">ϥⲛⲧ</form>
+          <form xml:id="CF14565">ϥⲛⲧ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Wurm</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>worm</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>ver</quote>
+            </cit>
+            <cit>
+              <bibl>CD 623b; CED 266; KoptHWb 345; DELC 280b; ChLCS 85b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="compound" xml:id="C6278">
+          <form type="lemma" xml:id="CF14566">ⲣϥⲛⲧ</form>
+          <form xml:id="CF14567">ⲣϥⲛⲧ</form>
+          <gramGrp>
+            <pos>Vb.</pos>
+            <subc>Kompositverb</subc>
+          </gramGrp>
+          <xr type="cf">
+            <ref target="#ⲉⲓⲣⲉ">machen, tun</ref>
+          </xr>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Würmer bekommen, von Würmern zerfressen werden</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>produce worms, be worm-eaten</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>se décomposer, être mangé par les vers</quote>
+            </cit>
+            <cit>
+              <bibl>CD 623b; KoptHWb 345; ChLCS 85b</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </superEntry>
+      <entry xml:id="C6279">
+        <form type="lemma" xml:id="CF14568">
+          <orth>ϥⲣⲉ</orth>
+          <usg type="geo">B</usg>
+        </form>
+        <form xml:id="CF14569">
+          <orth>ϥⲣⲉ</orth>
+          <usg type="geo">B</usg>
+        </form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -447,11 +503,18 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form><orth>ϥⲟⲣϥⲉⲣ</orth><usg type="geo">B</usg></form>
+      <entry xml:id="C6280">
+        <form type="lemma" xml:id="CF14570">
+          <orth>ϥⲟⲣϥⲉⲣ</orth>
+          <usg type="geo">B</usg>
+        </form>
+        <form xml:id="CF14571">
+          <orth>ϥⲟⲣϥⲉⲣ</orth>
+          <usg type="geo">B</usg>
+        </form>
         <gramGrp>
           <pos>Vb.</pos>
-         </gramGrp>
+        </gramGrp>
         <sense>
           <cit type="translation" xml:lang="de">
             <quote>herabfallen, herunterwerfen</quote>
@@ -467,8 +530,15 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form><orth>ϥⲱⲥⲓ</orth><usg type="geo">B</usg></form>
+      <entry xml:id="C6281">
+        <form type="lemma" xml:id="CF14572">
+          <orth>ϥⲱⲥⲓ</orth>
+          <usg type="geo">B</usg>
+        </form>
+        <form xml:id="CF14573">
+          <orth>ϥⲱⲥⲓ</orth>
+          <usg type="geo">B</usg>
+        </form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>
@@ -489,8 +559,9 @@
         </sense>
       </entry>
       <superEntry>
-        <entry n="1" type="hom">
-          <form>ϥⲱⲧⲉ</form>
+        <entry n="1" type="hom" xml:id="C6282">
+          <form type="lemma" xml:id="CF14574">ϥⲱⲧⲉ</form>
+          <form xml:id="CF14575">ϥⲱⲧⲉ</form>
           <gramGrp>
             <pos>Vb.</pos>
           </gramGrp>
@@ -509,8 +580,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="2" type="compound">
-          <form type="lemma">ϥⲱⲧⲉ ⲉⲃⲟⲗ</form>
+        <entry n="2" type="compound" xml:id="C6283">
+          <form type="lemma" xml:id="CF14576">ϥⲱⲧⲉ ⲉⲃⲟⲗ</form>
+          <form xml:id="CF14577">ϥⲱⲧⲉ ⲉⲃⲟⲗ</form>
           <gramGrp>
             <pos>Vb.</pos>
           </gramGrp>
@@ -531,29 +603,31 @@
         </entry>
       </superEntry>
       <superEntry>
-        <entry type="hom">
-          <form>ϥⲱⲧⲉ</form>
+        <entry type="hom" xml:id="C6284">
+          <form type="lemma" xml:id="CF14578">ϥⲱⲧⲉ</form>
+          <form xml:id="CF14579">ϥⲱⲧⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>
           </gramGrp>
-            <sense>
-              <cit type="translation" xml:lang="de">
-                <quote>Schweiß</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>sweat</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>sueur</quote>
-              </cit>
-              <cit>
-                <bibl>CD 625a;  CED 266; KoptHWb 346; DELC 281a; ChLCS 85b</bibl>
-              </cit>
-            </sense>
-          </entry>
-        <entry type="hom">
-          <form>ϥⲱⲧⲉ</form>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Schweiß</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>sweat</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>sueur</quote>
+            </cit>
+            <cit>
+              <bibl>CD 625a; CED 266; KoptHWb 346; DELC 281a; ChLCS 85b</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry type="hom" xml:id="C6285">
+          <form type="lemma" xml:id="CF14580">ϥⲱⲧⲉ</form>
+          <form xml:id="CF14581">ϥⲱⲧⲉ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -569,16 +643,19 @@
               <quote>sueur</quote>
             </cit>
             <cit>
-              <bibl>CD 625a;  CED 266; KoptHWb 346; DELC 281a; ChLCS 85b</bibl>
+              <bibl>CD 625a; CED 266; KoptHWb 346; DELC 281a; ChLCS 85b</bibl>
             </cit>
           </sense>
         </entry>
-        <entry n="2" type="compound">          
-          <form>ϯϥⲱⲧⲉ</form>
+        <entry n="2" type="compound" xml:id="C6286">
+          <form type="lemma" xml:id="CF14582">ϯϥⲱⲧⲉ</form>
+          <form xml:id="CF14583">ϯϥⲱⲧⲉ</form>
           <gramGrp>
             <pos>Vb.</pos>
           </gramGrp>
-          <xr type="cf"> <ref target="#ϯ">geben, zahlen, verkaufen</ref></xr>
+          <xr type="cf">
+            <ref target="#ϯ">geben, zahlen, verkaufen</ref>
+          </xr>
           <sense>
             <cit type="translation" xml:lang="de">
               <quote>schwitzen</quote>
@@ -595,8 +672,15 @@
           </sense>
         </entry>
       </superEntry>
-      <entry>
-        <form><orth>ϥⲱϯⲁ</orth><usg type="geo">B</usg></form>
+      <entry xml:id="C6287">
+        <form type="lemma" xml:id="CF14584">
+          <orth>ϥⲱϯⲁ</orth>
+          <usg type="geo">B</usg>
+        </form>
+        <form xml:id="CF14585">
+          <orth>ϥⲱϯⲁ</orth>
+          <usg type="geo">B</usg>
+        </form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>f.</gen>
@@ -616,8 +700,15 @@
           </cit>
         </sense>
       </entry>
-      <entry>
-        <form><orth>(ϥⲱⲧⲥ)</orth><usg type="geo">B</usg></form>
+      <entry xml:id="C6288">
+        <form type="lemma" xml:id="CF14586">
+          <orth>(ϥⲱⲧⲥ)</orth>
+          <usg type="geo">B</usg>
+        </form>
+        <form xml:id="CF14587">
+          <orth>(ϥⲱⲧⲥ)</orth>
+          <usg type="geo">B</usg>
+        </form>
         <gramGrp>
           <pos>Vb.</pos>
         </gramGrp>
@@ -637,8 +728,9 @@
         </sense>
       </entry>
       <superEntry>
-        <entry n="1">
-          <form>ϥⲧⲟⲟⲩ</form>
+        <entry n="1" xml:id="C6289">
+          <form type="lemma" xml:id="CF14588">ϥⲧⲟⲟⲩ</form>
+          <form xml:id="CF14589">ϥⲧⲟⲟⲩ</form>
           <gramGrp>
             <pos>Zahlwort</pos>
           </gramGrp>
@@ -657,8 +749,9 @@
             </cit>
           </sense>
         </entry>
-        <entry n="2" type="compound">
-          <form type="lemma">ⲡⲉϥⲧⲟⲟⲩ</form>
+        <entry n="2" type="compound" xml:id="C6290">
+          <form type="lemma" xml:id="CF14590">ⲡⲉϥⲧⲟⲟⲩ</form>
+          <form xml:id="CF14591">ⲡⲉϥⲧⲟⲟⲩ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>m.</gen>
@@ -678,107 +771,111 @@
             </cit>
           </sense>
         </entry>
-        </superEntry>
-        <superEntry>
-          <entry n="1" type="hom">
-            <form>ϥⲱϭⲉ</form>
-            <gramGrp>
-              <pos>Vb.</pos>
-            </gramGrp>
-            <sense n="1">
-              <cit type="translation" xml:lang="de">
-                <quote>aufspringen, sich beeilen</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>leap, move hastily</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>bondir, se mouvoir rapidement</quote>
-              </cit>
-              <cit>
-                <bibl>CD 625b-627b; CED 266; KoptHWb 346-347; DELC 282b; ChLCS 86a</bibl>
-              </cit>
-            </sense>
-            <sense n="2">
-              <cit type="translation" xml:lang="de">
-                <quote>ausreißen, fortnehmen, rauben</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>pluck, seize, rob</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>arracher, saisir, cueillir</quote>
-              </cit>
-              <cit>
-                <bibl>CD 626b-627a; CED 266; KoptHWb 346-347; DELC 282b; ChLCS 86a</bibl>
-              </cit>
-            </sense>
-          </entry>
-          <entry n="2" type="hom">
-            <form>ϥⲱϭⲉ</form>
-            <gramGrp>
-              <pos>Subst.</pos>
-              <gen>m.</gen>
-            </gramGrp>
-            <sense>
-              <cit type="translation" xml:lang="de">
-                <quote>Ungestüm, Begierde, Raffsucht</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>impetuosity, grasping, greed</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>impétuosité, avidité</quote>
-              </cit>
-              <cit>
-                <bibl>CD 625b-627b; KoptHWb 347; ChLCS 86a</bibl>
-              </cit>
-            </sense>
-          </entry>
-          <entry n="3" type="compound">
-            <form type="lemma">ⲣⲉϥϥⲱϭⲉ</form>
-            <gramGrp>
-              <pos>Subst.</pos>
-              <gen>m.</gen>
-            </gramGrp>
-            <sense>
-              <cit type="translation" xml:lang="de">
-                <quote>heftige, gewaltsame Person</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>impetuous, violent person</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>impétueuse (personne), violente</quote>
-              </cit>
-              <cit>
-                <bibl>CD 627b; ChLCS 86a</bibl>
-              </cit>
-            </sense>
-          </entry>
-          <entry n="4" type="compound">
-            <form type="lemma">ϭⲓⲛϥⲱϭⲉ</form>
-            <gramGrp>
-              <pos>Subst.</pos>
-              <gen>f.</gen>
-            </gramGrp>
-            <sense>
-              <cit type="translation" xml:lang="de">
-                <quote>Begierde, Heftigkeit</quote>
-              </cit>
-              <cit type="translation" xml:lang="en">
-                <quote>zeal, violence</quote>
-              </cit>
-              <cit type="translation" xml:lang="fr">
-                <quote>zèle, violence</quote>
-              </cit>
-              <cit>
-                <bibl>CD 627</bibl>
-              </cit>
-            </sense>
-          </entry>
-        </superEntry>
-     
-        </body>
-          </text>
+      </superEntry>
+      <superEntry>
+        <entry n="1" type="hom" xml:id="C6291">
+          <form type="lemma" xml:id="CF14592">ϥⲱϭⲉ</form>
+          <form xml:id="CF14593">ϥⲱϭⲉ</form>
+          <gramGrp>
+            <pos>Vb.</pos>
+          </gramGrp>
+          <sense n="1">
+            <cit type="translation" xml:lang="de">
+              <quote>aufspringen, sich beeilen</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>leap, move hastily</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>bondir, se mouvoir rapidement</quote>
+            </cit>
+            <cit>
+              <bibl>CD 625b-627b; CED 266; KoptHWb 346-347; DELC 282b; ChLCS 86a</bibl>
+            </cit>
+          </sense>
+          <sense n="2">
+            <cit type="translation" xml:lang="de">
+              <quote>ausreißen, fortnehmen, rauben</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>pluck, seize, rob</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>arracher, saisir, cueillir</quote>
+            </cit>
+            <cit>
+              <bibl>CD 626b-627a; CED 266; KoptHWb 346-347; DELC 282b; ChLCS 86a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="2" type="hom" xml:id="C6292">
+          <form type="lemma" xml:id="CF14594">ϥⲱϭⲉ</form>
+          <form xml:id="CF14595">ϥⲱϭⲉ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Ungestüm, Begierde, Raffsucht</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>impetuosity, grasping, greed</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>impétuosité, avidité</quote>
+            </cit>
+            <cit>
+              <bibl>CD 625b-627b; KoptHWb 347; ChLCS 86a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="3" type="compound" xml:id="C6293">
+          <form type="lemma" xml:id="CF14596">ⲣⲉϥϥⲱϭⲉ</form>
+          <form xml:id="CF14597">ⲣⲉϥϥⲱϭⲉ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>m.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>heftige, gewaltsame Person</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>impetuous, violent person</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>impétueuse (personne), violente</quote>
+            </cit>
+            <cit>
+              <bibl>CD 627b; ChLCS 86a</bibl>
+            </cit>
+          </sense>
+        </entry>
+        <entry n="4" type="compound" xml:id="C6294">
+          <form type="lemma" xml:id="CF14598">ϭⲓⲛϥⲱϭⲉ</form>
+          <form xml:id="CF14599">ϭⲓⲛϥⲱϭⲉ</form>
+          <gramGrp>
+            <pos>Subst.</pos>
+            <gen>f.</gen>
+          </gramGrp>
+          <sense>
+            <cit type="translation" xml:lang="de">
+              <quote>Begierde, Heftigkeit</quote>
+            </cit>
+            <cit type="translation" xml:lang="en">
+              <quote>zeal, violence</quote>
+            </cit>
+            <cit type="translation" xml:lang="fr">
+              <quote>zèle, violence</quote>
+            </cit>
+            <cit>
+              <bibl>CD 627</bibl>
+            </cit>
+          </sense>
+        </entry>
+      </superEntry>
+
+    </body>
+  </text>
 </TEI>

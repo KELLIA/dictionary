@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="Coptic_Lemma_Schema.xsd"?>
-<TEI
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns:math="http://www.w3.org/1998/Math/MathML"
-    xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -20,8 +17,12 @@
     </teiHeader>
     <text>
         <body>
-            <entry type="hom">
-                <form>
+            <entry type="hom" xml:id="C6304">
+                <form type="lemma" xml:id="CF14618">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁ</orth>
+                </form>
+                <form xml:id="CF14619">
                     <usg type="geo">B</usg>
                     <orth>ϧⲁ</orth>
                 </form>
@@ -43,8 +44,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry type="hom">
-                <form>
+            <entry type="hom" xml:id="C6305">
+                <form type="lemma" xml:id="CF14620">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁ</orth>
+                </form>
+                <form xml:id="CF14621">
                     <usg type="geo">B</usg>
                     <orth>ϧⲁ</orth>
                 </form>
@@ -67,8 +72,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6306">
+                <form type="lemma" xml:id="CF14622">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲉ</orth>
+                </form>
+                <form xml:id="CF14623">
                     <usg type="geo">B</usg>
                     <orth>ϧⲉ</orth>
                 </form>
@@ -91,8 +100,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry type="hom">
-                <form>
+            <entry type="hom" xml:id="C6307">
+                <form type="lemma" xml:id="CF14624">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁⲓ</orth>
+                </form>
+                <form xml:id="CF14625">
                     <usg type="geo">B</usg>
                     <orth>ϧⲁⲓ</orth>
                 </form>
@@ -114,8 +127,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry type="hom">
-                <form>
+            <entry type="hom" xml:id="C6308">
+                <form type="lemma" xml:id="CF14626">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁⲓ</orth>
+                </form>
+                <form xml:id="CF14627">
                     <usg type="geo">B</usg>
                     <orth>ϧⲁⲓ</orth>
                 </form>
@@ -138,8 +155,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry type="hom">
-                <form>
+            <entry type="hom" xml:id="C6309">
+                <form type="lemma" xml:id="CF14628">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁⲓ</orth>
+                </form>
+                <form xml:id="CF14629">
                     <usg type="geo">B</usg>
                     <orth>ϧⲁⲓ</orth>
                 </form>
@@ -162,8 +183,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6310">
+                <form type="lemma" xml:id="CF14630">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲏⲓ</orth>
+                </form>
+                <form xml:id="CF14631">
                     <usg type="geo">B</usg>
                     <orth>ϧⲏⲓ</orth>
                 </form>
@@ -186,8 +211,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6311">
+                <form type="lemma" xml:id="CF14632">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁⲓⲣⲓ</orth>
+                </form>
+                <form xml:id="CF14633">
                     <usg type="geo">B</usg>
                     <orth>ϧⲁⲓⲣⲓ</orth>
                 </form>
@@ -210,8 +239,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6312">
+                <form type="lemma" xml:id="CF14634">
+                    <usg type="geo">Ak</usg>
+                    <orth>ϧⲉⲗ</orth>
+                </form>
+                <form xml:id="CF14635">
                     <usg type="geo">Ak</usg>
                     <orth>ϧⲉⲗ</orth>
                 </form>
@@ -234,8 +267,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6313">
+                <form type="lemma" xml:id="CF14636">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲉⲗ(ⲗ)ⲟⲧ</orth>
+                </form>
+                <form xml:id="CF14637">
                     <usg type="geo">B</usg>
                     <orth>ϧⲉⲗ(ⲗ)ⲟⲧ</orth>
                 </form>
@@ -258,8 +295,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6314">
+                <form type="lemma" xml:id="CF14638">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲉⲙⲥ</orth>
+                </form>
+                <form xml:id="CF14639">
                     <usg type="geo">B</usg>
                     <orth>ϧⲉⲙⲥ</orth>
                 </form>
@@ -283,8 +324,12 @@
                 </sense>
             </entry>
             <superEntry>
-                <entry n="1">
-                    <form>
+                <entry n="1" xml:id="C6315">
+                    <form type="lemma" xml:id="CF14640">
+                        <usg type="geo">B</usg>
+                        <orth>ϧⲟⲙϧⲉⲙ</orth>
+                    </form>
+                    <form xml:id="CF14641">
                         <usg type="geo">B</usg>
                         <orth>ϧⲟⲙϧⲉⲙ</orth>
                     </form>
@@ -320,8 +365,12 @@
                         </cit>
                     </sense>
                 </entry>
-                <entry n="2">
-                    <form>
+                <entry n="2" xml:id="C6316">
+                    <form type="lemma" xml:id="CF14642">
+                        <usg type="geo">B</usg>
+                        <orth>ϧⲟⲙϧⲉⲙ</orth>
+                    </form>
+                    <form xml:id="CF14643">
                         <usg type="geo">B</usg>
                         <orth>ϧⲟⲙϧⲉⲙ</orth>
                     </form>
@@ -345,8 +394,12 @@
                     </sense>
                 </entry>
             </superEntry>
-            <entry>
-                <form>
+            <entry xml:id="C6317">
+                <form type="lemma" xml:id="CF14644">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲉⲛⲓ</orth>
+                </form>
+                <form xml:id="CF14645">
                     <usg type="geo">B</usg>
                     <orth>ϧⲉⲛⲓ</orth>
                 </form>
@@ -368,8 +421,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6318">
+                <form type="lemma" xml:id="CF14646">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲱⲣ</orth>
+                </form>
+                <form xml:id="CF14647">
                     <usg type="geo">B</usg>
                     <orth>ϧⲱⲣ</orth>
                 </form>
@@ -391,8 +448,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6319">
+                <form type="lemma" xml:id="CF14648">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲟⲣⲡⲥ</orth>
+                </form>
+                <form xml:id="CF14649">
                     <usg type="geo">B</usg>
                     <orth>ϧⲟⲣⲡⲥ</orth>
                 </form>
@@ -415,8 +476,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6320">
+                <form type="lemma" xml:id="CF14650">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲟⲣⲧ</orth>
+                </form>
+                <form xml:id="CF14651">
                     <usg type="geo">B</usg>
                     <orth>ϧⲟⲣⲧ</orth>
                 </form>
@@ -439,8 +504,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6321">
+                <form type="lemma" xml:id="CF14652">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲣⲟϯ</orth>
+                </form>
+                <form xml:id="CF14653">
                     <usg type="geo">B</usg>
                     <orth>ϧⲣⲟϯ</orth>
                 </form>
@@ -463,8 +532,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6322">
+                <form type="lemma" xml:id="CF14654">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲣⲱϯ</orth>
+                </form>
+                <form xml:id="CF14655">
                     <usg type="geo">B</usg>
                     <orth>ϧⲣⲱϯ</orth>
                 </form>
@@ -487,8 +560,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6323">
+                <form type="lemma" xml:id="CF14656">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲱⲥ</orth>
+                </form>
+                <form xml:id="CF14657">
                     <usg type="geo">B</usg>
                     <orth>ϧⲱⲥ</orth>
                 </form>
@@ -496,22 +573,26 @@
                     <pos>Subst.</pos>
                 </gramGrp>
                 <sense>
-                 <cit type="translation" xml:lang="de">
-                    <quote>unbekannte Bedeutung</quote>
-                </cit>
-                <cit type="translation" xml:lang="en">
-                    <quote>unknown meaning</quote>
-                </cit>
-                <cit type="translation" xml:lang="fr">
-                    <quote>signification inconnue</quote>
-                </cit>
-                <cit>
-                    <bibl>CD 631b; KoptHWb 392</bibl>
-                </cit>
+                    <cit type="translation" xml:lang="de">
+                        <quote>unbekannte Bedeutung</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="en">
+                        <quote>unknown meaning</quote>
+                    </cit>
+                    <cit type="translation" xml:lang="fr">
+                        <quote>signification inconnue</quote>
+                    </cit>
+                    <cit>
+                        <bibl>CD 631b; KoptHWb 392</bibl>
+                    </cit>
                 </sense>
             </entry>
-            <entry type="hom">
-                <form>
+            <entry type="hom" xml:id="C6324">
+                <form type="lemma" xml:id="CF14658">
+                    <usg type="geo">B</usg>
+                    <orth>(ϧⲱⲧ)</orth>
+                </form>
+                <form xml:id="CF14659">
                     <usg type="geo">B</usg>
                     <orth>(ϧⲱⲧ)</orth>
                 </form>
@@ -533,8 +614,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry type="hom">
-                <form>
+            <entry type="hom" xml:id="C6325">
+                <form type="lemma" xml:id="CF14660">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲱⲧ</orth>
+                </form>
+                <form xml:id="CF14661">
                     <usg type="geo">B</usg>
                     <orth>ϧⲱⲧ</orth>
                 </form>
@@ -557,8 +642,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6326">
+                <form type="lemma" xml:id="CF14662">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲁϧ</orth>
+                </form>
+                <form xml:id="CF14663">
                     <usg type="geo">B</usg>
                     <orth>ϧⲁϧ</orth>
                 </form>
@@ -581,8 +670,12 @@
                     </cit>
                 </sense>
             </entry>
-            <entry>
-                <form>
+            <entry xml:id="C6327">
+                <form type="lemma" xml:id="CF14664">
+                    <usg type="geo">B</usg>
+                    <orth>ϧⲱϧ</orth>
+                </form>
+                <form xml:id="CF14665">
                     <usg type="geo">B</usg>
                     <orth>ϧⲱϧ</orth>
                 </form>

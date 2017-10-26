@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>-->
 <?xml-model href="Coptic_Lemma_Schema.xsd"?> 
-<TEI
-  xmlns:xi="http://www.w3.org/2001/XInclude"
-  xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns:math="http://www.w3.org/1998/Math/MathML"
-  xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -21,16 +18,24 @@
   </teiHeader>
   <text>
     <body>
-      <entry>
-          <form>
-            <usg type="geo">B</usg>
-            <orth>ⲯ</orth>
-            <gramGrp>
-              <pos>Zahlzeichen</pos>
-              <note>23. Buchstabe des Alphabets ⲯⲓ</note>
-            </gramGrp>
-          </form>
-        <form>
+      <entry xml:id="C5416">
+        <form type="lemma" xml:id="CF12800">
+          <usg type="geo">B</usg>
+          <orth>ⲯ</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>23. Buchstabe des Alphabets ⲯⲓ</note>
+          </gramGrp>
+        </form>
+        <form xml:id="CF12801">
+          <usg type="geo">B</usg>
+          <orth>ⲯ</orth>
+          <gramGrp>
+            <pos>Zahlzeichen</pos>
+            <note>23. Buchstabe des Alphabets ⲯⲓ</note>
+          </gramGrp>
+        </form>
+        <form xml:id="CF12802">
           <usg type="geo">F</usg>
           <orth>ⲯ</orth>
           <gramGrp>
@@ -38,7 +43,7 @@
             <note>23. Buchstabe des Alphabets ⲯⲓ</note>
           </gramGrp>
         </form>
-        <form>
+        <form xml:id="CF12803">
           <usg type="geo">S</usg>
           <orth>ⲯ</orth>
           <gramGrp>
@@ -47,21 +52,21 @@
             <note>23. Buchstabe des Alphabets ⲯⲓ</note>
           </gramGrp>
         </form>
-          <sense>
-            <cit type="translation" xml:lang="de">
-              <quote>700</quote>
-            </cit>
-            <cit type="translation" xml:lang="en">
-              <quote>700</quote>
-            </cit>
-            <cit type="translation" xml:lang="fr">
-              <quote>700</quote>
-            </cit>
-            <cit>
-              <bibl>CD 517a; KoptHWb 289; DELC 247</bibl>
-            </cit>
-          </sense>
-        </entry>
+        <sense>
+          <cit type="translation" xml:lang="de">
+            <quote>700</quote>
+          </cit>
+          <cit type="translation" xml:lang="en">
+            <quote>700</quote>
+          </cit>
+          <cit type="translation" xml:lang="fr">
+            <quote>700</quote>
+          </cit>
+          <cit>
+            <bibl>CD 517a; KoptHWb 289; DELC 247</bibl>
+          </cit>
+        </sense>
+      </entry>
     </body>
   </text>
 </TEI>
