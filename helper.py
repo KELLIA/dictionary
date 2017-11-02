@@ -43,9 +43,9 @@ def wrap(html_input):
 	titled = wrapped.replace("**pagetitle**",title)
 
 	activated = make_active(titled, activate)
-	
+
 	return activated
-	
+
 
 def separate_coptic(search_text):
 	#coptic = search_text.split(" ")[0]
@@ -62,16 +62,17 @@ def separate_coptic(search_text):
 			non_coptic_words.append(word)
 
 	return (coptic_words, non_coptic_words)
-	
+
 
 def strip_hyphens(text):
-	text = re.sub(r'-', '', text)
-	text = re.sub(ur"\u2E17","",text)
+	text = text.replace('-', '')
+	text = text.replace(ur'\u2013', '')
+	text = text.replace(ur"\u2E17","")
 	return text
 
 
 def get_annis_query(coptic):
-	coptic = coptic.encode("utf8").replace("-","")
+	coptic = strip_hyphens(coptic).encode("utf8")
 
 	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
 	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixzaGVub3V0ZS5hYnJhaGFtLm91ci5mYXRoZXIsYXBvcGh0aGVnbWF0YS5wYXRydW0sc2FoaWRpY2EubnQsc2hlbm91dGUuZWFnZXJuZXNzLHNhaGlkaWNhLjFjb3JpbnRoaWFucyxzaGVub3V0ZS5mb3gsc2FoaWRpY2EubWFyayxkb2MucGFweXJpLHNhaGlkaWMub3Q"  # List of scriptorium corpora
@@ -100,8 +101,10 @@ def generic_query(sql,params):
 
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
-	else:
+	elif platform.system() == "Windows":
 		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+	else:
+		con = lite.connect('alpha_kyima_rc1.db')
 
 	with con:
 		con.create_function("REGEXP", 2, lambda expr, item: re.search(expr.lower(), item.lower()) is not None)
