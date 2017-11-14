@@ -78,7 +78,7 @@ def get_annis_query(coptic):
 	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixzaGVub3V0ZS5hYnJhaGFtLm91ci5mYXRoZXIsYXBvcGh0aGVnbWF0YS5wYXRydW0sc2FoaWRpY2EubnQsc2hlbm91dGUuZWFnZXJuZXNzLHNhaGlkaWNhLjFjb3JpbnRoaWFucyxzaGVub3V0ZS5mb3gsc2FoaWRpY2EubWFyayxkb2MucGFweXJpLHNhaGlkaWMub3Q"  # List of scriptorium corpora
 	segmentation = "_bt=bm9ybV9ncm91cA"  # Norm segmentation
 	if " " in coptic:
-		#coptic = coptic.replace(" ", "")
+		coptic = coptic.replace(" ","")
 		query = "_q=" + urlsafe_b64encode('norm_group=/.*' + coptic + '.*/')
 	else:
 		query = "_q=" + urlsafe_b64encode('lemma="'+ coptic + '"')
