@@ -1,5 +1,5 @@
 # Coptic Dictionary Online
-The dictionary comprised of the XML Coptic lexicon created by the BBAW and interface by Coptic SCRIPTORIUM.  Currently deployed at https://corpling.uis.georgetown.edu/coptic-dictionary/.
+The dictionary comprised of the XML Coptic lexicon created by the BBAW and interface by Coptic SCRIPTORIUM.  Currently deployed at https://corpling.uis.georgetown.edu/coptic-dictionary/
 
 Licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
