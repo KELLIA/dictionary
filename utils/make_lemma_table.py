@@ -58,8 +58,8 @@ def tabulate(xml):
 def get_freqs(url):
 
 	# TODO: remove duplicate data from sahidica.nt also in Mark and 1Cor
-	corpora = ["shenoute.eagerness", "shenoute.fox", "shenoute.a22", "shenoute.abraham.our.father",
-			   "apophthegmata.patrum", "sahidica.nt", "sahidic.ot",
+	corpora = ["shenoute.eagerness", "shenoute.fox", "shenoute.a22", "shenoute.abraham.our.father", "shenoute.dirt",
+			   "apophthegmata.patrum", "sahidica.nt", "sahidic.ot", "pseudo.theophilus","martyrdom.victor","johannes.canons",
 			   "besa.letters", "sahidica.mark", "sahidica.1corinthians", "doc.papyri"]
 	#corpora = ["shenoute.fox"]
 

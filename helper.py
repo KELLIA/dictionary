@@ -75,7 +75,7 @@ def get_annis_query(coptic):
 	coptic = strip_hyphens(coptic).encode("utf8")
 
 	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
-	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixzaGVub3V0ZS5hYnJhaGFtLm91ci5mYXRoZXIsYXBvcGh0aGVnbWF0YS5wYXRydW0sc2FoaWRpY2EubnQsc2hlbm91dGUuZWFnZXJuZXNzLHNhaGlkaWNhLjFjb3JpbnRoaWFucyxzaGVub3V0ZS5mb3gsc2FoaWRpY2EubWFyayxkb2MucGFweXJpLHNhaGlkaWMub3Q"  # List of scriptorium corpora
+	corpus_list = "_c=YXBvcGh0aGVnbWF0YS5wYXRydW0sYmVzYS5sZXR0ZXJzLGRvYy5wYXB5cmksam9oYW5uZXMuY2Fub25zLG1hcnR5cmRvbS52aWN0b3IscHNldWRvLnRoZW9waGlsdXMsc2FoaWRpYy5vdCxzYWhpZGljYS4xY29yaW50aGlhbnMsc2FoaWRpY2EubWFyayxzYWhpZGljYS5udCxzaGVub3V0ZS5hMjIsc2hlbm91dGUuYWJyYWhhbS5vdXIuZmF0aGVyLHNoZW5vdXRlLmRpcnQsc2hlbm91dGUuZWFnZXJuZXNzLHNoZW5vdXRlLmZveA"  # List of scriptorium corpora
 	segmentation = "_bt=bm9ybV9ncm91cA"  # Norm segmentation
 	if " " in coptic:
 		coptic = coptic.replace(" ","")
