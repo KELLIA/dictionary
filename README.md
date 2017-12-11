@@ -1,7 +1,7 @@
 # Coptic Dictionary Online
 The dictionary comprised of the XML Coptic lexicon created by the BBAW and interface by Coptic SCRIPTORIUM.  Currently deployed at https://corpling.uis.georgetown.edu/coptic-dictionary/
 
-Licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Licensed [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), software under the Apache 2.0 license (https://www.apache.org/licenses/LICENSE-2.0) (see below)
 
 The virtual keyboard component on the search page is available under a BSD License - HTML Virtual Keyboard Interface Script (http://www.greywyvern.com/code/javascript/keyboard)
 
@@ -15,12 +15,17 @@ This lexicon primarily represents work by Frank Feder, who prepared and revised 
   * Maxim Kupreyev  
   * Tonio Sebastian Richter  
   * Anne Sörgel  
+  
+The XML files containing lexical entrieis
 
 #### Search interface
 
 The search interface was designed at Georgetown University as part of the project KELLIA by:  
   * Emma Manning  
   * Amir Zeldes
+  
+Code for the interface is made available under the Apache software license, version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+
 
 #### Projects
 
