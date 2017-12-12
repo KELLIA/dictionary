@@ -159,6 +159,8 @@ def get_freqs(item):
 	output = "<ul>\n"
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
+	elif platform.system() == 'Windows':
+		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
 	else:
 		con = lite.connect('alpha_kyima_rc1.db')
 
@@ -192,6 +194,8 @@ if __name__ == "__main__":
 
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
+	elif platform.system() == 'Windows':
+		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
 	else:
 		con = lite.connect('alpha_kyima_rc1.db')
 
