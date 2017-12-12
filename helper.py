@@ -71,8 +71,9 @@ def strip_hyphens(text):
 	return text
 
 
-def get_annis_query(coptic):
+def get_annis_query(coptic, oref):
 	coptic = strip_hyphens(coptic).encode("utf8")
+	oref = strip_hyphens(oref).encode("utf8")
 
 	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
 	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixzaGVub3V0ZS5hYnJhaGFtLm91ci5mYXRoZXIsYXBvcGh0aGVnbWF0YS5wYXRydW0sc2FoaWRpY2EubnQsc2hlbm91dGUuZWFnZXJuZXNzLHNhaGlkaWNhLjFjb3JpbnRoaWFucyxzaGVub3V0ZS5mb3gsc2FoaWRpY2EubWFyayxkb2MucGFweXJpLHNhaGlkaWMub3Q"  # List of scriptorium corpora
@@ -80,6 +81,17 @@ def get_annis_query(coptic):
 	if " " in coptic:
 		coptic = coptic.replace(" ","")
 		query = "_q=" + urlsafe_b64encode('norm_group=/.*' + coptic + '.*/')
+	elif " " in oref:
+		oref_parts = oref.split(" ")
+		morph_list =[]
+		norm_list = []
+		for part in oref_parts:
+			morph_list.append('morph="'+part+'"')
+			norm_list.append('norm="'+part+'"')
+		query = " . ".join(morph_list) + " | "
+		query += " . ".join(norm_list)
+		query = "_q=" + urlsafe_b64encode(query)
+
 	else:
 		query = "_q=" + urlsafe_b64encode('lemma="'+ coptic + '"')
 

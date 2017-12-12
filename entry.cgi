@@ -50,11 +50,13 @@ def sense_list(sense_string):
 	sense_html += "</ol>"
 	return sense_html
 
-def process_orthstring(orthstring):
+def process_orthstring(orthstring, orefstring):
 	forms = orthstring.split("|||")
+	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
-	for form in forms:
+	for i, form in enumerate(forms):
 		parts = form.split("\n")
+		oref = orefs[i]
 		gramstring = parts[0]
 		orth_geo_dict = defaultdict(list)
 		orth = "NONE"
@@ -65,7 +67,7 @@ def process_orthstring(orthstring):
 				orth_geo_dict[orth] += orth_geo.group(2).encode("utf8")
 		for distinct_orth in orth_geo_dict:
 			geo_string = " ".join(orth_geo_dict[orth])
-			annis_query = get_annis_query(orth)
+			annis_query = get_annis_query(orth, oref)
 			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="morphology">' + \
 						 gramstring.encode("utf8") + '</td><td class="dialect">' + geo_string.encode("utf8") + \
 						 '</td><td class="annis_link"><a href="' + annis_query + \
@@ -82,7 +84,7 @@ def process_orthstring(orthstring):
 			orth_html += freq_info
 	orth_html += "</table>"
 	return orth_html
-	
+
 def process_sense(de, en, fr):
 	en_senses = en.split("|||")
 	fr_senses = fr.split("|||")
@@ -93,7 +95,7 @@ def process_sense(de, en, fr):
 		fr_sense = fr_senses[i]
 		de_sense = de_senses[i]
 		sense_parts = re.search(r'([0-9]+)\|(.*)~~~(.*);;;(.*)', en_sense)
-		
+
 		if sense_parts is not None:
 			en_definition = sense_parts.group(3)
 			fr_parts = re.search(r'[0-9]+\|.*~~~(.*);;;.*', fr_sense)
@@ -109,16 +111,16 @@ def process_sense(de, en, fr):
 				link = '<a href="results.cgi?coptic=' + word + '">' + word + "</a>"
 				ref_bibl = re.sub(r'xr. #(.*?)#', r'xr. ' + link, ref_bibl)
 			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new">\1</a>',ref_bibl)
-			
+
 			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
 				sense_html += '<tr><td></td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
-			if fr_parts is not None:	
+			if fr_parts is not None:
 				sense_html += '<tr><td></td><td class="trans">' + de_definition.encode("utf8") + '</td></tr>'
 			sense_html += '<tr><td></td><td class="bibl">' + ref_bibl + '</td></tr>'
 	sense_html += "</table>"
 	return sense_html
-	
+
 def process_etym(etym):
 	xrs = re.findall(r' #(.*?)#', etym)
 	if xrs is not None:
@@ -135,18 +137,18 @@ def related(related_entries):
 	tablestring = '<table id="related" class="entrylist">'
 	for entry in related_entries:
 		tablestring += "<tr>"
-			
+
 		orth = first_orth(entry[2])
 		second = second_orth(entry[2])
-		
+
 		link = "entry.cgi?entry=" + str(entry[0]) + "&super=" + str(entry[1])
-			
+
 		tablestring += '<td class="related_orth">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
 		tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"
-			
+
 		sense = sense_list(entry[5])
 		tablestring += '<td class="related_sense">' + sense + "</td>"
-			
+
 		tablestring += "</tr>"
 	tablestring += "</table>"
 	return tablestring
@@ -158,7 +160,7 @@ def get_freqs(item):
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
 	else:
-		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+		con = lite.connect('alpha_kyima_rc1.db')
 
 	with con:
 		cur = con.cursor()
@@ -187,45 +189,45 @@ if __name__ == "__main__":
 	form = cgi.FieldStorage()
 	entry_id = cgi.escape(form.getvalue("entry", ""))
 	super_id = cgi.escape(form.getvalue("super", ""))
-	
+
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
 	else:
-		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+		con = lite.connect('alpha_kyima_rc1.db')
 
 	entry_page = '<div class="content">'
-	
+
 	with con:
 		cur = con.cursor()
-		
+
 		this_sql_command = "SELECT * FROM entries WHERE entries.id = " + entry_id
 		cur.execute(this_sql_command)
 		this_entry = cur.fetchone()
-		
-		related_sql_command = "SELECT * FROM entries WHERE entries.super_ref = " + super_id + " AND entries.id != " + entry_id 
+
+		related_sql_command = "SELECT * FROM entries WHERE entries.super_ref = " + super_id + " AND entries.id != " + entry_id
 		cur.execute(related_sql_command)
 		related_entries = cur.fetchall()
-		
+
 		# orth (and morph) info
-		entry_page += process_orthstring(this_entry[2])
+		entry_page += process_orthstring(this_entry[2], this_entry[-1])
 		tag = this_entry[3].encode("utf8")
 		if tag == "NULL" or tag == "NONE":
 			tag = "--"
 		entry_page += '<div class="tag">\n\tScriptorium tag: ' + tag + "\n</div>\n"
-	
+
 		# from sense info
 		entry_page += process_sense(this_entry[4], this_entry[5], this_entry[6])
-		
+
 		# etym info
 		entry_page += process_etym(this_entry[7].encode("utf8"))
-	
+
 		# link to other entries in the superentry
 		if len(related_entries) > 0:
 			entry_page += '<div class="see_also"><b style="font-family: antinoouRegular">See Also:</b><br/>'
 			entry_page += related(related_entries)
 			entry_page += '</div>'
-			
+
 		entry_page += "</div>"
-			
+
 	wrapped = wrap(entry_page)
 	print wrapped
