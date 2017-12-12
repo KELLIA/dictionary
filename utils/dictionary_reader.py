@@ -5,6 +5,8 @@ import sqlite3 as lite
 import xml.etree.ElementTree as ET
 import re
 import glob
+import os
+from argparse import ArgumentParser
 
 
 def check_chars(word):
@@ -19,6 +21,7 @@ def check_chars(word):
     for char in word:
         if char not in mapping and char not in expected_chars:
             print word + "\t" + char
+
 
 
 def process_entry(id, super_id, entry):
@@ -40,12 +43,20 @@ def process_entry(id, super_id, entry):
     # similar to orthstring but forms are stripped of anything but coptic letters and spaces
     # morphological info not included
     orthstring = ""
+    oref_string = ""
+    oref_text = ''
     search_string = "\n"
     for form in forms:
+        if "type" in form.attrib:
+            if form.attrib["type"] == "lemma":
+                continue
         orths = form.findall('{http://www.tei-c.org/ns/1.0}orth')
         if form.text is not None:
             if re.search(r'[^\s]', form.text) is not None:
                 orths.append(form)
+
+        orefs = form.findall('{http://www.tei-c.org/ns/1.0}oRef')
+
 
         gramGrp = form.find('{http://www.tei-c.org/ns/1.0}gramGrp')
         gram_string = ""
@@ -68,6 +79,7 @@ def process_entry(id, super_id, entry):
             else: geos = []
         else:
             geos = []
+
         for orth in orths:
             remove_whitespace = re.search(r'[^\s].*[^\s]', orth.text)
 
@@ -78,7 +90,14 @@ def process_entry(id, super_id, entry):
             else:
                 orth_text = orth.text
 
+            if len(orefs) > 0:
+                oref_text = orefs[0].text
+
+            else:
+                oref_text = orth_text
+
             search_text = re.sub(u'[^ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱϣϥⳉϧϩϫϭϯ ]', u'', orth_text)
+            oref_text = re.sub(u'[^ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱϣϥⳉϧϩϫϭϯ ]', u'', oref_text)
 
             for geo in geos:
                 orthstring += orth_text + "~" + geo + "\n"
@@ -87,9 +106,12 @@ def process_entry(id, super_id, entry):
                 orthstring += orth_text + "~\n"
                 search_string += search_text + "~\n"
 
+        oref_string += oref_text
+        oref_string += "|||"
         orthstring += "|||"
         #search_string += "|||"
     orthstring = re.sub(r'\|\|\|$', '', orthstring)
+    oref_string = re.sub(r'\|\|\|$', '', oref_string)
     #search_string = re.sub(r'\|\|\|$', '', search_string)
 
     first_orth_re = re.search(r'\n(.*?)~', orthstring)
@@ -225,7 +247,7 @@ def process_entry(id, super_id, entry):
 
 
 
-    row = (id, super_id, orthstring, pos_string, de, en, fr, etym_string, ascii_orth, search_string)
+    row = (id, super_id, orthstring, pos_string, de, en, fr, etym_string, ascii_orth, search_string, oref_string)
     return row
 
 
@@ -305,6 +327,15 @@ def pos_map(pos, subc, orthstring):
 
     return "?"
 
+parser = ArgumentParser()
+parser.add_argument("xml_directory", help="directory with dictionary XML files")
+options = parser.parse_args()
+
+xml_path = options.xml_directory
+
+if not xml_path.endswith(os.sep):
+    xml_path += os.sep
+
 
 con = lite.connect('alpha_kyima_rc1.db')
 
@@ -312,12 +343,12 @@ with con:
     cur = con.cursor()
 
     cur.execute("DROP TABLE IF EXISTS entries")
-    cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT, Search TEXT)")
+    cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT)")
 
     super_id = 1
     entry_id = 1
 
-    for letter_filename in glob.glob('*.xml'):
+    for letter_filename in glob.glob(xml_path + '*.xml'):
         tree = ET.parse(letter_filename)
         root = tree.getroot()
         body = root.find('{http://www.tei-c.org/ns/1.0}text').find('{http://www.tei-c.org/ns/1.0}body')
@@ -325,12 +356,11 @@ with con:
         for child in body:
             if child.tag == "{http://www.tei-c.org/ns/1.0}entry":
                 row = process_entry(entry_id, super_id, child)
-                cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
+                cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
                 super_id += 1
                 entry_id += 1
             elif child.tag == "{http://www.tei-c.org/ns/1.0}superEntry":
                 rows = process_super_entry(entry_id, super_id, child)
-                cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+                cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
                 super_id += 1
                 entry_id += len(rows)
-
