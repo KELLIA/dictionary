@@ -70,7 +70,7 @@ var VKI_attach, VKI_close;
   this.VKI_numberPadOn = false;  // Show number pad by default
   this.VKI_kts = this.VKI_kt = "US International";  // Default keyboard layout
   this.VKI_langAdapt = true;  // Use lang attribute of input to select keyboard
-  this.VKI_size = 2;  // Default keyboard size (1-5)
+  this.VKI_size = 3;  // Default keyboard size (1-5)
   this.VKI_sizeAdj = true;  // Allow user to adjust keyboard size
   this.VKI_clearPasswords = false;  // Clear password fields on focus
   this.VKI_imageURI = "img/keyboard.png";  // If empty string, use imageless mode
