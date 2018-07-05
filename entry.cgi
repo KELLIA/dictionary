@@ -115,7 +115,7 @@ def process_sense(de, en, fr):
 			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
 				sense_html += '<tr><td></td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
-			if fr_parts is not None:
+			if de_parts is not None:
 				sense_html += '<tr><td></td><td class="trans">' + de_definition.encode("utf8") + '</td></tr>'
 			sense_html += '<tr><td></td><td class="bibl">' + ref_bibl + '</td></tr>'
 	sense_html += "</table>"
