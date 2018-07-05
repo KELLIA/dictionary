@@ -147,13 +147,15 @@ def process_entry(id, super_id, entry):
         for sense_child in sense:
             if sense_child.tag == '{http://www.tei-c.org/ns/1.0}cit':
                 bibl = sense_child.find('{http://www.tei-c.org/ns/1.0}bibl')
+                no_bibl = True
                 if bibl is not None:
-                    bibl_text = bibl.text + " "
-                    de += bibl_text
-                    en += bibl_text
-                    fr += bibl_text
-
-                else:
+                    if bibl.text is not None:
+                        no_bibl = False
+                        bibl_text = bibl.text + " "
+                        de += bibl_text
+                        en += bibl_text
+                        fr += bibl_text
+                if no_bibl:
                     lang = sense_child.get('{http://www.w3.org/XML/1998/namespace}lang')
                     quote = sense_child.find('{http://www.tei-c.org/ns/1.0}quote')
                     definition = sense_child.find('{http://www.tei-c.org/ns/1.0}def')
