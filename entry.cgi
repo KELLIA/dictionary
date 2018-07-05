@@ -204,12 +204,17 @@ if __name__ == "__main__":
 	with con:
 		cur = con.cursor()
 
-		this_sql_command = "SELECT * FROM entries WHERE entries.id = " + entry_id
-		cur.execute(this_sql_command)
+		this_sql_command = "SELECT * FROM entries WHERE entries.id = ?;"
+		cur.execute(this_sql_command,(entry_id,))
 		this_entry = cur.fetchone()
 
-		related_sql_command = "SELECT * FROM entries WHERE entries.super_ref = " + super_id + " AND entries.id != " + entry_id
-		cur.execute(related_sql_command)
+		if this_entry is None:
+			entry_page +="No entry found\n</div>\n"
+			print wrap(entry_page)
+			sys.exit()
+
+		related_sql_command = "SELECT * FROM entries WHERE entries.super_ref = ? AND entries.id != ?;"
+		cur.execute(related_sql_command, (super_id,entry_id))
 		related_entries = cur.fetchall()
 
 		# orth (and morph) info
