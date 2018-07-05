@@ -6,7 +6,7 @@ import re
 import cgi, cgitb
 import string
 from collections import defaultdict
-import os, platform
+import os, platform, sys
 from helper import wrap, get_annis_query
 cgitb.enable()
 
@@ -189,8 +189,8 @@ def get_freqs(item):
 
 if __name__ == "__main__":
 	form = cgi.FieldStorage()
-	entry_id = cgi.escape(form.getvalue("entry", ""))
-	super_id = cgi.escape(form.getvalue("super", ""))
+	entry_id = cgi.escape(form.getvalue("entry", "")).replace("(","").replace(")","").replace("=","")
+	super_id = cgi.escape(form.getvalue("super", "")).replace("(","").replace(")","").replace("=","")
 
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
