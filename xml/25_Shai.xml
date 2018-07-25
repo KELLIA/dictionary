@@ -8063,7 +8063,7 @@
           </gramGrp>
           <sense>
             <cit type="translation" xml:lang="de">
-              <quote>Gurke, Kürbis</quote>
+              <quote>Kürbisgewächs, Gurke</quote>
             </cit>
             <cit type="translation" xml:lang="en">
               <quote>cucumber, gourd</quote>
@@ -8086,7 +8086,7 @@
           </gramGrp>
           <sense>
             <cit type="translation" xml:lang="de">
-              <quote>Gurke, Kürbis</quote>
+              <quote>Kürbisgewächs, Gurke</quote>
             </cit>
             <cit type="translation" xml:lang="en">
               <quote>cucumber, gourd</quote>
@@ -8110,13 +8110,13 @@
           </xr>
           <sense>
             <cit type="translation" xml:lang="de">
-              <quote>Gurke, Kürbis</quote>
+              <quote>Kürbisgewächs-, Gurkensamen</quote>
             </cit>
             <cit type="translation" xml:lang="en">
-              <quote>cucumber seed</quote>
+              <quote>gourd, cucumber seed</quote>
             </cit>
             <cit type="translation" xml:lang="fr">
-              <quote>concombre, courge</quote>
+              <quote>graine de concombre, courge</quote>
             </cit>
             <cit>
               <bibl>CD 581a; CED 249</bibl>
@@ -8850,8 +8850,8 @@
           </sense>
         </entry>
         <entry n="5" type="compound" xml:id="C6036">
-          <form type="lemma" xml:id="CF14076">ⲙⲛⲧϣⲉⲉⲣⲉ ϣⲏⲙ</form>
-          <form xml:id="CF14077">ⲙⲛⲧϣⲉⲉⲣⲉ ϣⲏⲙ</form>
+          <form type="lemma" xml:id="CF14076">ⲙⲛⲧϣⲏⲣⲉ ϣⲏⲙ</form>
+          <form xml:id="CF14077">ⲙⲛⲧϣⲏⲣⲉ ϣⲏⲙ</form>
           <gramGrp>
             <pos>Subst.</pos>
             <gen>f.</gen>

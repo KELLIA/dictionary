@@ -892,7 +892,7 @@
               <quote>écraser, mettre en pièces (?)</quote>
             </cit>
             <cit>
-              <bibl>CD 806a; CED 326; KoptHWb 447; DELC 336a; ChLCS 106a</bibl>
+              <bibl>CD 806a; CED 326; KoptHWb 447; DELC 336a; ChLCS 106a</bibl>
             </cit>
           </sense>
         </entry>
@@ -4301,10 +4301,10 @@
           </gramGrp>
           <sense>
             <cit type="translation" xml:lang="de">
-              <quote>Kürbis</quote>
+              <quote>Kürbisgewächs</quote>
             </cit>
             <cit type="translation" xml:lang="en">
-              <quote>gourd, pumpkin</quote>
+              <quote>gourd</quote>
             </cit>
             <cit type="translation" xml:lang="fr">
               <quote>courge</quote>
@@ -4329,10 +4329,10 @@
           </gramGrp>
           <sense>
             <cit type="translation" xml:lang="de">
-              <quote>Kürbispflanze</quote>
+              <quote>Kürbisgewächspflanze</quote>
             </cit>
             <cit type="translation" xml:lang="en">
-              <quote>gourd plant, pumpkin plant</quote>
+              <quote>gourd plant</quote>
             </cit>
             <cit type="translation" xml:lang="fr">
               <quote>plant de courge</quote>
@@ -4373,10 +4373,10 @@
           </gramGrp>
           <sense>
             <cit type="translation" xml:lang="de">
-              <quote>Kürbis</quote>
+              <quote>Kürbisgewächs</quote>
             </cit>
             <cit type="translation" xml:lang="en">
-              <quote>gourd, pumpkin</quote>
+              <quote>gourd</quote>
             </cit>
             <cit type="translation" xml:lang="fr">
               <quote>courge</quote>
@@ -13167,8 +13167,8 @@
         </sense>
       </entry>
       <entry xml:id="C8041">
-        <form type="lemma" xml:id="CF18147">ϭⲁϭⲉⲧⲱⲛ</form>
-        <form xml:id="CF18148">ϭⲁϭⲉⲧⲱⲛ</form>
+        <form type="lemma" xml:id="CF18147">ϭⲁϭⲓⲧⲱⲛ</form>
+        <form xml:id="CF18148">ϭⲁϭⲓⲧⲱⲛ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>f.</gen>
@@ -13189,8 +13189,8 @@
         </sense>
       </entry>
       <entry xml:id="C8042">
-        <form type="lemma" xml:id="CF18149">ϭⲁϭⲉⲧⲱⲛ</form>
-        <form xml:id="CF18150">ϭⲁϭⲉⲧⲱⲛ</form>
+        <form type="lemma" xml:id="CF18149">ϭⲁϭⲓⲧⲱⲛ</form>
+        <form xml:id="CF18150">ϭⲁϭⲓⲧⲱⲛ</form>
         <gramGrp>
           <pos>Subst.</pos>
           <gen>m.</gen>

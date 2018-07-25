@@ -466,30 +466,6 @@
                             <subc>Qualitativ</subc>
                         </gramGrp>
                     </form>
-                    <form type="inflected" xml:id="CF1419">
-                        <usg type="geo">S</usg>
-                        <orth>ⲃⲁⲃⲉ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
-                    <form type="inflected" xml:id="CF1420">
-                        <usg type="geo">A</usg>
-                        <orth>ⲃⲁⲃⲉ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
-                    <form type="inflected" xml:id="CF1421">
-                        <usg type="geo">L</usg>
-                        <orth>ⲃⲁⲃⲉ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
                     <gramGrp>
                         <pos>Vb.</pos>
                     </gramGrp>
@@ -521,6 +497,55 @@
                         </cit>
                         <cit>
                             <bibl>CD 28b; KoptHWb 20; DELC 24-25; ChLCS 7a</bibl>
+                        </cit>
+                    </sense>
+                </entry>
+                <entry>
+                    <form type="lemma">
+                        <usg type="geo">S</usg>
+                        <orth>ⲃⲁⲃⲉ-</orth>
+                        <gramGrp>
+                            <pos>Adj.</pos>
+                            <subc>Participium conjunctum</subc>
+                        </gramGrp>
+                    </form>
+                    <form type="inflected" xml:id="CF1419">
+                        <usg type="geo">S</usg>
+                        <orth>ⲃⲁⲃⲉ-</orth>
+                        <gramGrp>
+                            <pos>Adj.</pos>
+                            <subc>Participium conjunctum</subc>
+                        </gramGrp>
+                    </form>
+                    <form type="inflected" xml:id="CF1420">
+                        <usg type="geo">A</usg>
+                        <orth>ⲃⲁⲃⲉ-</orth>
+                        <gramGrp>
+                            <pos>Adj.</pos>
+                            <subc>Participium conjunctum</subc>
+                        </gramGrp>
+                    </form>
+                    <form type="inflected" xml:id="CF1421">
+                        <usg type="geo">L</usg>
+                        <orth>ⲃⲁⲃⲉ-</orth>
+                        <gramGrp>
+                            <pos>Adj.</pos>
+                            <subc>Participium conjunctum</subc>
+                        </gramGrp>
+                    </form>
+                    <sense>
+                        <ref type="Greek">μωραίνειν</ref>
+                        <cit type="translation" xml:lang="de">
+                            <quote>dumm, fade, geschmacklos</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="en">
+                            <quote>insipid, foolish</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="fr">
+                            <quote>insipide, sans saveur, sot</quote>
+                        </cit>
+                        <cit>
+                            <bibl>CD 28b; CED 20; KoptHWb 20; DELC 24-25; ChLCS 7a</bibl>
                         </cit>
                     </sense>
                 </entry>
@@ -2478,14 +2503,6 @@
                             <subc>Qualitativ</subc>
                         </gramGrp>
                     </form>
-                    <form type="inflected" xml:id="CF1591">
-                        <usg type="geo">S</usg>
-                        <orth>ⲃⲁⲕ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
                     <xr type="syn">
                         <ref target="#ϣⲉ">gehen (B)</ref>
                     </xr>
@@ -2553,6 +2570,30 @@
                         </cit>
                         <cit>
                             <bibl>CD 30a; KoptHWb 22; DELC 27; ChLCS 7b</bibl>
+                        </cit>
+                    </sense>
+                </entry>
+                <entry>
+                    <form type="inflected" xml:id="CF1591">
+                        <usg type="geo">S</usg>
+                        <orth>ⲃⲁⲕ-</orth>
+                        <gramGrp>
+                            <pos>Adj.</pos>
+                            <subc>Participium conjunctum</subc>
+                        </gramGrp>
+                    </form>
+                    <sense >                        
+                        <cit type="translation" xml:lang="de">
+                            <quote>laufend, werfend</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="en">
+                            <quote>going, throwing</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="fr">
+                            <quote>de course, jetant </quote>
+                        </cit>
+                        <cit>
+                            <bibl>CD 29a; KoptHWb 22; DELC 27; ChLCS 7b</bibl>
                         </cit>
                     </sense>
                 </entry>
@@ -3249,6 +3290,30 @@
                             <subc>Infinitiv</subc>
                         </gramGrp>
                     </form>
+                    <sense>
+                        <cit type="translation" xml:lang="de">
+                            <quote>gerben</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="en">
+                            <quote>tan</quote>
+                        </cit>
+                        <cit type="translation" xml:lang="fr">
+                            <quote>tanner</quote>
+                        </cit>
+                        <cit>
+                            <bibl>CD 31a; CED 22; KoptHWB 22; DELC 27</bibl>
+                        </cit>
+                    </sense>
+                </entry>
+                <entry>
+                    <form type="lemma" >
+                        <usg type="geo">S</usg>
+                        <orth>ⲃⲁⲕ-</orth>
+                        <gramGrp>
+                            <pos>Adj.</pos>
+                            <subc>Participium conjunctum</subc>
+                        </gramGrp>
+                    </form>
                     <form type="inflected" xml:id="CF1645">
                         <usg type="geo">S</usg>
                         <orth>ⲃⲁⲕ-</orth>
@@ -3275,13 +3340,13 @@
                     </form>
                     <sense>
                         <cit type="translation" xml:lang="de">
-                            <quote>gerben</quote>
+                            <quote>gerber</quote>
                         </cit>
                         <cit type="translation" xml:lang="en">
-                            <quote>tan</quote>
+                            <quote>tanner</quote>
                         </cit>
                         <cit type="translation" xml:lang="fr">
-                            <quote>tanner</quote>
+                            <quote>tanneur</quote>
                         </cit>
                         <cit>
                             <bibl>CD 31a; CED 22; KoptHWB 22; DELC 27</bibl>
@@ -3859,46 +3924,6 @@
                             <subc>Qualitativ</subc>
                         </gramGrp>
                     </form>
-                    <form type="inflected" xml:id="CF1703">
-                        <usg type="geo">S</usg>
-                        <orth>ⲃⲁⲗ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
-                    <form type="inflected" xml:id="CF1704">
-                        <usg type="geo">B</usg>
-                        <orth>ⲃⲁⲗ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
-                    <form type="inflected" xml:id="CF1705">
-                        <usg type="geo">A</usg>
-                        <orth>ⲃⲁⲗ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
-                    <form type="inflected" xml:id="CF1706">
-                        <usg type="geo">L</usg>
-                        <orth>ⲃⲁⲗ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
-                    <form type="inflected" xml:id="CF1707">
-                        <usg type="geo">F</usg>
-                        <orth>ⲃⲁⲗ-</orth>
-                        <gramGrp>
-                            <pos>Adj.</pos>
-                            <subc>Participium conjunctum</subc>
-                        </gramGrp>
-                    </form>
                     <sense n="1">
                         <ref type="Greek">λύειν, ὑπολ., διαλ.</ref>
                         <cit type="translation" xml:lang="de">
@@ -4018,6 +4043,72 @@
                         </cit>
                     </sense>
                 </entry>
+<entry>
+    <form type="lemma">
+        <usg type="geo">S</usg>
+        <orth>ⲃⲁⲗ-</orth>
+        <gramGrp>
+            <pos>Adj.</pos>
+            <subc>Participium conjunctum</subc>
+        </gramGrp>
+    </form>
+    <form type="inflected" xml:id="CF1703">
+        <usg type="geo">S</usg>
+        <orth>ⲃⲁⲗ-</orth>
+        <gramGrp>
+            <pos>Adj.</pos>
+            <subc>Participium conjunctum</subc>
+        </gramGrp>
+    </form>
+    <form type="inflected" xml:id="CF1704">
+        <usg type="geo">B</usg>
+        <orth>ⲃⲁⲗ-</orth>
+        <gramGrp>
+            <pos>Adj.</pos>
+            <subc>Participium conjunctum</subc>
+        </gramGrp>
+    </form>
+    <form type="inflected" xml:id="CF1705">
+        <usg type="geo">A</usg>
+        <orth>ⲃⲁⲗ-</orth>
+        <gramGrp>
+            <pos>Adj.</pos>
+            <subc>Participium conjunctum</subc>
+        </gramGrp>
+    </form>
+    <form type="inflected" xml:id="CF1706">
+        <usg type="geo">L</usg>
+        <orth>ⲃⲁⲗ-</orth>
+        <gramGrp>
+            <pos>Adj.</pos>
+            <subc>Participium conjunctum</subc>
+        </gramGrp>
+    </form>
+    <form type="inflected" xml:id="CF1707">
+        <usg type="geo">F</usg>
+        <orth>ⲃⲁⲗ-</orth>
+        <gramGrp>
+            <pos>Adj.</pos>
+            <subc>Participium conjunctum</subc>
+        </gramGrp>
+    </form>
+    <sense>
+        <ref type="Greek">λύειν, ὑπολ., διαλ.</ref>
+        <cit type="translation" xml:lang="de">
+            <quote>lösend, schmelzend</quote>
+        </cit>
+        <cit type="translation" xml:lang="en">
+            <quote>loosened, melting</quote>
+        </cit>
+        <cit type="translation" xml:lang="fr">
+            <quote>desserré, fondant</quote>
+        </cit>
+        <cit>
+            <bibl>CD 32a; CED 22; KoptHWB 22-23; DELC 27; ChLCS 8a</bibl>
+        </cit>
+    </sense>
+</entry>
+                
                 <entry xml:id="C405">
                     <form type="lemma" xml:id="CF1708">ⲃⲱⲗ (ⲙⲛ-)</form>
                     <form type="compound" xml:id="CF1709">ⲃⲱⲗ (ⲙⲛ-)</form>
@@ -8003,7 +8094,7 @@
                     <sense n="1">
                         <ref type="Greek">σικύδιον</ref>
                         <cit type="translation" xml:lang="de">
-                            <quote>Kürbis, Gurke</quote>
+                            <quote>Kürbisgewächs, Gurke</quote>
                         </cit>
                         <cit type="translation" xml:lang="en">
                             <quote>gourd, cucumber</quote>
@@ -8018,7 +8109,7 @@
                     <sense n="2">
                         <ref type="Greek">σικυήλατον (-ρατον)</ref>
                         <cit type="translation" xml:lang="de">
-                            <quote>Kürbisgarten</quote>
+                            <quote>Kürbisgewächsgarten</quote>
                         </cit>
                         <cit type="translation" xml:lang="en">
                             <quote>gourd-garden</quote>
@@ -8049,12 +8140,12 @@
                         </gramGrp>
                     </form>
                     <xr type="cf">
-                        <ref target="#ϭⲗⲟϭ">Kürbis</ref>
+                        <ref target="#ϭⲗⲟϭ">Kürbisgewachs</ref>
                     </xr>
                     <sense>
                         <ref type="Greek">κολοκύντη</ref>
                         <cit type="translation" xml:lang="de">
-                            <quote>Kürbisgurke</quote>
+                            <quote>Kürbisgewächs, Gurke</quote>
                         </cit>
                         <cit type="translation" xml:lang="en">
                             <quote>(round) gourd</quote>
@@ -8082,7 +8173,7 @@
                     </xr>
                     <sense>
                         <cit type="translation" xml:lang="de">
-                            <quote>Kürbishändler</quote>
+                            <quote>Kürbisgewächshändler</quote>
                         </cit>
                         <cit type="translation" xml:lang="en">
                             <quote>gourd-seller</quote>
@@ -11305,7 +11396,7 @@
                     <sense n="3">
                         <ref type="Greek">ἐκδύειν</ref>
                         <cit type="translation" xml:lang="de">
-                            <quote>häuten, entblöst daliegen, plündern</quote>
+                            <quote>häuten, entblößt daliegen, plündern</quote>
                         </cit>
                         <cit type="translation" xml:lang="en">
                             <quote>flay, lay bare, unsheath, despoil</quote>

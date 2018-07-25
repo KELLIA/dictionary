@@ -70,7 +70,7 @@
                                 <xs:enumeration value="Demonstrativartikel"/>
                                 <xs:enumeration value="Kompositum"/>
                                 <xs:enumeration value="unpersönlicher Ausdruck"/>
-
+                                <xs:enumeration value="l.i."/>
                                 <xs:enumeration value="?"/>
                             </xs:restriction>
                         </xs:simpleType>
@@ -194,12 +194,26 @@
                         </xs:annotation>
                         <xs:complexType mixed="true">
                             <xs:all maxOccurs="1">
+                                <xs:element name="ref" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                                <xs:attribute name="type">
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:string">
+                                                            <xs:enumeration value="coptic_usage::cu_cl_hiera"/>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                            </xs:extension>
+                                        </xs:simpleContent>
+                                    </xs:complexType>
+                                </xs:element>
                                 <xs:element name="usg" type="ns1:usgType" maxOccurs="1"
                                     minOccurs="0"/>
                                 <xs:element name="orth" maxOccurs="1" minOccurs="0">
                                     <xs:annotation>
-                                        <xs:documentation>if non-sahidic: orth/ⲣⲉϥϯ ⲟⲩⲃⲉ-/orth
-if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟⲩϥ/orth</xs:documentation>
+                                        <xs:documentation></xs:documentation>
                                     </xs:annotation>
                                     <xs:complexType>
                                         <xs:simpleContent>
@@ -241,12 +255,26 @@ if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟ�
                     <xs:element name="etym" minOccurs="0">
                         <xs:complexType>
                             <xs:choice maxOccurs="unbounded">
-                                <xs:element name="ref">
+                                <xs:element name="ref" minOccurs="0" maxOccurs="unbounded">
                                     <xs:complexType>
                                         <xs:simpleContent>
                                             <xs:extension base="xs:string">
+                                                <xs:attribute name="type">
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:string">
+                                                            <xs:enumeration value="coptic_usage::cu_cl_hiera"/>
+                                                            <xs:enumeration value="greek_lemma::grl_ID"/>
+                                                            <xs:enumeration value="greek_lemma::grl_lemma"/>
+                                                            <xs:enumeration value="greek_lemma::grl_meaning"/>
+                                                            <xs:enumeration value="greek_lemma::grl_pos"/>
+                                                            <xs:enumeration value="greek_lemma::grl_ref"/>
+                                                            <xs:enumeration value="WCNae"/>
+                                                            <xs:enumeration value="WCNde"/>
+                                                            <xs:enumeration value="Greek"/>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
                                                 <xs:attribute name="targetLang" type="xs:string"/>
-                                                <xs:attribute name="type" type="xs:string"/>
                                                 <xs:attribute name="target" type="xs:string"/>
                                             </xs:extension>
                                         </xs:simpleContent>
@@ -321,7 +349,7 @@ if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟ�
                                         </xs:simpleContent>
                                     </xs:complexType>
                                 </xs:element>
-                                <xs:element name="cit" minOccurs="3" maxOccurs="unbounded">
+                                <xs:element name="cit" minOccurs="1" maxOccurs="unbounded">
                                     <xs:complexType>
                                         <xs:choice minOccurs="1" maxOccurs="unbounded">
                                             <xs:element name="quote" type="xs:string"/>
@@ -411,6 +439,8 @@ if different spellings: orth/ⲉⲧⲛⲁⲛⲟⲩϥ/orth; orth/ⲉⲛⲁⲛⲟ�
             <xs:enumeration value="M"/>
             <xs:enumeration value="P"/>
             <xs:enumeration value="Ak"/>
+            <xs:enumeration value="V"/>
+            <xs:enumeration value="W"/>
         </xs:restriction>
     </xs:simpleType>
 

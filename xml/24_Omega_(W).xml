@@ -6617,6 +6617,9 @@
                         <pos>Subst.</pos>
                         <gen>f.</gen>
                     </gramGrp>
+                    <xr type="cf">
+                        <ref target="#ⲁϭⲃⲉⲥ">Feuchtigkeit</ref>
+                    </xr>
                     <sense>
                         <cit type="translation" xml:lang="de">
                             <quote>Kälte</quote>
@@ -6629,28 +6632,6 @@
                         </cit>
                         <cit>
                             <bibl>CD 540a; KoptHWb 298; DELC 252b; ChLCS 74a</bibl>
-                        </cit>
-                    </sense>
-                </entry>
-                <entry n="4" xml:id="C5669">
-                    <form type="lemma" xml:id="CF13313">ⲁϭⲃⲉⲥ</form>
-                    <form xml:id="CF13314">ⲁϭⲃⲉⲥ</form>
-                    <gramGrp>
-                        <pos>Subst.</pos>
-                        <gen>f.</gen>
-                    </gramGrp>
-                    <sense>
-                        <cit type="translation" xml:lang="de">
-                            <quote>Feuchtigkeit</quote>
-                        </cit>
-                        <cit type="translation" xml:lang="en">
-                            <quote>humidity</quote>
-                        </cit>
-                        <cit type="translation" xml:lang="fr">
-                            <quote>humidité</quote>
-                        </cit>
-                        <cit>
-                            <bibl>CED 19, 233; KoptHWb 298; DELC 252b; ChLCS 74a</bibl>
                         </cit>
                     </sense>
                 </entry>

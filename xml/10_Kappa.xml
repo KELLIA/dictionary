@@ -252,16 +252,15 @@
                 <entry n="6" type="compound" xml:id="C1043">
                     <form type="lemma" xml:id="CF3443">
                         <usg type="geo">S</usg>
-                        <orth>ⲣⲡⲕⲉ-</orth><oRef>ⲣ ⲡ ⲕⲉ-</oRef>
+                        <orth>ⲣⲡⲕⲉ-</orth>
                     </form>
                     <form xml:id="CF3444">
                         <usg type="geo">S</usg>
-                        <orth>ⲣⲡⲕⲉ-</orth>
+                        <orth>ⲣⲡⲕⲉ-</orth><oRef>ⲣ ⲡ ⲕⲉ-</oRef>
                     </form>
                     <form xml:id="CF3445">
                         <usg type="geo">B</usg>
-                        <orth>ⲉⲣⲡⲕⲉ-</orth>
-                        <oRef>ⲉⲣ ⲡ ⲕⲉ-</oRef>
+                        <orth>ⲉⲣⲡⲕⲉ-</orth> <oRef>ⲉⲣ ⲡ ⲕⲉ-</oRef>
                     </form>
                     <gramGrp>
                         <pos>Vb.</pos>
@@ -282,52 +281,6 @@
                         </cit>
                         <cit>
                             <bibl>CD 91b-92a; KoptHWb 55; ChLCS 15a</bibl>
-                        </cit>
-                    </sense>
-                </entry>
-                <entry n="7" xml:id="C1044">
-                    <form type="lemma" xml:id="CF3446">ⲕⲉⲧ</form>
-                    <form xml:id="CF3447">ⲕⲉⲧ</form>
-                    <gramGrp>
-                        <pos>Subst.</pos>
-                        <gen>m.</gen>
-                    </gramGrp>
-                    <sense>
-                        <cit type="translation" xml:lang="de">
-                            <quote>(ein) anderer, (mit best. Artikel) der, dieser andere</quote>
-                        </cit>
-                        <cit type="translation" xml:lang="en">
-                            <quote>another, (with art. or demonst.) the, this other</quote>
-                        </cit>
-                        <cit type="translation" xml:lang="fr">
-                            <quote>(un) autre, (avec l'article défini ou demonst.) l'autre, cet
-                            autre</quote>
-                        </cit>
-                        <cit>
-                            <bibl>CD 92a; KoptHWb 54-55</bibl>
-                        </cit>
-                    </sense>
-                </entry>
-                <entry n="8" xml:id="C1045">
-                    <form type="lemma" xml:id="CF3448">ⲕⲉⲧⲉ</form>
-                    <form xml:id="CF3449">ⲕⲉⲧⲉ</form>
-                    <gramGrp>
-                        <pos>Subst.</pos>
-                        <gen>f.</gen>
-                    </gramGrp>
-                    <sense>
-                        <cit type="translation" xml:lang="de">
-                            <quote>(eine) andere, (mit best. Artikel) die, diese andere</quote>
-                        </cit>
-                        <cit type="translation" xml:lang="en">
-                            <quote>another, (with art. or demonst.) the, this other</quote>
-                        </cit>
-                        <cit type="translation" xml:lang="fr">
-                            <quote>(une) autre, (avec l'article défini ou demonst.) l'autre, cette
-                            autre</quote>
-                        </cit>
-                        <cit>
-                            <bibl>CD 92a; KoptHWb 54-55</bibl>
                         </cit>
                     </sense>
                 </entry>
