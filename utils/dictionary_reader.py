@@ -3,7 +3,7 @@
 
 import sqlite3 as lite
 import xml.etree.ElementTree as ET
-import re
+import re, sys
 import glob
 import os
 from collections import OrderedDict
@@ -21,7 +21,7 @@ def check_chars(word):
 	expected_chars = u'()[]?,.*/ -–	 ︤̅ˉ̣︦̄̈ ⸗= o'
 	for char in word:
 		if char not in mapping and char not in expected_chars:
-			print word + "\t" + char
+			print(word + "\t" + char)
 
 
 
@@ -135,7 +135,7 @@ def process_entry(id, super_id, entry):
 			for geo in geos:
 				orthstring += orth_text + "~" + geo + "\n"
 				search_string += search_text + "~" + geo + "\n"
-			if len(geos) == 0:
+			if len(list(geos)) == 0:
 				orthstring += orth_text + "~\n"
 				search_string += search_text + "~\n"
 
@@ -252,8 +252,9 @@ def process_entry(id, super_id, entry):
 		new_pos = pos_map(pos_text, subc_text, orthstring)
 		if new_pos not in pos_list:
 			pos_list.append(new_pos)
-	if len(pos_list) > 1:
+	if len(list(pos_list)) > 1:
 		pos_list = filter(lambda p: p not in ['NULL', 'NONE', '?'], pos_list)
+		pos_list = list(pos_list)
 	if len(pos_list) == 0:
 		pos_list.append('NULL')
 	pos_string = pos_list[0] # on the rare occasion pos_list has len > 1 at this point, the first one is the most valid
@@ -419,9 +420,14 @@ with con:
 	entry_id = 1
 
 	for letter_filename in glob.glob(xml_path + '*.xml'):
+		sys.stderr.write("o Reading " + letter_filename + "\n")
 		tree = ET.parse(letter_filename)
 		root = tree.getroot()
-		body = root.find('{http://www.tei-c.org/ns/1.0}text').find('{http://www.tei-c.org/ns/1.0}body')
+		try:
+			body = root.find('{http://www.tei-c.org/ns/1.0}text').find('{http://www.tei-c.org/ns/1.0}body')
+		except:
+			sys.stderr.write("! ERR: Can't find root>text>body in" +letter_filename + "\n")
+			sys.exit()
 
 		for child in body:
 			if child.tag == "{http://www.tei-c.org/ns/1.0}entry":
