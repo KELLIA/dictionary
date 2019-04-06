@@ -8,7 +8,7 @@ import os
 from helper import wrap
 cgitb.enable()
 
-print "Content-type: text/html\n"
+print("Content-type: text/html\n")
         
 if __name__ == "__main__":
 	search_page = """
@@ -30,6 +30,9 @@ if __name__ == "__main__":
             <option value="L">L: &nbsp;&nbsp;&nbsp;Lycopolitan</option>
             <option value="P">P: &nbsp;&nbsp;&nbsp;Proto-Theban</option>
             <option value="S">S: &nbsp;&nbsp;&nbsp;Sahidic</option>
+            <option value="V">V: &nbsp;&nbsp;&nbsp;South Fayyumic Greek</option>
+            <option value="W">W: &nbsp;&nbsp;&nbsp;Crypto-Mesokemic Greek</option>
+            <option value="?">?: &nbsp;&nbsp;&nbsp;Greek (usage unclear)</option>
         </select>
         </td></tr>
         <tr><td>Scriptorium&nbsp;tag:</td>
@@ -76,5 +79,5 @@ if __name__ == "__main__":
 	<link rel="stylesheet" type="text/css" href="css/keyboard.css?version=2">
 	"""
 	wrapped = wrapped.replace("<head>\n","<head>"+kbd_include)
-	print wrapped
+	print(wrapped)
 	
