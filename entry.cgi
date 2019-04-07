@@ -1,13 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sqlite3 as lite
+import cgi
+import cgitb
+import os
+import platform
 import re
-import cgi, cgitb
+import sqlite3 as lite
 import string
+import sys
 from collections import defaultdict
-import os, platform, sys
+
 from helper import wrap, get_annis_query
+
 cgitb.enable()
 
 print "Content-type: text/html\n"
@@ -50,7 +55,7 @@ def sense_list(sense_string):
 	sense_html += "</ol>"
 	return sense_html
 
-def process_orthstring(orthstring, orefstring):
+def process_orthstring(orthstring, orefstring, cursor):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
@@ -78,10 +83,28 @@ def process_orthstring(orthstring, orefstring):
 					            <i class="fa fa-sort-numeric-asc freq_icon">&nbsp;</i>
             					<span><b>ANNIS frequencies:</b><br/>**freqs**</span>
             					</a>
-          					</div></td></tr>"""
+          					</div></td>"""
 
 			freq_info = freq_info.replace("**freqs**",freq_data)
 			orth_html += freq_info
+
+			colloc_data = get_collocs(distinct_orth,cursor)
+			if len(colloc_data) > 0:
+				colloc_info = """	<td><div class="expandable">
+										<a class="dict_tooltip" href="">
+										<i class="fa fa-comment-o freq_icon">&nbsp;</i>
+										<span><b>Top collocations in ANNIS: (5 word window)</b><br/><table class="colloc_tab">
+										<tr><th>&nbsp;</th><th>Word</th><th>Co-occurrences</th><th>Association (MI3)</th></tr>"""
+				for r, row in enumerate(colloc_data):
+					word, collocate, cooc, assoc = row
+					#colloc_info += '<li><a href="https://corpling.uis.georgetown.edu/coptic-dictionary/results.cgi?quick_search='+ \
+					#			   collocate + '">' + collocate + "</a> (" + str(cooc) + "," + str(assoc)+")</li>"
+					colloc_info += '<tr><td style="text-align:right">'+str(r+1)+'.</td><td>' + collocate + '</td><td style="text-align: center">' + str(cooc) + '</td><td style="text-align: center">' + str("%.2f" % assoc) + "</td></tr>"
+				colloc_info += """</table></span>
+										</a>
+									</div></td></tr>"""
+				orth_html += colloc_info.encode("utf8")
+
 	orth_html += "</table>"
 	return orth_html
 
@@ -110,7 +133,10 @@ def process_sense(de, en, fr):
 				word = xr.group(1)
 				link = '<a href="results.cgi?coptic=' + word + '">' + word + "</a>"
 				ref_bibl = re.sub(r'xr. #(.*?)#', r'xr. ' + link, ref_bibl)
-			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new">\1</a>',ref_bibl)
+			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'''<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new" style="text-decoration-style: solid;" data-tooltip="W.E. Crum's Dictionary">\1</a>''',ref_bibl)
+			ref_bibl = re.sub(r'KoptHWb( [0-9]+)?',r'<a class="hint" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf">KoptHWb\1</a>',ref_bibl)
+			ref_bibl = re.sub("DDGLC ref:","DDGLC DDGLC Usage ID:",ref_bibl)
+			#ref_bibl = re.sub(r'KoptHWb( [0-9]+)?',r'KoptHWb\1<i class="fa fa-info-circle" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf"></i>',ref_bibl)
 
 			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
@@ -160,7 +186,7 @@ def get_freqs(item):
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
 	elif platform.system() == 'Windows':
-		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
 	else:
 		con = lite.connect('alpha_kyima_rc1.db')
 
@@ -187,10 +213,19 @@ def get_freqs(item):
 	return output + "</ul>\n"
 
 
+def get_collocs(word, cursor):
+	thresh = 15
+	sql = "SELECT * from collocates WHERE lemma=? and not collocate in ('ⲡ','ⲛ','ⲧ','ⲟⲩ') and assoc > ? ORDER BY assoc DESC LIMIT 20"
+	rows = cursor.execute(sql,(word,thresh)).fetchall()
+	return rows
+
+
 if __name__ == "__main__":
 	form = cgi.FieldStorage()
 	entry_id = cgi.escape(form.getvalue("entry", "")).replace("(","").replace(")","").replace("=","")
 	super_id = cgi.escape(form.getvalue("super", "")).replace("(","").replace(")","").replace("=","")
+	#entry_id = 6033
+	#super_id = 2342
 
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
@@ -207,18 +242,25 @@ if __name__ == "__main__":
 		this_sql_command = "SELECT * FROM entries WHERE entries.id = ?;"
 		cur.execute(this_sql_command,(entry_id,))
 		this_entry = cur.fetchone()
+		grk_id = this_entry[-1]
 
 		if this_entry is None:
 			entry_page +="No entry found\n</div>\n"
 			print wrap(entry_page)
 			sys.exit()
 
-		related_sql_command = "SELECT * FROM entries WHERE entries.super_ref = ? AND entries.id != ?;"
-		cur.execute(related_sql_command, (super_id,entry_id))
+		related_sql_command = "SELECT * FROM entries WHERE (entries.super_ref = ? AND entries.id != ?)"
+		if len(grk_id) > 0:
+			related_sql_command += " OR (entries.grkId = ? AND entries.id != ?)"
+			params = (super_id,entry_id,grk_id,entry_id)
+		else:
+			related_sql_command += ";"
+			params = (super_id,entry_id)
+		cur.execute(related_sql_command, params)
 		related_entries = cur.fetchall()
 
 		# orth (and morph) info
-		entry_page += process_orthstring(this_entry[2], this_entry[-1])
+		entry_page += process_orthstring(this_entry[2], this_entry[-2], cur) #this_entry[-2] -> oRef column
 		tag = this_entry[3].encode("utf8")
 		if tag == "NULL" or tag == "NONE":
 			tag = "--"

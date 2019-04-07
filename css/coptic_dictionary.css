@@ -288,3 +288,7 @@ top: 3px;
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
+
+.colloc_tab td, .colloc_tab th{
+padding:2px
+}

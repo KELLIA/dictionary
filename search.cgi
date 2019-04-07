@@ -31,7 +31,7 @@ if __name__ == "__main__":
             <option value="P">P: &nbsp;&nbsp;&nbsp;Proto-Theban</option>
             <option value="S">S: &nbsp;&nbsp;&nbsp;Sahidic</option>
             <option value="V">V: &nbsp;&nbsp;&nbsp;South Fayyumic Greek</option>
-            <option value="W">W: &nbsp;&nbsp;&nbsp;Crypto-Mesokemic Greek</option>
+            <option value="W">W: &nbsp;&nbsp;Crypto-Mesokemic Greek</option>
             <option value="?">?: &nbsp;&nbsp;&nbsp;Greek (usage unclear)</option>
         </select>
         </td></tr>

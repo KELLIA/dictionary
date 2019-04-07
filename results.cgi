@@ -135,9 +135,12 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 			word_search_string = r'.*\n' + word + r'~' + dialect + r'?\n.*'
 
 		word_constraint = "entries.search REGEXP ?"
-		constraints.append(word_constraint)
 		parameters.append(word_search_string)
-		
+		if " " in word:
+			word_constraint = "(" + word_constraint + " OR entries.oRef = ?)"
+			parameters.append(word)
+		constraints.append(word_constraint)
+
 	elif dialect != 'any':
 		dialect_constraint = "entries.search REGEXP ?"
 		constraints.append(dialect_constraint)
