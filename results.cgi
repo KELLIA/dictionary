@@ -144,7 +144,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 	elif dialect != 'any':
 		dialect_constraint = "entries.search REGEXP ?"
 		constraints.append(dialect_constraint)
-		parameters.append(r'.*~' + dialect + r'?\n')
+		parameters.append(r'.*~' + dialect + r'?(^^[^\n]*)*\n')
 
 	# POS column, based on pos
 	if pos != 'any':

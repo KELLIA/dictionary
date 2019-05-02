@@ -66,16 +66,20 @@ def process_orthstring(orthstring, orefstring, cursor):
 		orth_geo_dict = defaultdict(list)
 		orth = "NONE"
 		for orth_geo_string in parts[1:]:
-			orth_geo = re.match(r'^(.*)~(.?)$', orth_geo_string)
+			orth_geo = re.match(r'^(.*)~(.?\^\^([A-Za-z0-9]*))$', orth_geo_string)
 			if orth_geo is not None:
 				orth = orth_geo.group(1)
-				orth_geo_dict[orth] += orth_geo.group(2).encode("utf8")
+				orth_geo_dict[orth].append(orth_geo.group(2).encode("utf8"))
 		for distinct_orth in orth_geo_dict:
 			geo_string = " ".join(orth_geo_dict[orth])
+			form_id = ""
+			if "^^" in geo_string:
+				geo_string, form_id = geo_string.split("^^")
 			annis_query = get_annis_query(orth, oref)
-			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="morphology">' + \
-						 gramstring.encode("utf8") + '</td><td class="dialect">' + geo_string.encode("utf8") + \
-						 '</td><td class="annis_link"><a href="' + annis_query + \
+			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="dialect">' + \
+						 geo_string.encode("utf8") + '</td><td class="tla_orth_id">TLA: ' + \
+						  form_id.encode("utf8") + '</td><td class="morphology">' + \
+						 gramstring.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + \
 						 '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td>'
 			freq_data = get_freqs(distinct_orth)
 			freq_info = """	<td><div class="expandable">
@@ -99,7 +103,8 @@ def process_orthstring(orthstring, orefstring, cursor):
 					word, collocate, cooc, assoc = row
 					#colloc_info += '<li><a href="https://corpling.uis.georgetown.edu/coptic-dictionary/results.cgi?quick_search='+ \
 					#			   collocate + '">' + collocate + "</a> (" + str(cooc) + "," + str(assoc)+")</li>"
-					colloc_info += '<tr><td style="text-align:right">'+str(r+1)+'.</td><td>' + collocate + '</td><td style="text-align: center">' + str(cooc) + '</td><td style="text-align: center">' + str("%.2f" % assoc) + "</td></tr>"
+					colloc_info += '<tr><td style="text-align:right">'+str(r+1)+'.</td><td><a href="results.cgi?quick_search='+ \
+								   collocate + '">' + collocate + '</a></td><td style="text-align: center">' + str(cooc) + '</td><td style="text-align: center">' + str("%.2f" % assoc) + "</td></tr>"
 				colloc_info += """</table></span>
 										</a>
 									</div></td></tr>"""
@@ -127,23 +132,36 @@ def process_sense(de, en, fr):
 			de_parts = re.search(r'[0-9]+\|.*~~~(.*);;;.*', de_sense)
 			if de_parts is not None:
 				de_definition = de_parts.group(1)
-			ref_bibl = sense_parts.group(2).encode("utf8") + " " + sense_parts.group(4).encode("utf8")
+			biblio = sense_parts.group(4).encode("utf8")
+			if len(biblio) > 0:
+				biblio = "Bibliography: " + biblio
+			ref_bibl = sense_parts.group(2).encode("utf8") + " " + biblio
 			xr = re.search(r'xr. #(.*?)#', ref_bibl)
 			if xr is not None:
 				word = xr.group(1)
 				link = '<a href="results.cgi?coptic=' + word + '">' + word + "</a>"
 				ref_bibl = re.sub(r'xr. #(.*?)#', r'xr. ' + link, ref_bibl)
-			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'''<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new" style="text-decoration-style: solid;" data-tooltip="W.E. Crum's Dictionary">\1</a>''',ref_bibl)
-			ref_bibl = re.sub(r'KoptHWb( [0-9]+)?',r'<a class="hint" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf">KoptHWb\1</a>',ref_bibl)
-			ref_bibl = re.sub("DDGLC ref:","DDGLC DDGLC Usage ID:",ref_bibl)
+			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'''<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new" style="text-decoration-style: solid;">\1</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>''',ref_bibl)
+			ref_bibl = re.sub(r'KoptHWb( [0-9]+(, ?[0-9]+)*)?',r'KoptHWb\1<a class="hint" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf">?</a>',ref_bibl)
+			ref_bibl = re.sub(r'CED( [0-9]+(, ?[0-9]+)*)?',r'CED\1<a class="hint" data-tooltip="J. Černý, Coptic Etymological Dictionary, Cambridge: Cambridge Univ. Press, 1976">?</a>',ref_bibl)
+			ref_bibl = re.sub(r'(DELC [0-9A-Za-z]+(, ?[0-9A-Za-z]+)*)',r'\1<a class="hint" data-tooltip="W. Vycichl, Dictionnaire étymologique de la langue copte, Leuven: Peeters, 1983">?</a>',ref_bibl)
+			ref_bibl = re.sub(r'(ChLCS [0-9A-Za-z]+(, ?[0-9A-Za-z]+)*)',r'\1<a class="hint" data-tooltip="P. Cherix, Lexique Copte (dialecte sahidique), Copticherix, 2006-2018">?</a>',ref_bibl)
+			ref_bibl = re.sub(r'(ONB [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="T. Orlandi, Koptische Papyri theologischen Inhalts (Mitteilungen aus der Papyrussammlung der Österreichischen Nationalbibliothek (Papyrus Erzherzog Rainer) / Neue Serie, 9), Wien: Hollinek, 1974">?</a>',ref_bibl)
+			ref_bibl = re.sub(r'(WbGWKDT [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="H. Förster, Wörterbuch der griechischen Wörter in den koptischen dokumentarischen Texten. Berlin/Boston: de Gruyter, 2002">?</a>',ref_bibl)
+			ref_bibl = re.sub(r'((Kasser )?CDC [0-9A-Za-z]+(, ?[0-9A-Za-z]+)*)',r'''\1<a class="hint" data-tooltip="R. Kasser, Compléments au dictionnaire copte de Crum, Kairo: Inst. Français d'Archéologie Orientale, 1964">?</a>''',ref_bibl)
+			ref_bibl = re.sub(r'(LCG [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="B. Layton, A Coptic grammar: with a chrestomathy and glossary; Sahidic dialect, Wiesbaden: Harrassowitz, 2000">?</a>',ref_bibl)
+			ref_bibl = re.sub(r'(Till D [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="W. Till, Koptische Dialektgrammatik: mit Lesestücken und Wörterbuch, München: Beck, 1961">?</a>',ref_bibl)
+			ref_bibl = re.sub(r'(Osing, Pap. Ox. [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="J. Osing: Der spätägyptische Papyrus BM 10808, Harrassowitz, Wiesbaden 1976">?</a>',ref_bibl)
+			ref_bibl = re.sub("DDGLC ref:","DDGLC Usage ID:",ref_bibl)
 			#ref_bibl = re.sub(r'KoptHWb( [0-9]+)?',r'KoptHWb\1<i class="fa fa-info-circle" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf"></i>',ref_bibl)
 
-			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
+			engstr = "Eng. " if (de_parts is not None or fr_parts is not None) else ""
+			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
-				sense_html += '<tr><td></td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
+				sense_html += '<tr><td></td><td class="sense_lang">Fra. </td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
 			if de_parts is not None:
-				sense_html += '<tr><td></td><td class="trans">' + de_definition.encode("utf8") + '</td></tr>'
-			sense_html += '<tr><td></td><td class="bibl">' + ref_bibl + '</td></tr>'
+				sense_html += '<tr><td></td><td class="sense_lang">Deu. </td><td class="trans">' + de_definition.encode("utf8") + '</td></tr>'
+			sense_html += '<tr><td></td><td class="bibl" colspan="2">' + ref_bibl + '</td></tr>'
 	sense_html += "</table>"
 	return sense_html
 
@@ -230,7 +248,8 @@ if __name__ == "__main__":
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
 	elif platform.system() == 'Windows':
-		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+		#con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
 	else:
 		con = lite.connect('alpha_kyima_rc1.db')
 
@@ -242,7 +261,8 @@ if __name__ == "__main__":
 		this_sql_command = "SELECT * FROM entries WHERE entries.id = ?;"
 		cur.execute(this_sql_command,(entry_id,))
 		this_entry = cur.fetchone()
-		grk_id = this_entry[-1]
+		grk_id = this_entry[-2]
+		entry_xml_id = this_entry[-1]
 
 		if this_entry is None:
 			entry_page +="No entry found\n</div>\n"
@@ -260,7 +280,7 @@ if __name__ == "__main__":
 		related_entries = cur.fetchall()
 
 		# orth (and morph) info
-		entry_page += process_orthstring(this_entry[2], this_entry[-2], cur) #this_entry[-2] -> oRef column
+		entry_page += process_orthstring(this_entry[2], this_entry[-3], cur) #this_entry[-3] -> oRef column
 		tag = this_entry[3].encode("utf8")
 		if tag == "NULL" or tag == "NONE":
 			tag = "--"
@@ -280,5 +300,9 @@ if __name__ == "__main__":
 
 		entry_page += "</div>"
 
+		xml_id_string = '<span class="tla_id">[TLA lemma no. ' + entry_xml_id + ']</span>' if entry_xml_id != "" else ""
+
 	wrapped = wrap(entry_page)
+	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"\1\n"+xml_id_string.encode("utf8"),wrapped)
+
 	print wrapped

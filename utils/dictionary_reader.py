@@ -113,6 +113,12 @@ def process_entry(id, super_id, entry):
 		else:
 			geos = []
 
+		form_id = form.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in form.attrib else ""
+		geos_with_ids = []
+		for geo in geos:
+			geos_with_ids.append(geo + "^^" + form_id)
+		geos = geos_with_ids
+
 		for orth in orths:
 			remove_whitespace = re.search(r'[^\s].*[^\s]', orth.text)
 
@@ -136,7 +142,7 @@ def process_entry(id, super_id, entry):
 				orthstring += orth_text + "~" + geo + "\n"
 				search_string += search_text + "~" + geo + "\n"
 			if len(list(geos)) == 0:
-				orthstring += orth_text + "~\n"
+				orthstring += orth_text + "~^^"+form_id+"\n"
 				search_string += search_text + "~\n"
 
 		oref_string += oref_text
@@ -323,7 +329,8 @@ def process_entry(id, super_id, entry):
 def process_super_entry(entry_id, super_id, super_entry):
 	row_list = []
 	for entry in super_entry:
-		row_list.append(process_entry(entry_id, super_id, entry))
+		entry_xml_id = entry.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in entry.attrib else ""
+		row_list.append(tuple(list(process_entry(entry_id, super_id, entry))+[entry_xml_id]))
 		entry_id += 1
 
 	entry_rows = tuple(row_list)
@@ -414,7 +421,7 @@ with con:
 	cur = con.cursor()
 
 	cur.execute("DROP TABLE IF EXISTS entries")
-	cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT)")
+	cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, xml_id TEXT)")
 
 	super_id = 1
 	entry_id = 1
@@ -431,12 +438,13 @@ with con:
 
 		for child in body:
 			if child.tag == "{http://www.tei-c.org/ns/1.0}entry":
-				row = process_entry(entry_id, super_id, child)
-				cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
+				entry_xml_id = child.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in child.attrib else ""
+				row = tuple(list(process_entry(entry_id, super_id, child)) + [entry_xml_id])
+				cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
 				super_id += 1
 				entry_id += 1
 			elif child.tag == "{http://www.tei-c.org/ns/1.0}superEntry":
 				rows = process_super_entry(entry_id, super_id, child)
-				cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+				cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
 				super_id += 1
 				entry_id += len(rows)

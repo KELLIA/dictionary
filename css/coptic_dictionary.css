@@ -56,7 +56,7 @@ ol{margin: 0px !important}
 #lang{float:left !important; clear:both}
 .content, #search {border: 1px solid black; background-color: rgba(255, 255, 255, 0.5); padding: 12px; margin-left: 4px; margin-top:4px; min-height: 250px }
 .related_orth, .orth_cell, .second_orth_cell, .pos_cell{vertical-align:top}
-.orth_entry, .morphology, .dialect, .annis_link{padding:4px}
+.orth_entry, .morphology, .dialect, .annis_link, .tla_orth_id{padding:4px}
 #senses {margin-top: 5px; margin-bottom: 10px}
 .tag{font-family: antinoouRegular, sans-serif; color: #3b7577;    margin-top: 4px;
     margin-bottom: 6px;}
@@ -177,7 +177,7 @@ top: -3px;
 {
   display:block;
   position:absolute;
-  left:0;
+  left:-20px;
   top: 0px;
   z-index:1000;
   min-width:400px;
@@ -220,12 +220,23 @@ top: 3px;
   text-decoration-color: #0d0d9d;*/
 }
 
-.hint, .hint:hover{
-  text-decoration-style: dashed;
-  text-decoration-line: underline;
-  text-decoration-color: #0d0d9d;
+.hint{
+    vertical-align: super;
+    height: 10px;
+    width: 10px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: lightgray;
+    border: 1px solid black;
+    text-align: center;
+    display: inline-block;
+    line-height: 1em;
+    font-size: 60%;
 }
 
+.hint:hover{
+	background-color: white;
+}
 
 [data-tooltip]:hover{
   /*text-decoration-style: dashed;
@@ -291,4 +302,19 @@ top: 3px;
 
 .colloc_tab td, .colloc_tab th{
 padding:2px
+}
+
+.tla_id{
+	font-style: normal;
+    color: lightsteelblue;
+    font-size: small;
+}
+
+.tla_orth_id{
+	color:gray; 
+}
+
+.sense_lang{
+	font-style: italic;
+	max-width: 16px;
 }
