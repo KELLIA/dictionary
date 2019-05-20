@@ -320,12 +320,12 @@ if __name__ == "__main__":
 			entry_page += '</div>'
 
 		entry_page += "</div>"
-
+		
 		xml_id_string = 'TLA lemma no. ' + entry_xml_id if entry_xml_id != "" else ""
 
 	wrapped = wrap(entry_page)
 	
 	# adding TLA lemma no. to title and citation info
-	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+xml_id_string.encode("utf8") +"</h2>\n<span class=\"citation_info\">Please cite as: '"+xml_id_string.encode("utf8")+"', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?xxxxTODOxxxx (accessed xx.xx.xxxx).</span>",wrapped)
+	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+xml_id_string.encode("utf8") +"</h2>\n<span class=\"citation_info\">Please cite as: '"+xml_id_string.encode("utf8")+"', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?tla="+xml_id_string.encode("utf8")+" (accessed __.__.20__).</span>",wrapped)
 
 	print wrapped
