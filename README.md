@@ -1,22 +1,24 @@
 # Coptic Dictionary Online
 The dictionary comprised of the XML Coptic lexicon created by the BBAW and interface by Coptic SCRIPTORIUM.  Currently deployed at https://corpling.uis.georgetown.edu/coptic-dictionary/
 
-Licensed [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), software under the Apache 2.0 license (https://www.apache.org/licenses/LICENSE-2.0) (see below)
+Lexicon data licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), software under the Apache 2.0 license (https://www.apache.org/licenses/LICENSE-2.0) (see below)
 
 The virtual keyboard component on the search page is available under a BSD License - HTML Virtual Keyboard Interface Script (http://www.greywyvern.com/code/javascript/keyboard)
 
 #### Lexicon preparation
 
-This lexicon primarily represents work by Frank Feder, who prepared and revised the original Coptic word list, in collaboration with Maxim Kupreyev, who extended and standardized the dictionary. We thank all of following people who contributed to compiling the lexical data:  
-  * Sonja Dahlgren  
-  * Julien Delhez  
-  * Frank Feder  
-  * Lena Krastel  
-  * Maxim Kupreyev  
-  * Tonio Sebastian Richter  
-  * Anne Sörgel  
-  
-The XML files containing lexical entrieis
+The new *Comprehensive Coptic Lexicon* is a combination of two parts: the *BBAW Lexicon of Coptic Egyptian* of the project Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache at the Berlin-Brandenburgische Akademie der Wissenschaften, Berlin, Germany, which includes etymologically Egyptian lexemes of Coptic, and the *DDGLC Lexicon of Greek Loanwords in Coptic* of the project Database and Dictionary of Greek Loanwords in Coptic at the Ägyptologisches Seminar, Freie Universität Berlin, Germany. Both projects are led by Prof. Tonio Sebastian Richter. The following people mainly contributed to compiling the lexical data:
+  * Dylan M. Burns (DDGLC)
+  * Frank Feder (BBAW, AdWG)
+  * Katrin John (DDGLC)
+  * Maxim Kupreyev (BBAW)
+
+moreover
+  * Mathew Almond, Marc Brose, Sonja Dahlgren, Julien Delhez, Anne Grons, Joost Hagen, Jakob Höper, Mariana Jung, Elisabeth Koch, Lena Krastel, Frederic Krueger, Jan Moje, Franziska Naether, Anne Sörgel, Nina Speranskaja, Gunnar Sperveslage, Vincent Walter, Alberto Winterberg.
+
+Each lexicon entry has a stable *Thesaurus Linguae Aegyptiae* (TLA) ID no.
+
+TEI XML compliant data files of the lexica are published  under a [CC BY-SA 4.0 Int.](https://creativecommons.org/licenses/by-sa/4.0/) license at DOI [10.17169/refubium-2333](https://doi.org/10.17169/refubium-2333).
 
 #### Search interface
 

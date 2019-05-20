@@ -77,9 +77,9 @@ def process_orthstring(orthstring, orefstring, cursor):
 				geo_string, form_id = geo_string.split("^^")
 			annis_query = get_annis_query(orth, oref)
 			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="dialect">' + \
-						 geo_string.encode("utf8") + '</td><td class="tla_orth_id">TLA: ' + \
+						 geo_string.encode("utf8") + '</td><br/><td class="tla_orth_id">TLA: ' + \
 						  form_id.encode("utf8") + '</td><td class="morphology">' + \
-						 gramstring.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + \
+						 gramstring.encode("utf8") + '</td><br/><td class="annis_link">ANNIS: <a href="' + annis_query + \
 						 '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td>'
 			freq_data = get_freqs(distinct_orth)
 			freq_info = """	<td><div class="expandable">
@@ -155,12 +155,12 @@ def process_sense(de, en, fr):
 			ref_bibl = re.sub("DDGLC ref:","DDGLC Usage ID:",ref_bibl)
 			#ref_bibl = re.sub(r'KoptHWb( [0-9]+)?',r'KoptHWb\1<i class="fa fa-info-circle" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf"></i>',ref_bibl)
 
-			engstr = "Eng. " if (de_parts is not None or fr_parts is not None) else ""
+			engstr = "Engl. " if (de_parts is not None or fr_parts is not None) else ""
 			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
-				sense_html += '<tr><td></td><td class="sense_lang">Fra. </td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
+				sense_html += '<tr><td></td><td class="sense_lang">Fran. </td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
 			if de_parts is not None:
-				sense_html += '<tr><td></td><td class="sense_lang">Deu. </td><td class="trans">' + de_definition.encode("utf8") + '</td></tr>'
+				sense_html += '<tr><td></td><td class="sense_lang">Dtsch. </td><td class="trans">' + de_definition.encode("utf8") + '</td></tr>'
 			sense_html += '<tr><td></td><td class="bibl" colspan="2">' + ref_bibl + '</td></tr>'
 	sense_html += "</table>"
 	return sense_html
@@ -287,22 +287,26 @@ if __name__ == "__main__":
 		entry_page += '<div class="tag">\n\tScriptorium tag: ' + tag + "\n</div>\n"
 
 		# from sense info
+		entry_page += '<div class="sense_info"><b style="font-family: antinoouRegular">Senses:</b><br/>'
 		entry_page += process_sense(this_entry[4], this_entry[5], this_entry[6])
+		entry_page += '</div>'
 
 		# etym info
 		entry_page += process_etym(this_entry[7].encode("utf8"))
 
 		# link to other entries in the superentry
 		if len(related_entries) > 0:
-			entry_page += '<div class="see_also"><b style="font-family: antinoouRegular">See Also:</b><br/>'
+			entry_page += '<div class="see_also"><b style="font-family: antinoouRegular">See also:</b><br/>'
 			entry_page += related(related_entries)
 			entry_page += '</div>'
 
 		entry_page += "</div>"
 
-		xml_id_string = '<span class="tla_id">[TLA lemma no. ' + entry_xml_id + ']</span>' if entry_xml_id != "" else ""
+		xml_id_string = 'TLA lemma no. ' + entry_xml_id if entry_xml_id != "" else ""
 
 	wrapped = wrap(entry_page)
-	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"\1\n"+xml_id_string.encode("utf8"),wrapped)
+	
+	# adding TLA lemma no. to title and citation info
+	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+xml_id_string.encode("utf8") +"</h2>\n<span class=\"citation_info\">Please cite as: '"+xml_id_string.encode("utf8")+"', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?xxxxTODOxxxx (accessed xx.xx.xxxx).</span>",wrapped)
 
 	print wrapped
