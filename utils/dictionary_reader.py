@@ -421,7 +421,7 @@ with con:
 	cur = con.cursor()
 
 	cur.execute("DROP TABLE IF EXISTS entries")
-	cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, xml_id TEXT)")
+	cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, xml_id TEXT UNIQUE)")
 
 	super_id = 1
 	entry_id = 1
