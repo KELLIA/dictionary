@@ -239,11 +239,6 @@ def get_collocs(word, cursor):
 
 
 if __name__ == "__main__":
-	form = cgi.FieldStorage()
-	entry_id = cgi.escape(form.getvalue("entry", "")).replace("(","").replace(")","").replace("=","")
-	super_id = cgi.escape(form.getvalue("super", "")).replace("(","").replace(")","").replace("=","")
-	#entry_id = 6033
-	#super_id = 2342
 
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
@@ -252,6 +247,30 @@ if __name__ == "__main__":
 		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
 	else:
 		con = lite.connect('alpha_kyima_rc1.db')
+
+	form = cgi.FieldStorage()
+
+	tla_id = cgi.escape(form.getvalue("tla", "")).replace("(","").replace(")","").replace("=","")
+
+	if len(tla_id) > 0:
+		# Get corresponding entry_id and super_id
+		with con:
+			cur = con.cursor()
+
+			tla_query = "SELECT Id, Super_Ref FROM entries WHERE entries.xml_id = ?;"
+			cur.execute(tla_query,(tla_id,))
+			result = cur.fetchone()
+			if len(result) > 0:
+				entry_id = result[0]
+				super_id = result[1]
+			else:
+				entry_id = cgi.escape(form.getvalue("entry", "")).replace("(","").replace(")","").replace("=","")
+				super_id = cgi.escape(form.getvalue("super", "")).replace("(","").replace(")","").replace("=","")
+	else:
+		entry_id = cgi.escape(form.getvalue("entry", "")).replace("(","").replace(")","").replace("=","")
+		super_id = cgi.escape(form.getvalue("super", "")).replace("(","").replace(")","").replace("=","")
+	#entry_id = 6033
+	#super_id = 2342
 
 	entry_page = '<div class="content">'
 
