@@ -310,6 +310,14 @@ padding:2px
     font-size: small;
 }
 
+#citation_info_box{
+    background-color: #ffffb3;
+    font-size: small;
+    padding: 2px;
+    margin: 4px;
+    border: 1px solid gray;
+}
+
 .tla_orth_id{
 	color:gray; 
 }
