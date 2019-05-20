@@ -77,9 +77,9 @@ def process_orthstring(orthstring, orefstring, cursor):
 				geo_string, form_id = geo_string.split("^^")
 			annis_query = get_annis_query(orth, oref)
 			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="dialect">' + \
-						 geo_string.encode("utf8") + '</td><br/><td class="tla_orth_id">TLA: ' + \
+						 geo_string.encode("utf8") + '</td><td class="tla_orth_id">TLA: ' + \
 						  form_id.encode("utf8") + '</td><td class="morphology">' + \
-						 gramstring.encode("utf8") + '</td><br/><td class="annis_link">ANNIS: <a href="' + annis_query + \
+						 gramstring.encode("utf8") + '</td><td class="annis_link">ANNIS: <a href="' + annis_query + \
 						 '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td>'
 			freq_data = get_freqs(distinct_orth)
 			freq_info = """	<td><div class="expandable">
