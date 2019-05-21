@@ -155,12 +155,12 @@ def process_sense(de, en, fr):
 			ref_bibl = re.sub("DDGLC ref:","DDGLC Usage ID:",ref_bibl)
 			#ref_bibl = re.sub(r'KoptHWb( [0-9]+)?',r'KoptHWb\1<i class="fa fa-info-circle" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf"></i>',ref_bibl)
 
-			engstr = "Engl. " if (de_parts is not None or fr_parts is not None) else ""
+			engstr = "(En) " if (de_parts is not None or fr_parts is not None) else ""
 			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
-				sense_html += '<tr><td></td><td class="sense_lang">Fran. </td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
+				sense_html += '<tr><td></td><td class="sense_lang">(Fr) </td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
 			if de_parts is not None:
-				sense_html += '<tr><td></td><td class="sense_lang">Dtsch. </td><td class="trans">' + de_definition.encode("utf8") + '</td></tr>'
+				sense_html += '<tr><td></td><td class="sense_lang">(De) </td><td class="trans">' + de_definition.encode("utf8") + '</td></tr>'
 			sense_html += '<tr><td></td><td class="bibl" colspan="2">' + ref_bibl + '</td></tr>'
 	sense_html += "</table>"
 	return sense_html

@@ -35,7 +35,7 @@ body{
 .second_orth_cell{min-width: 100px;color: grey}
 
 .bibl{color: gray}
-.trans{}
+.trans{width: 99%}
 .dialect{color:darkred}
 .morphology{color:gray; font-style: italic}
 
@@ -323,6 +323,5 @@ padding:2px
 }
 
 .sense_lang{
-	font-style: italic;
-	max-width: 30px;
+	padding-right: 5px;
 }
