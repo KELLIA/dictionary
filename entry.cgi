@@ -260,7 +260,7 @@ if __name__ == "__main__":
 			tla_query = "SELECT Id, Super_Ref FROM entries WHERE entries.xml_id = ?;"
 			cur.execute(tla_query,(tla_id,))
 			result = cur.fetchone()
-			if len(result) > 0:
+			if result is not None:
 				entry_id = result[0]
 				super_id = result[1]
 			else:
@@ -280,13 +280,14 @@ if __name__ == "__main__":
 		this_sql_command = "SELECT * FROM entries WHERE entries.id = ?;"
 		cur.execute(this_sql_command,(entry_id,))
 		this_entry = cur.fetchone()
-		grk_id = this_entry[-2]
-		entry_xml_id = this_entry[-1]
 
 		if this_entry is None:
 			entry_page +="No entry found\n</div>\n"
 			print wrap(entry_page)
 			sys.exit()
+
+		grk_id = this_entry[-2]
+		entry_xml_id = this_entry[-1]
 
 		related_sql_command = "SELECT * FROM entries WHERE (entries.super_ref = ? AND entries.id != ?)"
 		if len(grk_id) > 0:
