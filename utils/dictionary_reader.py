@@ -298,7 +298,7 @@ def process_entry(id, super_id, entry):
 				if "grl_ID" in key:
 					greek_id = val
 				elif "grl_lemma" in key:
-					greek_parts.append('<span style="color:darkred">cf. Greek</span> ' + val)
+					greek_parts.append('<span style="color:darkred">cf. Gr.</span> ' + val)
 				elif "meaning" in key:
 					greek_parts.append("<i>"+val+"</i>.")
 				elif "_pos" in key and len(val) > 0:
