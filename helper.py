@@ -71,7 +71,7 @@ def strip_hyphens(text):
 	return text
 
 
-def get_annis_query(coptic, oref):
+def get_annis_query(coptic, oref, cs_pos=None):
 	coptic = strip_hyphens(coptic).encode("utf8")
 	oref = strip_hyphens(oref).encode("utf8")
 
@@ -92,6 +92,8 @@ def get_annis_query(coptic, oref):
 		query += " . ".join(norm_list)
 		query = "_q=" + urlsafe_b64encode(query)
 
+	elif cs_pos in ["VSTAT","VIMP"]: # This is an inflected entry, look for norm and pos
+		query = "_q=" + urlsafe_b64encode('norm="'+ coptic + '" _=_ pos="'+str(cs_pos)+'"')
 	else:
 		query = "_q=" + urlsafe_b64encode('lemma="'+ coptic + '"')
 

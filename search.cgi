@@ -53,6 +53,8 @@ if __name__ == "__main__":
             <option value="PREP">PREP</option>
             <option value="PTC">PTC</option>
             <option value="V">V</option>
+            <option value="VBD">VBD</option>
+            <option value="VSTAT">VSTAT</option>
         </select>
         </td></tr>
         <tr><td>Definition:</td><td> <input type="text" name="definition" id="definition"></td></tr>

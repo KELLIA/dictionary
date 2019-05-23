@@ -351,7 +351,14 @@ def pos_map(pos, subc, orthstring):
 	elif pos == u"Adv.":
 		return 'ADV'
 	elif pos == u"Vb." or pos == u"unpersönlicher Ausdruck":
-		return 'V'
+		if subc == u"Qualitativ":
+			return 'VSTAT'
+		elif subc == u"Suffixkonjugation":
+			return 'VBD'
+		elif subc == u"Imperativ":
+			return 'VIMP'
+		else:
+			return 'V'
 	elif pos == u"Präp.":
 		return 'PREP'
 	elif pos == u"Zahlzeichen" or pos == u"Zahlwort" or pos == u"Präfix der Ordinalzahlen":
@@ -399,7 +406,7 @@ def pos_map(pos, subc, orthstring):
 		if subc == u"None":
 			return 'NULL'
 		if subc == u"Qualitativ":
-			return 'V'
+			return 'VSTAT'
 	elif u"ϭⲁⲛⲛⲁⲥ" in orthstring:
 		return "NULL"
 

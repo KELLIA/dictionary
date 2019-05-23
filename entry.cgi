@@ -55,7 +55,7 @@ def sense_list(sense_string):
 	sense_html += "</ol>"
 	return sense_html
 
-def process_orthstring(orthstring, orefstring, cursor):
+def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
@@ -75,7 +75,7 @@ def process_orthstring(orthstring, orefstring, cursor):
 			form_id = ""
 			if "^^" in geo_string:
 				geo_string, form_id = geo_string.split("^^")
-			annis_query = get_annis_query(orth, oref)
+			annis_query = get_annis_query(orth, oref, cs_pos)
 			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="dialect">' + \
 						 geo_string.encode("utf8") + '</td><td class="tla_orth_id">TLA: ' + \
 						  form_id.encode("utf8") + '</td><td class="morphology">' + \
@@ -300,7 +300,8 @@ if __name__ == "__main__":
 		related_entries = cur.fetchall()
 
 		# orth (and morph) info
-		entry_page += process_orthstring(this_entry[2], this_entry[-3], cur) #this_entry[-3] -> oRef column
+		cs_pos = this_entry[3]
+		entry_page += process_orthstring(this_entry[2], this_entry[-3], cur, cs_pos=cs_pos) #this_entry[-3] -> oRef column
 		tag = this_entry[3].encode("utf8")
 		if tag == "NULL" or tag == "NONE":
 			tag = "--"
