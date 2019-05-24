@@ -282,7 +282,7 @@ if __name__ == "__main__":
 	word = word.decode("utf8")
 	word = strip_hyphens(word)
 	definition = definition.decode("utf8")
-	word_desc = " for '" + word +"'" if len(word)  > 0 else ""
+	word_desc = """ for '<span style="font-family: antinoouRegular, sans-serif;">""" + word +"</span>'" if len(word)  > 0 else ""
 	dialect_desc = " in dialect " + dialect + " or unspecified" if dialect != "any" and len(dialect)  > 0 else ""
 	definition_desc = " definitions matching <i>" + definition + "</i> in language <i>"  + def_lang + "</i>" if len(definition)  > 0 else ""
 	pos_desc = " restricted to POS tag " + pos if pos != "any" else ""
