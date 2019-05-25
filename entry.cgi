@@ -59,6 +59,8 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
+	orth_html += '<th class="orth_table_header"><td colspan="2">Form &amp; Dial.</td><td colspan="2" class="tla_orth_id">TLA form ID &amp; POS </td><td colspan="3" class="annis_link">ANNIS</td></th>'
+
 	for i, form in enumerate(forms):
 		parts = form.split("\n")
 		oref = orefs[i]
@@ -77,9 +79,9 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 				geo_string, form_id = geo_string.split("^^")
 			annis_query = get_annis_query(orth, oref, cs_pos)
 			orth_html += '<tr><td class="orth_entry">' + distinct_orth.encode("utf8") + '</td><td class="dialect">' + \
-						 geo_string.encode("utf8") + '</td><td class="tla_orth_id">TLA: ' + \
+						 geo_string.encode("utf8") + '</td><td class="tla_orth_id">' + \
 						  form_id.encode("utf8") + '</td><td class="morphology">' + \
-						 gramstring.encode("utf8") + '</td><td class="annis_link">ANNIS: <a href="' + annis_query + \
+						 gramstring.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + \
 						 '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td>'
 			freq_data = get_freqs(distinct_orth)
 			freq_info = """	<td><div class="expandable">
