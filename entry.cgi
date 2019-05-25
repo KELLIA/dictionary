@@ -301,7 +301,7 @@ if __name__ == "__main__":
 		cur.execute(related_sql_command, params)
 		related_entries = cur.fetchall()
 		
-		entry_page += "<b style="font-family: antinoouRegular">Forms:</b><br/>"
+		entry_page += '<b style="font-family: antinoouRegular">Forms:</b><br/>'
 
 		# orth (and morph) info
 		cs_pos = this_entry[3]
