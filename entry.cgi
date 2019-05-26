@@ -59,7 +59,7 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
-	orth_html += '<th class="orth_table_header"><td colspan="2">Form &amp; Dial.</td><td colspan="2" class="tla_orth_id">TLA form ID &amp; POS </td><td colspan="3" class="annis_link">ANNIS</td></th>'
+	orth_html += '<tr class="orth_table_header"><th colspan="2">Form &amp; Dial.</th><th colspan="2" class="tla_orth_id">TLA form ID &amp; POS </th><th colspan="3" class="annis_link">ANNIS</th></tr>'
 
 	for i, form in enumerate(forms):
 		parts = form.split("\n")
