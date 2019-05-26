@@ -144,18 +144,7 @@ def process_sense(de, en, fr):
 				link = '<a href="results.cgi?coptic=' + word + '">' + word + "</a>"
 				ref_bibl = re.sub(r'xr. #(.*?)#', r'xr. ' + link, ref_bibl)
 			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'''<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new" style="text-decoration-style: solid;">\1</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>''',ref_bibl)
-			ref_bibl = re.sub(r'KoptHWb( [0-9]+(, ?[0-9]+)*)?',r'KoptHWb\1<a class="hint" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf">?</a>',ref_bibl)
-			ref_bibl = re.sub(r'CED( [0-9]+(, ?[0-9]+)*)?',r'CED\1<a class="hint" data-tooltip="J. Černý, Coptic Etymological Dictionary, Cambridge: Cambridge Univ. Press, 1976">?</a>',ref_bibl)
-			ref_bibl = re.sub(r'(DELC [0-9A-Za-z]+(, ?[0-9A-Za-z]+)*)',r'\1<a class="hint" data-tooltip="W. Vycichl, Dictionnaire étymologique de la langue copte, Leuven: Peeters, 1983">?</a>',ref_bibl)
-			ref_bibl = re.sub(r'(ChLCS [0-9A-Za-z]+(, ?[0-9A-Za-z]+)*)',r'\1<a class="hint" data-tooltip="P. Cherix, Lexique Copte (dialecte sahidique), Copticherix, 2006-2018">?</a>',ref_bibl)
-			ref_bibl = re.sub(r'(ONB [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="T. Orlandi, Koptische Papyri theologischen Inhalts (Mitteilungen aus der Papyrussammlung der Österreichischen Nationalbibliothek (Papyrus Erzherzog Rainer) / Neue Serie, 9), Wien: Hollinek, 1974">?</a>',ref_bibl)
-			ref_bibl = re.sub(r'(WbGWKDT [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="H. Förster, Wörterbuch der griechischen Wörter in den koptischen dokumentarischen Texten. Berlin/Boston: de Gruyter, 2002">?</a>',ref_bibl)
-			ref_bibl = re.sub(r'((Kasser )?CDC [0-9A-Za-z]+(, ?[0-9A-Za-z]+)*)',r'''\1<a class="hint" data-tooltip="R. Kasser, Compléments au dictionnaire copte de Crum, Kairo: Inst. Français d'Archéologie Orientale, 1964">?</a>''',ref_bibl)
-			ref_bibl = re.sub(r'(LCG [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="B. Layton, A Coptic grammar: with a chrestomathy and glossary; Sahidic dialect, Wiesbaden: Harrassowitz, 2000">?</a>',ref_bibl)
-			ref_bibl = re.sub(r'(Till D [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="W. Till, Koptische Dialektgrammatik: mit Lesestücken und Wörterbuch, München: Beck, 1961">?</a>',ref_bibl)
-			ref_bibl = re.sub(r'(Osing, Pap. Ox. [0-9]+(, ?[0-9]+)*)',r'\1<a class="hint" data-tooltip="J. Osing: Der spätägyptische Papyrus BM 10808, Harrassowitz, Wiesbaden 1976">?</a>',ref_bibl)
-			ref_bibl = re.sub("DDGLC ref:","DDGLC Usage ID:",ref_bibl)
-			#ref_bibl = re.sub(r'KoptHWb( [0-9]+)?',r'KoptHWb\1<i class="fa fa-info-circle" data-tooltip="Koptisches Handw&ouml;rterbuch /\nW. Westendorf"></i>',ref_bibl)
+			ref_bibl = gloss_bibl(ref_bibl)
 
 			engstr = "(En) " if (de_parts is not None or fr_parts is not None) else ""
 			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
@@ -176,6 +165,7 @@ def process_etym(etym):
 			word = re.sub(r'\(', '\\(', word)
 			word = re.sub(r'\)', '\\)', word)
 			etym = re.sub(r'#' + word + '#', link, etym)
+	etym = gloss_bibl(etym)
 	return '<div class="etym">\n\t' + etym + '\n</div>'
 
 
@@ -238,6 +228,49 @@ def get_collocs(word, cursor):
 	sql = "SELECT * from collocates WHERE lemma=? and not collocate in ('ⲡ','ⲛ','ⲧ','ⲟⲩ') and assoc > ? ORDER BY assoc DESC LIMIT 20"
 	rows = cursor.execute(sql,(word,thresh)).fetchall()
 	return rows
+
+
+def gloss_bibl(ref_bibl):
+	"""Adds tooltips to lexical resource names"""
+
+	page_expression = r' ?[0-9A-Za-z:]+(, ?[0-9A-Za-z:]+)*'
+	sources = [(r'(Kasser )?CDC',r"R. Kasser, Compléments au dictionnaire copte de Crum, Kairo: Inst. Français d'Archéologie Orientale, 1964"),
+				(r'KoptHWb',r"Koptisches Handw&ouml;rterbuch /\nW. Westendorf"),
+				(r'CED',r'J. Černý, Coptic Etymological Dictionary, Cambridge: Cambridge Univ. Press, 1976'),
+				(r'DELC',r'W. Vycichl, Dictionnaire étymologique de la langue copte, Leuven: Peeters, 1983'),
+				(r'ChLCS',r'P. Cherix, Lexique Copte (dialecte sahidique), Copticherix, 2006-2018'),
+				(r'ONB',r'T. Orlandi, Koptische Papyri theologischen Inhalts (Mitteilungen aus der Papyrussammlung der Österreichischen Nationalbibliothek (Papyrus Erzherzog Rainer) / Neue Serie, 9), Wien: Hollinek, 1974'),
+				(r'WbGWKDT',r'H. Förster, Wörterbuch der griechischen Wörter in den koptischen dokumentarischen Texten. Berlin/Boston: de Gruyter, 2002'),
+				(r'LCG',r'B. Layton, A Coptic grammar: with a chrestomathy and glossary; Sahidic dialect, Wiesbaden: Harrassowitz, 2000'),
+				(r'Till D\.?',r'W. Till, Koptische Dialektgrammatik: mit Lesestücken und Wörterbuch, München: Beck, 1961'),
+				(r'Osing, Pap. Ox.',r'J. Osing: Der spätägyptische Papyrus BM 10808, Harrassowitz, Wiesbaden 1976'),
+				(r"Bauer",r"W. Bauer, K. Aland, B. Aland, Griechisch-deutsches Wörterbuch zu den Schriften des Neuen Testaments und der frühchristlichen Literatur, Berlin: de Gruyter, 1988"),
+				(r"BDAG",r"F.W. Danker, W. Bauer, A Greek-English Lexicon of the New Testament and other Early Christian Literature, Chicago/London: University of Chicago Press, 2000"),
+				(r"Daris 1991",r"S. Daris, Il lessico Latino nel Greco d'Egitto (Estudis de Papirologia i Filologia Biblica 2), Barcelona: Ediciones Aldecoa, 1991"),
+				(r"Denniston 1959",r"J.D. Denniston, The Greek Particles, London: Clarendon Press, 1959"),
+				(r"du Cange",r"C. F. du Cange, Glossarium ad scriptores mediae et infimae Graecitatis I-II, Graz: Akademische Druck- und Verlagsanstalt, 1958"),
+				(r"Hatch/Redpath 1906",r"E. Hatch, H.A. Redpath, A concordance to the Septuagint and the other Greek versions of the Old Testament (including the apocryphal books), Supplement, Graz: Akademische Druck- und Verlagsanstalt, 1906"),
+				(r"Kontopoulos",r"N. Kontopoulos, A Lexicon of Modern Greek-English and English-Modern Greek, Smyrna/London: B. Tatikidos, Trübner & Co., 1868"),
+				(r"Lampe",r"G.W.H. Lampe, A patristic Greek lexicon, Oxford: Clarendon Press, 1978"),
+				(r"LBG",r"E. Trapp, Lexikon zur byzantinischen Gräzität, besonderes des 9.-12. Jahrhunderts, Philosophisch-historische Klasse, Denkschriften (Veröffentlichungen der Kommission für Byzantinistik 238; VI/1-4) , Wien: Österreichische Akademie der Wissenschaften, 2001"),
+				(r"LSJ",r"H.G. Liddell, R. Scott, H.S. Jones, A Greek-English lexicon, Oxford: Clarendon Press, 1968"),
+				(r"LSJ Suppl.",r"H.G. Liddell, R. Scott, H.S. Jones, E.A. Barber, A Greek-English lexicon/Supplement, Oxford: Clarendon Press, 1968"),
+				(r"Muraoka 2009",r"T. Muraoka, A Greek-English Lexicon of the Septuagint, Louvain/Paris/Walpole: Peeters, 2009"),
+				(r"Passow",r"F. Passow, V.C.F Rost, F. Palm, Handwörterbuch der griechischen Sprache, Leipzig: Vogel, 1841"),
+				(r"Preisigke",r"F. Preisigke, Wörterbuch der griechischen Papyrusurkunden mit Einschluß der griechischen Inschriften, Aufschriften, Ostraka, Mumienschilder usw. aus Ägypten, Berlin: Selbstverlag der Erben, 1925-1931"),
+				(r"Sophocles",r"E.A. Sophocles, Greek Lexicon of the Roman and Byzantine Periods (From B. C. 146 to A. D. 1100. Memorial Edition), Cambridge/Leipzig: Harvard University Press/Harrassowitz, 1914"),
+				(r"T. S. Richter 2014b",r"T.S. Richter, Neue koptische medizinische Rezepte (Zeitschrift für Ägyptische Sprache und Altertumskunde ZÄS 141(2), 154-194), 2014"),
+				(r"Till 1951a",r"W.C. Till, Arzneikunde der Kopten, Berlin: Akademie Verlag, 1951"),
+				(r"TLG",r"L. Berkowitz, K.A. Squitier, Thesaurus Linguae Graecae (Canon of Greek Authors and Works), New York/Oxford: University Press, 1990")
+			   ]
+	template = '<a class="hint" data-tooltip="**src**">?</a>'
+
+	for find,rep in sources:
+		ref_bibl = re.sub("("+find + page_expression+")",r'\1'+template.replace("**src**",rep),ref_bibl)
+
+	ref_bibl = re.sub("DDGLC ref:","DDGLC Usage ID:",ref_bibl)
+
+	return ref_bibl
 
 
 if __name__ == "__main__":
