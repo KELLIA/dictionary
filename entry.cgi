@@ -59,7 +59,7 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
-	orth_html += '<tr class="orth_table_header"><th colspan="2">Form &amp; Dial.</th><th colspan="2" class="tla_orth_id">TLA form ID &amp; POS </th><th colspan="3" class="annis_link">ANNIS</th></tr>'
+	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">TLA form ID</th><th class="tla_orth_id">POS </th><th colspan="3" class="annis_link">ANNIS</th></tr>'
 
 	for i, form in enumerate(forms):
 		parts = form.split("\n")
@@ -272,6 +272,14 @@ def gloss_bibl(ref_bibl):
 
 	return ref_bibl
 
+def extract_lemma(db_name_field):
+	try:
+		lemma = db_name_field.split("|||")[0].split("\n")[1].split("~")[0]
+		lemma = '<span style="font-family: antinoouRegular, sans-serif">' + lemma + '</span>'
+	except:
+		lemma = ""
+	return lemma
+
 
 if __name__ == "__main__":
 
@@ -334,7 +342,7 @@ if __name__ == "__main__":
 		cur.execute(related_sql_command, params)
 		related_entries = cur.fetchall()
 		
-		entry_page += '<b style="font-family: antinoouRegular">Forms:</b><br/>'
+		#entry_page += '<b style="font-family: antinoouRegular">Forms:</b><br/>'
 
 		# orth (and morph) info
 		cs_pos = this_entry[3]
@@ -359,14 +367,16 @@ if __name__ == "__main__":
 			entry_page += '</div>'
 
 		entry_page += "</div>\n"
+
+		lemma = extract_lemma(this_entry[2])
 		
-		xml_id_string = 'TLA lemma no. ' + entry_xml_id if entry_xml_id != "" else ""
+		xml_id_string = '(TLA lemma no. ' + entry_xml_id +")" if entry_xml_id != "" else ""
 		
 		entry_page += '<div id="citation_info_box">Please cite as: '+xml_id_string.encode("utf8")+', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?tla='+entry_xml_id.encode("utf8")+' (accessed yyyy-mm-dd).</div>'
 
 	wrapped = wrap(entry_page)
 	
 	# adding TLA lemma no. to title and citation info
-	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+xml_id_string.encode("utf8") +"</h2>\n",wrapped)
+	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+lemma.encode("utf8") + " "+xml_id_string.encode("utf8") +"</h2>\n",wrapped)
 
 	print wrapped

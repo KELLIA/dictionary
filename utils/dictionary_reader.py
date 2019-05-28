@@ -72,10 +72,16 @@ def process_entry(id, super_id, entry):
 		if form.text is not None:
 			if re.search(r'[^\s]', form.text) is not None:
 				orths.append(form)
-		if any([orth.text == lemma for orth in orths]):
-			first.append(form)
+		if type(lemma).__name__ == "Element":
+			if any([orth.text == lemma.text for orth in orths]):
+				first.append(form)
+			else:
+				last.append(form)
 		else:
-			last.append(form)
+			if any([orth.text == lemma for orth in orths]):
+				first.append(form)
+			else:
+				last.append(form)
 
 	ordered_forms = first + last
 

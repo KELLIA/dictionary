@@ -329,3 +329,6 @@ padding:2px
 .sense_lang{
 	padding-right: 5px;
 }
+
+.orth_table_header  > th{font-family: antinoouRegular; padding-left:5px}
+.dialect{text-align:center}
