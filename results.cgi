@@ -73,7 +73,8 @@ def retrieve_related(word):
 		tablestring = '<div class="content">\n' + "Entries related to '" + word.encode("utf8") + "'<br/>"
 		if len(rows) == 1:
 			row = rows[0]
-			entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
+			#entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
+			entry_url = "entry.cgi?tla=" + str(row[12])
 			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
 			#return '<script>window.location = "' + entry_url + '";</script>'
 # 		elif len(rows) > 100:
@@ -109,8 +110,11 @@ def retrieve_related(word):
 
 			orth = first_orth(row[2])
 			second = second_orth(row[2])
-			link = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
-			
+			if len(str(row[12])) > 0:
+				link = "entry.cgi?tla=" + str(row[12])
+			else:
+				link = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
+
 			tablestring += '<td class="orth_cell">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
 			tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"
 			
@@ -214,7 +218,14 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 		tablestring = '<div class="content">\n' + search_desc.encode("utf8") + "<br/>\n"
 		if len(rows) == 1:
 			row = rows[0]
-			entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
+			super_id = str(row[1])
+			entry_id = str(row[0])
+			tla_id = str(row[12])
+
+			if len(tla_id)>0:
+				entry_url = "entry.cgi?tla=" + tla_id
+			else:
+				entry_url = "entry.cgi?entry=" + entry_id + "&super=" + super_id
 			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
 			return '<script>window.location = "' + entry_url + '";</script>'
 		elif len(rows) > 100:
@@ -250,7 +261,15 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 
 			orth = first_orth(row[2])
 			second = second_orth(row[2])
-			link = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
+
+			super_id = str(row[1])
+			entry_id = str(row[0])
+			tla_id = str(row[12])
+
+			if len(tla_id) >0:
+				link = "entry.cgi?tla=" + tla_id
+			else:
+				link = "entry.cgi?entry=" + entry_id + "&super=" + super_id
 			
 			tablestring += '<td class="orth_cell">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
 			tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"

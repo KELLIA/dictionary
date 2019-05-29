@@ -177,7 +177,7 @@ def related(related_entries):
 		orth = first_orth(entry[2])
 		second = second_orth(entry[2])
 
-		link = "entry.cgi?entry=" + str(entry[0]) + "&super=" + str(entry[1])
+		link = "entry.cgi?tla=" + str(entry[12])
 
 		tablestring += '<td class="related_orth">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
 		tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"
