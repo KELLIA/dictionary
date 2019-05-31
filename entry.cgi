@@ -370,13 +370,22 @@ if __name__ == "__main__":
 
 		lemma = extract_lemma(this_entry[2])
 		
-		xml_id_string = '(TLA lemma no. ' + entry_xml_id +")" if entry_xml_id != "" else ""
+		xml_id_string = 'TLA lemma no. ' + entry_xml_id +" ("+lemma+")" if entry_xml_id != "" else ""
 		
 		entry_page += '<div id="citation_info_box">Please cite as: '+xml_id_string.encode("utf8")+', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?tla='+entry_xml_id.encode("utf8")+' (accessed yyyy-mm-dd).</div>'
 
 	wrapped = wrap(entry_page)
 	
 	# adding TLA lemma no. to title and citation info
-	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+lemma.encode("utf8") + " "+xml_id_string.encode("utf8") +"</h2>\n",wrapped)
+	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+xml_id_string.encode("utf8") +"</h2>\n",wrapped)
+
+	# add Greek form disclaimer if needed:
+	if len(grk_id) > 0:
+		box = '<div id="citation_info_box">'
+		disclaimer = '''Note on Greek forms: Forms given are unnormalized, attested, and checked orthographies in the DDGLC corpus. 
+					 The material from DDGLC is a work-in-progress, not a finished publication. 
+					 This release is strictly preliminary.<br/><br/>'''
+		wrapped = wrapped.replace(box,box+disclaimer)
+
 
 	print wrapped
