@@ -8,6 +8,7 @@ import os, platform
 from helper import wrap, lemma_exists, get_lemmas_for_word
 from helper import separate_coptic, strip_hyphens
 from operator import itemgetter
+from math import ceil
 cgitb.enable()
 
 print "Content-type: text/html\n"
@@ -126,7 +127,9 @@ def retrieve_related(word):
 		return tablestring
 	
 
-def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc=""):
+def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc="", params=None):
+	if params is None:
+		params = {}
 	sql_command = 'SELECT * FROM entries WHERE '
 	constraints = []
 	parameters = []
@@ -229,8 +232,43 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
 			return '<script>window.location = "' + entry_url + '";</script>'
 		elif len(rows) > 100:
-			tablestring += 'Search had ' + str(len(rows)) + ' results - showing first 100'
-			rows = rows[:100]
+			page = 1 if "page" not in params else int(params["page"])
+			start = (page-1)*100
+			prev_url = next_url = first_url = last_url = "results.cgi?"
+			args = []
+			for param in params:
+				if params[param] == "" or param == "page":
+					continue
+				elif params[param] == "any":
+					if param in ["pos","dialect","def_lang"]:
+						continue
+				elif (param == "related" and str(params[param])=="false") or (param == "def_search_type" and params[param]=="exact sequence") or \
+						(param == "def_search_type" and params[param]=="all words"):
+					continue
+				args.append(param + "=" + str(params[param]))
+			last_page = int(ceil(len(rows)/100.0))
+			next_url += "&".join(sorted(args + ["page=" + str(page+1)]))
+			first_url += "&".join(sorted(args + ["page=1"]))
+			last_url += "&".join(sorted(args + ["page=" + str(last_page)]))
+			prev_url += "&".join(sorted(args + ["page=" + str(page-1)]))
+
+			if start > 1:
+				prev_button = '''<a class="btn btn-default btn-page" href="'''+prev_url+'''"><i class="fa fa-chevron-left"></i> Previous</a>'''
+				first_button = '''<a class="btn btn-default btn-page" href="'''+first_url+'''"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i> First</a>'''
+			else:
+				first_button = '''<a class="btn btn-default btn-page" disabled="disabled"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i> First</a>'''
+				prev_button = '''<a class="btn btn-default btn-page" disabled="disabled"><i class="fa fa-chevron-left"></i> Previous</a>'''
+			if start+100 < len(rows):
+				end = start+100
+				next_button = '''<a class="btn btn-default btn-page" href="'''+next_url+'''">Next <i class="fa fa-chevron-right"></i></a>'''
+				last_button = '''<a class="btn btn-default btn-page" href="'''+last_url+'''">Last <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></a>'''
+			else:
+				end = len(rows)
+				last_button = '''<a class="btn btn-default btn-page" disabled="disabled">Last <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></a>'''
+				next_button = '''<a class="btn btn-default btn-page" disabled="disabled">Next <i class="fa fa-chevron-right"></i></a>'''
+			tablestring += 'Search had ' + str(len(rows)) + ' results - showing results ' + str(start+1) + ' to ' + str(end)
+			rows = rows[start:end]
+			tablestring +="<div>" + first_button + prev_button + next_button + last_button + "</div>\n"
 		elif len(rows) == 0 and len(word) > 0:  # no matches found
 			tablestring += str(len(rows)) + ' results for <span class="anti">' + word.encode("utf8") + "</span>\n"
 			if lemma_exists(word.encode("utf8")):
@@ -279,11 +317,13 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 			
 			tablestring += "</tr>"
 		tablestring += "</table>\n</div>\n"
+
 		return tablestring
 					
 			
 if __name__ == "__main__":
 	form = cgi.FieldStorage()
+	params = {}
 	word = cgi.escape(form.getvalue("coptic", "")).replace("(","").replace(")","").replace("=","")
 	dialect = cgi.escape(form.getvalue("dialect", "any")).replace("(","").replace(")","").replace("=","")
 	pos = cgi.escape(form.getvalue("pos", "any")).replace("(","").replace(")","").replace("=","")
@@ -292,6 +332,21 @@ if __name__ == "__main__":
 	def_lang = cgi.escape(form.getvalue("lang", "any")).replace("(","").replace(")","").replace("=","")
 	related = cgi.escape(form.getvalue("related", "false")).replace("(","").replace(")","").replace("=","")
 	quick_string = cgi.escape(form.getvalue("quick_search", "")).replace("(","").replace(")","").replace("=","")
+	page = 1
+	page = cgi.escape(form.getvalue("page", "1")).replace("(","").replace(")","").replace("=","")
+	params["coptic"] = word
+	params["dialect"] = dialect
+	params["pos"] = pos
+	params["definition"] = definition
+	params["def_search_type"] = def_search_type
+	params["def_lang"] = def_lang
+	params["related"] = related
+	params["quick_search"] = quick_string
+	try:
+		page = abs(int(page))
+	except:
+		page = 1
+	params["page"] = page
 	if quick_string != "":
 		separated = separate_coptic(quick_string)
 		def_search_type = "all words"
@@ -306,7 +361,7 @@ if __name__ == "__main__":
 	definition_desc = " definitions matching <i>" + definition + "</i> in language <i>"  + def_lang + "</i>" if len(definition)  > 0 else ""
 	pos_desc = " restricted to POS tag " + pos if pos != "any" else ""
 	search_desc = "You searched " + word_desc + dialect_desc + definition_desc + pos_desc
-	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc)
+	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc,params=params)
 
 	### related entry stuff
 	if word != "": # nothing to do if no coptic word searched?
