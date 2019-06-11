@@ -207,7 +207,7 @@ def process_entry(id, super_id, entry):
 
 					quote_text = "~~~"
 					if quote is not None and quote.text is not None:
-						quote_text += quote.text
+						quote_text += re.sub(r' +',' ',quote.text.strip().replace("\n",''))
 						if definition is None:
 							quote_text += ";;;"
 						else:
@@ -220,7 +220,7 @@ def process_entry(id, super_id, entry):
 						fr += quote_text
 					if definition is not None:
 						if definition.text is not None:
-							definition_text = definition.text + ";;;"
+							definition_text = re.sub(r' +',' ',definition.text.strip().replace("\n",'')) + ";;;"
 							if lang == 'de':
 								de += definition_text
 							elif lang == 'en':
