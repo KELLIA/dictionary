@@ -324,16 +324,16 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 if __name__ == "__main__":
 	form = cgi.FieldStorage()
 	params = {}
-	word = cgi.escape(form.getvalue("coptic", "")).replace("(","").replace(")","").replace("=","")
-	dialect = cgi.escape(form.getvalue("dialect", "any")).replace("(","").replace(")","").replace("=","")
-	pos = cgi.escape(form.getvalue("pos", "any")).replace("(","").replace(")","").replace("=","")
-	definition = cgi.escape(form.getvalue("definition", "")).replace("(","").replace(")","").replace("=","")
+	word = cgi.escape(form.getvalue("coptic", "")).replace("(","").replace(")","").replace("=","").strip()
+	dialect = cgi.escape(form.getvalue("dialect", "any")).replace("(","").replace(")","").replace("=","").strip()
+	pos = cgi.escape(form.getvalue("pos", "any")).replace("(","").replace(")","").replace("=","").strip()
+	definition = cgi.escape(form.getvalue("definition", "")).replace("(","").replace(")","").replace("=","").strip()
 	def_search_type = cgi.escape(form.getvalue("def_search_type", "exact sequence")).replace("(","").replace(")","").replace("=","")
-	def_lang = cgi.escape(form.getvalue("lang", "any")).replace("(","").replace(")","").replace("=","")
+	def_lang = cgi.escape(form.getvalue("lang", "any")).replace("(","").replace(")","").replace("=","").strip()
 	related = cgi.escape(form.getvalue("related", "false")).replace("(","").replace(")","").replace("=","")
-	quick_string = cgi.escape(form.getvalue("quick_search", "")).replace("(","").replace(")","").replace("=","")
+	quick_string = cgi.escape(form.getvalue("quick_search", "")).replace("(","").replace(")","").replace("=","").strip()
 	page = 1
-	page = cgi.escape(form.getvalue("page", "1")).replace("(","").replace(")","").replace("=","")
+	page = cgi.escape(form.getvalue("page", "1")).replace("(","").replace(")","").replace("=","").strip()
 	params["coptic"] = word
 	params["dialect"] = dialect
 	params["pos"] = pos
