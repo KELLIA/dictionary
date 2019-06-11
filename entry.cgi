@@ -59,7 +59,7 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
-	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">TLA form ID</th><th class="tla_orth_id">POS </th><th colspan="3" class="annis_link">ANNIS</th></tr>'
+	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">TLA ID</th><th class="tla_orth_id">POS </th><th colspan="3" class="annis_link">Attestation</th></tr>'
 
 	for i, form in enumerate(forms):
 		parts = form.split("\n")
@@ -82,7 +82,7 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 						 geo_string.encode("utf8") + '</td><td class="tla_orth_id">' + \
 						  form_id.encode("utf8") + '</td><td class="morphology">' + \
 						 gramstring.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + \
-						 '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td>'
+						 '" target="_new"><img src="img/scriptorium.png" class="scriptorium_logo" title="Search in Coptic Scriptorium"></a></td>'
 			freq_data = get_freqs(distinct_orth)
 			freq_info = """	<td><div class="expandable">
 					            <a class="dict_tooltip" href="">
@@ -96,9 +96,12 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 
 			colloc_data = get_collocs(distinct_orth,cursor)
 			if len(colloc_data) > 0:
-				colloc_info = """	<td><div class="expandable">
+				colloc_info = """	<td class="colloc"><div class="expandable">
 										<a class="dict_tooltip" href="">
-										<i class="fa fa-comment-o freq_icon">&nbsp;</i>
+										<b class="fa-stack freq-icon">
+										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-315"></i>
+										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-45"></i>
+										</b>
 										<span><b>Top collocations in ANNIS: (5 word window)</b><br/><table class="colloc_tab">
 										<tr><th>&nbsp;</th><th>Word</th><th>Co-occurrences</th><th>Association (MI3)</th></tr>"""
 				for r, row in enumerate(colloc_data):
@@ -275,7 +278,7 @@ def gloss_bibl(ref_bibl):
 def extract_lemma(db_name_field):
 	try:
 		lemma = db_name_field.split("|||")[0].split("\n")[1].split("~")[0]
-		lemma = '<span style="font-family: antinoouRegular, sans-serif">' + lemma + '</span>'
+		lemma = '<span style="font-family: antinoouRegular, sans-serif; font-size: larger">' + lemma + '</span>'
 	except:
 		lemma = ""
 	return lemma
@@ -370,7 +373,7 @@ if __name__ == "__main__":
 
 		lemma = extract_lemma(this_entry[2])
 		
-		xml_id_string = 'TLA lemma no. ' + entry_xml_id +" ("+lemma+")" if entry_xml_id != "" else ""
+		xml_id_string = 'TLA lemma no. ' + entry_xml_id +"<br/>"+lemma if entry_xml_id != "" else ""
 		
 		entry_page += '<div id="citation_info_box">Please cite as: '+xml_id_string.encode("utf8")+', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?tla='+entry_xml_id.encode("utf8")+' (accessed yyyy-mm-dd).</div>'
 
