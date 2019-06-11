@@ -148,8 +148,8 @@ def process_entry(id, super_id, entry):
 				orthstring += orth_text + "~" + geo + "\n"
 				search_string += search_text + "~" + geo + "\n"
 			if len(list(geos)) == 0:
-				orthstring += orth_text + "~^^"+form_id+"\n"
-				search_string += search_text + "~\n"
+				orthstring += orth_text + "~S^^"+form_id+"\n"
+				search_string += search_text + "~S\n"
 
 		oref_string += oref_text
 		oref_string += "|||"
