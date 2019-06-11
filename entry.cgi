@@ -356,7 +356,7 @@ if __name__ == "__main__":
 		entry_page += '<div class="tag">\n\tScriptorium tag: ' + tag + "\n</div>\n"
 
 		# from sense info
-		entry_page += '<div class="sense_info"><b style="font-family: antinoouRegular">Senses:</b><br/>'
+		entry_page += '<div class="sense_info">'
 		entry_page += process_sense(this_entry[4], this_entry[5], this_entry[6])
 		entry_page += '</div>'
 
