@@ -371,3 +371,12 @@ td.colloc{text-align:left}
 	top: -2px;
 	position: relative;
 	}
+
+.tla_no_header{
+color:#41494e;
+}
+
+.col-lg-12 > .page-header{margin-bottom: 0px !important; margin-top: 0px !important}
+.col-lg-12 > .page-header > h2 {margin-top: 0px !important}
+
+.single_sense{margin-left:24px}

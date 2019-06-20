@@ -43,23 +43,31 @@ def second_orth(orthstring):
 	if second_orth is not None:
 		if second_orth.group(2) != first:
 			return second_orth.group(2) + dots
-	return "--"
+	return "&ndash;"
 
 def sense_list(sense_string):
 	senses = sense_string.split("|||")
-	sense_html = "<ol>"
+	if len(senses) > 1:
+		sense_html = "<ol>"
+		opener = "<li>"
+		closer = ""
+	else:
+		sense_html = ""
+		opener = '<div class="single_sense">'
+		closer = "</div>"
 	for sense in senses:
 		definition = re.search(r'~~~(.*);;;', sense)
 		if definition is not None:
-			sense_html += "<li>" + definition.group(1).encode("utf8") + "</li>"
-	sense_html += "</ol>"
+			sense_html += opener + definition.group(1).encode("utf8") + closer
+	if len(senses) > 1:
+		sense_html += "</ol>"
 	return sense_html
 
 def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
-	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">TLA ID</th><th class="tla_orth_id">POS </th><th colspan="3" class="annis_link">Attestation</th></tr>'
+	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">Form ID</th><th class="tla_orth_id">POS </th><th colspan="3" class="annis_link">Attestation</th></tr>'
 
 	for i, form in enumerate(forms):
 		parts = form.split("\n")
@@ -150,7 +158,12 @@ def process_sense(de, en, fr):
 			ref_bibl = gloss_bibl(ref_bibl)
 
 			engstr = "(En) " if (de_parts is not None or fr_parts is not None) else ""
-			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
+			if len(en_senses) > 1:
+				counter = sense_parts.group(1).encode("utf8") + ".&nbsp;".encode("utf8")
+			else:
+				counter = ""
+				engstr = "(En)"
+			sense_html += '<tr><td class="entry_num">' + counter + '</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
 				sense_html += '<tr><td></td><td class="sense_lang">(Fr) </td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
 			if de_parts is not None:
@@ -373,7 +386,7 @@ if __name__ == "__main__":
 
 		lemma = extract_lemma(this_entry[2])
 		
-		xml_id_string = 'TLA lemma no. ' + entry_xml_id +"<br/>"+lemma if entry_xml_id != "" else ""
+		xml_id_string = '<span class="tla_no_header">TLA lemma no. ' + entry_xml_id +"</span><br/>" + lemma if entry_xml_id != "" else ""
 		citation_id_string = 'TLA lemma no. ' + entry_xml_id +" ("+lemma+")" if entry_xml_id != "" else ""
 
 		entry_page += '<div id="citation_info_box">Please cite as: '+citation_id_string.encode("utf8")+', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?tla='+entry_xml_id.encode("utf8")+' (accessed yyyy-mm-dd).</div>'
@@ -381,7 +394,7 @@ if __name__ == "__main__":
 	wrapped = wrap(entry_page)
 	
 	# adding TLA lemma no. to title and citation info
-	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+xml_id_string.encode("utf8") +"</h2>\n",wrapped)
+	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",xml_id_string.encode("utf8") +"</h2>\n",wrapped)
 
 	# add Greek form disclaimer if needed:
 	if len(grk_id) > 0:

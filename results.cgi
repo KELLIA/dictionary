@@ -45,12 +45,21 @@ def second_orth(orthstring):
 
 def sense_list(sense_string):
 	senses = sense_string.split("|||")
-	sense_html = '<ol class="sense_list">'
+	if len(senses) > 1:
+		sense_html = '<ol class="sense_list">'
+		opener = "<li>"
+		closer = ""
+	else:
+		sense_html = ""
+		opener = '<div class="single_sense">'
+		closer = "</div>"
+
 	for sense in senses:
 		definition = re.search(r'~~~(.*);;;', sense)
 		if definition is not None:
-			sense_html += "<li>" + definition.group(1).encode("utf8") + "</li>"
-	sense_html += "</ol>"
+			sense_html += opener + definition.group(1).encode("utf8") + closer
+	if len(senses) > 1:
+		sense_html += "</ol>"
 	return sense_html
 	
 	
