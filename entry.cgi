@@ -207,7 +207,7 @@ def related(related_entries):
 
 
 def get_freqs(item):
-	item = item.replace("-","")#.replace("⸗".encode("utf8"),"")
+	item = item.replace("-","").replace("⸗".decode("utf8"),"")
 	output = "<ul>\n"
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
@@ -227,7 +227,7 @@ def get_freqs(item):
 			output += "<li>Word form frequency per 10,000: "+str(freq)+" (# "+str(rank)+")</li>\n"
 		else:
 			output += "<li>Not found as word form in ANNIS</li>\n"
-		sql = "SELECT lemma_freq, lemma_rank FROM lemmas WHERE word = ?;"
+		sql = "SELECT lemma_freq, lemma_rank FROM lemmas WHERE lemma = ?;"
 		cur.execute(sql, (item,))
 		res = cur.fetchone()
 		if res is not None:
@@ -240,7 +240,8 @@ def get_freqs(item):
 
 
 def get_collocs(word, cursor):
-	thresh = 15
+	word = word.replace("-","")
+	thresh = 10
 	sql = "SELECT * from collocates WHERE lemma=? and not collocate in ('ⲡ','ⲛ','ⲧ','ⲟⲩ') and assoc > ? ORDER BY assoc DESC LIMIT 20"
 	rows = cursor.execute(sql,(word,thresh)).fetchall()
 	return rows

@@ -15,7 +15,7 @@ from itertools import groupby
 from math import log
 from six import iteritems
 
-corpora = ["shenoute.eagerness", "shenoute.fox", "shenoute.a22", "shenoute.abraham.our.father", "shenoute.dirt",
+corpora = ["shenoute.eagerness", "shenoute.fox", "shenoute.a22", "shenoute.abraham", "shenoute.dirt",
 		   "apophthegmata.patrum", "sahidica.nt", "sahidic.ot", "pseudo.theophilus", "martyrdom.victor",
 		   "johannes.canons",
 		   "besa.letters", "sahidica.mark", "sahidica.1corinthians", "doc.papyri"]
@@ -114,7 +114,11 @@ def get_freqs(url, corpora, use_cache=False):
 
 		if use_cache:
 			sys.stderr.write("! Retrieving data from CACHE!\n")
-			text_content = io.open("cache_freqs.xml",encoding="utf8").read()
+			if index == 0:
+				text_content = io.open("cache_freqs_norm.xml",encoding="utf8").read()
+			else:
+				text_content = io.open("cache_freqs_lemma.xml",encoding="utf8").read()
+
 		else:
 			field = fields[index]
 			query = escape(query)
@@ -218,27 +222,40 @@ parser = ArgumentParser()
 parser.add_argument("-l","--lemma_list",action="store",dest="lemma_list",default="C:\\TreeTagger\\bin\\coptic\\copt_lemma_lex.tab")
 parser.add_argument("-u","--url",action="store",dest="url",default="https://corpling.uis.georgetown.edu/")
 parser.add_argument("-o","--outmode",action="store",dest="outmode",default="db")
+parser.add_argument("-c","--use_cache",action="store_true",help="activate cache - read data from tt_collocs.tab and cache_freqs.xml")
 
 
 options = parser.parse_args()
 
 # Get collocation information
 cooc_pool = 0
-try:
-	collocate_freqs = defaultdict(lambda: defaultdict(int))
-	colloc_lines = io.open("colloc_data.tab",encoding="utf8").readlines()
-	for i, line in enumerate(colloc_lines):
-		if i > 0:
-			line = line.strip()
-			if line.count("\t") == 2:
-				node, collocate, freq = line.strip().split("\t")
-				freq = int(freq)
-				cooc_pool += freq #* 2
-				if freq > 5:
-					collocate_freqs[node][collocate] += freq
-					collocate_freqs[collocate][node] += freq
-except Exception as e:
+collocate_freqs = defaultdict(lambda: defaultdict(int))
+
+# Check if cached file is available and create it if not
+if not os.path.isfile("tt_collocs.tab") or not options.use_cache:
+	sys.stderr.write('o Cache data unavailable - retrieving collocations from ANNIS\n')
 	colloc_data = get_collocations(options.url,corpora)
+	out_cache = []
+	for key, val in iteritems(colloc_data):
+		if "||" in key:
+			w1, w2 = key.split("||")
+			out_cache.append("\t".join([w1,w2,str(val)]))
+	with io.open("tt_collocs.tab",'w',encoding="utf8",newline="\n") as f:
+		f.write("\n".join(out_cache) +"\n")
+else:
+	sys.stderr.write('o Using cached tt_collocs.tab\n')
+
+colloc_lines = io.open("tt_collocs.tab",encoding="utf8").readlines()
+for i, line in enumerate(colloc_lines):
+	if i > 0:
+		line = line.strip()
+		if line.count("\t") == 2:
+			node, collocate, freq = line.strip().split("\t")
+			freq = int(freq)
+			cooc_pool += freq #* 2
+			if freq > 5:
+				collocate_freqs[node][collocate] += freq
+				#collocate_freqs[collocate][node] += freq
 
 
 # Get lemmas from TT dict
@@ -246,7 +263,7 @@ except Exception as e:
 lemma_list = read_lemmas(options.lemma_list)
 
 
-norm_counts, lemma_counts = get_freqs(options.url,corpora, use_cache=True)
+norm_counts, lemma_counts = get_freqs(options.url,corpora, use_cache=options.use_cache)
 
 total = float(sum(norm_counts.values()))
 norm_freqs = {}
@@ -260,9 +277,9 @@ for lemma in lemma_counts:
 	lemma_freqs[lemma] = freq
 
 norm_freqs_as_list = [[val,key] for key,val in iteritems(norm_freqs)]
-add_rank(norm_freqs_as_list)
+norm_freqs_as_list = add_rank(norm_freqs_as_list)
 lemma_freqs_as_list = [[val,key] for key,val in iteritems(lemma_freqs)]
-add_rank(lemma_freqs_as_list)
+lemma_freqs_as_list = add_rank(lemma_freqs_as_list)
 
 norm_data = {}
 lemma_data = {}
