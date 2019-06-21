@@ -26,6 +26,21 @@ You can quickly search for words without returning to the main search page by us
 	<li>English/French/German words - this will search for definitions containing all of these words in some language</li>
 	<li>A combination of Coptic and definition words - searches for entries matching both, in any dialect and definition language</li>
 	</ul>
+	
+<h3>Frequencies and collocations</h3>
+<p>The Coptic Dictionary Online is linked to <a href="http://copticscriptorium.org">Coptic Scriptorium</a> corpora. Users can search for attestations of words, get frequencies and rank information or browse collocations of words using the following icons on each entry's page:</p>
+
+<ul>
+	<li><img src="img/scriptorium.png" class="scriptorium_logo" title="Search in Coptic Scriptorium"> - click on this icon next to a word form to search for it in Coptic Scriptorium corpora (you will be taken to ANNIS, the project's search interface)</li>
+	<li><i class="fa fa-sort-numeric-asc freq_icon">&nbsp;</i> - pass over this icon to show frequencies and ranks for each word. For example, you can compare which is more frequent and how much: <a href="https://coptic-dictionary.org/entry.cgi?tla=C615">ⲉ</a> or <a href="https://coptic-dictionary.org/entry.cgi?tla=C2349">ⲛ</a>?</li>
+	<li><b class="fa-stack freq-icon" style="position:relative;left:-5px">
+										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-315"></i>
+										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-45"></i>
+										</b><span style="left: -9px; position: relative;">- if available, this icon shows collocations, words that cooccur with this word form much more often than expected by chance</span></li>
+</ul>
+
+<p><b>Note:</b> frequencies in the dictionary are cached and updated periodically. Numbers in ANNIS searches may differ slightly in some cases due to updates and/or slight differences in handling duplicate texts.</p>
+
 <h3>Import of data into spreadsheet</h3>
 <p>You can import lemma entry data into a Google spreadsheet by copying formulas like the ones below into a cell of an empty spreadsheet.</p>
 <table class="webservice_example_table">
@@ -35,7 +50,8 @@ You can quickly search for words without returning to the main search page by us
 <tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/results.cgi?coptic=ⲣⲱⲙⲉ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any"; "table"; 1)</td><td class="webservice_comment">search reply</td></tr>
 <tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/results.cgi?coptic=ⲣⲱⲙⲉ"; "table"; 1)</td><td class="webservice_comment">search reply, simple</td></tr>
 </table>
-<p>Example:</p>
-<a href="img/Screenshot-Data_in_Google_Spreadsheet.png" target="_blank"><img src="img/Screenshot-Data_in_Google_Spreadsheet.png" width="448px"/></a>
+<br/>
+<p><b>Example:</b></p>
+<a href="img/Screenshot-Data_in_Google_Spreadsheet.png" target="_blank"><img src="img/Screenshot-Data_in_Google_Spreadsheet.png" style="width:100%"/></a>
 
 </div>

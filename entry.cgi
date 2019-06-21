@@ -43,23 +43,31 @@ def second_orth(orthstring):
 	if second_orth is not None:
 		if second_orth.group(2) != first:
 			return second_orth.group(2) + dots
-	return "--"
+	return "&ndash;"
 
 def sense_list(sense_string):
 	senses = sense_string.split("|||")
-	sense_html = "<ol>"
+	if len(senses) > 1:
+		sense_html = "<ol>"
+		opener = "<li>"
+		closer = ""
+	else:
+		sense_html = ""
+		opener = '<div class="single_sense">'
+		closer = "</div>"
 	for sense in senses:
 		definition = re.search(r'~~~(.*);;;', sense)
 		if definition is not None:
-			sense_html += "<li>" + definition.group(1).encode("utf8") + "</li>"
-	sense_html += "</ol>"
+			sense_html += opener + definition.group(1).encode("utf8") + closer
+	if len(senses) > 1:
+		sense_html += "</ol>"
 	return sense_html
 
 def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
 	orth_html = '<table id="orths">'
-	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">TLA form ID</th><th class="tla_orth_id">POS </th><th colspan="3" class="annis_link">ANNIS</th></tr>'
+	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">Form ID</th><th class="tla_orth_id">POS </th><th colspan="3" class="annis_link">Attestation</th></tr>'
 
 	for i, form in enumerate(forms):
 		parts = form.split("\n")
@@ -82,7 +90,7 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 						 geo_string.encode("utf8") + '</td><td class="tla_orth_id">' + \
 						  form_id.encode("utf8") + '</td><td class="morphology">' + \
 						 gramstring.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + \
-						 '" target="_new"><i class="fa icon-annis" title="Search in ANNIS"></i></a></td>'
+						 '" target="_new"><img src="img/scriptorium.png" class="scriptorium_logo" title="Search in Coptic Scriptorium"></a></td>'
 			freq_data = get_freqs(distinct_orth)
 			freq_info = """	<td><div class="expandable">
 					            <a class="dict_tooltip" href="">
@@ -96,9 +104,12 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 
 			colloc_data = get_collocs(distinct_orth,cursor)
 			if len(colloc_data) > 0:
-				colloc_info = """	<td><div class="expandable">
+				colloc_info = """	<td class="colloc"><div class="expandable">
 										<a class="dict_tooltip" href="">
-										<i class="fa fa-comment-o freq_icon">&nbsp;</i>
+										<b class="fa-stack freq-icon">
+										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-315"></i>
+										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-45"></i>
+										</b>
 										<span><b>Top collocations in ANNIS: (5 word window)</b><br/><table class="colloc_tab">
 										<tr><th>&nbsp;</th><th>Word</th><th>Co-occurrences</th><th>Association (MI3)</th></tr>"""
 				for r, row in enumerate(colloc_data):
@@ -147,7 +158,12 @@ def process_sense(de, en, fr):
 			ref_bibl = gloss_bibl(ref_bibl)
 
 			engstr = "(En) " if (de_parts is not None or fr_parts is not None) else ""
-			sense_html += '<tr><td class="entry_num">' + sense_parts.group(1).encode("utf8") + '.</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
+			if len(en_senses) > 1:
+				counter = sense_parts.group(1).encode("utf8") + ".&nbsp;".encode("utf8")
+			else:
+				counter = ""
+				engstr = "(En)"
+			sense_html += '<tr><td class="entry_num">' + counter + '</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
 				sense_html += '<tr><td></td><td class="sense_lang">(Fr) </td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
 			if de_parts is not None:
@@ -191,7 +207,7 @@ def related(related_entries):
 
 
 def get_freqs(item):
-	item = item.replace("-","")#.replace("⸗".encode("utf8"),"")
+	item = item.replace("-","").replace("⸗".decode("utf8"),"")
 	output = "<ul>\n"
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
@@ -211,7 +227,7 @@ def get_freqs(item):
 			output += "<li>Word form frequency per 10,000: "+str(freq)+" (# "+str(rank)+")</li>\n"
 		else:
 			output += "<li>Not found as word form in ANNIS</li>\n"
-		sql = "SELECT lemma_freq, lemma_rank FROM lemmas WHERE word = ?;"
+		sql = "SELECT lemma_freq, lemma_rank FROM lemmas WHERE lemma = ?;"
 		cur.execute(sql, (item,))
 		res = cur.fetchone()
 		if res is not None:
@@ -224,7 +240,8 @@ def get_freqs(item):
 
 
 def get_collocs(word, cursor):
-	thresh = 15
+	word = word.replace("-","")
+	thresh = 10
 	sql = "SELECT * from collocates WHERE lemma=? and not collocate in ('ⲡ','ⲛ','ⲧ','ⲟⲩ') and assoc > ? ORDER BY assoc DESC LIMIT 20"
 	rows = cursor.execute(sql,(word,thresh)).fetchall()
 	return rows
@@ -275,7 +292,7 @@ def gloss_bibl(ref_bibl):
 def extract_lemma(db_name_field):
 	try:
 		lemma = db_name_field.split("|||")[0].split("\n")[1].split("~")[0]
-		lemma = '<span style="font-family: antinoouRegular, sans-serif">' + lemma + '</span>'
+		lemma = '<span style="font-family: antinoouRegular, sans-serif; font-size: larger">' + lemma + '</span>'
 	except:
 		lemma = ""
 	return lemma
@@ -353,7 +370,7 @@ if __name__ == "__main__":
 		entry_page += '<div class="tag">\n\tScriptorium tag: ' + tag + "\n</div>\n"
 
 		# from sense info
-		entry_page += '<div class="sense_info"><b style="font-family: antinoouRegular">Senses:</b><br/>'
+		entry_page += '<div class="sense_info">'
 		entry_page += process_sense(this_entry[4], this_entry[5], this_entry[6])
 		entry_page += '</div>'
 
@@ -370,14 +387,15 @@ if __name__ == "__main__":
 
 		lemma = extract_lemma(this_entry[2])
 		
-		xml_id_string = 'TLA lemma no. ' + entry_xml_id +" ("+lemma+")" if entry_xml_id != "" else ""
-		
-		entry_page += '<div id="citation_info_box">Please cite as: '+xml_id_string.encode("utf8")+', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?tla='+entry_xml_id.encode("utf8")+' (accessed yyyy-mm-dd).</div>'
+		xml_id_string = '<span class="tla_no_header">TLA lemma no. ' + entry_xml_id +"</span><br/>" + lemma if entry_xml_id != "" else ""
+		citation_id_string = 'TLA lemma no. ' + entry_xml_id +" ("+lemma+")" if entry_xml_id != "" else ""
+
+		entry_page += '<div id="citation_info_box">Please cite as: '+citation_id_string.encode("utf8")+', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?tla='+entry_xml_id.encode("utf8")+' (accessed yyyy-mm-dd).</div>'
 
 	wrapped = wrap(entry_page)
 	
 	# adding TLA lemma no. to title and citation info
-	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",r"Entry "+xml_id_string.encode("utf8") +"</h2>\n",wrapped)
+	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",xml_id_string.encode("utf8") +"</h2>\n",wrapped)
 
 	# add Greek form disclaimer if needed:
 	if len(grk_id) > 0:
