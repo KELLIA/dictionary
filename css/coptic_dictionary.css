@@ -380,3 +380,28 @@ color:#41494e;
 .col-lg-12 > .page-header > h2 {margin-top: 0px !important}
 
 .single_sense{margin-left:24px}
+
+.webservice_example_table{    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    /*overflow: hidden;*/
+    width: 100%;
+    margin: 0 auto;
+    /*position: relative;*/
+	}
+	
+.webservice_example_table tr th{background: #36304a;}
+
+.webservice_example_table th{
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: unset;}
+	
+.webservice_example_table td {    padding: 5px !important;word-break: break-all;vertical-align:top;}
+	
+.webservice_example_table tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.webservice_code{width:75% !important}
