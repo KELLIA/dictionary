@@ -145,12 +145,18 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 
 	#what's in the 'Search' column--based on word, word_search_type, dialect
 	if len(word) > 0:
+		try:
+			re.compile(word)
+			op = 'REGEXP'
+		except:
+			op = '='
+
 		if dialect == 'any':
 			word_search_string = r'.*\n' + word + r'~.*'
 		else:
 			word_search_string = r'.*\n' + word + r'~' + dialect + r'?\n.*'
 
-		word_constraint = "entries.search REGEXP ?"
+		word_constraint = "entries.search "+op+" ?"
 		parameters.append(word_search_string)
 		if " " in word:
 			word_constraint = "(" + word_constraint + " OR entries.oRef = ?)"
@@ -171,45 +177,55 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 	# one or all of the sense columns--which is specified by def_lang, search within it based on definition and def_search_type
 	if def_search_type == 'exact sequence':
 		def_search_string = r'.*\b' + definition + r'\b.*'
+		try:
+			re.compile(def_search_string)
+			op = 'REGEXP'
+		except:
+			op = '='
 		if def_lang == 'any':
-			def_constraint = "(entries.en REGEXP ? OR entries.de REGEXP ? OR entries.fr REGEXP ?)"
+			def_constraint = "(entries.en "+op+" ? OR entries.de "+op+" ? OR entries.fr "+op+" ?)"
 			constraints.append(def_constraint)
 			parameters.append(def_search_string)
 			parameters.append(def_search_string)
 			parameters.append(def_search_string)
 		elif def_lang == 'en':
-			def_constraint = "entries.en REGEXP ?"
+			def_constraint = "entries.en "+op+" ?"
 			constraints.append(def_constraint)
 			parameters.append(def_search_string)
 		elif def_lang == 'fr':
-			def_constraint = "entries.fr REGEXP ?"
+			def_constraint = "entries.fr "+op+" ?"
 			constraints.append(def_constraint)
 			parameters.append(def_search_string)
 		elif def_lang == 'de':
-			def_constraint = "entries.de REGEXP ?"
+			def_constraint = "entries.de "+op+" ?"
 			constraints.append(def_constraint)
 			parameters.append(def_search_string)
 
 	elif def_search_type == 'all words':
 		words = definition.split(' ')
 		for one_word in words:
+			try:
+				re.compile(one_word)
+				op = 'REGEXP'
+			except:
+				op = '='
 			def_search_string = r'.*\b' + one_word + r'\b.*'
 			if def_lang == 'any':
-				def_constraint = "(entries.en REGEXP ? OR entries.de REGEXP ? OR entries.fr REGEXP ?)"
+				def_constraint = "(entries.en "+op+" ? OR entries.de "+op+" ? OR entries.fr "+op+" ?)"
 				constraints.append(def_constraint)
 				parameters.append(def_search_string)
 				parameters.append(def_search_string)
 				parameters.append(def_search_string)
 			elif def_lang == 'en':
-				def_constraint = "entries.en REGEXP ?"
+				def_constraint = "entries.en "+op+" ?"
 				constraints.append(def_constraint)
 				parameters.append(def_search_string)
 			elif def_lang == 'fr':
-				def_constraint = "entries.fr REGEXP ?"
+				def_constraint = "entries.fr "+op+" ?"
 				constraints.append(def_constraint)
 				parameters.append(def_search_string)
 			elif def_lang == 'de':
-				def_constraint = "entries.de REGEXP ?"
+				def_constraint = "entries.de "+op+" ?"
 				constraints.append(def_constraint)
 				parameters.append(def_search_string)
 
