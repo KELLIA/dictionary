@@ -136,7 +136,7 @@ def retrieve_related(word):
 		return tablestring
 	
 
-def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc="", params=None):
+def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc="", params=None, tla_search=None):
 	if params is None:
 		params = {}
 	sql_command = 'SELECT * FROM entries WHERE '
@@ -175,7 +175,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 		parameters.append(pos)
 
 	# one or all of the sense columns--which is specified by def_lang, search within it based on definition and def_search_type
-	if def_search_type == 'exact sequence':
+	if def_search_type == 'exact sequence' and tla_search is None:
 		def_search_string = r'.*\b' + definition + r'\b.*'
 		try:
 			re.compile(def_search_string)
@@ -201,7 +201,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 			constraints.append(def_constraint)
 			parameters.append(def_search_string)
 
-	elif def_search_type == 'all words':
+	elif def_search_type == 'all words' and tla_search is None:
 		words = definition.split(' ')
 		for one_word in words:
 			try:
@@ -228,6 +228,9 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 				def_constraint = "entries.de "+op+" ?"
 				constraints.append(def_constraint)
 				parameters.append(def_search_string)
+	if tla_search is not None:
+		constraints.append("xml_id = ?")
+		parameters.append(tla_search)
 
 	sql_command += " AND ".join(constraints)
 	sql_command += " ORDER BY ascii"
@@ -372,12 +375,27 @@ if __name__ == "__main__":
 	except:
 		page = 1
 	params["page"] = page
+	tla_search = None
 	if quick_string != "":
 		separated = separate_coptic(quick_string)
 		def_search_type = "all words"
 		word = " ".join(separated[0])
 		definition = " ".join(separated[1])
-	
+		m = re.match(r'(C[0-9]+)$',definition)
+		if m is not None:
+			tla_search = m.group(1)
+			# Check that this TLA ID exists
+			if platform.system() == 'Linux':
+				con = lite.connect('alpha_kyima_rc1.db')
+			else:
+				con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
+			with con:
+				cur = con.cursor()
+				cur.execute("select xml_id from entries where xml_id=?", (tla_search,))
+				rows = cur.fetchall()
+				if len(rows) < 1:
+					tla_search = None
+
 	word = word.decode("utf8")
 	word = strip_hyphens(word)
 	definition = definition.decode("utf8")
@@ -386,7 +404,7 @@ if __name__ == "__main__":
 	definition_desc = " definitions matching <i>" + definition + "</i> in language <i>"  + def_lang + "</i>" if len(definition)  > 0 else ""
 	pos_desc = " restricted to POS tag " + pos if pos != "any" else ""
 	search_desc = "You searched " + word_desc + dialect_desc + definition_desc + pos_desc
-	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc,params=params)
+	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc,params=params,tla_search=tla_search)
 
 	### related entry stuff
 	if word != "": # nothing to do if no coptic word searched?
