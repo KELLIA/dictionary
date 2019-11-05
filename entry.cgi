@@ -390,7 +390,7 @@ if __name__ == "__main__":
 		xml_id_string = '<span class="tla_no_header">TLA lemma no. ' + entry_xml_id +"</span><br/>" + lemma if entry_xml_id != "" else ""
 		citation_id_string = 'TLA lemma no. ' + entry_xml_id +" ("+lemma+")" if entry_xml_id != "" else ""
 
-		entry_page += '<div id="citation_info_box">Please cite as: '+citation_id_string.encode("utf8")+', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), http://www.coptic-dictionary.org/entry.cgi?tla='+entry_xml_id.encode("utf8")+' (accessed yyyy-mm-dd).</div>'
+		entry_page += '<div id="citation_info_box">Please cite as: '+citation_id_string.encode("utf8")+', in: <i>Coptic Dictionary Online</i>, ed. by the Koptische/Coptic Electronic Language and Literature International Alliance (KELLIA), https://coptic-dictionary.org/entry.cgi?tla='+entry_xml_id.encode("utf8")+' (accessed yyyy-mm-dd).</div>'
 
 	wrapped = wrap(entry_page)
 	
