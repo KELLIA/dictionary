@@ -247,6 +247,9 @@ def process_entry(id, super_id, entry):
 	de = re.sub(r'\|\|\|$', r'', de)
 	en = re.sub(r'\|\|\|$', r'', en)
 	fr = re.sub(r'\|\|\|$', r'', fr)
+	de = re.sub(r'\s+', r' ', de).strip()
+	en = re.sub(r'\s+', r' ', en).strip()
+	fr = re.sub(r'\s+', r' ', fr).strip()
 
 	# POS -- a single Scriptorium POS tag for each entry
 	pos_list = []
