@@ -65,7 +65,7 @@ def separate_coptic(search_text):
 
 
 def strip_hyphens(text):
-	text = text.replace('-', '')
+	text = text.replace('-', '').replace(ur"\u0304","").replace(ur"\ufe26","").replace(ur"\ufe24","").replace(ur"\ufe25","")
 	text = text.replace(ur'\u2013', '')
 	text = text.replace(ur"\u2E17","")
 	return text
@@ -76,7 +76,7 @@ def get_annis_query(coptic, oref, cs_pos=None):
 	oref = strip_hyphens(oref).encode("utf8")
 
 	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
-	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixqb2hhbm5lcy5jYW5vbnMsc2hlbm91dGUuZWFnZXJuZXNzLHNoZW5vdXRlLmRpcnQsc2FoaWRpYy5vdCxhcG9waHRoZWdtYXRhLnBhdHJ1bSxzYWhpZGljYS5udCxzYWhpZGljYS4xY29yaW50aGlhbnMscHNldWRvLnRoZW9waGlsdXMsc2hlbm91dGUuZm94LHNhaGlkaWNhLm1hcmssZG9jLnBhcHlyaSxtYXJ0eXJkb20udmljdG9yLHNoZW5vdXRlLmFicmFoYW0"  # List of scriptorium corpora
+	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixqb2hhbm5lcy5jYW5vbnMsc2hlbm91dGUuYWJyYWhhbSxzaGVub3V0ZS5lYWdlcm5lc3Msc2hlbm91dGUuZGlydCxzYWhpZGljLm90LGFwb3BodGhlZ21hdGEucGF0cnVtLHNhaGlkaWNhLm50LHNhaGlkaWNhLjFjb3JpbnRoaWFucyxwc2V1ZG8udGhlb3BoaWx1cyxzaGVub3V0ZS5mb3gsc2FoaWRpY2EubWFyayxkb2MucGFweXJpLG1hcnR5cmRvbS52aWN0b3IsZG9ybWl0aW9uLmpvaG4sbGlmZS5jeXJ1cyxsaWZlLmxvbmdpbnVzLmx1Y2l1cyxsaWZlLm9ubm9waHJpdXMscHJvY2x1cy5ob21pbGllcyxwc2V1ZG8uZXBocmVt"  # List of scriptorium corpora
 	segmentation = "_bt=bm9ybV9ncm91cA"  # Norm segmentation
 	if " " in coptic:
 		coptic = coptic.replace(" ","")
