@@ -24,6 +24,28 @@ def check_chars(word):
 			print(word + "\t" + char)
 
 
+def order_forms(formlist):
+	temp = []
+	for form in formlist:
+		orths = form.findall('{http://www.tei-c.org/ns/1.0}orth')
+		text = ""
+		dialect = ""
+		for orth in orths:
+			text = orth.text.replace("⸗","--")  # Sort angle dash after hyphen
+			geo = form.find('{http://www.tei-c.org/ns/1.0}usg')
+			if geo is not None:
+				dialect = geo.text.replace("Ak","K")
+				if dialect != "S":
+					dialect = "_" + dialect  # Sahidic always first
+
+		temp.append((text,dialect,form))
+
+	output = []
+	for t, d, f in sorted(temp, key=lambda x: (x[0],x[1])):
+		output.append(f)
+
+	return output
+
 
 def process_entry(id, super_id, entry):
 	"""
@@ -51,6 +73,9 @@ def process_entry(id, super_id, entry):
 	lemma = ""
 	for form in forms:
 		is_lemma = False
+		if "status" in form.attrib:
+			if form.attrib["status"] == "deprecated":
+				continue
 		if "type" in form.attrib:
 			if form.attrib["type"] == "lemma":
 				is_lemma = True
@@ -68,6 +93,9 @@ def process_entry(id, super_id, entry):
 	first = []
 	last = []
 	for form in forms:
+		if "status" in form.attrib:
+			if form.attrib["status"] == "deprecated":
+				continue
 		orths = form.findall('{http://www.tei-c.org/ns/1.0}orth')
 		if form.text is not None:
 			if re.search(r'[^\s]', form.text) is not None:
@@ -83,6 +111,8 @@ def process_entry(id, super_id, entry):
 			else:
 				last.append(form)
 
+	first = order_forms(first)
+	last = order_forms(last)
 	ordered_forms = first + last
 
 	for form in ordered_forms:
@@ -104,7 +134,7 @@ def process_entry(id, super_id, entry):
 
 		if gramGrp is not None:
 			for child in gramGrp:
-				gram_string += child.text + " "
+				gram_string += re.sub(r'\s+',' ',child.text).strip() + " "
 			gram_string = gram_string[:-1]
 
 		orthstring += gram_string + "\n"
@@ -282,7 +312,7 @@ def process_entry(id, super_id, entry):
 		greek_dict = OrderedDict()
 		for child in etym:
 			if child.tag == "{http://www.tei-c.org/ns/1.0}note":
-				etym_string += child.text
+				etym_string += re.sub(r'\s+',' ',child.text).strip()
 			elif child.tag == "{http://www.tei-c.org/ns/1.0}ref":
 				if 'type' in child.attrib and 'target' in child.attrib:
 					etym_string += child.attrib['type'] + ": " + child.attrib['target'] + " "
