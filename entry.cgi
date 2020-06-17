@@ -184,7 +184,7 @@ def process_etym(etym):
 	if "cf. Gr." in etym:
 		etym = link_greek(etym)
 	etym = gloss_bibl(etym)
-	return '<div class="etym">\n\t' + etym + '\n</div>'
+	return '<div id="etym" class="etym">\n\t' + etym + '\n</div>'
 
 
 def related(related_entries):
