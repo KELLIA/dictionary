@@ -17,7 +17,9 @@ from six import iteritems
 
 corpora = ["shenoute.eagerness", "shenoute.fox", "shenoute.a22", "shenoute.abraham", "shenoute.dirt",
 		   "apophthegmata.patrum", "sahidica.nt", "sahidic.ot", "pseudo.theophilus", "martyrdom.victor",
-		   "johannes.canons",
+		   "johannes.canons","life.cyrus","life.onnophrius","dormition.john","pseudo.athanasius.discourses","proclus.homilies",
+		   "pseudo.ephrem","shenoute.seeks","shenoute.those","shenoute.unknown5_1",
+		   "pachomius.instructions","life.phib","life.aphou","life.paul.tamma","life.longinus.lucius",
 		   "besa.letters", "sahidica.mark", "sahidica.1corinthians", "doc.papyri"]
 
 
@@ -219,7 +221,7 @@ def update_db(row_list,table="lemmas"):
 
 
 parser = ArgumentParser()
-parser.add_argument("-l","--lemma_list",action="store",dest="lemma_list",default="C:\\TreeTagger\\bin\\coptic\\copt_lemma_lex.tab")
+parser.add_argument("-l","--lemma_list",action="store",dest="lemma_list",default="C:\\Uni\\Coptic\\git\\coptic-nlp\\data\\copt_lemma_lex.tab")
 parser.add_argument("-u","--url",action="store",dest="url",default="https://corpling.uis.georgetown.edu/")
 parser.add_argument("-o","--outmode",action="store",dest="outmode",default="db")
 parser.add_argument("-c","--use_cache",action="store_true",help="activate cache - read data from tt_collocs.tab and cache_freqs.xml")
