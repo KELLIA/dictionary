@@ -128,7 +128,7 @@ ol{margin: 0px !important}
 .logos{padding: 5px; background-color:rgba(255, 255, 255, 0.5); margin-top:5px}
 
 .kellia{font-family: 'Open Sans', sans-serif; font-size:14pt;
-     border: 3px solid grey;padding:3px; margin-top: 2px}
+     border: 3px solid grey;padding:3px; margin-top: 2px; max-width: 100px}
 .ftext{display:inline-block}
 .navbar-form{margin-bottom: 0px !important}
 .navbar-nav > li > a{line-height: 10px !important;}
