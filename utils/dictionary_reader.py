@@ -227,36 +227,40 @@ def process_entry(id, super_id, entry):
 					if bibl.text is not None:
 						no_bibl = False
 						bibl_text = bibl.text + " "
-						de += bibl_text
-						en += bibl_text
-						fr += bibl_text
-				if no_bibl:
-					lang = sense_child.get('{http://www.w3.org/XML/1998/namespace}lang')
-					quote = sense_child.find('{http://www.tei-c.org/ns/1.0}quote')
-					definition = sense_child.find('{http://www.tei-c.org/ns/1.0}def')
+				quotes = sense_child.findall('{http://www.tei-c.org/ns/1.0}quote')
+				definitions = sense_child.findall('{http://www.tei-c.org/ns/1.0}def')
 
-					quote_text = "~~~"
+				quote_text = "~~~"
+				for quote in quotes:
 					if quote is not None and quote.text is not None:
 						quote_text += re.sub(r' +',' ',quote.text.strip().replace("\n",''))
-						if definition is None:
+						if definitions is None or len(definitions) == 0:
 							quote_text += ";;;"
 						else:
 							quote_text += "; "
-					if lang == 'de':
-						de += quote_text
-					elif lang == 'en':
-						en += quote_text
-					elif lang == 'fr':
-						fr += quote_text
+						lang = quote.get('{http://www.w3.org/XML/1998/namespace}lang')
+						if lang == 'de':
+							de += quote_text
+						elif lang == 'en':
+							en += quote_text
+						elif lang == 'fr':
+							fr += quote_text
+						quote_text = "~~~"
+				for definition in definitions:
 					if definition is not None:
 						if definition.text is not None:
 							definition_text = re.sub(r' +',' ',definition.text.strip().replace("\n",'')) + ";;;"
+							lang = definition.get('{http://www.w3.org/XML/1998/namespace}lang')
 							if lang == 'de':
 								de += definition_text
 							elif lang == 'en':
 								en += definition_text
 							elif lang == 'fr':
 								fr += definition_text
+				if not no_bibl:
+					de += bibl_text
+					en += bibl_text
+					fr += bibl_text
 			elif sense_child.tag == '{http://www.tei-c.org/ns/1.0}ref':
 				ref = "ref: " + sense_child.text + " "
 				de += ref
