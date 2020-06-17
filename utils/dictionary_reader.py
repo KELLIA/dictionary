@@ -330,7 +330,8 @@ def process_entry(id, super_id, entry):
 					etym_string += child.attrib['type'] + ". " + ref.attrib['target'] + "# " + ref.text + " "
 		if len(greek_dict) > 0:
 			greek_parts = []
-			for key in greek_dict:
+			greek_id = ""
+			for key in sorted(list(greek_dict.keys())):
 				if greek_dict[key] is None:
 					#import sys
 					#sys.stderr.write(str(greek_dict))
@@ -340,8 +341,12 @@ def process_entry(id, super_id, entry):
 				val = greek_dict[key].strip()
 				if "grl_ID" in key:
 					greek_id = val
-				elif "grl_lemma" in key:
-					greek_parts.append('<span style="color:darkred">cf. Gr.</span> ' + val)
+				if "grl_lemma" in key:
+					part = '<span style="color:darkred">cf. Gr.'
+					if greek_id != "":
+						part += " (DDGLC lemma ID "+greek_id+")"
+					part += '</span> ' + val
+					greek_parts.append(part)
 				elif "meaning" in key:
 					greek_parts.append("<i>"+val+"</i>.")
 				elif "_pos" in key and len(val) > 0:

@@ -11,7 +11,7 @@ import string
 import sys
 from collections import defaultdict
 
-from helper import wrap, get_annis_query
+from helper import wrap, get_annis_query, link_greek
 
 cgitb.enable()
 
@@ -76,7 +76,7 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 		orth_geo_dict = defaultdict(list)
 		orth = "NONE"
 		for orth_geo_string in parts[1:]:
-			orth_geo = re.match(r'^(.*)~(.?\^\^([A-Za-z0-9]*))$', orth_geo_string)
+			orth_geo = re.match(r'^(.*)~(.?\^\^([A-Za-z0-9_]*))$', orth_geo_string)
 			if orth_geo is not None:
 				orth = orth_geo.group(1)
 				orth_geo_dict[orth].append(orth_geo.group(2).encode("utf8"))
@@ -181,6 +181,8 @@ def process_etym(etym):
 			word = re.sub(r'\(', '\\(', word)
 			word = re.sub(r'\)', '\\)', word)
 			etym = re.sub(r'#' + word + '#', link, etym)
+	if "cf. Gr." in etym:
+		etym = link_greek(etym)
 	etym = gloss_bibl(etym)
 	return '<div class="etym">\n\t' + etym + '\n</div>'
 

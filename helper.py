@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os, re, platform
+import io, os, re, platform, json, unicodedata
 import __main__
 import unicodedata
 from base64 import urlsafe_b64encode
@@ -135,3 +135,36 @@ def generic_query(sql,params):
 def only_coptic(text):
 	text = re.sub(r'[^ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲥⲟⲝⲡⲣⲥⲧⲫⲭⲩⲱϭϫϩϥϯ]','',text)
 	return text
+
+def link_greek(etym):
+
+	m = re.search(r"cf\. Gr\.[^<>]+</span>([^<>]+)<i>",etym)
+	if m is None:
+		return etym
+	else:
+		greek = m.group(1).strip()
+		greek= greek.decode("utf8")
+
+	try:
+		# Convert polytonic Greek to beta-code using perseids-tools/beta-code-py conversion table
+		betamap = io.open("unicode_to_beta_code.tab", encoding="utf8").read().split("\n")
+		UNICODE_TO_BETA_CODE_MAP  = dict((line.split("\t")[0],line.split("\t")[1]) for line in betamap)
+
+		updated_map = {}
+		updated_map.update(UNICODE_TO_BETA_CODE_MAP)
+
+		chars = [c for c in greek]
+		if not all([c in updated_map for c in chars]):
+			return etym
+		else:
+			mapped = "".join((list(map(lambda x: updated_map.get(x, x), chars))))
+
+			link = ' <a title="Look up in Perseus" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup='+mapped+'&lang=greek">'+greek + '&nbsp;<img src="img/perseus.png" style="border: 1px solid black;"/></a> '
+			linked = re.sub(r'(cf\. Gr\.[^<>]+</span>)[^<>]+(<i>)',r'\1'+link+r'\2',etym)
+
+			return linked.encode("utf8")
+	except:
+		# Beta code conversion failed, return unaltered string
+		return etym
+
+
