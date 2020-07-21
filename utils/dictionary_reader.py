@@ -5,8 +5,8 @@ import sqlite3 as lite
 import xml.etree.ElementTree as ET
 import re, sys
 import glob
-import os
-from collections import OrderedDict
+import os, io
+from collections import OrderedDict, defaultdict
 from argparse import ArgumentParser
 
 
@@ -54,6 +54,12 @@ def process_entry(id, super_id, entry):
 	:param entry: Element representing the entry
 	:return: tuple representing new row to add to the db
 	"""
+
+	entry_deprecated = False
+	if "status" in entry.attrib:
+		if entry.attrib["status"] == "deprecated":
+			entry_deprecated = True  # Entire entry is deprecated, used by DDGLC entries
+
 	forms = entry.findall('{http://www.tei-c.org/ns/1.0}form')
 
 	# ORTHSTRING -- "name" column in the db
@@ -72,6 +78,8 @@ def process_entry(id, super_id, entry):
 
 	lemma = ""
 	for form in forms:
+		if entry_deprecated:
+			continue
 		is_lemma = False
 		if "status" in form.attrib:
 			if form.attrib["status"] == "deprecated":
@@ -93,6 +101,8 @@ def process_entry(id, super_id, entry):
 	first = []
 	last = []
 	for form in forms:
+		if entry_deprecated:
+			continue
 		if "status" in form.attrib:
 			if form.attrib["status"] == "deprecated":
 				continue
@@ -360,7 +370,6 @@ def process_entry(id, super_id, entry):
 							#val = '<a href="'+url+'">' + val + "</a>"
 					greek_parts.append('<span style="color:grey">('+ val+ ')</span>')
 			etym_string += " ".join(greek_parts)
-
 
 	xrs = entry.findall("{http://www.tei-c.org/ns/1.0}xr")
 	for xr in xrs:
