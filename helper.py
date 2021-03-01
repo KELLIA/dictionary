@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
 
 import io, os, re, platform, json, unicodedata
@@ -34,6 +34,9 @@ def wrap(html_input):
 	elif calling_script.endswith("help.cgi"):
 		title = "How to search"
 		activate = "help"
+	elif calling_script.endswith("network.cgi"):
+		title = "Term network"
+		activate = "none"
 	else:
 		title = calling_script
 		activate = "home"
@@ -76,7 +79,7 @@ def get_annis_query(coptic, oref, cs_pos=None):
 	oref = strip_hyphens(oref).encode("utf8")
 
 	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
-	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixqb2hhbm5lcy5jYW5vbnMsc2hlbm91dGUuYWJyYWhhbSxzaGVub3V0ZS5lYWdlcm5lc3Msc2hlbm91dGUuZGlydCxzYWhpZGljLm90LGFwb3BodGhlZ21hdGEucGF0cnVtLHNhaGlkaWNhLm50LHNhaGlkaWNhLjFjb3JpbnRoaWFucyxwc2V1ZG8udGhlb3BoaWx1cyxzaGVub3V0ZS5mb3gsc2FoaWRpY2EubWFyayxkb2MucGFweXJpLG1hcnR5cmRvbS52aWN0b3IsZG9ybWl0aW9uLmpvaG4sbGlmZS5jeXJ1cyxsaWZlLmxvbmdpbnVzLmx1Y2l1cyxsaWZlLm9ubm9waHJpdXMscHJvY2x1cy5ob21pbGllcyxwc2V1ZG8uZXBocmVt"  # List of scriptorium corpora
+	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixqb2hhbm5lcy5jYW5vbnMsc2hlbm91dGUuYWJyYWhhbSxzaGVub3V0ZS5lYWdlcm5lc3Msc2hlbm91dGUuZGlydCxzYWhpZGljLm90LGRvcm1pdGlvbi5qb2huLGxpZmUuY3lydXMscHJvY2x1cy5ob21pbGllcyxwc2V1ZG8uZXBocmVtLGxpZmUub25ub3Bocml1cyxhcG9waHRoZWdtYXRhLnBhdHJ1bSxzYWhpZGljYS5udCxzYWhpZGljYS4xY29yaW50aGlhbnMscHNldWRvLnRoZW9waGlsdXMsc2hlbm91dGUuZm94LHNhaGlkaWNhLm1hcmssbGlmZS5sb25naW51cy5sdWNpdXMsZG9jLnBhcHlyaSxtYXJ0eXJkb20udmljdG9yLHNoZW5vdXRlLnNlZWtzLHNoZW5vdXRlLnRob3NlLHNoZW5vdXRlLnVua25vd241XzEscHNldWRvLmF0aGFuYXNpdXMuZGlzY291cnNlcyxwYWNob21pdXMuaW5zdHJ1Y3Rpb25zLGxpZmUucGhpYixsaWZlLnBhdWwudGFtbWEsbGlmZS5hcGhvdQ"  # List of scriptorium corpora
 	segmentation = "_bt=bm9ybV9ncm91cA"  # Norm segmentation
 	if " " in coptic:
 		coptic = coptic.replace(" ","")
@@ -91,11 +94,24 @@ def get_annis_query(coptic, oref, cs_pos=None):
 		query = " . ".join(morph_list) + " | "
 		query += " . ".join(norm_list)
 		query = "_q=" + urlsafe_b64encode(query)
-
 	elif cs_pos in ["VSTAT","VIMP"]: # This is an inflected entry, look for norm and pos
 		query = "_q=" + urlsafe_b64encode('norm="'+ coptic + '" _=_ pos="'+str(cs_pos)+'"')
 	else:
 		query = "_q=" + urlsafe_b64encode('lemma="'+ coptic + '"')
+
+	return annis_base + "&".join([query,corpus_list,segmentation])
+
+
+def get_annis_entity_query(coptic, entity_type):
+	if " " in coptic:
+		coptic = coptic.replace(" ","")
+	coptic = strip_hyphens(coptic).encode("utf8")
+
+	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
+	corpus_list = "_c=Y29wdGljLnRyZWViYW5r"  # Currently just treebank
+	segmentation = "_bt=bm9ybV9ncm91cA"  # norm segmentation
+	q = 'entity="'+str(entity_type)+'" ->head lemma="' + coptic + '"'
+	query = "_q=" + urlsafe_b64encode(q)
 
 	return annis_base + "&".join([query,corpus_list,segmentation])
 
@@ -160,7 +176,7 @@ def link_greek(etym):
 			mapped = "".join((list(map(lambda x: updated_map.get(x, x), chars))))
 
 			link = ' <a title="Look up in Perseus" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup='+mapped+'&lang=greek">'+greek + '&nbsp;<img src="img/perseus.png" style="border: 1px solid black;"/></a> '
-			linked = re.sub(r'(cf\. Gr\.[^<>]+</span>)[^<>]+(<i>)',r'\1'+link+r'\2',etym)
+			linked = re.sub(r'(cf\. Gr\.[^<>]*</span>)[^<>]+(<i>)',r'\1'+link+r'\2',etym)
 
 			return linked.encode("utf8")
 	except:

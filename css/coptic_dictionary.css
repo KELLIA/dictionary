@@ -337,6 +337,7 @@ padding:2px
 .btn-page{margin:10px}
 
 th.annis_link, th.tla_orth_id{color:#333}
+th.annis_link{text-align: left;}
 table a i.freq-icon{color:#AE2124;}
 
 td.colloc{text-align:left}
@@ -405,3 +406,25 @@ color:#41494e;
 }
 
 .webservice_code{width:75% !important}
+.known-entity{color:#0d0d9d !important}
+
+#mynetwork{height: 600px;
+    border: 1px solid lightgray;
+	background-color:white;
+}
+
+a.sense_id {
+    vertical-align: baseline;
+    padding-left: 1px;
+    font-size: 90%;
+	border-radius: 3px;
+    display: inline;
+    text-decoration: none !important;
+	margin-right: 2px;
+}
+
+/* phrase network thumbnails */
+.thumb_table_container{vertical-align:top}
+.thumb_link{position:absolute; top:0; left:0; display:inline-block; width:100px; height:100px; z-index:5; border: 1px solid black}
+.thumb_div{position: relative; left: 20px;}
+.thumb_iframe{width: 100px; height: 100px; background-color: white}

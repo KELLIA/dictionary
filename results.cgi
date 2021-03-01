@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
 
 import sqlite3 as lite
@@ -84,7 +84,7 @@ def retrieve_related(word):
 		if len(rows) == 1:
 			row = rows[0]
 			#entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
-			entry_url = "entry.cgi?tla=" + str(row[12])
+			entry_url = "entry.cgi?tla=" + str(row[-2])
 			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
 			#return '<script>window.location = "' + entry_url + '";</script>'
 # 		elif len(rows) > 100:
@@ -120,8 +120,8 @@ def retrieve_related(word):
 
 			orth = first_orth(row[2])
 			second = second_orth(row[2])
-			if len(str(row[12])) > 0:
-				link = "entry.cgi?tla=" + str(row[12])
+			if len(str(row[-2])) > 0:
+				link = "entry.cgi?tla=" + str(row[-2])
 			else:
 				link = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
 
@@ -251,7 +251,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 			row = rows[0]
 			super_id = str(row[1])
 			entry_id = str(row[0])
-			tla_id = str(row[12])
+			tla_id = str(row[-2])
 
 			if len(tla_id)>0:
 				entry_url = "entry.cgi?tla=" + tla_id
@@ -330,7 +330,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 
 			super_id = str(row[1])
 			entry_id = str(row[0])
-			tla_id = str(row[12])
+			tla_id = str(row[-2])
 
 			if len(tla_id) >0:
 				link = "entry.cgi?tla=" + tla_id
@@ -395,6 +395,30 @@ if __name__ == "__main__":
 				rows = cur.fetchall()
 				if len(rows) < 1:
 					tla_search = None
+		m = re.match(r'(CF[0-9]+)$',definition)
+		if m is not None:
+			newline = """
+"""
+			tla_search = ".*" + m.group(1) + "([^0-9].*|$)"
+			# Check that this TLA ID exists
+			if platform.system() == 'Linux':
+				con = lite.connect('alpha_kyima_rc1.db')
+			else:
+				con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
+			with con:
+				con.create_function("REGEXP", 2, lambda expr, item: re.search(expr.lower(), item.lower()) is not None)
+				cur = con.cursor()
+				cur.execute("select xml_id from entries where Name REGEXP ?", (tla_search,))
+				rows = cur.fetchall()
+				if len(rows) < 1:
+					cur.execute("select xml_id from entries where lemma_form_id = ?", (m.group(1),))
+					rows = cur.fetchall()
+					if len(rows) <1:
+						tla_search = None
+					else:
+						tla_search = rows[0][0]
+				else:
+					tla_search = rows[0][0]
 
 	word = word.decode("utf8")
 	word = strip_hyphens(word)
