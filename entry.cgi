@@ -15,7 +15,8 @@ from helper import wrap, get_annis_query, link_greek, get_annis_entity_query, st
 
 cgitb.enable()
 
-print "Content-type: text/html\n"
+print("Content-type: text/html\n")
+
 
 def first_orth(orthstring):
 	first_orth = re.search(r'(?:^|\n)([^\n].*?)~', orthstring)
@@ -23,6 +24,7 @@ def first_orth(orthstring):
 		return first_orth.group(1)
 	else:
 		return "NONE"
+
 
 def second_orth(orthstring):
 	first_search = re.search(r'(?:^|\n)([^\n].*?)~', orthstring)
@@ -45,6 +47,7 @@ def second_orth(orthstring):
 			return second_orth.group(2) + dots
 	return "&ndash;"
 
+
 def sense_list(sense_string):
 	senses = sense_string.split("|||")
 	if len(senses) > 1:
@@ -66,7 +69,7 @@ def sense_list(sense_string):
 
 def has_network(word, pos):
 	sql = "SELECT * from networks where word=? AND pos=? limit 1;"
-	con = lite.connect('alpha_kyima_rc1.db')
+	con = get_con()
 	with con:
 		cur = con.cursor()
 		cur.execute(sql,(word,pos))
@@ -164,12 +167,12 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 
 	return orth_html
 
-def process_sense(de, en, fr):
+def process_sense(de, en, fr, tla_id=""):
 	en_senses = en.split("|||")
 	fr_senses = fr.split("|||")
 	de_senses = de.split("|||")
 	sense_html = '<table id="senses">'
-	for i in xrange(len(en_senses)):
+	for i in range(len(en_senses)):
 		en_sense = en_senses[i]
 		fr_sense = fr_senses[i]
 		de_sense = de_senses[i]
@@ -192,7 +195,7 @@ def process_sense(de, en, fr):
 				word = xr.group(1)
 				link = '<a href="results.cgi?coptic=' + word + '">' + word + "</a>"
 				ref_bibl = re.sub(r'xr. #(.*?)#', r'xr. ' + link, ref_bibl)
-			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'''<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new" style="text-decoration-style: solid;">\1</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>''',ref_bibl)
+			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'''<a href="https://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2&tla='''+tla_id+r'''" target="_new" style="text-decoration-style: solid;">\1</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>''',ref_bibl)
 			ref_bibl = gloss_bibl(ref_bibl)
 
 			engstr = "(En) " if (de_parts is not None or fr_parts is not None) else ""
@@ -250,15 +253,15 @@ def related(related_entries):
 	return tablestring
 
 
+def get_con():
+	if platform.system() == 'Windows':
+		return lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
+	return lite.connect('alpha_kyima_rc1.db')
+
 def get_freqs(item):
 	item = item.replace("-","").replace("⸗".decode("utf8"),"")
 	output = "<ul>\n"
-	if platform.system() == 'Linux':
-		con = lite.connect('alpha_kyima_rc1.db')
-	elif platform.system() == 'Windows':
-		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
-	else:
-		con = lite.connect('alpha_kyima_rc1.db')
+	con = get_con()
 
 	with con:
 		cur = con.cursor()
@@ -356,13 +359,7 @@ if __name__ == "__main__":
 	'organization':'bank',
 	'event':'bell'}
 
-	if platform.system() == 'Linux':
-		con = lite.connect('alpha_kyima_rc1.db')
-	elif platform.system() == 'Windows':
-		#con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
-		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
-	else:
-		con = lite.connect('alpha_kyima_rc1.db')
+	con = get_con()
 
 	form = cgi.FieldStorage()
 
@@ -399,7 +396,7 @@ if __name__ == "__main__":
 
 		if this_entry is None:
 			entry_page +="No entry found\n</div>\n"
-			print wrap(entry_page)
+			print(wrap(entry_page))
 			sys.exit()
 
 		grk_id = this_entry[-3]
@@ -442,7 +439,7 @@ if __name__ == "__main__":
 
 		# from sense info
 		entry_page += '<div class="sense_info">'
-		entry_page += process_sense(this_entry[4], this_entry[5], this_entry[6])
+		entry_page += process_sense(this_entry[4], this_entry[5], this_entry[6], tla_id)
 		entry_page += '</div>'
 
 		# etym info
@@ -474,5 +471,4 @@ if __name__ == "__main__":
 					 This release is strictly preliminary.<br/><br/>'''
 		wrapped = wrapped.replace(box,box+disclaimer)
 
-
-	print wrapped
+	print(wrapped)
