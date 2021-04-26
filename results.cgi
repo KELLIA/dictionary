@@ -240,7 +240,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 	else:
 		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
 
-	con.create_function("REGEXP", 2, lambda expr, item : re.search(expr.lower(), item.lower()) is not None)
+	con.create_function("REGEXP", 2, lambda expr, item : re.search(expr.lower(), item.lower(), flags=re.UNICODE) is not None)
 	with con:
 		cur = con.cursor()
 		cur.execute(sql_command, parameters)
@@ -447,4 +447,4 @@ if __name__ == "__main__":
 	if len(quick_string) > 0:
 		quick_target = 'placeholder="Quick Search"'
 		wrapped = wrapped.replace(quick_target, quick_target + ' value="' + quick_string + '"')
-	print wrapped
+	print(wrapped)
