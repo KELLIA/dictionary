@@ -201,7 +201,7 @@ def process_sense(de, en, fr, tla_id=""):
 				word = xr.group(1)
 				link = '<a href="results.cgi?coptic=' + word + '">' + word + "</a>"
 				ref_bibl = re.sub(r'xr. #(.*?)#', r'xr. ' + link, ref_bibl)
-			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'''<a href="https://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2&tla='''+tla_id+r'''" target="_new" style="text-decoration-style: solid;">\1</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>''',ref_bibl)
+			ref_bibl = re.sub(r'(CD ([0-9]+[ab]?)-?[0-9]*[ab]?)',r'''<a href="https://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2&tla='''+tla_id+r'''" target="_new" style="text-decoration-style: solid;">\1</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>''',ref_bibl)
 			ref_bibl = gloss_bibl(ref_bibl)
 
 			engstr = "(En) " if (de_parts is not None or fr_parts is not None) else ""
@@ -263,6 +263,25 @@ def get_con():
 	if platform.system() == 'Windows':
 		return lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
 	return lite.connect('alpha_kyima_rc1.db')
+
+
+def get_examples(lemma, cs_pos, tla_id, oref_string):
+	con = get_con()
+	with con:
+		cur = con.cursor()
+		cur.execute("SELECT citation, priority FROM examples WHERE tla=? ORDER BY priority",(tla_id,))
+		rows = cur.fetchall()
+	if len(rows) == 0 or rows is None:
+		return ""
+	#output = ['<div class="tag">Example usage:<a class="hint" data-tooltip="Automatically extracted, use with caution!">?</a></div>\n<ul>']
+	output = ['<div class="tag">Example usage: (automatically extracted, use with caution and <a href="https://github.com/KELLIA/dictionary/issues/new?assignees=&labels=&template=bad-example-usage-report.md&title=Bad+example+sentence+for+the+entry+%3CENTRY%3E">report bad examples</a>)</div>\n<ul>']
+	for row in rows:
+		output.append("<li>" + row[0] + "</li>")
+	output.append("</ul>")
+	annis_link = get_annis_query(lemma, oref_string.split("|||")[0].strip(), cs_pos)
+	output.append('<p class="ex-more">Search for <a href="'+annis_link+'" target="_new">more examples</a> for the lemma '+lemma+' with any sense (ANNIS search)</p>')
+	return ("\n".join(output) + "\n").encode("utf8")
+
 
 def get_freqs(item):
 	item = item.replace("-","").replace("⸗".decode("utf8"),"")
@@ -450,6 +469,9 @@ if __name__ == "__main__":
 
 		# etym info
 		entry_page += process_etym(this_entry[7].encode("utf8"))
+
+		# examples
+		entry_page += get_examples(re.sub(r'<[^<>]+>','',lemma), cs_pos, tla_id, this_entry[10])
 
 		# link to other entries in the superentry
 		if len(related_entries) > 0:
