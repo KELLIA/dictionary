@@ -107,7 +107,10 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 						  form_id.encode("utf8") + '</td><td class="morphology">' + \
 						 gramstring.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + \
 						 '" target="_new"><img src="img/scriptorium.png" class="scriptorium_logo" title="Search in Coptic Scriptorium"></a></td>'
-			freq_data = get_freqs(distinct_orth)
+			if " " in oref:
+				freq_data = get_freqs(oref)
+			else:
+				freq_data = get_freqs(distinct_orth)
 			freq_info = """	<td><div class="expandable">
 					            <a class="dict_tooltip" href="">
 					            <i class="fa fa-sort-numeric-asc freq_icon">&nbsp;</i>
@@ -118,7 +121,10 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 			freq_info = freq_info.replace("**freqs**",freq_data)
 			orth_html += freq_info
 
-			colloc_data = get_collocs(distinct_orth,cursor)
+			if " " in oref:
+				colloc_data = get_collocs(oref,cursor)
+			else:
+				colloc_data = get_collocs(distinct_orth, cursor)
 			if len(colloc_data) > 0:
 				colloc_info = """	<td class="colloc" style="max-width:20px"><div class="expandable">
 										<a class="dict_tooltip" href="">
