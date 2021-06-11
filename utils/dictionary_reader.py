@@ -78,7 +78,7 @@ def get_entity_types(pub_corpora_dir):
 	return entity_types
 
 
-def process_entry(id, super_id, entry):
+def process_entry(id, super_id, entry,entry_xml_id):
 	"""
 	:param id: int, id of the entry
 	:param super_id: int, id of the superentry
@@ -337,6 +337,8 @@ def process_entry(id, super_id, entry):
 	fr = re.sub(r'\s+', r' ', fr).strip()
 
 	# POS -- a single Scriptorium POS tag for each entry
+	if oref_string == u"ⲟⲩⲛ":
+		d=3
 	pos_list = []
 	for gramgrp in entry.iter("{http://www.tei-c.org/ns/1.0}gramGrp"):
 		pos = gramgrp.find("{http://www.tei-c.org/ns/1.0}pos")
@@ -422,7 +424,12 @@ def process_entry(id, super_id, entry):
 	global entity_types
 	if "~" in search_string:
 		row_lemma = search_string.strip().split("~")[0]
-		if row_lemma in entity_types and pos_string in ["ART","PDEM","PPOS","N","NUM","PINT"]:
+		if row_lemma == "ⲉⲓⲱⲧ":  # Hardwired behavior for barley vs. father
+			if entry_xml_id == "C998":
+				ents = "plant"
+			else:
+				ents = "person"
+		elif row_lemma in entity_types and pos_string in ["ART","PDEM","PPOS","N","NUM","PINT"]:
 			ents = ";".join(sorted(list(entity_types[row_lemma])))
 
 	row = (id, super_id, orthstring, pos_string, de, en, fr, etym_string, ascii_orth, search_string, oref_string, greek_id, ents)
@@ -442,7 +449,7 @@ def process_super_entry(entry_id, super_id, super_entry):
 		else:
 			lemma_form_id = ""
 
-		row = process_entry(entry_id, super_id, entry)
+		row = process_entry(entry_id, super_id, entry,entry_xml_id)
 		if row is None:
 			continue
 		row_list.append(tuple(list(row)+[entry_xml_id, lemma_form_id]))
@@ -463,6 +470,8 @@ def pos_map(pos, subc, orthstring):
 	if pos == u"Subst." or pos == u"Adj." or pos == u"Nominalpräfix" or pos == u"Adjektivpräfix" \
 			or pos == u"Kompositum":
 		return 'N'
+	elif u"Ausdruck der Nichtexistenz" in subc or u"Ausdruck des Nicht-Habens" in subc:
+		return 'EXIST'
 	elif pos == u"Adv.":
 		return 'ADV'
 	elif pos == u"Vb." or pos == u"unpersönlicher Ausdruck":
@@ -472,6 +481,8 @@ def pos_map(pos, subc, orthstring):
 			return 'VBD'
 		elif subc == u"Imperativ":
 			return 'VIMP'
+		elif u"ⲟⲩⲛ-" in orthstring or u"ⲟⲩⲛⲧⲉ-" in orthstring:
+			return "EXIST"
 		else:
 			return 'V'
 	elif pos == u"Präp.":
@@ -576,7 +587,7 @@ with con:
 				else:
 					lemma_form_id = ""
 
-				row = process_entry(entry_id, super_id, child)
+				row = process_entry(entry_id, super_id, child, entry_xml_id)
 				if row is None:
 					continue
 				row = tuple(list(row) + [entry_xml_id, lemma_form_id])
