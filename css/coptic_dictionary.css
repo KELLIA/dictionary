@@ -428,3 +428,13 @@ a.sense_id {
 .thumb_link{position:absolute; top:0; left:0; display:inline-block; width:100px; height:100px; z-index:5; border: 1px solid black}
 .thumb_div{position: relative; left: 20px;}
 .thumb_iframe{width: 100px; height: 100px; background-color: white}
+
+
+.example{}
+.ex-trans{font-style:italic;display: block; font-family: antinoouRegular, sans-serif; color:gray}
+.ex-sent{display:block; font-family: antinoouRegular, sans-serif;}
+/*.ex-group-match:before{content:"\003c"}
+.ex-group-match:after{content:"\003e"}*/
+.ex-sub-match{font-weight:bold}
+.ex-source{color:darkred; font-family: antinoouRegular, sans-serif;}
+.ex-more{color:black; font-family: antinoouRegular, sans-serif; margin-left: 2em}
