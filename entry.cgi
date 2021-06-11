@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
 
 import cgi
@@ -11,11 +11,12 @@ import string
 import sys
 from collections import defaultdict
 
-from helper import wrap, get_annis_query
+from helper import wrap, get_annis_query, link_greek, get_annis_entity_query, strip_hyphens
 
 cgitb.enable()
 
-print "Content-type: text/html\n"
+print("Content-type: text/html\n")
+
 
 def first_orth(orthstring):
 	first_orth = re.search(r'(?:^|\n)([^\n].*?)~', orthstring)
@@ -23,6 +24,7 @@ def first_orth(orthstring):
 		return first_orth.group(1)
 	else:
 		return "NONE"
+
 
 def second_orth(orthstring):
 	first_search = re.search(r'(?:^|\n)([^\n].*?)~', orthstring)
@@ -45,6 +47,7 @@ def second_orth(orthstring):
 			return second_orth.group(2) + dots
 	return "&ndash;"
 
+
 def sense_list(sense_string):
 	senses = sense_string.split("|||")
 	if len(senses) > 1:
@@ -63,11 +66,24 @@ def sense_list(sense_string):
 		sense_html += "</ol>"
 	return sense_html
 
+
+def has_network(word, pos):
+	sql = "SELECT * from networks where word=? AND pos=? limit 1;"
+	con = get_con()
+	with con:
+		cur = con.cursor()
+		cur.execute(sql,(word,pos))
+		res = cur.fetchone()
+	return res is not None
+
+
 def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 	forms = orthstring.split("|||")
 	orefs = orefstring.split("|||")
+	network_thumb = False
+	thumb_link = ""
 	orth_html = '<table id="orths">'
-	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">Form ID</th><th class="tla_orth_id">POS </th><th colspan="3" class="annis_link">Attestation</th></tr>'
+	orth_html += '<tr class="orth_table_header"><th>Form</th><th>Dial.</th><th class="tla_orth_id">Form ID</th><th class="tla_orth_id">POS </th><th colspan="4" class="annis_link">Attestation</th></tr>'
 
 	for i, form in enumerate(forms):
 		parts = form.split("\n")
@@ -76,7 +92,7 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 		orth_geo_dict = defaultdict(list)
 		orth = "NONE"
 		for orth_geo_string in parts[1:]:
-			orth_geo = re.match(r'^(.*)~(.?\^\^([A-Za-z0-9]*))$', orth_geo_string)
+			orth_geo = re.match(r'^(.*)~(.?\^\^([A-Za-z0-9_]*))$', orth_geo_string)
 			if orth_geo is not None:
 				orth = orth_geo.group(1)
 				orth_geo_dict[orth].append(orth_geo.group(2).encode("utf8"))
@@ -91,7 +107,10 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 						  form_id.encode("utf8") + '</td><td class="morphology">' + \
 						 gramstring.encode("utf8") + '</td><td class="annis_link"><a href="' + annis_query + \
 						 '" target="_new"><img src="img/scriptorium.png" class="scriptorium_logo" title="Search in Coptic Scriptorium"></a></td>'
-			freq_data = get_freqs(distinct_orth)
+			if " " in oref:
+				freq_data = get_freqs(oref)
+			else:
+				freq_data = get_freqs(distinct_orth)
 			freq_info = """	<td><div class="expandable">
 					            <a class="dict_tooltip" href="">
 					            <i class="fa fa-sort-numeric-asc freq_icon">&nbsp;</i>
@@ -102,9 +121,12 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 			freq_info = freq_info.replace("**freqs**",freq_data)
 			orth_html += freq_info
 
-			colloc_data = get_collocs(distinct_orth,cursor)
+			if " " in oref:
+				colloc_data = get_collocs(oref,cursor)
+			else:
+				colloc_data = get_collocs(distinct_orth, cursor)
 			if len(colloc_data) > 0:
-				colloc_info = """	<td class="colloc"><div class="expandable">
+				colloc_info = """	<td class="colloc" style="max-width:20px"><div class="expandable">
 										<a class="dict_tooltip" href="">
 										<b class="fa-stack freq-icon">
 										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-315"></i>
@@ -120,22 +142,47 @@ def process_orthstring(orthstring, orefstring, cursor, cs_pos=None):
 								   collocate + '">' + collocate + '</a></td><td style="text-align: center">' + str(cooc) + '</td><td style="text-align: center">' + str("%.2f" % assoc) + "</td></tr>"
 				colloc_info += """</table></span>
 										</a>
-									</div></td></tr>"""
+									</div></td>"""
 				orth_html += colloc_info.encode("utf8")
 
+			distinct_orth = strip_hyphens(distinct_orth)
+			thumb_html = ""
+			if has_network(distinct_orth, cs_pos):
+				network_thumb = True
+				network_link = "network.cgi?word="+distinct_orth.encode("utf8")+"&pos=" + str(cs_pos) + '&tla='+ form_id.encode("utf8")
+				if thumb_link == "":
+					thumb_link = network_link
+				# Uncomment this to add form-wise network graph links:
+				"""orth_html += '''<td><a href="'''+ network_link + '''" style="color: #AE2124 !important;" title="Form phrase network graph">
+<b class="fa-stack">
+	<i class="fa fa-circle-o fa-stack-1x" style="left:-7px; font-size: 11pt"></i>
+	<i class="fa fa-long-arrow-right fa-stack-1x" style="font-size: 11pt"></i>
+	<i class="fa fa-circle-o fa-stack-1x" style="left:5px; font-size: 11pt"></i>
+</b>
+</a></div>'''"""
+			orth_html += "</tr>"
+
 	orth_html += "</table>"
+
+	if network_thumb:
+		thumb_container = '''<div class="thumb_div">
+			<iframe class="thumb_iframe" src="'''+thumb_link.replace("network.cgi","network_thumb.cgi")+'''" frameborder="0"></iframe>
+    		<a href="'''+thumb_link+'''" class="thumb_link" title="Lemma phrase network graph"></a></div>'''
+		orth_html = '<div id="xyz" style="display: inline-block"><table style="float: left"><tr><td class="thumb_table_container">' + orth_html
+		orth_html += '</td></tr></table><div class="thumb_table_container" style="float:left">' + thumb_container + "</div></div>"
+
 	return orth_html
 
-def process_sense(de, en, fr):
+def process_sense(de, en, fr, tla_id=""):
 	en_senses = en.split("|||")
 	fr_senses = fr.split("|||")
 	de_senses = de.split("|||")
 	sense_html = '<table id="senses">'
-	for i in xrange(len(en_senses)):
+	for i in range(len(en_senses)):
 		en_sense = en_senses[i]
 		fr_sense = fr_senses[i]
 		de_sense = de_senses[i]
-		sense_parts = re.search(r'([0-9]+)\|(.*)~~~(.*);;;(.*)', en_sense)
+		sense_parts = re.search(r'([0-9]+@CS[0-9]+)\|(.*)~~~(.*);;;(.*)', en_sense)
 
 		if sense_parts is not None:
 			en_definition = sense_parts.group(3)
@@ -154,16 +201,20 @@ def process_sense(de, en, fr):
 				word = xr.group(1)
 				link = '<a href="results.cgi?coptic=' + word + '">' + word + "</a>"
 				ref_bibl = re.sub(r'xr. #(.*?)#', r'xr. ' + link, ref_bibl)
-			ref_bibl = re.sub(r'(CD ([0-9]+)[ab]?-?[0-9]*[ab]?)',r'''<a href="http://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2" target="_new" style="text-decoration-style: solid;">\1</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>''',ref_bibl)
+			ref_bibl = re.sub(r'(CD ([0-9]+[ab]?)-?[0-9]*[ab]?)',r'''<a href="https://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=\2&tla='''+tla_id+r'''" target="_new" style="text-decoration-style: solid;">\1</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>''',ref_bibl)
 			ref_bibl = gloss_bibl(ref_bibl)
 
 			engstr = "(En) " if (de_parts is not None or fr_parts is not None) else ""
+			a = en_sense
+			sense_identifiers = str(sense_parts.group(1))
+			sense_num, sense_id = sense_identifiers.split("@") #+ en_sense + 1
 			if len(en_senses) > 1:
-				counter = sense_parts.group(1).encode("utf8") + ".&nbsp;".encode("utf8")
+				counter = "&nbsp;".encode("utf8") + sense_num.encode("utf8") + ".&nbsp;".encode("utf8")
 			else:
-				counter = ""
-				engstr = "(En)"
-			sense_html += '<tr><td class="entry_num">' + counter + '</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
+				counter = "&nbsp;1.&nbsp;".encode("utf8")
+				#engstr = "(En)"
+			counter = '<a class="hint sense_id" data-tooltip="Sense ID: '+ sense_id.encode("utf8") + '">' + counter + "</a>"
+			sense_html += '<tr><td title="Sense ID: ' + sense_id.encode("utf8") + '" class="entry_num">' + counter + '</td><td class="sense_lang">'+engstr+'</td><td class="trans">' + en_definition.encode("utf8") + '</td></tr>'
 			if fr_parts is not None:
 				sense_html += '<tr><td></td><td class="sense_lang">(Fr) </td><td class="trans">' + fr_definition.encode("utf8") + '</td></tr>'
 			if de_parts is not None:
@@ -181,8 +232,10 @@ def process_etym(etym):
 			word = re.sub(r'\(', '\\(', word)
 			word = re.sub(r'\)', '\\)', word)
 			etym = re.sub(r'#' + word + '#', link, etym)
+	if "cf. Gr." in etym:
+		etym = link_greek(etym)
 	etym = gloss_bibl(etym)
-	return '<div class="etym">\n\t' + etym + '\n</div>'
+	return '<div id="etym" class="etym">\n\t' + etym + '\n</div>'
 
 
 def related(related_entries):
@@ -193,7 +246,7 @@ def related(related_entries):
 		orth = first_orth(entry[2])
 		second = second_orth(entry[2])
 
-		link = "entry.cgi?tla=" + str(entry[12])
+		link = "entry.cgi?tla=" + str(entry[13])
 
 		tablestring += '<td class="related_orth">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
 		tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"
@@ -206,15 +259,34 @@ def related(related_entries):
 	return tablestring
 
 
+def get_con():
+	if platform.system() == 'Windows':
+		return lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
+	return lite.connect('alpha_kyima_rc1.db')
+
+
+def get_examples(lemma, cs_pos, tla_id, oref_string):
+	con = get_con()
+	with con:
+		cur = con.cursor()
+		cur.execute("SELECT citation, priority FROM examples WHERE tla=? ORDER BY priority",(tla_id,))
+		rows = cur.fetchall()
+	if len(rows) == 0 or rows is None:
+		return ""
+	#output = ['<div class="tag">Example usage:<a class="hint" data-tooltip="Automatically extracted, use with caution!">?</a></div>\n<ul>']
+	output = ['<div class="tag">Example usage: (automatically extracted, use with caution and <a href="https://github.com/KELLIA/dictionary/issues/new?assignees=&labels=&template=bad-example-usage-report.md&title=Bad+example+sentence+for+the+entry+%3CENTRY%3E">report bad examples</a>)</div>\n<ul>']
+	for row in rows:
+		output.append("<li>" + row[0] + "</li>")
+	output.append("</ul>")
+	annis_link = get_annis_query(lemma, oref_string.split("|||")[0].strip(), cs_pos)
+	output.append('<p class="ex-more">Search for <a href="'+annis_link+'" target="_new">more examples</a> for the lemma '+lemma+' with any sense (ANNIS search)</p>')
+	return ("\n".join(output) + "\n").encode("utf8")
+
+
 def get_freqs(item):
 	item = item.replace("-","").replace("⸗".decode("utf8"),"")
 	output = "<ul>\n"
-	if platform.system() == 'Linux':
-		con = lite.connect('alpha_kyima_rc1.db')
-	elif platform.system() == 'Windows':
-		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
-	else:
-		con = lite.connect('alpha_kyima_rc1.db')
+	con = get_con()
 
 	with con:
 		cur = con.cursor()
@@ -250,7 +322,7 @@ def get_collocs(word, cursor):
 def gloss_bibl(ref_bibl):
 	"""Adds tooltips to lexical resource names"""
 
-	page_expression = r' ?[0-9A-Za-z:]+(, ?[0-9A-Za-z:]+)*'
+	page_expression = r'(?: §)? ?[0-9A-Za-z:]+(, ?[0-9A-Za-z:]+)*'
 	sources = [(r'(Kasser )?CDC',r"R. Kasser, Compléments au dictionnaire copte de Crum, Kairo: Inst. Français d'Archéologie Orientale, 1964"),
 				(r'KoptHWb',r"Koptisches Handw&ouml;rterbuch /\nW. Westendorf"),
 				(r'CED',r'J. Černý, Coptic Etymological Dictionary, Cambridge: Cambridge Univ. Press, 1976'),
@@ -300,13 +372,19 @@ def extract_lemma(db_name_field):
 
 if __name__ == "__main__":
 
-	if platform.system() == 'Linux':
-		con = lite.connect('alpha_kyima_rc1.db')
-	elif platform.system() == 'Windows':
-		#con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
-		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
-	else:
-		con = lite.connect('alpha_kyima_rc1.db')
+	icon_map = {
+	'person':'male',
+	'time':'clock-o',
+	'abstract':'cloud',
+	'object':'cube',
+	'animal':'paw',
+	'plant':'pagelines',
+	'place':'map-marker',
+	'substance':'flask',
+	'organization':'bank',
+	'event':'bell'}
+
+	con = get_con()
 
 	form = cgi.FieldStorage()
 
@@ -343,11 +421,11 @@ if __name__ == "__main__":
 
 		if this_entry is None:
 			entry_page +="No entry found\n</div>\n"
-			print wrap(entry_page)
+			print(wrap(entry_page))
 			sys.exit()
 
-		grk_id = this_entry[-2]
-		entry_xml_id = this_entry[-1]
+		grk_id = this_entry[-3]
+		entry_xml_id = this_entry[-2]
 
 		related_sql_command = "SELECT * FROM entries WHERE (entries.super_ref = ? AND entries.id != ?)"
 		if len(grk_id) > 0:
@@ -360,22 +438,40 @@ if __name__ == "__main__":
 		related_entries = cur.fetchall()
 		
 		#entry_page += '<b style="font-family: antinoouRegular">Forms:</b><br/>'
+		lemma = extract_lemma(this_entry[2])
 
 		# orth (and morph) info
 		cs_pos = this_entry[3]
-		entry_page += process_orthstring(this_entry[2], this_entry[-3], cur, cs_pos=cs_pos) #this_entry[-3] -> oRef column
+		entry_page += process_orthstring(this_entry[2], this_entry[10], cur, cs_pos=cs_pos) #this_entry[10] -> oRef column
 		tag = this_entry[3].encode("utf8")
 		if tag == "NULL" or tag == "NONE":
 			tag = "--"
 		entry_page += '<div class="tag">\n\tScriptorium tag: ' + tag + "\n</div>\n"
+		ent_types = this_entry[12]
+		if len(ent_types)>0:
+			entry_page += '<div class="tag">\n\tKnown entity types: \n'
+			ents = str(ent_types).split(";")
+			if "~" in this_entry[9]:
+				ent_lemma = this_entry[9].strip().split("~")[0]
+				for ent in ents:
+					ent_query = get_annis_entity_query(ent_lemma, ent)
+					if ent in icon_map:
+						n_string = 'n ' if re.match(r'[aeiou]',ent) is not None else ' '  # a*n* abstract
+						entry_page += '\t<a href="'+ent_query+\
+									  '" title="Find attestations as a' +n_string +ent+' entity in Coptic Scriptorium">'+ \
+									  '<i class="fa fa-'+icon_map[ent]+' known-entity">&nbsp;</i></a>\n'
+			entry_page += "</div>\n"
 
 		# from sense info
 		entry_page += '<div class="sense_info">'
-		entry_page += process_sense(this_entry[4], this_entry[5], this_entry[6])
+		entry_page += process_sense(this_entry[4], this_entry[5], this_entry[6], tla_id)
 		entry_page += '</div>'
 
 		# etym info
 		entry_page += process_etym(this_entry[7].encode("utf8"))
+
+		# examples
+		entry_page += get_examples(re.sub(r'<[^<>]+>','',lemma), cs_pos, tla_id, this_entry[10])
 
 		# link to other entries in the superentry
 		if len(related_entries) > 0:
@@ -385,8 +481,6 @@ if __name__ == "__main__":
 
 		entry_page += "</div>\n"
 
-		lemma = extract_lemma(this_entry[2])
-		
 		xml_id_string = '<span class="tla_no_header">TLA lemma no. ' + entry_xml_id +"</span><br/>" + lemma if entry_xml_id != "" else ""
 		citation_id_string = 'TLA lemma no. ' + entry_xml_id +" ("+lemma+")" if entry_xml_id != "" else ""
 
@@ -405,5 +499,4 @@ if __name__ == "__main__":
 					 This release is strictly preliminary.<br/><br/>'''
 		wrapped = wrapped.replace(box,box+disclaimer)
 
-
-	print wrapped
+	print(wrapped)

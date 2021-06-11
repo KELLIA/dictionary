@@ -5,8 +5,8 @@ import sqlite3 as lite
 import xml.etree.ElementTree as ET
 import re, sys
 import glob
-import os
-from collections import OrderedDict
+import os, io
+from collections import OrderedDict, defaultdict
 from argparse import ArgumentParser
 
 
@@ -24,14 +24,75 @@ def check_chars(word):
 			print(word + "\t" + char)
 
 
+def order_forms(formlist):
+	temp = []
+	for form in formlist:
+		orths = form.findall('{http://www.tei-c.org/ns/1.0}orth')
+		text = ""
+		dialect = ""
+		for orth in orths:
+			text = orth.text.replace("⸗","--")  # Sort angle dash after hyphen
+			geo = form.find('{http://www.tei-c.org/ns/1.0}usg')
+			if geo is not None:
+				dialect = geo.text.replace("Ak","K")
+				if dialect != "S":
+					dialect = "_" + dialect  # Sahidic always first
 
-def process_entry(id, super_id, entry):
+		temp.append((text,dialect,form))
+
+	output = []
+	for t, d, f in sorted(temp, key=lambda x: (x[0],x[1])):
+		output.append(f)
+
+	return output
+
+
+def get(attr,line):
+	return re.search(' ' + attr + r'="([^"]*)"',line).group(1)
+
+
+def get_entity_types(pub_corpora_dir):
+	if not pub_corpora_dir.endswith(os.sep):
+		pub_corpora_dir += os.sep
+	tt_files = glob.glob(pub_corpora_dir + "**" + os.sep + "*.tt", recursive=True)
+	entity_types = defaultdict(set)
+	for file_ in tt_files:
+		sgml = io.open(file_, encoding="utf8").read()
+		if ' entities="gold"' not in sgml:
+			continue  # Only use gold entities
+		lines = sgml.split("\n")
+		# Pass 1 - get head lemmas
+		id2lemma = {}
+		for line in lines:
+			if 'norm' in line and 'xml:id' in line:
+				xml_id = get('xml:id',line)
+				lemma = get('lemma', line)
+				id2lemma[xml_id] = lemma
+		# Pass 2 - get entity types for each lemma
+		for line in lines:
+			if ' entity="' in line:
+				ent_type = get('entity',line)
+				head_id = get('head_tok',line).replace("#","")
+				lemma = id2lemma[head_id]
+				entity_types[lemma].add(ent_type)
+	return entity_types
+
+
+def process_entry(id, super_id, entry,entry_xml_id):
 	"""
 	:param id: int, id of the entry
 	:param super_id: int, id of the superentry
 	:param entry: Element representing the entry
 	:return: tuple representing new row to add to the db
 	"""
+
+	if "status" in entry.attrib:
+		if entry.attrib["status"] == "deprecated":
+			return None  # Entire entry is deprecated, used by DDGLC entries
+	if "change" in entry.attrib:
+		if "deprecated" in entry.attrib["change"]:
+			return None  # Same for @change notation
+
 	forms = entry.findall('{http://www.tei-c.org/ns/1.0}form')
 
 	# ORTHSTRING -- "name" column in the db
@@ -51,6 +112,12 @@ def process_entry(id, super_id, entry):
 	lemma = ""
 	for form in forms:
 		is_lemma = False
+		if "status" in form.attrib:
+			if form.attrib["status"] == "deprecated":
+				continue
+		if "change" in form.attrib:
+			if "deprecated" in form.attrib["change"]:
+				continue
 		if "type" in form.attrib:
 			if form.attrib["type"] == "lemma":
 				is_lemma = True
@@ -68,6 +135,12 @@ def process_entry(id, super_id, entry):
 	first = []
 	last = []
 	for form in forms:
+		if "status" in form.attrib:
+			if form.attrib["status"] == "deprecated":
+				continue
+		if "change" in form.attrib:
+			if "deprecated" in form.attrib["change"]:
+				continue
 		orths = form.findall('{http://www.tei-c.org/ns/1.0}orth')
 		if form.text is not None:
 			if re.search(r'[^\s]', form.text) is not None:
@@ -83,6 +156,8 @@ def process_entry(id, super_id, entry):
 			else:
 				last.append(form)
 
+	first = order_forms(first)
+	last = order_forms(last)
 	ordered_forms = first + last
 
 	for form in ordered_forms:
@@ -96,7 +171,6 @@ def process_entry(id, super_id, entry):
 
 		orefs = form.findall('{http://www.tei-c.org/ns/1.0}oRef')
 
-
 		gramGrp = form.find('{http://www.tei-c.org/ns/1.0}gramGrp')
 		gram_string = ""
 		if gramGrp is None:
@@ -104,7 +178,7 @@ def process_entry(id, super_id, entry):
 
 		if gramGrp is not None:
 			for child in gramGrp:
-				gram_string += child.text + " "
+				gram_string += re.sub(r'\s+',' ',child.text).strip() + " "
 			gram_string = gram_string[:-1]
 
 		orthstring += gram_string + "\n"
@@ -185,7 +259,8 @@ def process_entry(id, super_id, entry):
 	senses = entry.findall('{http://www.tei-c.org/ns/1.0}sense')
 	sense_n = 1
 	for sense in senses:
-		sense_start_string = str(sense_n) + "|"
+		sense_id = sense.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in sense.attrib else ""
+		sense_start_string = str(sense_n) + "@"+sense_id+"|"
 		de += sense_start_string
 		en += sense_start_string
 		fr += sense_start_string
@@ -197,36 +272,46 @@ def process_entry(id, super_id, entry):
 					if bibl.text is not None:
 						no_bibl = False
 						bibl_text = bibl.text + " "
-						de += bibl_text
-						en += bibl_text
-						fr += bibl_text
-				if no_bibl:
-					lang = sense_child.get('{http://www.w3.org/XML/1998/namespace}lang')
-					quote = sense_child.find('{http://www.tei-c.org/ns/1.0}quote')
-					definition = sense_child.find('{http://www.tei-c.org/ns/1.0}def')
+				quotes = sense_child.findall('{http://www.tei-c.org/ns/1.0}quote')
+				definitions = sense_child.findall('{http://www.tei-c.org/ns/1.0}def')
 
-					quote_text = "~~~"
+				quote_text = "~~~"
+				for quote in quotes:
 					if quote is not None and quote.text is not None:
 						quote_text += re.sub(r' +',' ',quote.text.strip().replace("\n",''))
-						if definition is None:
+						if definitions is None or len(definitions) == 0:
 							quote_text += ";;;"
 						else:
 							quote_text += "; "
-					if lang == 'de':
-						de += quote_text
-					elif lang == 'en':
-						en += quote_text
-					elif lang == 'fr':
-						fr += quote_text
+						lang = quote.get('{http://www.w3.org/XML/1998/namespace}lang')
+						if lang == 'de':
+							de += quote_text
+						elif lang == 'en':
+							en += quote_text
+						elif lang == 'fr':
+							fr += quote_text
+						quote_text = "~~~"
+				for definition in definitions:
 					if definition is not None:
 						if definition.text is not None:
 							definition_text = re.sub(r' +',' ',definition.text.strip().replace("\n",'')) + ";;;"
+							lang = definition.get('{http://www.w3.org/XML/1998/namespace}lang')
 							if lang == 'de':
+								if de.endswith("|"):
+									de += "~~~"
 								de += definition_text
 							elif lang == 'en':
+								if en.endswith("|"):
+									en += "~~~"
 								en += definition_text
 							elif lang == 'fr':
+								if fr.endswith("|"):
+									fr += "~~~"
 								fr += definition_text
+				if not no_bibl:
+					de += bibl_text
+					en += bibl_text
+					fr += bibl_text
 			elif sense_child.tag == '{http://www.tei-c.org/ns/1.0}ref':
 				ref = "ref: " + sense_child.text + " "
 				de += ref
@@ -247,8 +332,13 @@ def process_entry(id, super_id, entry):
 	de = re.sub(r'\|\|\|$', r'', de)
 	en = re.sub(r'\|\|\|$', r'', en)
 	fr = re.sub(r'\|\|\|$', r'', fr)
+	de = re.sub(r'\s+', r' ', de).strip()
+	en = re.sub(r'\s+', r' ', en).strip()
+	fr = re.sub(r'\s+', r' ', fr).strip()
 
 	# POS -- a single Scriptorium POS tag for each entry
+	if oref_string == u"ⲟⲩⲛ":
+		d=3
 	pos_list = []
 	for gramgrp in entry.iter("{http://www.tei-c.org/ns/1.0}gramGrp"):
 		pos = gramgrp.find("{http://www.tei-c.org/ns/1.0}pos")
@@ -279,7 +369,7 @@ def process_entry(id, super_id, entry):
 		greek_dict = OrderedDict()
 		for child in etym:
 			if child.tag == "{http://www.tei-c.org/ns/1.0}note":
-				etym_string += child.text
+				etym_string += re.sub(r'\s+',' ',child.text).strip()
 			elif child.tag == "{http://www.tei-c.org/ns/1.0}ref":
 				if 'type' in child.attrib and 'target' in child.attrib:
 					etym_string += child.attrib['type'] + ": " + child.attrib['target'] + " "
@@ -293,7 +383,8 @@ def process_entry(id, super_id, entry):
 					etym_string += child.attrib['type'] + ". " + ref.attrib['target'] + "# " + ref.text + " "
 		if len(greek_dict) > 0:
 			greek_parts = []
-			for key in greek_dict:
+			greek_id = ""
+			for key in sorted(list(greek_dict.keys())):
 				if greek_dict[key] is None:
 					#import sys
 					#sys.stderr.write(str(greek_dict))
@@ -303,8 +394,12 @@ def process_entry(id, super_id, entry):
 				val = greek_dict[key].strip()
 				if "grl_ID" in key:
 					greek_id = val
-				elif "grl_lemma" in key:
-					greek_parts.append('<span style="color:darkred">cf. Gr.</span> ' + val)
+				if "grl_lemma" in key:
+					part = '<span style="color:darkred">cf. Gr.'
+					if greek_id != "":
+						part += " (DDGLC lemma ID "+greek_id+")"
+					part += '</span> ' + val
+					greek_parts.append(part)
 				elif "meaning" in key:
 					greek_parts.append("<i>"+val+"</i>.")
 				elif "_pos" in key and len(val) > 0:
@@ -319,16 +414,25 @@ def process_entry(id, super_id, entry):
 					greek_parts.append('<span style="color:grey">('+ val+ ')</span>')
 			etym_string += " ".join(greek_parts)
 
-
 	xrs = entry.findall("{http://www.tei-c.org/ns/1.0}xr")
 	for xr in xrs:
 		for ref in xr:
 			ref_target = re.sub(u'[^ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱϣϥⳉϧϩϫϭϯ ]', u'', ref.attrib['target']).strip()
 			etym_string += xr.attrib['type'] + ". " + "#" + ref_target + "# " + ref.text + " "
 
+	ents = ""
+	global entity_types
+	if "~" in search_string:
+		row_lemma = search_string.strip().split("~")[0]
+		if row_lemma == "ⲉⲓⲱⲧ":  # Hardwired behavior for barley vs. father
+			if entry_xml_id == "C998":
+				ents = "plant"
+			else:
+				ents = "person"
+		elif row_lemma in entity_types and pos_string in ["ART","PDEM","PPOS","N","NUM","PINT"]:
+			ents = ";".join(sorted(list(entity_types[row_lemma])))
 
-
-	row = (id, super_id, orthstring, pos_string, de, en, fr, etym_string, ascii_orth, search_string, oref_string, greek_id)
+	row = (id, super_id, orthstring, pos_string, de, en, fr, etym_string, ascii_orth, search_string, oref_string, greek_id, ents)
 	return row
 
 
@@ -336,7 +440,19 @@ def process_super_entry(entry_id, super_id, super_entry):
 	row_list = []
 	for entry in super_entry:
 		entry_xml_id = entry.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in entry.attrib else ""
-		row_list.append(tuple(list(process_entry(entry_id, super_id, entry))+[entry_xml_id]))
+
+		# Get lemma form ID
+		forms = [f for f in entry.findall('{http://www.tei-c.org/ns/1.0}form') if "type" in f.attrib]
+		lemma = [f for f in forms if f.attrib["type"] == "lemma"]
+		if len(lemma) > 0:
+			lemma_form_id = lemma[0].attrib["{http://www.w3.org/XML/1998/namespace}id"]
+		else:
+			lemma_form_id = ""
+
+		row = process_entry(entry_id, super_id, entry,entry_xml_id)
+		if row is None:
+			continue
+		row_list.append(tuple(list(row)+[entry_xml_id, lemma_form_id]))
 		entry_id += 1
 
 	entry_rows = tuple(row_list)
@@ -354,6 +470,8 @@ def pos_map(pos, subc, orthstring):
 	if pos == u"Subst." or pos == u"Adj." or pos == u"Nominalpräfix" or pos == u"Adjektivpräfix" \
 			or pos == u"Kompositum":
 		return 'N'
+	elif u"Ausdruck der Nichtexistenz" in subc or u"Ausdruck des Nicht-Habens" in subc:
+		return 'EXIST'
 	elif pos == u"Adv.":
 		return 'ADV'
 	elif pos == u"Vb." or pos == u"unpersönlicher Ausdruck":
@@ -363,6 +481,8 @@ def pos_map(pos, subc, orthstring):
 			return 'VBD'
 		elif subc == u"Imperativ":
 			return 'VIMP'
+		elif u"ⲟⲩⲛ-" in orthstring or u"ⲟⲩⲛⲧⲉ-" in orthstring:
+			return "EXIST"
 		else:
 			return 'V'
 	elif pos == u"Präp.":
@@ -420,6 +540,7 @@ def pos_map(pos, subc, orthstring):
 
 parser = ArgumentParser()
 parser.add_argument("xml_directory", help="directory with dictionary XML files")
+parser.add_argument("--pub_corpora", default=None, help="directory with dictionary Coptic Scriptorium Corpora repo")
 options = parser.parse_args()
 
 xml_path = options.xml_directory
@@ -427,6 +548,10 @@ xml_path = options.xml_directory
 if not xml_path.endswith(os.sep):
 	xml_path += os.sep
 
+# Gather entity data
+entity_types = defaultdict(set)
+if options.pub_corpora is not None:
+	entity_types = get_entity_types(options.pub_corpora)
 
 con = lite.connect('alpha_kyima_rc1.db')
 
@@ -434,7 +559,8 @@ with con:
 	cur = con.cursor()
 
 	cur.execute("DROP TABLE IF EXISTS entries")
-	cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, xml_id TEXT UNIQUE)")
+	cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, " +
+				"Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, entities TEXT, xml_id TEXT UNIQUE, lemma_form_id TEXT)")
 
 	super_id = 1
 	entry_id = 1
@@ -452,12 +578,33 @@ with con:
 		for child in body:
 			if child.tag == "{http://www.tei-c.org/ns/1.0}entry":
 				entry_xml_id = child.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in child.attrib else ""
-				row = tuple(list(process_entry(entry_id, super_id, child)) + [entry_xml_id])
-				cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
+
+				# Get lemma form ID
+				forms = [f for f in child.findall('{http://www.tei-c.org/ns/1.0}form') if "type" in f.attrib]
+				lemma = [f for f in forms if f.attrib["type"]=="lemma"]
+				if len(lemma)>0:
+					lemma_form_id = lemma[0].attrib["{http://www.w3.org/XML/1998/namespace}id"]
+				else:
+					lemma_form_id = ""
+
+				row = process_entry(entry_id, super_id, child, entry_xml_id)
+				if row is None:
+					continue
+				row = tuple(list(row) + [entry_xml_id, lemma_form_id])
+				cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
 				super_id += 1
 				entry_id += 1
 			elif child.tag == "{http://www.tei-c.org/ns/1.0}superEntry":
 				rows = process_super_entry(entry_id, super_id, child)
-				cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+				cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
 				super_id += 1
 				entry_id += len(rows)
+
+	# Handle network graphs
+	cur.execute("DROP TABLE IF EXISTS networks")
+	cur.execute("CREATE TABLE networks(pos TEXT, word TEXT, phrase TEXT, freq INTEGER)")
+
+	data = io.open("phrase_freqs.tab", encoding="utf8").read().strip().split("\n")
+	data = [row.split("\t") for row in data]
+	data = [row[:-1] + [int(row[-1])] for row in data]
+	cur.executemany("INSERT INTO networks VALUES(?, ?, ?, ?)", data)
