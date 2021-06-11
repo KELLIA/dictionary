@@ -5,8 +5,8 @@ import sqlite3 as lite
 from glob import glob
 from random import shuffle, seed
 
-pub_corpora = ""  # Path to clone of CopticScriptorium/Corpora "C:\\Uni\\Coptic\\git\\corpora\\pub_corpora\\"
-nlp_data_dir = ""   # Path to data dir of CopticScriptorium/Coptic-NLP "C:\\Uni\\Coptic\\git\\coptic-nlp\\data\\"
+pub_corpora = ""  # Path to clone of CopticScriptorium/Corpora
+nlp_data_dir = ""   # Path to data dir of CopticScriptorium/Coptic-NLP
 if not pub_corpora.endswith(os.sep):
     pub_corpora += os.sep
 if not nlp_data_dir.endswith(os.sep):
