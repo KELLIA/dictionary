@@ -24,3 +24,7 @@ Life of Cyrus in Budge ed. part 1 (urn:cts:copticLit:lives.cyrus.budge:1-9)
 Notes:
 
 <EXPLANATION WHY THIS IS BAD>
+
+Better examples:
+
+<If you have better examples from Scriptorium corpora, please list them here, ideally with the document_cts_urn, chapter and verse numbers>
