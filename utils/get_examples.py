@@ -1,12 +1,30 @@
 import os, io, sys, re
 from nltk.corpus import stopwords
 from collections import defaultdict
+from reorder_sgml import reorder
 import sqlite3 as lite
 from glob import glob
 from random import shuffle, seed
 
 pub_corpora = ""  # Path to clone of CopticScriptorium/Corpora
-nlp_data_dir = ""   # Path to data dir of CopticScriptorium/Coptic-NLP
+nlp_data_dir = ""   # Path to data dir of CopticScriptorium/Coptic-NLP ""
+
+# Manually selected examples
+manual_override_lines = io.open("citations_manual.tab",encoding="utf8").read().split("\n")
+manual_override = defaultdict(list)
+string_match_mapping = defaultdict(list)  # Holds norms which are TLA lemmas but not CS lemmas (e.g. possessive na- has its own TLA ID but lemma is pa-)
+for row in manual_override_lines:
+    if not row.startswith("TLA") and len(row.strip()) > 0:
+        TLA, lemma, urn, chapter, verse, priority, string_match, notes = row.split("\t")
+        string_match = True if string_match.lower().startswith("y") else False
+        try:
+            priority = int(priority)
+        except ValueError:
+            priority = 1
+        manual_override[TLA].append({"lemma":lemma,"urn":urn,"chapter":chapter,"verse":verse, "priority":priority})
+        if string_match:
+            string_match_mapping[lemma].append((urn, chapter, verse))
+
 if not pub_corpora.endswith(os.sep):
     pub_corpora += os.sep
 if not nlp_data_dir.endswith(os.sep):
@@ -30,7 +48,7 @@ for line in lines:
 
 class Citation:
 
-    def __init__(self, lemma, norm, pos, sent, translation, sent_position, bg_position, doc, corpus, urn, seg_quality):
+    def __init__(self, lemma, norm, pos, sent, translation, sent_position, bg_position, doc, corpus, urn, chapter, verse, seg_quality):
         self.lemma = lemma
         self.norm = norm
         self.pos = pos
@@ -43,6 +61,8 @@ class Citation:
         self.doc = doc
         self.corpus = corpus
         self.urn = urn
+        self.chapter = chapter
+        self.verse = verse
         self.seg_quality = seg_quality
 
     def __repr__(self):
@@ -74,7 +94,7 @@ class Citation:
                self.urn + '">' + self.urn +'</a>)</span>\n'
 
 
-def get_score(citation, prev_citations_list, n_readings, definition_words):
+def get_score(citation, prev_citations_list, n_readings, definition_words, target_pos=None):
     """
     Score a citation example given previous selection, number of readings and words in the definition.
     TODO: Tune the weights of the different constraints, these are just some fairly sane(?) initial ones
@@ -86,6 +106,11 @@ def get_score(citation, prev_citations_list, n_readings, definition_words):
     prev_citations = [c[1] for c in prev_citations_list]
 
     score = 0.0
+
+    # Penalize wrong POS
+    if target_pos is not None:
+        if format_pos(target_pos,collapse_more=True) != format_pos(citation.pos,collapse_more=True):
+            score -= 100
 
     # Segmentation quality
     if citation.seg_quality == "gold":
@@ -145,13 +170,25 @@ def n_best(lemma, data, db_entries, n=3):
     cits = list(data[lemma])
     n_readings = len(db_entries[lemma])
     shuffle(cits)
+    manual_selection = []
     for tla_id in db_entries[lemma]:
-        definition_words = db_entries[lemma][tla_id]
+        if tla_id in manual_override:
+            for req in manual_override[tla_id]:
+                requested_urn_cits = [c for c in cits if req["urn"] == c.urn]
+                for req_cit in requested_urn_cits:
+                    if req["chapter"] == "" or req["chapter"] == req_cit.chapter:
+                        if req["verse"] == "" or req["verse"] == req_cit.verse:
+                            if not any([x[1].sent == req_cit.sent for x in manual_selection]):
+                                manual_selection.append((req["priority"],req_cit))
+        for priority, cit in sorted(manual_selection, key=lambda x:x[0]):
+            selected.append((tla_id, cit))
+        definition_words, target_pos = db_entries[lemma][tla_id]
         seen_ex_strings = set()
-        for i in range(n):
+        i = len([s for s in selected if s[0] == tla_id])
+        while i < n:
             best_score = -1000
             for cit in cits:
-                score = get_score(cit, selected, n_readings, definition_words)
+                score = get_score(cit, selected, n_readings, definition_words, target_pos=target_pos)
                 if score > best_score:
                     best_candidate = cit
                     best_score = score
@@ -160,6 +197,7 @@ def n_best(lemma, data, db_entries, n=3):
             else:
                 seen_ex_strings.add(str(best_candidate))
             selected.append((tla_id,best_candidate))
+            i += 1
 
     output = []
     first = None
@@ -180,24 +218,33 @@ def get(line,attr):
 
 
 def get_citations(sgml, filename, db_entries):
-    lemma = norm = pos = translation = title = segmentation = corpus = urn = ""
+    lemma = norm = pos = translation = title = segmentation = corpus = urn = chapter = verse = ""
     prev_norm = prev_lemma = ""
     prev_prev_norm = prev_prev_lemma = ""
     prev_prev_pos = prev_pos = ""
-    subwords = words = sent_citations = []
+    subwords = []
+    words = []
+    sent_citations = []
     output = defaultdict(set)
     lines = sgml.split("\n")
     sent_position = 0
     bg_position = 0
+    sent_close = "</translation>" if "</translation>" in sgml else '</verse'
     for line in lines:
         if ' title="' in line:
             title = get(line, 'title')
             segmentation = "automatic"
             corpus = filename.split(os.sep)[-2]
+        if ' chapter_n="' in line:
+            chapter = get(line, 'chapter_n')
+        if ' verse_n="' in line:
+            verse = get(line, 'verse_n')
         if ' corpus=' in line:
             corpus = get(line, 'corpus')
         if ' document_cts_urn=' in line:
             urn = get(line, 'document_cts_urn')
+        if ' chapter=' in line and " chapter_n=" not in line:
+            chapter = get(line, 'chapter')
         if ' segmentation="' in line:
             segmentation = get(line, 'segmentation')
         if ' lemma="' in line:
@@ -206,6 +253,7 @@ def get_citations(sgml, filename, db_entries):
             lemma = get(line, 'lemma')
         if ' translation=' in line:
             translation = get(line, 'translation')
+        if sent_close in line:
             if len(words) > 0:
                 for c in sent_citations:
                     c.sent = " ".join(words)
@@ -233,10 +281,15 @@ def get_citations(sgml, filename, db_entries):
                     cit.subwords = " ".join(subwords)
             subwords = []
         if '</norm>' in line:
-            if lemma=="ⲥⲁⲙⲓⲧ":
-                a=3
+            if norm in string_match_mapping:
+                for u, chap, ver in string_match_mapping[norm]:
+                    if u == urn and chap == chapter and ver == verse:  # Must match exactly
+                        # Make a citation treating this norm as the lemma
+                        cit = Citation(norm, norm, pos, " ".join(words), translation, sent_position, bg_position,
+                                       title, corpus, urn, chapter, verse, segmentation)
+                        sent_citations.append(cit)
             if lemma in db_entries:
-                cit = Citation(lemma, norm, pos, " ".join(words), translation, sent_position, bg_position, title, corpus, urn, segmentation)
+                cit = Citation(lemma, norm, pos, " ".join(words), translation, sent_position, bg_position, title, corpus, urn, chapter, verse, segmentation)
                 sent_citations.append(cit)
             subwords.append(norm)
             ngram = lemmagram = ""
@@ -248,17 +301,19 @@ def get_citations(sgml, filename, db_entries):
                 ngram = " ".join([prev_norm, norm])
                 lemmagram = " ".join([prev_lemma, lemma])
             if ngram != "" and lemmagram in db_entries:
-                cit = Citation(lemmagram, ngram, prev_pos, " ".join(words), translation, sent_position, bg_position, title, corpus, urn, segmentation)
+                cit = Citation(lemmagram, ngram, prev_pos, " ".join(words), translation, sent_position, bg_position, title, corpus, urn, chapter, verse, segmentation)
                 sent_citations.append(cit)
 
     return output
 
 
-def format_pos(pos):
+def format_pos(pos, collapse_more=False):
     pos = pos.replace("NPROP","N").replace("PPERS","PPER").replace("PPERI","PPER")
     pos = pos.replace("VIMP","V")
     pos = re.sub(r'^A[^R]+','A',pos)
     pos = re.sub(r'^C[^O]+','C',pos)
+    if collapse_more:
+        pos = pos.replace("VSTAT","V")
     return pos
 
 
@@ -325,20 +380,23 @@ def get_db_entries():
             all_senses.append(sense)
         all_senses = " ".join(all_senses)
         all_senses = just_words(all_senses,remove_stop_words=True)
-        output[lemma][TLA] = all_senses
+        output[lemma][TLA] = (all_senses, pos)
 
     return output
 
 
 db_entries = get_db_entries()
 
-files = glob(pub_corpora + "**" + os.sep + "*.tt",recursive=True)
+files = glob(pub_corpora + "**" + os.sep + "*.tt",recursive=True)#[:100]
 files = [f for f in files if "coptic-treebank" not in f]  # Exclude coptic-treebank to avoid repetitions
 
 lemma2citations = defaultdict(set)
 
 for i, file_ in enumerate(files):
     sgml = io.open(file_,encoding="utf8").read()
+    sgml = reorder(sgml,
+                   ["meta", "p_n", "pb_xml_id", "cb_n", "lb_n", "translation", "orig_group", "norm_group", "entity",
+                    "orig", "norm", "lemma", "pos", "lang", "morph", "tok"])
 
     doc_citations = get_citations(sgml, file_, db_entries)
 
@@ -349,7 +407,7 @@ for i, file_ in enumerate(files):
             lemma2citations[lemma] = doc_citations[lemma]
 
 # Print some examples as a sanity check
-ex = n_best("ⲥⲁⲙⲓⲧ",lemma2citations, db_entries)
+ex = n_best("ϩⲱⲱⲕ",lemma2citations, db_entries)
 for tla_id, cit in ex:
     print(tla_id + "\n" + str(cit))
 
