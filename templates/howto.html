@@ -41,6 +41,26 @@ You can quickly search for words without returning to the main search page by us
 
 <p><b>Note:</b> frequencies in the dictionary are cached and updated periodically. Numbers in ANNIS searches may differ slightly in some cases due to updates and/or slight differences in handling duplicate texts.</p>
 
+<h3>Phrase network graph</h3>
+
+<p>For entries with sufficient attestations in our corpora, you may see a phrase network graph thumbnail displayed as follows:<p>
+
+<a href="https://coptic-dictionary.org/network.cgi?word=%E2%B2%89%E2%B2%93%E2%B2%A3%E2%B2%89&pos=V&tla=CF3246" target="_blank"><img src="img/phrase_network.png"/ width="100" style="border: 1px solid"></a>
+
+<p>Clicking on this will take you to a phrase network graph like the one below, showing typical sequences of words involving this entry. The network shows a diagram of up to 20 most common phrases headed by the head word, truncated to 8 words at most for readability. Nodes and transitions are sized proportionally to how often they are attested in Coptic Scriptorium data. Correspondences between nodes in different phrases are computed using dependency parses based on the <a href="https://copticscriptorium.org/treebank.html">Coptic Universal Dependency Treebank</a>. </p>
+
+<a href="https://coptic-dictionary.org/network.cgi?word=%E2%B2%89%E2%B2%93%E2%B2%A3%E2%B2%89&pos=V&tla=CF3246" target="_blank"><img src="img/phrase_network.png"/ width="50%" style="border: 1px solid"></a>
+
+<p style="margin-top: 5px"><b>Disclaimer:</b> some errors due to automatic Natural Language Processing may be included in these graphs, which are provided as an assistive tool only.</p>
+
+<h3>Example usages</h3>
+
+<p>If available, each entry will also provide some automatically extracted examples of the entry, including examples of inflected forms of the same lemma, as shown below. As with network graphs, this functionality depends on automatic analysis and may occasionally contain errors - we welcome reports on incorrect examples at our <a href="https://github.com/KELLIA/dictionary/issues/new?assignees=&labels=&template=bad-example-usage-report.md&title=Bad+example+sentence+for+the+entry+%3CENTRY%3E">GitHub repository</a>.</p>
+
+<img src="img/examples.png" width="50%" style="border: 1px solid">
+
+<p style="margin-top: 5px">For each example, you can also see the text from which it is extracted, and click on the URN link to see the entire text for more context.</p>
+
 <h3>Import of data into spreadsheet</h3>
 <p>You can import lemma entry data into a Google spreadsheet by copying formulas like the ones below into a cell of an empty spreadsheet.</p>
 <table class="webservice_example_table">
