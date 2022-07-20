@@ -1,0 +1,13 @@
+TLA	lemma	URN	chapter	verse	priority	string_match	notes
+C993	ⲉⲓⲱⲧ	urn:cts:copticLit:ap.116.monbeg	1	4	1		"father" as title
+C993	ⲉⲓⲱⲧ	urn:cts:copticLit:ap.3.monbeg	1		2		"father" as title
+C992	ⲉⲓⲱⲧ	urn:cts:copticLit:martyrdoms.victor.budge:7-12	9	1	1		biological father
+C6475	ϩⲱⲱⲕ	urn:cts:copticLit:besa.exhortations.monbba	2	9	1		"armor"
+C6475	ϩⲱⲱⲕ	urn:cts:copticLit:martyrdoms.victor.budge:13-22	13	5	2		"insignia"
+C6475	ϩⲱⲱⲕ	urn:cts:copticLit:psathanasius.soul_body.budge:1-91	3	1	3		"restraint"
+C2354	ⲛⲁ	urn:cts:copticLit:ap.124.monbeg	1	5	2	yes	"those of" (CS lemma ⲡⲁ)
+C2354	ⲛⲁ	urn:cts:copticLit:besa.thieving.monbba	2	1	3	yes	"those of" (CS lemma ⲡⲁ)
+C2354	ⲛⲁ	urn:cts:copticLit:shenoute.fox.monbxh_204_216	5	5	1	yes	"those of" (CS lemma ⲡⲁ)
+C4006	ⲧⲁ	urn:cts:copticLit:ot.ruth.coptot:2	2	5	1	yes	"that of" (CS lemma ⲡⲁ)
+C4006	ⲧⲁ	urn:cts:copticLit:nt.1cor.sahidica_ed:2	2	6	2	yes	"that of" (CS lemma ⲡⲁ)
+C4006	ⲧⲁ	urn:cts:copticLit:psathanasius.mercy_judgment.budge:1-41	27	1	3	yes	"that of" (CS lemma ⲡⲁ)
