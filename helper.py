@@ -78,7 +78,7 @@ def get_annis_query(coptic, oref, cs_pos=None):
 	coptic = strip_hyphens(coptic).encode("utf8")
 	oref = strip_hyphens(oref).encode("utf8")
 
-	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
+	annis_base = "https://annis.copticscriptorium.org/annis/scriptorium#"
 	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixsaWZlLmpvaG4ua2FseWJpdGVzLGpvaGFubmVzLmNhbm9ucyxwc2V1ZG8uYXRoYW5hc2l1cy5kaXNjb3Vyc2VzLHNoZW5vdXRlLmFicmFoYW0scHNldWRvLmJhc2lsLHNoZW5vdXRlLmRpcnQsc2FoaWRpYy5vdCxkb3JtaXRpb24uam9obixsaWZlLnBoaWIscHNldWRvLmVwaHJlbSxsaWZlLm9ubm9waHJpdXMsYXBvcGh0aGVnbWF0YS5wYXRydW0sc2hlbm91dGUuc2Vla3MsbGlmZS5wYXVsLnRhbW1hLHBzZXVkby50aW1vdGh5LHBzZXVkby5jaHJ5c29zdG9tLG15c3Rlcmllcy5qb2huLHNhaGlkaWMucnV0aCxwc2V1ZG8udGhlb3BoaWx1cyxzYWhpZGljYS5tYXJrLGRvYy5wYXB5cmkscGFjaG9taXVzLmluc3RydWN0aW9ucyxzaGVub3V0ZS5lYWdlcm5lc3MsbGlmZS5hcGhvdSxzaGVub3V0ZS51bmtub3duNV8xLGxpZmUuY3lydXMscHJvY2x1cy5ob21pbGllcyxqb2huLmNvbnN0YW50aW5vcGxlLG1hZ2ljYWwucGFweXJpLHNoZW5vdXRlLnRob3NlLHNhaGlkaWNhLm50LHNhaGlkaWNhLjFjb3JpbnRoaWFucyxzaGVub3V0ZS5mb3gsbGlmZS5sb25naW51cy5sdWNpdXMsbGlmZS5waXNlbnRpdXMsbWFydHlyZG9tLnZpY3RvcixsaWZlLmV1c3RhdGhpdXMudGhlb3Bpc3RlLHBpc3Rpcy5zb3BoaWEscHNldWRvLmNlbGVzdGludXMscHNldWRvLmZsYXZpYW51cyxzaGVub3V0ZS5wcmluY2Usc2hlbm91dGUubmlnaHQ"
 	segmentation = "_bt=bm9ybV9ncm91cA"  # Norm segmentation
 	if " " in coptic:
@@ -107,7 +107,7 @@ def get_annis_entity_query(coptic, entity_type):
 		coptic = coptic.replace(" ","")
 	coptic = strip_hyphens(coptic).encode("utf8")
 
-	annis_base = "https://corpling.uis.georgetown.edu/annis/scriptorium#"
+	annis_base = "https://annis.copticscriptorium.org/annis/scriptorium#"
 	corpus_list = "_c=Y29wdGljLnRyZWViYW5r"  # Currently just treebank
 	segmentation = "_bt=bm9ybV9ncm91cA"  # norm segmentation
 	q = 'entity="'+str(entity_type)+'" ->head lemma="' + coptic + '"'
