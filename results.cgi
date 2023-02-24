@@ -443,6 +443,7 @@ if __name__ == "__main__":
 	
 	
 	wrapped = wrap(results_page)
+	wrapped = wrapped.replace('<link rel="canonical" href="https://coptic-dictionary.org/" />','<link rel="canonical" href="https://coptic-dictionary.org/results.cgi" />')
 	
 	if len(quick_string) > 0:
 		quick_target = 'placeholder="Quick Search"'

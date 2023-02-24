@@ -64,6 +64,7 @@ if __name__ == "__main__":
     wrapped = wrapped.replace("Term network",
       'Term network for TLA form no. **TLA**: <span style="font-family: antinoouRegular, sans-serif; font-size: larger">' + word + '</span><br>' +
                               '<span style="font-size: smaller">(scroll/pinch to zoom, click &amp; drag to pan)</span>')
+    wrapped = wrapped.replace('<link rel="canonical" href="https://coptic-dictionary.org/" />','<link rel="canonical" href="https://coptic-dictionary.org/network.cgi" />')
     if tla != "--":
         wrapped = wrapped.replace("**TLA**",tla)
     else:
