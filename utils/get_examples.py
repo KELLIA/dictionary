@@ -8,20 +8,25 @@ from random import shuffle, seed
 
 pub_corpora = ""  # Path to clone of CopticScriptorium/Corpora
 nlp_data_dir = ""   # Path to data dir of CopticScriptorium/Coptic-NLP ""
+utils_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
 
 # Manually selected examples
-manual_override_lines = io.open("citations_manual.tab",encoding="utf8").read().split("\n")
+manual_override_lines = io.open(utils_dir + "citations_manual.tab",encoding="utf8").read().split("\n")
 manual_override = defaultdict(list)
 string_match_mapping = defaultdict(list)  # Holds norms which are TLA lemmas but not CS lemmas (e.g. possessive na- has its own TLA ID but lemma is pa-)
+forbidden_urns = defaultdict(set)
 for row in manual_override_lines:
     if not row.startswith("TLA") and len(row.strip()) > 0:
-        TLA, lemma, urn, chapter, verse, priority, string_match, notes = row.split("\t")
+        TLA, lemma, urn, chapter, verse, priority, string_match, notes, forbidden = row.split("\t")
         string_match = True if string_match.lower().startswith("y") else False
         try:
             priority = int(priority)
         except ValueError:
             priority = 1
         manual_override[TLA].append({"lemma":lemma,"urn":urn,"chapter":chapter,"verse":verse, "priority":priority})
+        if len(forbidden.strip()) > 0:
+            for f in forbidden.strip().split(";"):
+                forbidden_urns[TLA].add(f)
         if string_match:
             string_match_mapping[lemma].append((urn, chapter, verse))
 
@@ -74,7 +79,10 @@ class Citation:
         words = self.sent.split()
         subwords = self.subwords.split()
         if word_count == 1:
-            subwords[self.bg_position-1] = '<span class="ex-sub-match">' +subwords[self.bg_position-1] + '</span>'
+            try:
+                subwords[self.bg_position-1] = '<span class="ex-sub-match">' +subwords[self.bg_position-1] + '</span>'
+            except:
+                a=3
             words[self.position-1] = '<span class="ex-group-match">' + "".join(subwords) + "</span>"
         else:
             # Check if everything is inside this BG
@@ -84,7 +92,10 @@ class Citation:
                 words[self.position - 1] = '<span class="ex-group-match">' + "".join(subwords) + "</span>"
             else:  # MWE match spans multiple BGs
                 #subwords[self.bg_position - word_count] = '<span class="ex-sub-match">' + subwords[self.bg_position - word_count]
-                subwords[self.bg_position - 1] = '<span class="ex-sub-match">' +subwords[self.bg_position - 1] + '</span>'
+                try:
+                    subwords[self.bg_position - 1] = '<span class="ex-sub-match">' +subwords[self.bg_position - 1] + '</span>'
+                except:
+                    a=3
                 words[self.position - 2] = '<span class="ex-sub-match ex-group-match">' + words[self.position - 2]
                 words[self.position - 1] = "".join(subwords) + "</span>"
 
@@ -161,17 +172,18 @@ def definition_overlap(definition_words, example):
     return False
 
 
-def n_best(lemma, data, db_entries, n=3):
+def n_best(lemma, data, db_entries, forbidden_urns, n=3):
 
     if lemma not in data:
         return []
     selected = []
-    best_candidate = None
     cits = list(data[lemma])
     n_readings = len(db_entries[lemma])
     shuffle(cits)
     manual_selection = []
     for tla_id in db_entries[lemma]:
+        if tla_id == 'C5886':
+            a=4
         if tla_id in manual_override:
             for req in manual_override[tla_id]:
                 requested_urn_cits = [c for c in cits if req["urn"] == c.urn]
@@ -181,13 +193,18 @@ def n_best(lemma, data, db_entries, n=3):
                             if not any([x[1].sent == req_cit.sent for x in manual_selection]):
                                 manual_selection.append((req["priority"],req_cit))
         for priority, cit in sorted(manual_selection, key=lambda x:x[0]):
+            if cit.urn in forbidden_urns[tla_id] or "ALL" in forbidden_urns[tla_id]:
+                continue
             selected.append((tla_id, cit))
         definition_words, target_pos = db_entries[lemma][tla_id]
         seen_ex_strings = set()
         i = len([s for s in selected if s[0] == tla_id])
+        best_candidate = None
         while i < n:
             best_score = -1000
             for cit in cits:
+                if cit.urn in forbidden_urns[tla_id] or "ALL" in forbidden_urns[tla_id]:
+                    continue
                 score = get_score(cit, selected, n_readings, definition_words, target_pos=target_pos)
                 if score > best_score:
                     best_candidate = cit
@@ -217,7 +234,9 @@ def get(line,attr):
     return re.search(' ' + attr + '="([^"]*)"',line).group(1)
 
 
-def get_citations(sgml, filename, db_entries):
+def get_citations(sgml, filename, db_entries, vstat_entries=None):
+    if vstat_entries is None:
+        vstat_entries = set()
     lemma = norm = pos = translation = title = segmentation = corpus = urn = chapter = verse = ""
     prev_norm = prev_lemma = ""
     prev_prev_norm = prev_prev_lemma = ""
@@ -288,6 +307,10 @@ def get_citations(sgml, filename, db_entries):
                         cit = Citation(norm, norm, pos, " ".join(words), translation, sent_position, bg_position,
                                        title, corpus, urn, chapter, verse, segmentation)
                         sent_citations.append(cit)
+            elif pos == "VSTAT" and norm in vstat_entries:
+                cit = Citation(norm, norm, pos, " ".join(words), translation, sent_position, bg_position,
+                               title, corpus, urn, chapter, verse, segmentation)
+                sent_citations.append(cit)
             if lemma in db_entries:
                 cit = Citation(lemma, norm, pos, " ".join(words), translation, sent_position, bg_position, title, corpus, urn, chapter, verse, segmentation)
                 sent_citations.append(cit)
@@ -317,12 +340,12 @@ def format_pos(pos, collapse_more=False):
     return pos
 
 
-def update_db(in_dict, db_entries):
+def update_db(in_dict, db_entries, forbidden_urns):
     con = lite.connect('alpha_kyima_rc1.db')
 
     rows = []
     for lemma in in_dict:
-        tla_cits = n_best(lemma, in_dict, db_entries)
+        tla_cits = n_best(lemma, in_dict, db_entries, forbidden_urns)
         for i, tla_cit in enumerate(tla_cits):
             tla_id, cit = tla_cit
             row = [lemma, tla_id, format_pos(cit.pos), str(cit), i]
@@ -356,10 +379,11 @@ def get_db_entries():
     con = lite.connect('alpha_kyima_rc1.db')
 
     output = defaultdict(dict)
+    vstat_entries = set()
     with con:
         cur = con.cursor()
 
-        rows = cur.execute("SELECT DISTINCT Search, POS, En, xml_id from entries")
+        rows = cur.execute("SELECT DISTINCT Search, POS, En, xml_id from entries WHERE Search like '%~S%'")
 
     for row in rows:
         entry, pos, definition, TLA = row
@@ -380,35 +404,42 @@ def get_db_entries():
             all_senses.append(sense)
         all_senses = " ".join(all_senses)
         all_senses = just_words(all_senses,remove_stop_words=True)
+        if pos == "VSTAT":
+            vstat_entries.add(lemma)
         output[lemma][TLA] = (all_senses, pos)
 
-    return output
+    return output, vstat_entries
 
 
-db_entries = get_db_entries()
+def main():
+    db_entries, vstat_entries = get_db_entries()
 
-files = glob(pub_corpora + "**" + os.sep + "*.tt",recursive=True)#[:100]
-files = [f for f in files if "coptic-treebank" not in f]  # Exclude coptic-treebank to avoid repetitions
+    files = glob(pub_corpora + "**" + os.sep + "*.tt",recursive=True)#[:100]
+    files = [f for f in files if "coptic-treebank" not in f]  # Exclude coptic-treebank to avoid repetitions
 
-lemma2citations = defaultdict(set)
+    lemma2citations = defaultdict(set)
 
-for i, file_ in enumerate(files):
-    sgml = io.open(file_,encoding="utf8").read()
-    sgml = reorder(sgml,
-                   ["meta", "p_n", "pb_xml_id", "cb_n", "lb_n", "translation", "orig_group", "norm_group", "entity",
-                    "orig", "norm", "lemma", "pos", "lang", "morph", "tok"])
+    for i, file_ in enumerate(files):
+        sgml = io.open(file_,encoding="utf8").read()
+        sgml = reorder(sgml,
+                       ["meta", "p_n", "pb_xml_id", "cb_n", "lb_n", "verse_n", "translation", "orig_group", "norm_group", "entity",
+                        "orig", "norm", "lemma", "pos", "lang", "morph", "tok"])
 
-    doc_citations = get_citations(sgml, file_, db_entries)
+        doc_citations = get_citations(sgml, file_, db_entries, vstat_entries)
 
-    for lemma in doc_citations:
-        if lemma in lemma2citations:
-            lemma2citations[lemma].update(doc_citations[lemma])
-        else:
-            lemma2citations[lemma] = doc_citations[lemma]
+        for lemma in doc_citations:
+            if lemma in lemma2citations:
+                lemma2citations[lemma].update(doc_citations[lemma])
+            else:
+                lemma2citations[lemma] = doc_citations[lemma]
 
-# Print some examples as a sanity check
-ex = n_best("ϩⲱⲱⲕ",lemma2citations, db_entries)
-for tla_id, cit in ex:
-    print(tla_id + "\n" + str(cit))
+    # Print some examples as a sanity check
+    ex = n_best("ⲙⲣⲱ",lemma2citations, db_entries, forbidden_urns)
+    for tla_id, cit in ex:
+        print(tla_id + "\n" + str(cit))
 
-update_db(lemma2citations, db_entries)
+    update_db(lemma2citations, db_entries, forbidden_urns)
+
+
+if __name__ == "__main__":
+    main()
