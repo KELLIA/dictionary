@@ -9,6 +9,9 @@ import os, io
 from collections import OrderedDict, defaultdict
 from argparse import ArgumentParser
 
+utils_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
+entity_types = defaultdict(set)
+
 
 def check_chars(word):
 	"""
@@ -78,14 +81,14 @@ def get_entity_types(pub_corpora_dir):
 	return entity_types
 
 
-def process_entry(id, super_id, entry,entry_xml_id):
+def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 	"""
 	:param id: int, id of the entry
 	:param super_id: int, id of the superentry
 	:param entry: Element representing the entry
 	:return: tuple representing new row to add to the db
 	"""
-
+	#global entity_types
 	if "status" in entry.attrib:
 		if entry.attrib["status"] == "deprecated":
 			return None  # Entire entry is deprecated, used by DDGLC entries
@@ -421,7 +424,6 @@ def process_entry(id, super_id, entry,entry_xml_id):
 			etym_string += xr.attrib['type'] + ". " + "#" + ref_target + "# " + ref.text + " "
 
 	ents = ""
-	global entity_types
 	if "~" in search_string:
 		row_lemma = search_string.strip().split("~")[0]
 		if row_lemma == "ⲉⲓⲱⲧ":  # Hardwired behavior for barley vs. father
@@ -436,7 +438,7 @@ def process_entry(id, super_id, entry,entry_xml_id):
 	return row
 
 
-def process_super_entry(entry_id, super_id, super_entry):
+def process_super_entry(entry_id, super_id, super_entry, entity_types):
 	row_list = []
 	for entry in super_entry:
 		entry_xml_id = entry.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in entry.attrib else ""
@@ -449,7 +451,7 @@ def process_super_entry(entry_id, super_id, super_entry):
 		else:
 			lemma_form_id = ""
 
-		row = process_entry(entry_id, super_id, entry,entry_xml_id)
+		row = process_entry(entry_id, super_id, entry,entry_xml_id, entity_types)
 		if row is None:
 			continue
 		row_list.append(tuple(list(row)+[entry_xml_id, lemma_form_id]))
