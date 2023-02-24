@@ -540,73 +540,80 @@ def pos_map(pos, subc, orthstring):
 
 	return "?"
 
-parser = ArgumentParser()
-parser.add_argument("xml_directory", help="directory with dictionary XML files")
-parser.add_argument("--pub_corpora", default=None, help="directory with dictionary Coptic Scriptorium Corpora repo")
-options = parser.parse_args()
+def dictionary_xml_to_database(xml_path, pub_corpora=None):
 
-xml_path = options.xml_directory
+	# Gather entity data
+	if pub_corpora is None:
+		pub_corpora = "pub_corpora"
+	if pub_corpora is not None:
+		entity_types = get_entity_types(pub_corpora)
 
-if not xml_path.endswith(os.sep):
-	xml_path += os.sep
+	con = lite.connect(utils_dir + 'alpha_kyima_rc1.db')
 
-# Gather entity data
-entity_types = defaultdict(set)
-if options.pub_corpora is not None:
-	entity_types = get_entity_types(options.pub_corpora)
+	with con:
+		cur = con.cursor()
 
-con = lite.connect('alpha_kyima_rc1.db')
+		cur.execute("DROP TABLE IF EXISTS entries")
+		cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, " +
+					"Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, entities TEXT, xml_id TEXT UNIQUE, lemma_form_id TEXT)")
 
-with con:
-	cur = con.cursor()
+		super_id = 1
+		entry_id = 1
 
-	cur.execute("DROP TABLE IF EXISTS entries")
-	cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, " +
-				"Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, entities TEXT, xml_id TEXT UNIQUE, lemma_form_id TEXT)")
+		for letter_filename in glob.glob(xml_path + '*.xml'):
+			sys.stderr.write("o Reading " + letter_filename + "\n")
+			tree = ET.parse(letter_filename)
+			root = tree.getroot()
+			try:
+				body = root.find('{http://www.tei-c.org/ns/1.0}text').find('{http://www.tei-c.org/ns/1.0}body')
+			except:
+				sys.stderr.write("! ERR: Can't find root>text>body in" +letter_filename + "\n")
+				sys.exit()
 
-	super_id = 1
-	entry_id = 1
+			for child in body:
+				if child.tag == "{http://www.tei-c.org/ns/1.0}entry":
+					entry_xml_id = child.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in child.attrib else ""
 
-	for letter_filename in glob.glob(xml_path + '*.xml'):
-		sys.stderr.write("o Reading " + letter_filename + "\n")
-		tree = ET.parse(letter_filename)
-		root = tree.getroot()
-		try:
-			body = root.find('{http://www.tei-c.org/ns/1.0}text').find('{http://www.tei-c.org/ns/1.0}body')
-		except:
-			sys.stderr.write("! ERR: Can't find root>text>body in" +letter_filename + "\n")
-			sys.exit()
+					# Get lemma form ID
+					forms = [f for f in child.findall('{http://www.tei-c.org/ns/1.0}form') if "type" in f.attrib]
+					lemma = [f for f in forms if f.attrib["type"]=="lemma"]
+					if len(lemma)>0:
+						lemma_form_id = lemma[0].attrib["{http://www.w3.org/XML/1998/namespace}id"]
+					else:
+						lemma_form_id = ""
 
-		for child in body:
-			if child.tag == "{http://www.tei-c.org/ns/1.0}entry":
-				entry_xml_id = child.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in child.attrib else ""
+					row = process_entry(entry_id, super_id, child, entry_xml_id, entity_types)
+					if row is None:
+						continue
+					row = tuple(list(row) + [entry_xml_id, lemma_form_id])
+					cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
+					super_id += 1
+					entry_id += 1
+				elif child.tag == "{http://www.tei-c.org/ns/1.0}superEntry":
+					rows = process_super_entry(entry_id, super_id, child, entity_types)
+					cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+					super_id += 1
+					entry_id += len(rows)
 
-				# Get lemma form ID
-				forms = [f for f in child.findall('{http://www.tei-c.org/ns/1.0}form') if "type" in f.attrib]
-				lemma = [f for f in forms if f.attrib["type"]=="lemma"]
-				if len(lemma)>0:
-					lemma_form_id = lemma[0].attrib["{http://www.w3.org/XML/1998/namespace}id"]
-				else:
-					lemma_form_id = ""
+		# Handle network graphs
+		cur.execute("DROP TABLE IF EXISTS networks")
+		cur.execute("CREATE TABLE networks(pos TEXT, word TEXT, phrase TEXT, freq INTEGER)")
 
-				row = process_entry(entry_id, super_id, child, entry_xml_id)
-				if row is None:
-					continue
-				row = tuple(list(row) + [entry_xml_id, lemma_form_id])
-				cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
-				super_id += 1
-				entry_id += 1
-			elif child.tag == "{http://www.tei-c.org/ns/1.0}superEntry":
-				rows = process_super_entry(entry_id, super_id, child)
-				cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
-				super_id += 1
-				entry_id += len(rows)
+		data = io.open(utils_dir + "phrase_freqs.tab", encoding="utf8").read().strip().split("\n")
+		data = [row.split("\t") for row in data]
+		data = [row[:-1] + [int(row[-1])] for row in data]
+		cur.executemany("INSERT INTO networks VALUES(?, ?, ?, ?)", data)
 
-	# Handle network graphs
-	cur.execute("DROP TABLE IF EXISTS networks")
-	cur.execute("CREATE TABLE networks(pos TEXT, word TEXT, phrase TEXT, freq INTEGER)")
+if __name__ == "__main__":
+	parser = ArgumentParser()
+	parser.add_argument("xml_directory", help="directory with dictionary XML files")
+	parser.add_argument("--pub_corpora", default=None, help="directory with dictionary Coptic Scriptorium Corpora repo")
+	options = parser.parse_args()
 
-	data = io.open("phrase_freqs.tab", encoding="utf8").read().strip().split("\n")
-	data = [row.split("\t") for row in data]
-	data = [row[:-1] + [int(row[-1])] for row in data]
-	cur.executemany("INSERT INTO networks VALUES(?, ?, ?, ?)", data)
+	xml_path = options.xml_directory
+
+	if not xml_path.endswith(os.sep):
+		xml_path += os.sep
+
+	dictionary_xml_to_database(xml_path, options.pub_corpora)
+
