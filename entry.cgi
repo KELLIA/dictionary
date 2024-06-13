@@ -488,6 +488,7 @@ if __name__ == "__main__":
 	
 	# adding TLA lemma no. to title and citation info
 	wrapped = re.sub(r"(Entry detail[^<>]*</h2>)",xml_id_string.encode("utf8") +"</h2>\n",wrapped)
+	wrapped = wrapped.replace('<link rel="canonical" href="https://coptic-dictionary.org/" />','<link rel="canonical" href="https://coptic-dictionary.org/entry.cgi" />')
 
 	# add Greek form disclaimer if needed:
 	if len(grk_id) > 0:

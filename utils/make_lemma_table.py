@@ -334,161 +334,167 @@ def update_db(row_list,table="lemmas"):
             con.commit()
 
 
-parser = ArgumentParser()
-parser.add_argument("-l","--lemma_list",action="store",dest="lemma_list",default=NLP_DATA + "copt_lemma_lex.tab")
-parser.add_argument("-u","--url",action="store",dest="url",default="https://corpling.uis.georgetown.edu/")
-parser.add_argument("-o","--outmode",action="store",dest="outmode",default="db")
-parser.add_argument("-c","--use_cache",action="store_true",help="activate cache - read data from tt_collocs.tab and cache_freqs.xml")
 
 
-options = parser.parse_args()
+def main(use_cache=False, url="https://annis.copticscriptorium.org/", lemma_list=NLP_DATA + "copt_lemma_lex.tab", outmode="db"):
+    # Get collocation information
+    cooc_pool = 0
+    collocate_freqs = defaultdict(lambda: defaultdict(int))
 
-# Get collocation information
-cooc_pool = 0
-collocate_freqs = defaultdict(lambda: defaultdict(int))
+    collocs_from_annis = False
 
-collocs_from_annis = False
-
-# Check if cached file is available and create it if not
-if not os.path.isfile("tt_collocs.tab") or not options.use_cache:
-    if collocs_from_annis:
-        sys.stderr.write('o Cache data unavailable - retrieving collocations from ANNIS\n')
-        colloc_data = get_collocations(options.url,corpora)
-        out_cache = []
-        for key, val in iteritems(colloc_data):
-            if "||" in key:
-                w1, w2 = key.split("||")
-                out_cache.append("\t".join([w1,w2,str(val)]))
-        colloc_data = "\n".join(out_cache) + "\n"
-    else:  # Harvest from SGML in pub corpora repo clone
-        sys.stderr.write('o Cache data unavailable - retrieving collocations from pub corpora TT SGML\n')
-        from get_tt_colloc import compile_colloc_table
-        colloc_data = compile_colloc_table()
-    with io.open("tt_collocs.tab",'w',encoding="utf8",newline="\n") as f:
-        f.write(colloc_data)
-else:
-    sys.stderr.write('o Using cached tt_collocs.tab\n')
-
-colloc_lines = io.open("tt_collocs.tab",encoding="utf8").readlines()
-for i, line in enumerate(colloc_lines):
-    if i > 0:
-        line = line.strip()
-        if line.count("\t") == 2:
-            node, collocate, freq = line.strip().split("\t")
-            freq = int(freq)
-            cooc_pool += freq #* 2
-            if freq > 5:
-                collocate_freqs[node][collocate] += freq
-                #collocate_freqs[collocate][node] += freq
-
-
-# Get lemmas from TT dict
-# TODO: Also get norm-pos-lemma mappings from ANNIS items not in the TT dict
-lemma_list = read_lemmas(options.lemma_list)
-lemma_list += read_lexicon_lemmas()
-lemma_list = [list(x) for x in set(tuple(x) for x in lemma_list)]
-
-#norm_counts, lemma_counts = get_freqs_annis(options.url,corpora, use_cache=options.use_cache)
-norm_counts, lemma_counts = get_freqs(use_cache=options.use_cache)
-
-total = float(sum(norm_counts.values()))
-norm_freqs = {}
-lemma_freqs = {}
-
-for norm in norm_counts:
-    freq = (norm_counts[norm]/total) * 10000
-    norm_freqs[norm] = freq
-for lemma in lemma_counts:
-    freq = (lemma_counts[lemma]/total) * 10000
-    lemma_freqs[lemma] = freq
-
-norm_freqs_as_list = [[val,key] for key,val in iteritems(norm_freqs)]
-norm_freqs_as_list = add_rank(norm_freqs_as_list)
-lemma_freqs_as_list = [[val,key] for key,val in iteritems(lemma_freqs)]
-lemma_freqs_as_list = add_rank(lemma_freqs_as_list)
-
-norm_data = {}
-lemma_data = {}
-
-for freq, norm, rank in norm_freqs_as_list:
-    norm_data[norm] = (freq,rank)
-for freq, lemma, rank in lemma_freqs_as_list:
-    lemma_data[lemma] = (freq,rank)
-
-
-rows = []
-lemmas = set([])
-norms = set([])
-lemma2pos = defaultdict(set)
-norm2pos = defaultdict(set)
-for row in lemma_list:
-    norm, pos, lemma = row
-    lemma2pos[lemma].add(pos)
-    norm2pos[norm].add(pos)
-    lemmas.add(lemma)
-    norms.add(norm)
-    if norm in norm_counts:
-        norm_count = norm_counts[norm]
+    # Check if cached file is available and create it if not
+    if not os.path.isfile("tt_collocs.tab") or not use_cache:
+        if collocs_from_annis:
+            sys.stderr.write('o Cache data unavailable - retrieving collocations from ANNIS\n')
+            colloc_data = get_collocations(url,corpora)
+            out_cache = []
+            for key, val in iteritems(colloc_data):
+                if "||" in key:
+                    w1, w2 = key.split("||")
+                    out_cache.append("\t".join([w1,w2,str(val)]))
+            colloc_data = "\n".join(out_cache) + "\n"
+        else:  # Harvest from SGML in pub corpora repo clone
+            sys.stderr.write('o Cache data unavailable - retrieving collocations from pub corpora TT SGML\n')
+            from get_tt_colloc import compile_colloc_table
+            colloc_data = compile_colloc_table()
+        with io.open("tt_collocs.tab",'w',encoding="utf8",newline="\n") as f:
+            f.write(colloc_data)
     else:
-        norm_count = 0
-    if norm in norm_data:
-        norm_freq, norm_rank = norm_data[norm]
-    else:
-        norm_freq, norm_rank = [0,0]
-    if lemma in lemma_counts:
-        lemma_count = lemma_counts[lemma]
-    else:
-        lemma_count = 0
-    if lemma in lemma_data:
-        lemma_freq, lemma_rank = lemma_data[lemma]
-    else:
-        lemma_freq, lemma_rank = [0,0]
-    if options.outmode == "text":
-        print(norm + "\t" + pos + "\t" + lemma + "\t" + str(norm_count) + "\t" + str("%.2f" % round(norm_freq,2)) + "\t" + str(norm_rank)+ "\t" + str(lemma_count) + "\t" + str("%.2f" % round(lemma_freq,2)) + "\t" + str(lemma_rank))
-    else:
-        rows.append([norm, pos, lemma, str(norm_count), str("%.2f" % round(norm_freq,2)), str(norm_rank), str(lemma_count), str("%.2f" % round(lemma_freq,2)), str(lemma_rank)])
+        sys.stderr.write('o Using cached tt_collocs.tab\n')
+
+    colloc_lines = io.open("tt_collocs.tab",encoding="utf8").readlines()
+    for i, line in enumerate(colloc_lines):
+        if i > 0:
+            line = line.strip()
+            if line.count("\t") == 2:
+                node, collocate, freq = line.strip().split("\t")
+                freq = int(freq)
+                cooc_pool += freq #* 2
+                if freq > 5:
+                    collocate_freqs[node][collocate] += freq
+                    #collocate_freqs[collocate][node] += freq
 
 
-out_colloc = []
-for norm in norms:
-    if norm in collocate_freqs and norm in norm_freqs:  # Only retrieve collocations for confirmed lemmas
-        for collocate in collocate_freqs[norm]:
-            if collocate in norms and collocate in norm_freqs:
-                # Valid pair
-                assoc = get_assoc(norm_counts[norm],norm_counts[collocate],collocate_freqs[norm][collocate],cooc_pool)
-                if options.outmode == "text":
-                    print("\t".join([norm, collocate, str(collocate_freqs[norm][collocate]), str(assoc)]))
-                else:
-                    out_colloc.append([norm, collocate, collocate_freqs[norm][collocate], assoc])
+    # Get lemmas from TT dict
+    # TODO: Also get norm-pos-lemma mappings from ANNIS items not in the TT dict
+    lemma_list = read_lemmas(lemma_list)
+    lemma_list += read_lexicon_lemmas()
+    lemma_list = [list(x) for x in set(tuple(x) for x in lemma_list)]
+
+    #norm_counts, lemma_counts = get_freqs_annis(url,corpora, use_cache=use_cache)
+    norm_counts, lemma_counts = get_freqs(use_cache=use_cache)
+
+    total = float(sum(norm_counts.values()))
+    norm_freqs = {}
+    lemma_freqs = {}
+
+    for norm in norm_counts:
+        freq = (norm_counts[norm]/total) * 10000
+        norm_freqs[norm] = freq
+    for lemma in lemma_counts:
+        freq = (lemma_counts[lemma]/total) * 10000
+        lemma_freqs[lemma] = freq
+
+    norm_freqs_as_list = [[val,key] for key,val in iteritems(norm_freqs)]
+    norm_freqs_as_list = add_rank(norm_freqs_as_list)
+    lemma_freqs_as_list = [[val,key] for key,val in iteritems(lemma_freqs)]
+    lemma_freqs_as_list = add_rank(lemma_freqs_as_list)
+
+    norm_data = {}
+    lemma_data = {}
+
+    for freq, norm, rank in norm_freqs_as_list:
+        norm_data[norm] = (freq,rank)
+    for freq, lemma, rank in lemma_freqs_as_list:
+        lemma_data[lemma] = (freq,rank)
 
 
-if options.outmode == "db":
-    utf_rows = []
-    for row in rows:
-        if row[3] == "0" and row[6]=="0":  # Unattested
-            continue
-        new_row = []
-        for field in row:
-            field = field
-            new_row.append(field)
-        utf_rows.append(new_row)
-    update_db(utf_rows)
-    utf_rows = []
-    for row in out_colloc:
-        if row[1] not in norm2pos:
-            continue
+    rows = []
+    lemmas = set([])
+    norms = set([])
+    lemma2pos = defaultdict(set)
+    norm2pos = defaultdict(set)
+    for row in lemma_list:
+        norm, pos, lemma = row
+        lemma2pos[lemma].add(pos)
+        norm2pos[norm].add(pos)
+        lemmas.add(lemma)
+        norms.add(norm)
+        if norm in norm_counts:
+            norm_count = norm_counts[norm]
         else:
-            if not any([x in norm2pos[row[1]] for x in ["N","NPROP","V","VSTAT","VIMP","ADV"]]):
+            norm_count = 0
+        if norm in norm_data:
+            norm_freq, norm_rank = norm_data[norm]
+        else:
+            norm_freq, norm_rank = [0,0]
+        if lemma in lemma_counts:
+            lemma_count = lemma_counts[lemma]
+        else:
+            lemma_count = 0
+        if lemma in lemma_data:
+            lemma_freq, lemma_rank = lemma_data[lemma]
+        else:
+            lemma_freq, lemma_rank = [0,0]
+        if outmode == "text":
+            print(norm + "\t" + pos + "\t" + lemma + "\t" + str(norm_count) + "\t" + str("%.2f" % round(norm_freq,2)) + "\t" + str(norm_rank)+ "\t" + str(lemma_count) + "\t" + str("%.2f" % round(lemma_freq,2)) + "\t" + str(lemma_rank))
+        else:
+            rows.append([norm, pos, lemma, str(norm_count), str("%.2f" % round(norm_freq,2)), str(norm_rank), str(lemma_count), str("%.2f" % round(lemma_freq,2)), str(lemma_rank)])
+
+
+    out_colloc = []
+    for norm in norms:
+        if norm in collocate_freqs and norm in norm_freqs:  # Only retrieve collocations for confirmed lemmas
+            for collocate in collocate_freqs[norm]:
+                if collocate in norms and collocate in norm_freqs:
+                    # Valid pair
+                    assoc = get_assoc(norm_counts[norm],norm_counts[collocate],collocate_freqs[norm][collocate],cooc_pool)
+                    if outmode == "text":
+                        print("\t".join([norm, collocate, str(collocate_freqs[norm][collocate]), str(assoc)]))
+                    else:
+                        out_colloc.append([norm, collocate, collocate_freqs[norm][collocate], assoc])
+
+
+    if outmode == "db":
+        utf_rows = []
+        for row in rows:
+            if row[3] == "0" and row[6]=="0":  # Unattested
                 continue
-        if row[0] == row[1]:
-            continue
-        if row[1].encode("utf8") in stop_list:
-            continue
-        new_row = []
-        for field in row[:-2]:
-            new_row.append(field)
-        new_row += row[-2:]
-        utf_rows.append(new_row)
-    update_db(utf_rows,table="collocates")
+            new_row = []
+            for field in row:
+                field = field
+                new_row.append(field)
+            utf_rows.append(new_row)
+        update_db(utf_rows)
+        utf_rows = []
+        for row in out_colloc:
+            if row[1] not in norm2pos:
+                continue
+            else:
+                if not any([x in norm2pos[row[1]] for x in ["N","NPROP","V","VSTAT","VIMP","ADV"]]):
+                    continue
+            if row[0] == row[1]:
+                continue
+            if row[1].encode("utf8") in stop_list:
+                continue
+            new_row = []
+            for field in row[:-2]:
+                new_row.append(field)
+            new_row += row[-2:]
+            utf_rows.append(new_row)
+        update_db(utf_rows,table="collocates")
 
 
+if __name__ == '__main__':
+    parser = ArgumentParser()
+    parser.add_argument("-l", "--lemma_list", action="store", dest="lemma_list",
+                        default=NLP_DATA + "copt_lemma_lex.tab")
+    parser.add_argument("-u", "--url", action="store", dest="url", default="https://annis.copticscriptorium.org/")
+    parser.add_argument("-o", "--outmode", action="store", dest="outmode", default="db")
+    parser.add_argument("-c", "--use_cache", action="store_true",
+                        help="activate cache - read data from tt_collocs.tab and cache_freqs.xml")
+
+    options = parser.parse_args()
+
+    main(use_cache=options.use_cache, url=options.url, lemma_list=options.lemma_list, outmode="db")
