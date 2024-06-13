@@ -8,6 +8,7 @@ import glob
 import os, io
 from collections import OrderedDict, defaultdict
 from argparse import ArgumentParser
+import logging
 
 utils_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
 entity_types = defaultdict(set)
@@ -112,7 +113,7 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 	oref_text = ''
 	search_string = "\n"
 
-	lemma = ""
+	lemma = None
 	for form in forms:
 		is_lemma = False
 		if "status" in form.attrib:
@@ -133,7 +134,7 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 			if is_lemma:
 				lemma = first_orth
 	if lemma is None:
-		raise IOError("No lemma type for entry of " + orths[0].text)
+		logging.error("No lemma type for entry of " + orths[0].text)
 
 	first = []
 	last = []
