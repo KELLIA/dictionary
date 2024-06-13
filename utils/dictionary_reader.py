@@ -8,7 +8,7 @@ import glob
 import os, io
 from collections import OrderedDict, defaultdict
 from argparse import ArgumentParser
-import logging
+
 
 def check_chars(word):
 	"""
@@ -109,7 +109,7 @@ def process_entry(id, super_id, entry,entry_xml_id):
 	oref_text = ''
 	search_string = "\n"
 
-	lemma = None
+	lemma = ""
 	for form in forms:
 		is_lemma = False
 		if "status" in form.attrib:
@@ -130,7 +130,7 @@ def process_entry(id, super_id, entry,entry_xml_id):
 			if is_lemma:
 				lemma = first_orth
 	if lemma is None:
-		logging.error("No lemma type for entry of " + orths[0].text)
+		raise IOError("No lemma type for entry of " + orths[0].text)
 
 	first = []
 	last = []
