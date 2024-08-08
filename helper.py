@@ -175,7 +175,8 @@ def link_greek(etym):
 		else:
 			mapped = "".join((list(map(lambda x: updated_map.get(x, x), chars))))
 
-			link = ' <a title="Look up in Perseus" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup='+mapped+'&lang=greek">'+greek + '&nbsp;<img src="img/perseus.png" style="border: 1px solid black;"/></a> '
+			link = ' <a title="Look up in Logeion" href="https://logeion.uchicago.edu/'+greek+'">'+greek + '&nbsp;<img src="img/logeion.png" style="border: 1px solid black;"/></a> '
+			link += '<a title="Look up in Perseus" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup='+mapped+'&lang=greek"><img src="img/perseus.png" style="border: 1px solid black;"/></a> '
 			linked = re.sub(r'(cf\. Gr\.[^<>]*</span>)[^<>]+(<i>)',r'\1'+link+r'\2',etym)
 
 			return linked.encode("utf8")
