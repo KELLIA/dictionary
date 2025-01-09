@@ -421,7 +421,9 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 	xrs = entry.findall("{http://www.tei-c.org/ns/1.0}xr")
 	for xr in xrs:
 		for ref in xr:
-			ref_target = re.sub(u'[^ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱϣϥⳉϧϩϫϭϯ ]', u'', ref.attrib['target']).strip()
+			if len(etym_string.strip()) > 0:
+				etym_string = etym_string.strip() + ", "
+			ref_target = re.sub(u'[^C0-9ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱϣϥⳉϧϩϫϭϯ ]', u'', ref.attrib['target']).strip()
 			etym_string += xr.attrib['type'] + ". " + "#" + ref_target + "# " + ref.text + " "
 
 	ents = ""
