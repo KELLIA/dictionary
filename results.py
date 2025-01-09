@@ -5,13 +5,12 @@ import sqlite3 as lite
 import re
 import cgi, cgitb
 import os, platform
-from helper import wrap, lemma_exists, get_lemmas_for_word
+from helper import wrap, lemma_exists, get_lemmas_for_word, get_morphs
 from helper import separate_coptic, strip_hyphens
 from operator import itemgetter
 from math import ceil
 cgitb.enable()
-
-print "Content-type: text/html\n"
+from helper import get_con
 
 	
 def first_orth(orthstring):
@@ -83,8 +82,8 @@ def retrieve_related(word):
 		tablestring = '<div class="content">\n' + "Entries related to '" + word.encode("utf8") + "'<br/>"
 		if len(rows) == 1:
 			row = rows[0]
-			#entry_url = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
-			entry_url = "entry.cgi?tla=" + str(row[-2])
+			#entry_url = "entry.py?entry=" + str(row[0]) + "&super=" + str(row[1])
+			entry_url = "entry.py?tla=" + str(row[-3])
 			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
 			#return '<script>window.location = "' + entry_url + '";</script>'
 # 		elif len(rows) > 100:
@@ -100,7 +99,7 @@ def retrieve_related(word):
 					tablestring += "<tr>"
 
 					orth = row[0]
-					link = "results.cgi?coptic=" + row[0]
+					link = "results.py?coptic=" + row[0]
 					lem_pos = str(row[1])
 					#print lem_pos
 
@@ -120,10 +119,10 @@ def retrieve_related(word):
 
 			orth = first_orth(row[2])
 			second = second_orth(row[2])
-			if len(str(row[-2])) > 0:
-				link = "entry.cgi?tla=" + str(row[-2])
+			if len(str(row[-3])) > 0:
+				link = "entry.py?tla=" + str(row[-3])
 			else:
-				link = "entry.cgi?entry=" + str(row[0]) + "&super=" + str(row[1])
+				link = "entry.py?entry=" + str(row[0]) + "&super=" + str(row[1])
 
 			tablestring += '<td class="orth_cell">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
 			tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"
@@ -136,7 +135,7 @@ def retrieve_related(word):
 		return tablestring
 	
 
-def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc="", params=None, tla_search=None):
+def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc="", params=None, tla_search=None, con=None):
 	if params is None:
 		params = {}
 	sql_command = 'SELECT * FROM entries WHERE '
@@ -154,7 +153,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 		if dialect == 'any':
 			word_search_string = r'.*\n' + word + r'~.*'
 		else:
-			word_search_string = r'.*\n' + word + r'~' + dialect + r'?\n.*'
+			word_search_string = r'.*\n' + word + r'~[' + dialect + r'\\?].*'
 
 		word_constraint = "entries.search "+op+" ?"
 		parameters.append(word_search_string)
@@ -175,41 +174,14 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 		parameters.append(pos)
 
 	# one or all of the sense columns--which is specified by def_lang, search within it based on definition and def_search_type
-	if def_search_type == 'exact sequence' and tla_search is None:
-		def_search_string = r'.*\b' + definition + r'\b.*'
-		try:
-			re.compile(def_search_string)
-			op = 'REGEXP'
-		except:
-			op = '='
-		if def_lang == 'any':
-			def_constraint = "(entries.en "+op+" ? OR entries.de "+op+" ? OR entries.fr "+op+" ?)"
-			constraints.append(def_constraint)
-			parameters.append(def_search_string)
-			parameters.append(def_search_string)
-			parameters.append(def_search_string)
-		elif def_lang == 'en':
-			def_constraint = "entries.en "+op+" ?"
-			constraints.append(def_constraint)
-			parameters.append(def_search_string)
-		elif def_lang == 'fr':
-			def_constraint = "entries.fr "+op+" ?"
-			constraints.append(def_constraint)
-			parameters.append(def_search_string)
-		elif def_lang == 'de':
-			def_constraint = "entries.de "+op+" ?"
-			constraints.append(def_constraint)
-			parameters.append(def_search_string)
-
-	elif def_search_type == 'all words' and tla_search is None:
-		words = definition.split(' ')
-		for one_word in words:
+	if definition.strip() != "":
+		if def_search_type == 'exact sequence' and tla_search is None:
+			def_search_string = r'.*\b' + definition + r'\b.*'
 			try:
-				re.compile(one_word)
+				re.compile(def_search_string)
 				op = 'REGEXP'
 			except:
 				op = '='
-			def_search_string = r'.*\b' + one_word + r'\b.*'
 			if def_lang == 'any':
 				def_constraint = "(entries.en "+op+" ? OR entries.de "+op+" ? OR entries.fr "+op+" ?)"
 				constraints.append(def_constraint)
@@ -228,6 +200,46 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 				def_constraint = "entries.de "+op+" ?"
 				constraints.append(def_constraint)
 				parameters.append(def_search_string)
+
+		elif def_search_type == 'all words' and tla_search is None:
+			words = definition.strip().split(' ')
+			for one_word in words:
+				try:
+					re.compile(one_word)
+					op = 'REGEXP'
+				except:
+					op = '='
+				def_search_string = r'.*\b' + one_word + r'\b.*'
+				if def_lang == 'any':
+					if re.escape(one_word) == one_word:
+						def_search_string = '% '+one_word+' %'
+						def_constraint = "entries.defwords like ?"
+						constraints.append(def_constraint)
+						parameters.append(def_search_string)
+					elif re.escape(one_word.replace(".*","PERCENT")) == one_word.replace(".*","PERCENT"):  # Simple wildcard
+						def_search_string = '% '+one_word.replace(".*","%") +' %'
+						def_constraint = "entries.defwords like ?"
+						constraints.append(def_constraint)
+						parameters.append(def_search_string)
+					else:
+						#def_constraint = "(entries.en "+op+" ? OR entries.de "+op+" ? OR entries.fr "+op+" ?)"
+						def_constraint = "entries.defwords "+op+" ?"
+						constraints.append(def_constraint)
+						parameters.append(def_search_string)
+						#parameters.append(def_search_string)
+						#parameters.append(def_search_string)
+				elif def_lang == 'en':
+					def_constraint = "entries.en "+op+" ?"
+					constraints.append(def_constraint)
+					parameters.append(def_search_string)
+				elif def_lang == 'fr':
+					def_constraint = "entries.fr "+op+" ?"
+					constraints.append(def_constraint)
+					parameters.append(def_search_string)
+				elif def_lang == 'de':
+					def_constraint = "entries.de "+op+" ?"
+					constraints.append(def_constraint)
+					parameters.append(def_search_string)
 	if tla_search is not None:
 		constraints.append("xml_id = ?")
 		parameters.append(tla_search)
@@ -235,34 +247,38 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 	sql_command += " AND ".join(constraints)
 	sql_command += " ORDER BY ascii"
 
-	if platform.system() == 'Linux':
-		con = lite.connect('alpha_kyima_rc1.db')
-	else:
-		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
+	if con is None:
+		if platform.system() == 'Linux':
+			con = lite.connect('alpha_kyima_rc1.db')
+		else:
+			con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
+			con.create_function("REGEXP", 2, lambda expr, item : re.search(expr.lower(), item.lower(), flags=re.UNICODE) is not None)
 
-	con.create_function("REGEXP", 2, lambda expr, item : re.search(expr.lower(), item.lower(), flags=re.UNICODE) is not None)
 	with con:
-		cur = con.cursor()
-		cur.execute(sql_command, parameters)
-		rows = cur.fetchall()
+		if "WHERE  ORDER" in sql_command:  # No parameters given
+			return '<div class="content">No search parameters given</div>'
+		else:
+			cur = con.cursor()
+			cur.execute(sql_command, parameters)
+			rows = cur.fetchall()
 
 		tablestring = '<div class="content">\n' + search_desc.encode("utf8") + "<br/>\n"
 		if len(rows) == 1:
 			row = rows[0]
 			super_id = str(row[1])
 			entry_id = str(row[0])
-			tla_id = str(row[-2])
+			tla_id = str(row[-3])
 
 			if len(tla_id)>0:
-				entry_url = "entry.cgi?tla=" + tla_id
+				entry_url = "entry.py?tla=" + tla_id
 			else:
-				entry_url = "entry.cgi?entry=" + entry_id + "&super=" + super_id
+				entry_url = "entry.py?entry=" + entry_id + "&super=" + super_id
 			#return '<meta http-equiv="refresh" content="0; URL="' + entry_url + '" />'
 			return '<script>window.location = "' + entry_url + '";</script>'
 		elif len(rows) > 100:
 			page = 1 if "page" not in params else int(params["page"])
 			start = (page-1)*100
-			prev_url = next_url = first_url = last_url = "results.cgi?"
+			prev_url = next_url = first_url = last_url = "results.py?"
 			args = []
 			for param in params:
 				if params[param] == "" or param == "page":
@@ -307,7 +323,7 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 					tablestring += "<tr>"
 
 					orth = row[0]
-					link = "results.cgi?coptic=" + row[0]
+					link = "results.py?coptic=" + row[0]
 					lem_pos = str(row[1])
 					#print lem_pos
 
@@ -319,6 +335,22 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 					tablestring += "</tr>"
 				tablestring += "</table>\n</div>\n"
 				return tablestring
+			else:
+				parts = get_morphs(word.encode("utf8"))
+				if len(parts) > 0:
+					parts = parts[0][0].split("|")
+					tablestring += "<br/>This may be a complex word form; search instead for:<br/>\n"
+					tablestring += '<table id="results" class="entrylist"><tr><td class="orth_cell">'
+					for i, morph in enumerate(parts):
+						suffix = "-" if i < len(parts) -1 else ""
+						link = "results.py?coptic=" + morph
+						#print lem_pos
+
+						tablestring += '<a href="' + link.encode("utf8") + '">'
+						tablestring += morph.encode("utf8")
+						tablestring += "</a>" + suffix
+					tablestring += "</td></tr></table>\n</div>\n"
+					return tablestring
 		else:
 			tablestring += str(len(rows)) + ' Results'
 		tablestring += '<table id="results" class="entrylist">'
@@ -330,12 +362,12 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 
 			super_id = str(row[1])
 			entry_id = str(row[0])
-			tla_id = str(row[-2])
+			tla_id = str(row[-3])
 
 			if len(tla_id) >0:
-				link = "entry.cgi?tla=" + tla_id
+				link = "entry.py?tla=" + tla_id
 			else:
-				link = "entry.cgi?entry=" + entry_id + "&super=" + super_id
+				link = "entry.py?entry=" + entry_id + "&super=" + super_id
 			
 			tablestring += '<td class="orth_cell">' + '<a href="' + link + '">' + orth.encode("utf8") + "</a>" +"</td>"
 			tablestring += '<td class="second_orth_cell">' +  second.encode("utf8")  +"</td>"
@@ -349,8 +381,10 @@ def retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, 
 		return tablestring
 					
 			
-if __name__ == "__main__":
-	form = cgi.FieldStorage()
+def results_main(form, con=None):
+	if con is None:
+		con = get_con()
+
 	params = {}
 	word = cgi.escape(form.getvalue("coptic", "")).replace("(","").replace(")","").replace("=","").strip()
 	dialect = cgi.escape(form.getvalue("dialect", "any")).replace("(","").replace(")","").replace("=","").strip()
@@ -385,10 +419,6 @@ if __name__ == "__main__":
 		if m is not None:
 			tla_search = m.group(1)
 			# Check that this TLA ID exists
-			if platform.system() == 'Linux':
-				con = lite.connect('alpha_kyima_rc1.db')
-			else:
-				con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
 			with con:
 				cur = con.cursor()
 				cur.execute("select xml_id from entries where xml_id=?", (tla_search,))
@@ -397,16 +427,9 @@ if __name__ == "__main__":
 					tla_search = None
 		m = re.match(r'(CF[0-9]+)$',definition)
 		if m is not None:
-			newline = """
-"""
 			tla_search = ".*" + m.group(1) + "([^0-9].*|$)"
 			# Check that this TLA ID exists
-			if platform.system() == 'Linux':
-				con = lite.connect('alpha_kyima_rc1.db')
-			else:
-				con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
 			with con:
-				con.create_function("REGEXP", 2, lambda expr, item: re.search(expr.lower(), item.lower()) is not None)
 				cur = con.cursor()
 				cur.execute("select xml_id from entries where Name REGEXP ?", (tla_search,))
 				rows = cur.fetchall()
@@ -428,12 +451,12 @@ if __name__ == "__main__":
 	definition_desc = " definitions matching <i>" + definition + "</i> in language <i>"  + def_lang + "</i>" if len(definition)  > 0 else ""
 	pos_desc = " restricted to POS tag " + pos if pos != "any" else ""
 	search_desc = "You searched " + word_desc + dialect_desc + definition_desc + pos_desc
-	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc,params=params,tla_search=tla_search)
+	results_page = retrieve_entries(word, dialect, pos, definition, def_search_type, def_lang, search_desc,params=params,tla_search=tla_search, con=con)
 
 	### related entry stuff
 	if word != "": # nothing to do if no coptic word searched?
 		if related == "false":
-			link = "results.cgi?coptic=" + word + "&dialect=" + dialect + "&pos=" + pos + "&definition=" + definition + "&def_search_type=" + def_search_type + "&lang=" + def_lang + "&related=true"
+			link = "results.py?coptic=" + word + "&dialect=" + dialect + "&pos=" + pos + "&definition=" + definition + "&def_search_type=" + def_search_type + "&lang=" + def_lang + "&related=true"
 			#results_page += '<a href="' + link.encode("utf8") + '">Include related entries</a>'
 			if not "window.location" in results_page:  # No need to retrieve related if we are redirecting due to a unique entry being found
 				results_page = results_page[:-8] + '<a href="' + link.encode("utf8") + '">Include related entries</a></div>\n'
@@ -442,10 +465,42 @@ if __name__ == "__main__":
 				results_page += retrieve_related(word)
 	
 	
-	wrapped = wrap(results_page)
-	wrapped = wrapped.replace('<link rel="canonical" href="https://coptic-dictionary.org/" />','<link rel="canonical" href="https://coptic-dictionary.org/results.cgi" />')
+	wrapped = wrap(results_page, caller="results")
+	wrapped = wrapped.replace('<link rel="canonical" href="https://coptic-dictionary.org/" />','<link rel="canonical" href="https://coptic-dictionary.org/results.py" />')
 	
 	if len(quick_string) > 0:
 		quick_target = 'placeholder="Quick Search"'
 		wrapped = wrapped.replace(quick_target, quick_target + ' value="' + quick_string + '"')
-	print(wrapped)
+
+	return wrapped
+
+
+if __name__ == "__main__":
+	from argparse import ArgumentParser
+	p = ArgumentParser()
+	p.add_argument("-t","--test",action="store_true")
+	opts = p.parse_args()
+
+	con = get_con()
+
+	if opts.test:
+		from collections import OrderedDict
+		form = OrderedDict()
+		#form.update({"coptic":"ϣⲱⲡⲉ","dialect":"S"})
+		#form.update({"quick_search":"ϣⲱⲡⲉ"})
+		form.update({"tla":"CF2894"})
+		func = lambda k, d: form.__getitem__(k) if k in form else d
+		setattr(form, "getvalue", func)
+		wrapped = results_main(form, con=con)
+		wrapped = re.sub(r'<[^<>]+>','',wrapped)
+		wrapped = re.sub(r'[\n\r]+',r'\n',wrapped)
+		wrapped = re.sub(r'\s +',r' ',wrapped)
+		wrapped = re.sub(r'[\t ]+',r' ',wrapped)
+		wrapped = re.sub(r'( ?\n)+',r'\n',wrapped)
+		print(wrapped)
+	else:
+		print("Content-type: text/html\n")
+		form = cgi.FieldStorage()
+		wrapped = results_main(form, con=con)
+		print(wrapped)
+
