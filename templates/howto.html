@@ -7,10 +7,10 @@ From the dictionary's main page you can run a configurable search using the foll
 	<li>
 	<b>Coptic word</b> - enter Coptic text in utf-8 characters. You can also use regular expression wildcards:
 		<ul>
-		<li>Words starting in some prefix: <a class="anti" href="results.cgi?coptic=ⲙⲛⲧ.*&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲙⲛⲧ.*</a></li>
-		<li>Words ending in some suffix: <a class="anti" href="results.cgi?coptic=.*ϩⲏⲧ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">.*ϩⲏⲧ</a></li>
-		<li>Wildcard in middle: <a class="anti" href="results.cgi?coptic=ⲥ.ⲧⲙ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲥ.ⲧⲙ</a></li>
-		<li>Optional character: <a class="anti" href="results.cgi?coptic=ⲥⲱⲧⲉ?ⲙ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲥⲱⲧⲉ?ⲙ</a></li>
+		<li>Words starting in some prefix: <a class="anti" href="results.py?coptic=ⲙⲛⲧ.*&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲙⲛⲧ.*</a></li>
+		<li>Words ending in some suffix: <a class="anti" href="results.py?coptic=.*ϩⲏⲧ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">.*ϩⲏⲧ</a></li>
+		<li>Wildcard in middle: <a class="anti" href="results.py?coptic=ⲥ.ⲧⲙ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲥ.ⲧⲙ</a></li>
+		<li>Optional character: <a class="anti" href="results.py?coptic=ⲥⲱⲧⲉ?ⲙ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any">ⲥⲱⲧⲉ?ⲙ</a></li>
 		<li>For complete documentation on regular expressions see: <a href="http://www.regular-expressions.info/">http://www.regular-expressions.info/</a></ul>
 	</li>
 	<li><b>Dialect</b> - select one of the dialect sigla or use <i>any</i> for any dialect</li>
@@ -32,7 +32,7 @@ You can quickly search for words without returning to the main search page by us
 
 <ul>
 	<li><img src="img/scriptorium.png" class="scriptorium_logo" title="Search in Coptic Scriptorium"> - click on this icon next to a word form to search for it in Coptic Scriptorium corpora (you will be taken to ANNIS, the project's search interface)</li>
-	<li><i class="fa fa-sort-numeric-asc freq_icon">&nbsp;</i> - pass over this icon to show frequencies and ranks for each word. For example, you can compare which is more frequent and how much: <a href="https://coptic-dictionary.org/entry.cgi?tla=C615">ⲉ</a> or <a href="https://coptic-dictionary.org/entry.cgi?tla=C2349">ⲛ</a>?</li>
+	<li><i class="fa fa-sort-numeric-asc freq_icon">&nbsp;</i> - pass over this icon to show frequencies and ranks for each word. For example, you can compare which is more frequent and how much: <a href="https://coptic-dictionary.org/entry.py?tla=C615">ⲉ</a> or <a href="https://coptic-dictionary.org/entry.py?tla=C2349">ⲛ</a>?</li>
 	<li><b class="fa-stack freq-icon" style="position:relative;left:-5px">
 										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-315"></i>
 										  <i class="fa fa-share-alt fa-stack-1x fa-rotate-45"></i>
@@ -45,11 +45,11 @@ You can quickly search for words without returning to the main search page by us
 
 <p>For entries with sufficient attestations in our corpora, you may see a phrase network graph thumbnail displayed as follows:<p>
 
-<a href="https://coptic-dictionary.org/network.cgi?word=%E2%B2%89%E2%B2%93%E2%B2%A3%E2%B2%89&pos=V&tla=CF3246" target="_blank"><img src="img/phrase_network.png"/ width="100" style="border: 1px solid"></a>
+<a href="https://coptic-dictionary.org/network.py?word=%E2%B2%89%E2%B2%93%E2%B2%A3%E2%B2%89&pos=V&tla=CF3246" target="_blank"><img src="img/phrase_network.png"/ width="100" style="border: 1px solid"></a>
 
 <p>Clicking on this will take you to a phrase network graph like the one below, showing typical sequences of words involving this entry. The network shows a diagram of up to 20 most common phrases headed by the head word, truncated to 8 words at most for readability. Nodes and transitions are sized proportionally to how often they are attested in Coptic Scriptorium data. Correspondences between nodes in different phrases are computed using dependency parses based on the <a href="https://copticscriptorium.org/treebank.html">Coptic Universal Dependency Treebank</a>. </p>
 
-<a href="https://coptic-dictionary.org/network.cgi?word=%E2%B2%89%E2%B2%93%E2%B2%A3%E2%B2%89&pos=V&tla=CF3246" target="_blank"><img src="img/phrase_network.png"/ width="50%" style="border: 1px solid"></a>
+<a href="https://coptic-dictionary.org/network.py?word=%E2%B2%89%E2%B2%93%E2%B2%A3%E2%B2%89&pos=V&tla=CF3246" target="_blank"><img src="img/phrase_network.png"/ width="50%" style="border: 1px solid"></a>
 
 <p style="margin-top: 5px"><b>Disclaimer:</b> some errors due to automatic Natural Language Processing may be included in these graphs, which are provided as an assistive tool only.</p>
 
@@ -64,11 +64,11 @@ You can quickly search for words without returning to the main search page by us
 <h3>Import of data into spreadsheet</h3>
 <p>You can import lemma entry data into a Google spreadsheet by copying formulas like the ones below into a cell of an empty spreadsheet.</p>
 <table class="webservice_example_table">
-<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/entry.cgi?tla=C195"; "table"; 1)</td><td class="webservice_comment">table of forms (table <b>1</b>)</td></tr>
-<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/entry.cgi?tla=C3093"; "table"; 3)</td><td class="webservice_comment">table of senses (table <b>3</b>)</td></tr>
-<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/entry.cgi?tla=C3093"; "table"; 4)</td><td class="webservice_comment">table of related entries (table <b>4</b>)</td></tr>
-<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/results.cgi?coptic=ⲣⲱⲙⲉ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any"; "table"; 1)</td><td class="webservice_comment">search reply</td></tr>
-<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/results.cgi?coptic=ⲣⲱⲙⲉ"; "table"; 1)</td><td class="webservice_comment">search reply, simple</td></tr>
+<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/entry.py?tla=C195"; "table"; 1)</td><td class="webservice_comment">table of forms (table <b>1</b>)</td></tr>
+<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/entry.py?tla=C3093"; "table"; 3)</td><td class="webservice_comment">table of senses (table <b>3</b>)</td></tr>
+<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/entry.py?tla=C3093"; "table"; 4)</td><td class="webservice_comment">table of related entries (table <b>4</b>)</td></tr>
+<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/results.py?coptic=ⲣⲱⲙⲉ&dialect=any&pos=any&definition=&def_search_type=exact+sequence&lang=any"; "table"; 1)</td><td class="webservice_comment">search reply</td></tr>
+<tr><td class="webservice_code">=IMPORTHTML("http://www.coptic-dictionary.org/results.py?coptic=ⲣⲱⲙⲉ"; "table"; 1)</td><td class="webservice_comment">search reply, simple</td></tr>
 </table>
 <br/>
 <p><b>Example:</b></p>
