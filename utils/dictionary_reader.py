@@ -12,7 +12,8 @@ import logging
 
 utils_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
 entity_types = defaultdict(set)
-
+supplemental_entries = defaultdict(lambda :defaultdict(list))
+egyptian_etymologies = {}
 
 def check_chars(word):
 	"""
@@ -28,6 +29,14 @@ def check_chars(word):
 			print(word + "\t" + char)
 
 
+def get_words(def_string):
+	# Split a definition string into individual unique words using regex word boundaries, excluding regex operators.
+	# This is used to get a list of all words in a definition for the search index
+	words = re.findall(r'\b\w+\b', def_string)
+	words = [w for w in words if w not in [".","?",")","(","[","]","{","}","*","|","^","$","\\","+"]]
+	return " " + " ".join(sorted(list(set(words)))) + " "
+
+
 def order_forms(formlist):
 	temp = []
 	for form in formlist:
@@ -35,7 +44,7 @@ def order_forms(formlist):
 		text = ""
 		dialect = ""
 		for orth in orths:
-			text = orth.text.replace("⸗","--")  # Sort angle dash after hyphen
+			text = orth.text.replace("⸗","--").replace("*","")  # Sort angle dash after hyphen, no asterisks
 			geo = form.find('{http://www.tei-c.org/ns/1.0}usg')
 			if geo is not None:
 				dialect = geo.text.replace("Ak","K")
@@ -89,6 +98,7 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 	:param entry: Element representing the entry
 	:return: tuple representing new row to add to the db
 	"""
+
 	#global entity_types
 	if "status" in entry.attrib:
 		if entry.attrib["status"] == "deprecated":
@@ -133,6 +143,8 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 			first_orth = orths[0]
 			if is_lemma:
 				lemma = first_orth
+			if first_orth.text == "___":
+				return None  # Empty entry
 	if lemma is None:
 		logging.error("No lemma type for entry of " + orths[0].text)
 
@@ -166,7 +178,7 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 
 	for form in ordered_forms:
 		if "type" in form.attrib:
-			if form.attrib["type"] == "lemma":
+			if form.attrib["type"] == "lemma" and len(ordered_forms) > 1:  # If we have only the lemma, that is the basis for oref etc.
 				continue
 		orths = form.findall('{http://www.tei-c.org/ns/1.0}orth')
 		if form.text is not None:
@@ -182,7 +194,8 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 
 		if gramGrp is not None:
 			for child in gramGrp:
-				gram_string += re.sub(r'\s+',' ',child.text).strip() + " "
+				if child.text is not None:
+					gram_string += re.sub(r'\s+',' ',child.text).strip() + " "
 			gram_string = gram_string[:-1]
 
 		orthstring += gram_string + "\n"
@@ -200,6 +213,7 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 		form_id = form.attrib['{http://www.w3.org/XML/1998/namespace}id'] if '{http://www.w3.org/XML/1998/namespace}id' in form.attrib else ""
 		geos_with_ids = []
 		for geo in geos:
+			geo = geo.replace("Ⲃ","B").replace("Ⲥ","S")  # Catch accidental Unicode Coptic sigla
 			geos_with_ids.append(geo + "^^" + form_id)
 		geos = geos_with_ids
 
@@ -213,6 +227,7 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 			else:
 				orth_text = orth.text
 
+			orth_text = orth_text.replace("*","")
 			if len(orefs) > 0:
 				oref_text = orefs[0].text
 
@@ -295,10 +310,11 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 						elif lang == 'fr':
 							fr += quote_text
 						quote_text = "~~~"
+				definition_text = "~~~"
 				for definition in definitions:
 					if definition is not None:
 						if definition.text is not None:
-							definition_text = re.sub(r' +',' ',definition.text.strip().replace("\n",'')) + ";;;"
+							definition_text += re.sub(r' +',' ',definition.text.strip().replace("\n",'')) + ";;;"
 							lang = definition.get('{http://www.w3.org/XML/1998/namespace}lang')
 							if lang == 'de':
 								if de.endswith("|"):
@@ -312,6 +328,7 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 								if fr.endswith("|"):
 									fr += "~~~"
 								fr += definition_text
+							definition_text = "~~~"
 				if not no_bibl:
 					de += bibl_text
 					en += bibl_text
@@ -437,6 +454,25 @@ def process_entry(id, super_id, entry,entry_xml_id, entity_types):
 		elif row_lemma in entity_types and pos_string in ["ART","PDEM","PPOS","N","NUM","PINT"]:
 			ents = ";".join(sorted(list(entity_types[row_lemma])))
 
+	global supplemental_entries
+	global egyptian_etymologies
+
+	if entry_xml_id in supplemental_entries["sahidic"]:
+		for sup in supplemental_entries["sahidic"][entry_xml_id]:
+			if "\n" + sup + "~S" not in search_string:
+				search_string += sup + "~S\n"
+				orthstring += "|||_\n" + sup + "~S^^_" + "\n"
+				oref_string += "|||" + sup
+	if entry_xml_id in supplemental_entries["bohairic"]:
+		if '~B' not in search_string:  # If entry has ~B, assume it's been indexed exhaustively from Crum
+			for sup in supplemental_entries["bohairic"][entry_xml_id]:
+				search_string += sup + "~B\n"
+				orthstring += "|||_\n" + sup + "~B^^_" + "\n"
+				oref_string += "|||" + sup
+
+	if entry_xml_id in egyptian_etymologies:
+		etym_string += "|||" + egyptian_etymologies[entry_xml_id]
+
 	row = (id, super_id, orthstring, pos_string, de, en, fr, etym_string, ascii_orth, search_string, oref_string, greek_id, ents)
 	return row
 
@@ -450,6 +486,8 @@ def process_super_entry(entry_id, super_id, super_entry, entity_types):
 		forms = [f for f in entry.findall('{http://www.tei-c.org/ns/1.0}form') if "type" in f.attrib]
 		lemma = [f for f in forms if f.attrib["type"] == "lemma"]
 		if len(lemma) > 0:
+			if "{http://www.w3.org/XML/1998/namespace}id" not in lemma[0].attrib:  # TLA entries with no lemma ID, see thesaurus-linguae-aegyptiae/coptic-lexicon#39
+				continue
 			lemma_form_id = lemma[0].attrib["{http://www.w3.org/XML/1998/namespace}id"]
 		else:
 			lemma_form_id = ""
@@ -543,25 +581,80 @@ def pos_map(pos, subc, orthstring):
 
 	return "?"
 
+
 def dictionary_xml_to_database(xml_path, pub_corpora=None):
+	def clean(word):
+		# Remove stative/presuffixal/prenominal/imperative markers
+		return word.replace("-", "").replace("=", "").replace("!", "").replace("+", "").replace("_", "")
+
+	# Gather supplemental entries
+	with open(utils_dir + "supplemental_entries.tab", encoding="utf8") as f:
+		lines = f.read().strip().split("\n")[1:]
+		lines.sort(key=lambda x: int(x.split("\t")[1]==x.split("\t")[3]),reverse=True)  # Ensure lemma forms appear first
+		for line in lines:
+			id, bohairic, pos, lemma, hyperlemma, sahidic, tla = line.split("\t")[0:7]
+			if not tla.startswith("C"):
+				continue
+			tlas = tla.split(",")
+			for tla in tlas:
+				if tla.lower() not in ["","_","x","missing","ⲭ"]:
+					if bohairic.lower() not in ["","_","x","ⲭ"]:
+						if bohairic not in supplemental_entries["bohairic"][tla]:
+							supplemental_entries["bohairic"][tla].append(bohairic)
+					if sahidic.lower() not in ["","_","x","ⲭ"]:
+						if sahidic not in supplemental_entries["sahidic"][tla]:
+							supplemental_entries["sahidic"][tla].append(sahidic)
+	with open(utils_dir + "inflections.tab", encoding="utf8") as f:
+		lines = f.read().strip().split("\n")
+		for line in lines:
+			if not line.startswith("#"):
+				fields = line.split("\t")
+				tla, lemma = fields[0:2]
+				if len(fields) == 3:  # Noun plural
+					plural = fields[2]
+					if plural not in supplemental_entries:
+						supplemental_entries["sahidic"][tla].append(plural)
+				else:
+					forms = fields[2:]
+					for form in forms:
+						subforms = form.split(",")
+						for subform in subforms:
+							subform = clean(subform)
+							if subform not in supplemental_entries and subform not in ["_",""] and subform != lemma:
+								supplemental_entries["sahidic"][tla].append(subform)
+
+	# Gather Egyptian etymologies
+	with open(utils_dir + "egyptian_etymologies.tab", encoding="utf8") as f:
+		lines = f.read().strip().split("\n")
+		for line in lines:
+			tla, cop, egy_num, egy_lemma, demo_num, demo_lemma, english, german, tla_link, tla_link_d, MT = line.split("\t")
+			if english.startswith("[") and english.endswith("]"):
+				english = english[1:-1]
+			if german.startswith("[") and german.endswith("]"):
+				german = german[1:-1]
+			fields = "//".join([egy_num, egy_lemma, demo_num, demo_lemma, english, german, MT])
+			egyptian_etymologies[tla] = fields
 
 	# Gather entity data
 	if pub_corpora is None:
-		pub_corpora = "pub_corpora"
+		pub_corpora = "C:\\Uni\\Coptic\\git\\corpora\\pub_corpora"
 	if pub_corpora is not None:
 		entity_types = get_entity_types(pub_corpora)
 
 	con = lite.connect(utils_dir + 'alpha_kyima_rc1.db')
 
+	bohairic_only = set()
 	with con:
 		cur = con.cursor()
 
 		cur.execute("DROP TABLE IF EXISTS entries")
 		cur.execute("CREATE TABLE entries(Id INT, Super_Ref INT, Name TEXT, POS TEXT, De TEXT, En TEXT, Fr TEXT, " +
-					"Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, entities TEXT, xml_id TEXT UNIQUE, lemma_form_id TEXT)")
+					"Etym TEXT, Ascii TEXT, Search TEXT, oRef TEXT, grkId TEXT, entities TEXT, xml_id TEXT UNIQUE, lemma_form_id TEXT, defwords TEXT)")
 
 		super_id = 1
 		entry_id = 1
+
+		seen_tla_ids = set()
 
 		for letter_filename in glob.glob(xml_path + '*.xml'):
 			sys.stderr.write("o Reading " + letter_filename + "\n")
@@ -581,6 +674,8 @@ def dictionary_xml_to_database(xml_path, pub_corpora=None):
 					forms = [f for f in child.findall('{http://www.tei-c.org/ns/1.0}form') if "type" in f.attrib]
 					lemma = [f for f in forms if f.attrib["type"]=="lemma"]
 					if len(lemma)>0:
+						if "{http://www.w3.org/XML/1998/namespace}id" not in lemma[0].attrib:  # TLA entries with no lemma ID, see thesaurus-linguae-aegyptiae/coptic-lexicon#39
+							continue
 						lemma_form_id = lemma[0].attrib["{http://www.w3.org/XML/1998/namespace}id"]
 					else:
 						lemma_form_id = ""
@@ -589,28 +684,59 @@ def dictionary_xml_to_database(xml_path, pub_corpora=None):
 					if row is None:
 						continue
 					row = tuple(list(row) + [entry_xml_id, lemma_form_id])
-					cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
+					if "~S" not in row[2] and "~B" in row[2]:
+						bohairic_only.add(row[10].split("|||")[0])
+					deu, eng, fra = row[4:7]
+					defwords = get_words(" ".join([deu, eng, fra]))
+					row = row + (defwords,)
+					for tla_id in [row[-2], row[-3]]:
+						if tla_id in seen_tla_ids:
+							sys.stderr.write("! ERR: Duplicate TLA ID: " + tla_id + "\n")
+						seen_tla_ids.add(tla_id)
+					cur.execute("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row)
 					super_id += 1
 					entry_id += 1
 				elif child.tag == "{http://www.tei-c.org/ns/1.0}superEntry":
 					rows = process_super_entry(entry_id, super_id, child, entity_types)
-					cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+					final_rows = []
+					for row in rows:
+						if "~S" not in row[2] and "~B" in row[2]:
+							bohairic_only.add(row[10].split("|||")[0])
+						deu, eng, fra = row[4:7]
+						defwords = get_words(" ".join([deu, eng, fra]))
+						row = row + (defwords,)
+						final_rows.append(row)
+
+					tla_ids = [row[-2] for row in final_rows] + [row[-3] for row in final_rows]
+					for tla_id in tla_ids:
+						if tla_id in seen_tla_ids:
+							sys.stderr.write("! ERR: Duplicate TLA ID: " + tla_id + "\n")
+						seen_tla_ids.add(tla_id)
+					cur.executemany("INSERT INTO entries VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", final_rows)
 					super_id += 1
 					entry_id += len(rows)
 
 		# Handle network graphs
 		cur.execute("DROP TABLE IF EXISTS networks")
-		cur.execute("CREATE TABLE networks(pos TEXT, word TEXT, phrase TEXT, freq INTEGER)")
+		cur.execute("CREATE TABLE networks(pos TEXT, word TEXT, phrase TEXT, freq INTEGER, dialect TEXT)")
 
-		data = io.open(utils_dir + "phrase_freqs.tab", encoding="utf8").read().strip().split("\n")
+		data = io.open(utils_dir + "phrase_freqs_sahidic.tab", encoding="utf8").read().strip().split("\n")
 		data = [row.split("\t") for row in data]
-		data = [row[:-1] + [int(row[-1])] for row in data]
-		cur.executemany("INSERT INTO networks VALUES(?, ?, ?, ?)", data)
+		data = [row[:-1] + [int(row[-1]),"sahidic"] for row in data]
+		cur.executemany("INSERT INTO networks VALUES(?, ?, ?, ?, ?)", data)
+
+		# Add networks for Bohairic-only entries
+		data = io.open(utils_dir + "phrase_freqs_bohairic.tab", encoding="utf8").read().strip().split("\n")
+		data = [row.split("\t") for row in data]
+		data = [row for row in data if row[1] in bohairic_only]
+		data = [row[:-1] + [int(row[-1]), "bohairic"] for row in data]
+		cur.executemany("INSERT INTO networks VALUES(?, ?, ?, ?, ?)", data)
+
 
 if __name__ == "__main__":
 	parser = ArgumentParser()
 	parser.add_argument("xml_directory", help="directory with dictionary XML files")
-	parser.add_argument("--pub_corpora", default=None, help="directory with dictionary Coptic Scriptorium Corpora repo")
+	parser.add_argument("--pub_corpora", default=None, help="directory with Coptic Scriptorium Corpora repo")
 	options = parser.parse_args()
 
 	xml_path = options.xml_directory
