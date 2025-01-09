@@ -1,13 +1,14 @@
 from collections import defaultdict
 from glob import glob
 from depedit import DepEdit
-import io
+import io, os, sys
 
 white_list = ["N","V","VSTAT","VIMP","PREP"]
 
 deped_conf = """text=/.*/;text=/.*/;func=/cop|case|mark/\t#1>#2>#3\t#1>#3;#3>#2
 func=/root/;func=/cop|case|mark|det/\t#1>#2\t#2:head=0
 func=/case/;text=/.*/;func=/det/\t#1>#2>#3\t#1>#3;#3>#2"""
+
 
 class Token:
 
@@ -19,13 +20,14 @@ class Token:
         self.span = []
         self.parent = ""
 
+
 def conll2phrases(conllu):
-    def get_descendents(tid,children,descendents,rank=1):
+    def get_descendents(tid, children, descendents, rank=1):
         if rank > 10:
             return descendents
         for child in children[tid]:
-            descendents.add((int(child),rank))
-            descendents.update(get_descendents(child,children,descendents,rank=rank+1))
+            descendents.add((int(child), rank))
+            descendents.update(get_descendents(child, children, descendents, rank=rank+1))
         return descendents
 
     sents = conllu.strip().split("\n\n")
@@ -80,32 +82,40 @@ def conll2phrases(conllu):
 
     return phrases
 
+
 def write_phrase_table():
 
-    pub_corpora = "pub_corpora" + os.sep
-    files = glob(pub_corpora + "**" +os.sep + "*.conllu",recursive=True)
+    pub_corpora = "corpora" + os.sep  # Clone of CopticScriptorium/corpora
+    file_list = glob(pub_corpora + "**" +os.sep + "*.conllu",recursive=True)
+
+    files = {}
+    files["bohairic"] = [f for f in file_list if "bohairic" in f and "treebank" not in f]
+    files["sahidic"] = [f for f in file_list if "bohairic" not in f and "treebank" not in f]
 
     d = DepEdit(config_file=deped_conf.strip().split("\n"))
 
-    all_phrases = defaultdict(lambda : defaultdict( lambda : defaultdict(int)))
-    for file_ in files:
-        conllu = io.open(file_,encoding="utf8").read()
-        conllu = d.run_depedit(conllu)
-        updates = conll2phrases(conllu)
-        for pos in updates:
-            for word in updates[pos]:
-                for phrase in updates[pos][word]:
-                    all_phrases[pos][word][phrase] += updates[pos][word][phrase]
+    for dialect in files:
+        sys.stderr.write("o Phrases for dialect: "+dialect+"\n")
+        all_phrases = defaultdict(lambda : defaultdict( lambda : defaultdict(int)))
+        for file_ in files[dialect]:
+            conllu = io.open(file_,encoding="utf8").read()
+            conllu = d.run_depedit(conllu)
+            updates = conll2phrases(conllu)
+            for pos in updates:
+                for word in updates[pos]:
+                    for phrase in updates[pos][word]:
+                        all_phrases[pos][word][phrase] += updates[pos][word][phrase]
 
-    output = []
-    for pos in all_phrases:
-        for word in all_phrases[pos]:
-            for phrase in all_phrases[pos][word]:
-                freq = all_phrases[pos][word][phrase]
-                output.append("\t".join([pos, word, phrase, str(freq)]))
+        output = []
+        for pos in all_phrases:
+            for word in all_phrases[pos]:
+                for phrase in all_phrases[pos][word]:
+                    freq = all_phrases[pos][word][phrase]
+                    output.append("\t".join([pos, word, phrase, str(freq)]))
 
-    with io.open("phrase_freqs.tab",'w',encoding="utf8",newline="\n") as f:
-        f.write("\n".join(output)+ "\n")
+        with io.open("phrase_freqs_"+dialect+".tab",'w',encoding="utf8",newline="\n") as f:
+            f.write("\n".join(output)+ "\n")
+
 
 if __name__ == "__main__":
     write_phrase_table()
