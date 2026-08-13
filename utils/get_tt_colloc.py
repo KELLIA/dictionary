@@ -29,13 +29,18 @@ def extract_collocs(lines,unit="norm",window=5):
     return collocs
 
 
-def compile_colloc_table():
+def compile_colloc_table(dialect="sahidic"):
     pub = pub_corpora
 
     all_collocs = defaultdict(int)
 
     all_files = glob(pub + "**"+os.sep +"*.tt",recursive=True)
-    all_files += glob(pub + "**"+os.sep +"*.zip",recursive=True)
+    #all_files += glob(pub + "**"+os.sep +"*.zip",recursive=True)
+
+    if dialect == "sahidic":
+        all_files = [f for f in all_files if "bohairic" not in f]
+    else:
+        all_files = [f for f in all_files if "bohairic" in f]
 
     for file_ in all_files:
         if file_.endswith(".zip"):

@@ -75,6 +75,7 @@ def search_main():
 	"""
 
 	wrapped = wrap(search_page, caller="search")
+	wrapped = wrapped.replace("</h2>", ' <a href="help.py" style="font-size: small;vertical-align: super;color: inherit;accent-color: ;"><i class="fa fa-question-circle"></i>&nbsp;</a></h2>')
 	kbd_include = """
 		<script type="text/javascript" src="js/keyboard.js" charset="UTF-8"></script>
 		<link rel="stylesheet" type="text/css" href="css/keyboard.css?version=2">

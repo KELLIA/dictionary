@@ -3,7 +3,7 @@ import os, sys
 from argparse import ArgumentParser
 
 p = ArgumentParser()
-p.add_argument("--tasks",choices=["read","phrases","lemmas","colloc","examples"],nargs="+",default=["read","phrases","lemmas","colloc","examples"])
+p.add_argument("--tasks",choices=["read","phrases","lemmas","colloc","entities","examples"],nargs="+",default=["read","phrases","lemmas","colloc","entities","examples"])
 
 opts = p.parse_args()
 
@@ -18,7 +18,7 @@ if "phrases" in opts.tasks:
 
 # Step 2 - read lexicon data from XML files (also imports phrase table)
 if "read" in opts.tasks or "phrases" in opts.tasks:
-    sys.stderr.write("o Getting lexicon XML entries and reading phrases\n")
+    sys.stderr.write("o Getting lexicon XML entries and reading phrases (using existing supplemental_entries.tab)\n")
     from dictionary_reader import dictionary_xml_to_database
     dictionary_xml_to_database(xml_dir)
 
@@ -26,9 +26,15 @@ if "read" in opts.tasks or "phrases" in opts.tasks:
 if "lemmas" in opts.tasks or "colloc" in opts.tasks:
     sys.stderr.write("o Getting inflected lemma lookup and collocation info\n")
     from make_lemma_table import main as make_lemmas
-    make_lemmas()
+    make_lemmas(do_lemma="lemmas" in opts.tasks, do_colloc="colloc" in opts.tasks)
 
-# Step 4 - get example usages
+# Step 4 - update entity types for nominal lemmas
+if "entities" in opts.tasks:
+    sys.stderr.write("o Getting entity types for nominal entries\n")
+    from get_entities import main as extract_entities
+    extract_entities()
+
+# Step 5 - get example usages
 if "examples" in opts.tasks:
     sys.stderr.write("o Getting example usages\n")
     from get_examples import main as write_examples
