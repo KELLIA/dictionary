@@ -5,19 +5,25 @@ from reorder_sgml import reorder
 import sqlite3 as lite
 from glob import glob
 from random import shuffle, seed
+from argparse import ArgumentParser
 
 pub_corpora = ""  # Path to clone of CopticScriptorium/Corpora
 nlp_data_dir = ""   # Path to data dir of CopticScriptorium/Coptic-NLP ""
 utils_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
 
 # Manually selected examples
-manual_override_lines = io.open(utils_dir + "citations_manual.tab",encoding="utf8").read().split("\n")
+manual_override_lines = io.open(utils_dir + "citations_manual_merged.tab",encoding="utf8").read().split("\n")
 manual_override = defaultdict(list)
 string_match_mapping = defaultdict(list)  # Holds norms which are TLA lemmas but not CS lemmas (e.g. possessive na- has its own TLA ID but lemma is pa-)
 forbidden_urns = defaultdict(set)
 for row in manual_override_lines:
     if not row.startswith("TLA") and len(row.strip()) > 0:
         TLA, lemma, urn, chapter, verse, priority, string_match, notes, forbidden = row.split("\t")
+        #if " " in lemma:
+        #    lemma = lemma.split(" ")[0]  # e.g. a requested form ⲗⲁⲥ ⲉⲧϭⲁⲁϫⲉ will align to ⲗⲁⲥ in the example
+        if urn.startswith("urn:cts:copticLit:nt") or urn.startswith("urn:cts:copticLit:ot"):
+            # OT/NT document URNs are per chapter, so chapter restriction should be empty - there is no chapter_n span
+            chapter = ""
         string_match = True if string_match.lower().startswith("y") else False
         try:
             priority = int(priority)
@@ -28,7 +34,7 @@ for row in manual_override_lines:
             for f in forbidden.strip().split(";"):
                 forbidden_urns[TLA].add(f)
         if string_match:
-            string_match_mapping[lemma].append((urn, chapter, verse))
+            string_match_mapping[lemma].append((urn, chapter, verse, TLA, priority))
 
 if not pub_corpora.endswith(os.sep):
     pub_corpora += os.sep
@@ -79,10 +85,7 @@ class Citation:
         words = self.sent.split()
         subwords = self.subwords.split()
         if word_count == 1:
-            try:
-                subwords[self.bg_position-1] = '<span class="ex-sub-match">' +subwords[self.bg_position-1] + '</span>'
-            except:
-                a=3
+            subwords[self.bg_position-1] = '<span class="ex-sub-match">' +subwords[self.bg_position-1] + '</span>'
             words[self.position-1] = '<span class="ex-group-match">' + "".join(subwords) + "</span>"
         else:
             # Check if everything is inside this BG
@@ -91,11 +94,7 @@ class Citation:
                 subwords[self.bg_position - 1] = subwords[self.bg_position - 1] + '</span>'
                 words[self.position - 1] = '<span class="ex-group-match">' + "".join(subwords) + "</span>"
             else:  # MWE match spans multiple BGs
-                #subwords[self.bg_position - word_count] = '<span class="ex-sub-match">' + subwords[self.bg_position - word_count]
-                try:
-                    subwords[self.bg_position - 1] = '<span class="ex-sub-match">' +subwords[self.bg_position - 1] + '</span>'
-                except:
-                    a=3
+                subwords[self.bg_position - 1] = '<span class="ex-sub-match">' +subwords[self.bg_position - 1] + '</span>'
                 words[self.position - 2] = '<span class="ex-sub-match ex-group-match">' + words[self.position - 2]
                 words[self.position - 1] = "".join(subwords) + "</span>"
 
@@ -103,6 +102,29 @@ class Citation:
                '<span class="ex-trans">'+self.translation + "</span>\n" + \
                '<span class="ex-source">' + self.doc + ' (<a href="http://data.copticscriptorium.org/' + \
                self.urn + '">' + self.urn +'</a>)</span>\n'
+
+    def to_tab_delim(self):
+        word_count = self.norm.count(" ") + 1
+        words = self.sent.split()
+        subwords = self.subwords.split()
+        if word_count == 1:
+            subwords[self.bg_position-1] = '**' +subwords[self.bg_position-1] + '**'
+            words[self.position-1] = "".join(subwords)
+        else:
+            # Check if everything is inside this BG
+            if self.bg_position >= word_count:
+                subwords[self.bg_position - word_count] = '**' + subwords[self.bg_position - word_count]
+                subwords[self.bg_position - 1] = subwords[self.bg_position - 1] + '**'
+                words[self.position - 1] = "".join(subwords)
+            else:  # MWE match spans multiple BGs
+                #subwords[self.bg_position - word_count] = '<span class="ex-sub-match">' + subwords[self.bg_position - word_count]
+                subwords[self.bg_position - 1] = '**' +subwords[self.bg_position - 1] + '**'
+                words[self.position - 2] = '**' + words[self.position - 2]
+                words[self.position - 1] = "".join(subwords) + '**'
+
+        return " ".join(words) + "\t" + \
+               self.translation + "\t" + \
+               self.doc + '\t' + self.urn
 
 
 def get_score(citation, prev_citations_list, n_readings, definition_words, target_pos=None):
@@ -172,7 +194,7 @@ def definition_overlap(definition_words, example):
     return False
 
 
-def n_best(lemma, data, db_entries, forbidden_urns, n=3):
+def n_best(lemma, data, db_entries, forbidden_urns, n=3, use_override=True):
 
     if lemma not in data:
         return []
@@ -180,11 +202,9 @@ def n_best(lemma, data, db_entries, forbidden_urns, n=3):
     cits = list(data[lemma])
     n_readings = len(db_entries[lemma])
     shuffle(cits)
-    manual_selection = []
     for tla_id in db_entries[lemma]:
-        if tla_id == 'C5886':
-            a=4
-        if tla_id in manual_override:
+        manual_selection = []
+        if tla_id in manual_override and use_override:
             for req in manual_override[tla_id]:
                 requested_urn_cits = [c for c in cits if req["urn"] == c.urn]
                 for req_cit in requested_urn_cits:
@@ -203,7 +223,7 @@ def n_best(lemma, data, db_entries, forbidden_urns, n=3):
         while i < n:
             best_score = -1000
             for cit in cits:
-                if cit.urn in forbidden_urns[tla_id] or "ALL" in forbidden_urns[tla_id]:
+                if cit.urn in forbidden_urns[tla_id] or "ALL" in forbidden_urns[tla_id] or "ONLY" in forbidden_urns[tla_id]:
                     continue
                 score = get_score(cit, selected, n_readings, definition_words, target_pos=target_pos)
                 if score > best_score:
@@ -216,18 +236,33 @@ def n_best(lemma, data, db_entries, forbidden_urns, n=3):
             selected.append((tla_id,best_candidate))
             i += 1
 
-    output = []
-    first = None
+    to_sort = defaultdict(list)
     for tla_id, ex in selected:
-        if ex.lemma == ex.norm and first is None:
-            first = (tla_id, ex)
-        else:
-            output.append((tla_id,ex))
-    output.sort(key=lambda x: (x[1].pos, x[1].norm))  # Sort by POS (V > VSTAT) then norm
-    if first is not None:
-        output = [first] + output
+        to_sort[tla_id].append(ex)
 
-    return output
+    outputs = []
+    for tla_id in to_sort:
+        output = []
+        first = None
+        for ex in to_sort[tla_id]:
+            if ex.lemma == ex.norm and first is None:
+                first = (tla_id, ex)
+            else:
+                output.append((tla_id,ex))
+        output.sort(key=lambda x: (x[1].lemma!=x[1].norm, x[1].pos, x[1].norm))  # Sort by form==lemma, POS (V > VSTAT) then norm
+        if first is not None:
+            output = [first] + output
+        outputs += output
+
+    # Cut sorted list to n
+    seen_tlas = defaultdict(int)
+    final = []
+    for tla_id, ex in outputs:
+        if seen_tlas[tla_id] < n:
+            final.append((tla_id,ex))
+            seen_tlas[tla_id] += 1
+
+    return final
 
 
 def get(line,attr):
@@ -235,6 +270,7 @@ def get(line,attr):
 
 
 def get_citations(sgml, filename, db_entries, vstat_entries=None):
+    unique = set()
     if vstat_entries is None:
         vstat_entries = set()
     lemma = norm = pos = translation = title = segmentation = corpus = urn = chapter = verse = ""
@@ -301,19 +337,22 @@ def get_citations(sgml, filename, db_entries, vstat_entries=None):
             subwords = []
         if '</norm>' in line:
             if norm in string_match_mapping:
-                for u, chap, ver in string_match_mapping[norm]:
+                for u, chap, ver, TLA, priority in string_match_mapping[norm]:
                     if u == urn and chap == chapter and ver == verse:  # Must match exactly
                         # Make a citation treating this norm as the lemma
                         cit = Citation(norm, norm, pos, " ".join(words), translation, sent_position, bg_position,
                                        title, corpus, urn, chapter, verse, segmentation)
                         sent_citations.append(cit)
+                        unique.add(cit)
             elif pos == "VSTAT" and norm in vstat_entries:
                 cit = Citation(norm, norm, pos, " ".join(words), translation, sent_position, bg_position,
                                title, corpus, urn, chapter, verse, segmentation)
                 sent_citations.append(cit)
+                unique.add(cit)
             if lemma in db_entries:
                 cit = Citation(lemma, norm, pos, " ".join(words), translation, sent_position, bg_position, title, corpus, urn, chapter, verse, segmentation)
                 sent_citations.append(cit)
+                unique.add(cit)
             subwords.append(norm)
             ngram = lemmagram = ""
             if (prev_prev_norm, prev_norm, norm) in trigrams:
@@ -326,12 +365,13 @@ def get_citations(sgml, filename, db_entries, vstat_entries=None):
             if ngram != "" and lemmagram in db_entries:
                 cit = Citation(lemmagram, ngram, prev_pos, " ".join(words), translation, sent_position, bg_position, title, corpus, urn, chapter, verse, segmentation)
                 sent_citations.append(cit)
+                unique.add(cit)
 
-    return output
+    return output, {urn:unique}
 
 
 def format_pos(pos, collapse_more=False):
-    pos = pos.replace("NPROP","N").replace("PPERS","PPER").replace("PPERI","PPER")
+    pos = pos.replace("NPROP","N").replace("PPERS","PPER").replace("PPERI","PPER").replace("PPERO","PPER")
     pos = pos.replace("VIMP","V")
     pos = re.sub(r'^A[^R]+','A',pos)
     pos = re.sub(r'^C[^O]+','C',pos)
@@ -340,27 +380,42 @@ def format_pos(pos, collapse_more=False):
     return pos
 
 
-def update_db(in_dict, db_entries, forbidden_urns):
+def update_db(in_dict, db_entries, forbidden_urns, dialect="sahidic", tab_delim=False):
     con = lite.connect('alpha_kyima_rc1.db')
 
     rows = []
+    use_override = True
     for lemma in in_dict:
-        tla_cits = n_best(lemma, in_dict, db_entries, forbidden_urns)
-        for i, tla_cit in enumerate(tla_cits):
+        tla_cits = n_best(lemma, in_dict, db_entries, forbidden_urns, use_override=use_override)
+        i = 0
+        prev_tla = ""
+        for tla_cit in tla_cits:
             tla_id, cit = tla_cit
-            row = [lemma, tla_id, format_pos(cit.pos), str(cit), i]
+            if tla_id != prev_tla:
+                i = 0  # New TLA ID - reset priority
+            if tab_delim:
+                row = f"{lemma}\t{tla_id}\t{format_pos(cit.pos)}\t{cit.to_tab_delim()}\t{i}\t{dialect}"
+            else:
+                row = [lemma, tla_id, format_pos(cit.pos), str(cit), i, dialect]
             rows.append(row)
+            i += 1
+            prev_tla = tla_id
 
-    with con:
-        cur = con.cursor()
+    if tab_delim:
+        with open(f"examples_{dialect}.tab","w",encoding="utf8",newline="\n") as f:
+            f.write("\n".join(rows))
+    else:
+        with con:
+            cur = con.cursor()
 
-        cur.execute("DROP TABLE IF EXISTS examples;")
-        cur.execute("CREATE TABLE examples(lemma TEXT, tla TEXT, pos TEXT, citation TEXT, priority INT);")
+            if dialect == "sahidic":
+                cur.execute("DROP TABLE IF EXISTS examples;")
+                cur.execute("CREATE TABLE examples(lemma TEXT, tla TEXT, pos TEXT, citation TEXT, priority INT, dialect TEXT);")
 
-        cur.executemany(
-            "INSERT INTO examples (lemma, tla, pos, citation, priority) VALUES " +
-            "(?, ?, ?, ?, ?);", rows)
-        con.commit()
+            cur.executemany(
+                "INSERT INTO examples (lemma, tla, pos, citation, priority, dialect) VALUES " +
+                "(?, ?, ?, ?, ?, ?);", rows)
+            con.commit()
 
 
 def just_words(text,remove_stop_words=False):
@@ -374,7 +429,9 @@ def just_words(text,remove_stop_words=False):
     return set(words)
 
 
-def get_db_entries():
+def get_db_entries(dialect="sahidic"):
+
+    siglum = "S" if dialect == "sahidic" else "B"
 
     con = lite.connect('alpha_kyima_rc1.db')
 
@@ -383,10 +440,12 @@ def get_db_entries():
     with con:
         cur = con.cursor()
 
-        rows = cur.execute("SELECT DISTINCT Search, POS, En, xml_id from entries WHERE Search like '%~S%'")
+        rows = cur.execute("SELECT DISTINCT Search, POS, En, xml_id from entries WHERE Search like '%~"+siglum+"%'")
 
     for row in rows:
         entry, pos, definition, TLA = row
+        if dialect != "sahidic":
+            entry = re.sub(r'^.*?\n([^~]+~B)',r'\1',entry, flags=re.DOTALL)
         forms = entry.strip().split("\n")
         lemma = forms[0].split("~")[0]
         senses = definition.split("|||")
@@ -411,35 +470,93 @@ def get_db_entries():
     return output, vstat_entries
 
 
-def main():
-    db_entries, vstat_entries = get_db_entries()
+def main(quiet=False, dialects=["sahidic","bohairic"], no_bible=False, tab_delim=False):
+    for dialect in dialects:
+        sys.stderr.write("o Processing " + dialect + "...\n")
 
-    files = glob(pub_corpora + "**" + os.sep + "*.tt",recursive=True)#[:100]
-    files = [f for f in files if "coptic-treebank" not in f]  # Exclude coptic-treebank to avoid repetitions
+        unique_cits = {}
+        db_entries, vstat_entries = get_db_entries(dialect=dialect)
 
-    lemma2citations = defaultdict(set)
+        files = glob(pub_corpora + "**" + os.sep + "*.tt",recursive=True)#[:100]
+        files = [f for f in files if "treebank" not in f]  # Exclude coptic-treebank to avoid repetitions
 
-    for i, file_ in enumerate(files):
-        sgml = io.open(file_,encoding="utf8").read()
-        sgml = reorder(sgml,
-                       ["meta", "p_n", "pb_xml_id", "cb_n", "lb_n", "verse_n", "translation", "orig_group", "norm_group", "entity",
-                        "orig", "norm", "lemma", "pos", "lang", "morph", "tok"])
+        if dialect == "sahidic":
+            files = [f for f in files if "bohairic" not in f]
+        else:
+            files = [f for f in files if "bohairic" in f]
 
-        doc_citations = get_citations(sgml, file_, db_entries, vstat_entries)
+        if no_bible:
+            files = [f for f in files if ".ot" not in f and ".nt" not in f and "pistis" not in f]   # No big Bible corpus
+        lemma2citations = defaultdict(set)
 
-        for lemma in doc_citations:
-            if lemma in lemma2citations:
-                lemma2citations[lemma].update(doc_citations[lemma])
-            else:
-                lemma2citations[lemma] = doc_citations[lemma]
+        for i, file_ in enumerate(files):
+            sgml = io.open(file_,encoding="utf8").read()
+            sgml = reorder(sgml,
+                           ["meta", "p_n", "pb_xml_id", "cb_n", "lb_n", "verse_n", "translation", "orig_group", "norm_group", "entity",
+                            "orig", "norm", "lemma", "pos", "lang", "morph", "tok"])
 
-    # Print some examples as a sanity check
-    ex = n_best("ⲙⲣⲱ",lemma2citations, db_entries, forbidden_urns)
-    for tla_id, cit in ex:
-        print(tla_id + "\n" + str(cit))
+            doc_citations, urn2unique_cits = get_citations(sgml, file_, db_entries, vstat_entries)
+            unique_cits.update(urn2unique_cits)
 
-    update_db(lemma2citations, db_entries, forbidden_urns)
+            for lemma in doc_citations:
+                if lemma in lemma2citations:
+                    lemma2citations[lemma].update(doc_citations[lemma])
+                else:
+                    lemma2citations[lemma] = doc_citations[lemma]
+            if len(lemma2citations["ϩⲱⲃ"]) > 4:
+                pass
+                #n_best("ϩⲱⲃ",lemma2citations, db_entries, forbidden_urns)
+
+        for form in string_match_mapping:
+            for tup in string_match_mapping[form]:
+                urn, chapter, verse, TLA, priority = tup
+                if " " in form:
+                    db_entry = db_entries[form]
+                    del db_entries[form]
+                    form = form.split(" ")[0]  # e.g. a requested form ⲗⲁⲥ ⲉⲧϭⲁⲁϫⲉ will align to ⲗⲁⲥ in the example
+                    # Update manual override
+                    if TLA in manual_override:
+                        manual_override[TLA].append({"lemma": form, "urn": urn, "chapter": chapter, "verse": verse, "priority": priority})
+                    # Update db entries
+                    if TLA not in db_entries[form]:
+                        db_entries[form].update(db_entry)
+
+                # Ensure that manual citations include the requested location
+                cits = [c for c in lemma2citations[form] if c.urn == urn and (c.chapter == chapter or chapter == "") and (c.verse == verse or verse == "")]
+                if len(cits) == 0:
+                    # Find a match citation
+                    found = False
+                    if urn in unique_cits:
+                        for cit in unique_cits[urn]:
+                            if (cit.chapter == chapter or chapter == "") and (cit.verse == verse or verse == ""):
+                                if cit.norm == form:
+                                    lemma2citations[form].add(cit)
+                                    found = True
+                    if not found:
+                        if ("boh" in urn and dialect == "bohairic") or ("boh" not in urn and dialect != "bohairic"):
+                            sys.stderr.write("No match for " + form + " at " + urn + " " + chapter + ":" + verse + "\n")
+
+        n_best("ⲛ", lemma2citations, db_entries, forbidden_urns)
+        # Print some examples as a sanity check
+        if not quiet:
+            ex = n_best("ⲉⲓⲱⲧ",lemma2citations, db_entries, forbidden_urns)
+            for tla_id, cit in ex:
+                print(tla_id + "\n" + str(cit))
+
+        update_db(lemma2citations, db_entries, forbidden_urns, dialect=dialect, tab_delim=tab_delim)
 
 
 if __name__ == "__main__":
-    main()
+
+    p = ArgumentParser()
+    p.add_argument("--quiet",action="store_true")
+    p.add_argument("-n","--no_bible",action="store_true")
+    p.add_argument("-t","--tab_delim",action="store_true")
+    p.add_argument("--dialects",nargs="+",default=["sahidic","bohairic"],choices=["sahidic","bohairic"])
+
+    opts = p.parse_args()
+
+    if not isinstance(opts.dialects,list):
+        opts.dialects = [opts.dialects]
+
+    main(quiet=opts.quiet, dialects=opts.dialects, no_bible=opts.no_bible, tab_delim=opts.tab_delim)
