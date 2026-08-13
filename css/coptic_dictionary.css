@@ -438,3 +438,10 @@ a.sense_id {
 .ex-sub-match{font-weight:bold}
 .ex-source{color:darkred; font-family: antinoouRegular, sans-serif;}
 .ex-more{color:black; font-family: antinoouRegular, sans-serif; margin-left: 2em}
+
+.suppl_orth_id{color: #337ab7;}
+
+.ex-dialect{
+  font-family: antinoouRegular, sans-serif;
+  color: darkred;
+}

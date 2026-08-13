@@ -43,6 +43,22 @@ corpora = ["shenoute.eagerness", "shenoute.fox", "shenoute.a22", "shenoute.abrah
 
 stop_list = ["ⲛ","ⲛⲁ","ⲡⲉ","ⲁ","ⲛⲧ","ⲓ","ϣⲁ","ⲉⲛⲧ"]
 
+
+def harvest_segmentations(lines):
+    output = []
+    freqs = defaultdict(lambda : defaultdict(int))
+    for line in lines:
+        compound, parts = line.split("\t")
+        freqs[compound][parts] += 1
+    for line in set(lines):
+        if "\t" in line:
+            compound, parts = line.split("\t")
+            parts = max(freqs[compound],key=lambda x: freqs[compound][x])
+            if "|" in parts:
+                row = [compound, parts]
+                output.append(row)
+    return output
+
 def read_lemmas(filename):
     """
 
@@ -58,10 +74,11 @@ def read_lemmas(filename):
     return lemmas
 
 
-def read_lexicon_lemmas():
+def read_lexicon_lemmas(dialect="sahidic"):
     import sqlite3 as lite
     con = lite.connect('alpha_kyima_rc1.db')
 
+    siglum = "S" if dialect == "sahidic" else "B"
     lemmas = []
     with con:
         cur = con.cursor()
@@ -69,7 +86,7 @@ def read_lexicon_lemmas():
         for row in rows:
             forms = row[0].strip().split("\n")
             for form in forms:
-                if "~" in form and "~S" not in form:  # Only Sahidic or general at the moment
+                if "~" in form and "~" + siglum not in form:  # Only Sahidic or general at the moment
                     continue
                 form = form.split("~")[0]
                 lemmas.append([form,row[1],form])
@@ -182,7 +199,7 @@ def get_freqs_annis(url, corpora, use_cache=False):
     return norm_counts, lemma_counts
 
 
-def get_freqs(use_cache=False):
+def get_freqs(use_cache=False, dialect="sahidic"):
     def get(attr,line):
         return re.search(r' ' + attr + r'="([^"]*)"',line).group(1)
 
@@ -213,22 +230,27 @@ def get_freqs(use_cache=False):
 
     if use_cache:
         sys.stderr.write('o Using cached frequency data in .tab files\n')
-        norm_freqs = io.open("cache_freqs_norm.tab",encoding="utf8").read().strip().split("\n")
+        norm_freqs = io.open("cache_freqs_norm_"+dialect+".tab",encoding="utf8").read().strip().split("\n")
         norm_freqs = [l.split("\t") for l in norm_freqs]
         norm_freqs = {k:int(v) for k, v in norm_freqs}
-        lemma_freqs = io.open("cache_freqs_lemma.tab",encoding="utf8").read().strip().split("\n")
+        lemma_freqs = io.open("cache_freqs_lemma_"+dialect+".tab",encoding="utf8").read().strip().split("\n")
         lemma_freqs = [l.split("\t") for l in lemma_freqs]
         lemma_freqs = {k:int(v) for k, v in lemma_freqs}
     else:
-        sys.stderr.write('o Cache data unavailable - retrieving frequencies from pub corpora TT SGML\n')
+        sys.stderr.write('o Cache data unavailable for dialect '+dialect+' - retrieving frequencies from pub corpora TT SGML\n')
 
-        ngrams = set(io.open(NLP_DATA + "mwe.tab",encoding="utf8").read().strip().split("\n"))
+        data_dir = NLP_DATA if dialect == "sahidic" else NLP_DATA.replace("data","data.b")
+        ngrams = set(io.open(data_dir + "mwe.tab",encoding="utf8").read().strip().split("\n"))
 
         norm_freqs = defaultdict(int)
         lemma_freqs = defaultdict(int)
 
         all_files = glob(PUB_CORPORA + "**"+os.sep +"*.tt",recursive=True)
-        all_files += glob(PUB_CORPORA + "**"+os.sep +"*.zip",recursive=True)
+        #all_files += glob(PUB_CORPORA + "**"+os.sep +"*.zip",recursive=True)
+        if dialect == "sahidic":
+            all_files = [f for f in all_files if "bohairic" not in f]
+        else:
+            all_files = [f for f in all_files if "bohairic" in f]
 
         for file_ in all_files:
             if file_.endswith(".zip"):
@@ -245,13 +267,13 @@ def get_freqs(use_cache=False):
         as_list = []
         for k in keys:
             as_list.append(k + "\t" + str(norm_freqs[k]))
-        with io.open("cache_freqs_norm.tab", 'w', encoding="utf8",newline="\n") as f:
+        with io.open("cache_freqs_norm_"+dialect+".tab", 'w', encoding="utf8",newline="\n") as f:
             f.write("\n".join(as_list))
         keys = sorted(lemma_freqs,key=lambda x:lemma_freqs[x],reverse=True)
         as_list = []
         for k in keys:
             as_list.append(k + "\t" + str(lemma_freqs[k]))
-        with io.open("cache_freqs_lemma.tab", 'w', encoding="utf8",newline="\n") as f:
+        with io.open("cache_freqs_lemma_"+dialect+".tab", 'w', encoding="utf8",newline="\n") as f:
             f.write("\n".join(as_list))
 
     return norm_freqs, lemma_freqs
@@ -307,7 +329,7 @@ def get_assoc(f_a, f_b, f_ab, N):
     return log(f_ab**3/E)
 
 
-def update_db(row_list,table="lemmas"):
+def update_db(row_list,table="lemmas",dialect="sahidic"):
     import sqlite3 as lite
     con = lite.connect('alpha_kyima_rc1.db')
 
@@ -315,175 +337,212 @@ def update_db(row_list,table="lemmas"):
         cur = con.cursor()
 
         if table == "lemmas":
-            cur.execute("DROP TABLE IF EXISTS lemmas")
-            cur.execute(
-                "CREATE TABLE lemmas(word TEXT, pos TEXT, lemma TEXT, word_count TEXT, word_freq REAL, word_rank INT, " +
-                "lemma_count TEXT, lemma_freq REAL, lemma_rank INT)")
+            if dialect == "sahidic":  # First dialect, DROP old table
+                cur.execute("DROP TABLE IF EXISTS lemmas")
+                cur.execute(
+                    "CREATE TABLE lemmas(word TEXT, pos TEXT, lemma TEXT, word_count TEXT, word_freq REAL, word_rank INT, " +
+                    "lemma_count TEXT, lemma_freq REAL, lemma_rank INT, dialect TEXT)")
 
-            cur.executemany("INSERT INTO lemmas (word, pos, lemma, word_count, word_freq, word_rank, lemma_count, lemma_freq, lemma_rank) VALUES " +
-                            "(?, ?, ?, ?, ?, ?, ?, ?, ?);", row_list)
+            cur.executemany("INSERT INTO lemmas (word, pos, lemma, word_count, word_freq, word_rank, lemma_count, lemma_freq, lemma_rank, dialect) VALUES " +
+                            "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", row_list)
+            con.commit()
+        elif table == "morphs":
+            cur.execute("DROP TABLE IF EXISTS morphs")
+            cur.execute("CREATE TABLE morphs(compound TEXT, parts)")
+            cur.executemany("INSERT INTO morphs(compound, parts) VALUES (?, ?);", row_list)
             con.commit()
         elif table == "collocates":
-            cur.execute("DROP TABLE IF EXISTS collocates")
-            cur.execute(
-                "CREATE TABLE collocates(lemma TEXT, collocate TEXT, freq INT, assoc REAL)")
+            if dialect == "sahidic":  # First dialect, DROP old table
+                cur.execute("DROP TABLE IF EXISTS collocates")
+                cur.execute(
+                    "CREATE TABLE collocates(lemma TEXT, collocate TEXT, freq INT, assoc REAL, dialect TEXT)")
 
             cur.executemany(
-                "INSERT INTO collocates (lemma, collocate, freq, assoc) VALUES " +
-                "(?, ?, ?, ?);", row_list)
+                "INSERT INTO collocates (lemma, collocate, freq, assoc, dialect) VALUES " +
+                "(?, ?, ?, ?, ?);", row_list)
             con.commit()
 
 
+def main(use_cache=False, url="https://annis.copticscriptorium.org/", lemma_list=NLP_DATA + "copt_lemma_lex.tab",
+         outmode="db", do_colloc=True, do_lemma=True, do_seg=True):
 
+    if do_seg:
+        # Get morphological segmentations
+        out_morphs = []
+        sys.stderr.write('o Retrieving morphological segmentations\n')
+        lines = open(NLP_DATA + "morph_table.tab").read().strip().split("\n")
+        out_morphs += harvest_segmentations(lines)
+        lines = open(NLP_DATA + "segmentation_table.tab").read().strip().split("\n")
+        out_morphs += harvest_segmentations(lines)
+        lines = open(NLP_DATA[:-1] + ".b" + os.sep + "morph_table.tab").read().strip().split("\n")
+        out_morphs += harvest_segmentations(lines)
+        lines = open(NLP_DATA[:-1] + ".b" + os.sep + "segmentation_table.tab").read().strip().split("\n")
+        out_morphs += harvest_segmentations(lines)
 
-def main(use_cache=False, url="https://annis.copticscriptorium.org/", lemma_list=NLP_DATA + "copt_lemma_lex.tab", outmode="db"):
-    # Get collocation information
-    cooc_pool = 0
-    collocate_freqs = defaultdict(lambda: defaultdict(int))
+        if outmode == "db":
+            update_db(sorted(out_morphs),table="morphs")
 
-    collocs_from_annis = False
+    collocate_freqs = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    if do_colloc:
+        # Get collocation in formation
 
-    # Check if cached file is available and create it if not
-    if not os.path.isfile("tt_collocs.tab") or not use_cache:
-        if collocs_from_annis:
-            sys.stderr.write('o Cache data unavailable - retrieving collocations from ANNIS\n')
-            colloc_data = get_collocations(url,corpora)
-            out_cache = []
-            for key, val in iteritems(colloc_data):
-                if "||" in key:
-                    w1, w2 = key.split("||")
-                    out_cache.append("\t".join([w1,w2,str(val)]))
-            colloc_data = "\n".join(out_cache) + "\n"
-        else:  # Harvest from SGML in pub corpora repo clone
-            sys.stderr.write('o Cache data unavailable - retrieving collocations from pub corpora TT SGML\n')
-            from get_tt_colloc import compile_colloc_table
-            colloc_data = compile_colloc_table()
-        with io.open("tt_collocs.tab",'w',encoding="utf8",newline="\n") as f:
-            f.write(colloc_data)
-    else:
-        sys.stderr.write('o Using cached tt_collocs.tab\n')
+        collocs_from_annis = False
 
-    colloc_lines = io.open("tt_collocs.tab",encoding="utf8").readlines()
-    for i, line in enumerate(colloc_lines):
-        if i > 0:
-            line = line.strip()
-            if line.count("\t") == 2:
-                node, collocate, freq = line.strip().split("\t")
-                freq = int(freq)
-                cooc_pool += freq #* 2
-                if freq > 5:
-                    collocate_freqs[node][collocate] += freq
-                    #collocate_freqs[collocate][node] += freq
-
-
-    # Get lemmas from TT dict
-    # TODO: Also get norm-pos-lemma mappings from ANNIS items not in the TT dict
-    lemma_list = read_lemmas(lemma_list)
-    lemma_list += read_lexicon_lemmas()
-    lemma_list = [list(x) for x in set(tuple(x) for x in lemma_list)]
-
-    #norm_counts, lemma_counts = get_freqs_annis(url,corpora, use_cache=use_cache)
-    norm_counts, lemma_counts = get_freqs(use_cache=use_cache)
-
-    total = float(sum(norm_counts.values()))
-    norm_freqs = {}
-    lemma_freqs = {}
-
-    for norm in norm_counts:
-        freq = (norm_counts[norm]/total) * 10000
-        norm_freqs[norm] = freq
-    for lemma in lemma_counts:
-        freq = (lemma_counts[lemma]/total) * 10000
-        lemma_freqs[lemma] = freq
-
-    norm_freqs_as_list = [[val,key] for key,val in iteritems(norm_freqs)]
-    norm_freqs_as_list = add_rank(norm_freqs_as_list)
-    lemma_freqs_as_list = [[val,key] for key,val in iteritems(lemma_freqs)]
-    lemma_freqs_as_list = add_rank(lemma_freqs_as_list)
-
-    norm_data = {}
-    lemma_data = {}
-
-    for freq, norm, rank in norm_freqs_as_list:
-        norm_data[norm] = (freq,rank)
-    for freq, lemma, rank in lemma_freqs_as_list:
-        lemma_data[lemma] = (freq,rank)
-
-
-    rows = []
-    lemmas = set([])
-    norms = set([])
-    lemma2pos = defaultdict(set)
-    norm2pos = defaultdict(set)
-    for row in lemma_list:
-        norm, pos, lemma = row
-        lemma2pos[lemma].add(pos)
-        norm2pos[norm].add(pos)
-        lemmas.add(lemma)
-        norms.add(norm)
-        if norm in norm_counts:
-            norm_count = norm_counts[norm]
+        # Check if cached file is available and create it if not
+        if not os.path.isfile("tt_collocs_sahidic.tab") or not use_cache:
+            if collocs_from_annis:
+                sys.stderr.write('o Cache data unavailable - retrieving collocations from ANNIS\n')
+                colloc_data = get_collocations(url,corpora)
+                out_cache = []
+                for key, val in iteritems(colloc_data):
+                    if "||" in key:
+                        w1, w2 = key.split("||")
+                        out_cache.append("\t".join([w1,w2,str(val)]))
+                colloc_data = "\n".join(out_cache) + "\n"
+                with io.open("tt_collocs.tab",'w',encoding="utf8",newline="\n") as f:
+                    f.write(colloc_data)
+            else:  # Harvest from SGML in pub corpora repo clone
+                sys.stderr.write('o Cache data unavailable - retrieving collocations from pub corpora TT SGML\n')
+                from get_tt_colloc import compile_colloc_table
+                for dialect in ["sahidic","bohairic"]:
+                    sys.stderr.write('o Dialect: '+dialect+'\n')
+                    colloc_data = compile_colloc_table(dialect=dialect)
+                    with io.open("tt_collocs_"+dialect+".tab",'w',encoding="utf8",newline="\n") as f:
+                        f.write(colloc_data)
         else:
-            norm_count = 0
-        if norm in norm_data:
-            norm_freq, norm_rank = norm_data[norm]
-        else:
-            norm_freq, norm_rank = [0,0]
-        if lemma in lemma_counts:
-            lemma_count = lemma_counts[lemma]
-        else:
-            lemma_count = 0
-        if lemma in lemma_data:
-            lemma_freq, lemma_rank = lemma_data[lemma]
-        else:
-            lemma_freq, lemma_rank = [0,0]
-        if outmode == "text":
-            print(norm + "\t" + pos + "\t" + lemma + "\t" + str(norm_count) + "\t" + str("%.2f" % round(norm_freq,2)) + "\t" + str(norm_rank)+ "\t" + str(lemma_count) + "\t" + str("%.2f" % round(lemma_freq,2)) + "\t" + str(lemma_rank))
-        else:
-            rows.append([norm, pos, lemma, str(norm_count), str("%.2f" % round(norm_freq,2)), str(norm_rank), str(lemma_count), str("%.2f" % round(lemma_freq,2)), str(lemma_rank)])
+            sys.stderr.write('o Using cached tt_collocs_<DIALECT>.tab\n')
 
+        cooc_pool = defaultdict(int)
+        for dialect in ["sahidic","bohairic"]:
+            colloc_lines = io.open("tt_collocs_"+dialect+".tab",encoding="utf8").readlines()
+            for i, line in enumerate(colloc_lines):
+                if i > 0:
+                    line = line.strip()
+                    if line.count("\t") == 2:
+                        node, collocate, freq = line.strip().split("\t")
+                        freq = int(freq)
+                        cooc_pool[dialect] += freq #* 2
+                        if freq > 5:
+                            collocate_freqs[dialect][node][collocate] += freq
+                            #collocate_freqs[collocate][node] += freq
 
-    out_colloc = []
-    for norm in norms:
-        if norm in collocate_freqs and norm in norm_freqs:  # Only retrieve collocations for confirmed lemmas
-            for collocate in collocate_freqs[norm]:
-                if collocate in norms and collocate in norm_freqs:
-                    # Valid pair
-                    assoc = get_assoc(norm_counts[norm],norm_counts[collocate],collocate_freqs[norm][collocate],cooc_pool)
-                    if outmode == "text":
-                        print("\t".join([norm, collocate, str(collocate_freqs[norm][collocate]), str(assoc)]))
-                    else:
-                        out_colloc.append([norm, collocate, collocate_freqs[norm][collocate], assoc])
-
-
-    if outmode == "db":
-        utf_rows = []
-        for row in rows:
-            if row[3] == "0" and row[6]=="0":  # Unattested
-                continue
-            new_row = []
-            for field in row:
-                field = field
-                new_row.append(field)
-            utf_rows.append(new_row)
-        update_db(utf_rows)
-        utf_rows = []
-        for row in out_colloc:
-            if row[1] not in norm2pos:
-                continue
+    for dialect in ["sahidic", "bohairic"]:
+        lemmas = set([])
+        norms = set([])
+        norm_freqs = {}
+        lemma_freqs = {}
+        if do_lemma or do_colloc:
+            # Get lemmas from TT dict
+            # TODO: Also get norm-pos-lemma mappings from ANNIS items not in the TT dict
+            if dialect == "bohairic":
+                lemma_list = NLP_DATA.replace("data","data.b") + "copt_lemma_lex.tab"
             else:
-                if not any([x in norm2pos[row[1]] for x in ["N","NPROP","V","VSTAT","VIMP","ADV"]]):
-                    continue
-            if row[0] == row[1]:
-                continue
-            if row[1].encode("utf8") in stop_list:
-                continue
-            new_row = []
-            for field in row[:-2]:
-                new_row.append(field)
-            new_row += row[-2:]
-            utf_rows.append(new_row)
-        update_db(utf_rows,table="collocates")
+                lemma_list = NLP_DATA + "copt_lemma_lex.tab"
+            lemma_list = read_lemmas(lemma_list)
+            lemma_list += read_lexicon_lemmas(dialect=dialect)
+            lemma_list = [list(x) for x in set(tuple(x) for x in lemma_list)]
+
+            #norm_counts, lemma_counts = get_freqs_annis(url,corpora, use_cache=use_cache)
+            norm_counts, lemma_counts = get_freqs(use_cache=use_cache, dialect=dialect)
+
+            total = float(sum(norm_counts.values()))
+
+            for norm in norm_counts:
+                freq = (norm_counts[norm]/total) * 10000
+                norm_freqs[norm] = freq
+            for lemma in lemma_counts:
+                freq = (lemma_counts[lemma]/total) * 10000
+                lemma_freqs[lemma] = freq
+
+            norm_freqs_as_list = [[val,key] for key,val in iteritems(norm_freqs)]
+            norm_freqs_as_list = add_rank(norm_freqs_as_list)
+            lemma_freqs_as_list = [[val,key] for key,val in iteritems(lemma_freqs)]
+            lemma_freqs_as_list = add_rank(lemma_freqs_as_list)
+
+            norm_data = {}
+            lemma_data = {}
+
+            for freq, norm, rank in norm_freqs_as_list:
+                norm_data[norm] = (freq,rank)
+            for freq, lemma, rank in lemma_freqs_as_list:
+                lemma_data[lemma] = (freq,rank)
+
+
+            rows = []
+            lemma2pos = defaultdict(set)
+            norm2pos = defaultdict(set)
+            for row in lemma_list:
+                norm, pos, lemma = row
+                lemma2pos[lemma].add(pos)
+                norm2pos[norm].add(pos)
+                lemmas.add(lemma)
+                norms.add(norm)
+                if norm in norm_counts:
+                    norm_count = norm_counts[norm]
+                else:
+                    norm_count = 0
+                if norm in norm_data:
+                    norm_freq, norm_rank = norm_data[norm]
+                else:
+                    norm_freq, norm_rank = [0,0]
+                if lemma in lemma_counts:
+                    lemma_count = lemma_counts[lemma]
+                else:
+                    lemma_count = 0
+                if lemma in lemma_data:
+                    lemma_freq, lemma_rank = lemma_data[lemma]
+                else:
+                    lemma_freq, lemma_rank = [0,0]
+                if outmode == "text":
+                    print(norm + "\t" + pos + "\t" + lemma + "\t" + str(norm_count) + "\t" + str("%.2f" % round(norm_freq,2)) + "\t" + str(norm_rank)+ "\t" + str(lemma_count) + "\t" + str("%.2f" % round(lemma_freq,2)) + "\t" + str(lemma_rank))
+                else:
+                    rows.append([norm, pos, lemma, str(norm_count), str("%.2f" % round(norm_freq,2)), str(norm_rank), str(lemma_count), str("%.2f" % round(lemma_freq,2)), str(lemma_rank)])
+
+        if do_colloc:
+            out_colloc = []
+            for norm in norms:
+                if norm in collocate_freqs[dialect] and norm in norm_freqs:  # Only retrieve collocations for confirmed lemmas
+                    for collocate in collocate_freqs[dialect][norm]:
+                        if collocate in norms and collocate in norm_freqs:
+                            # Valid pair
+                            assoc = get_assoc(norm_counts[norm],norm_counts[collocate],collocate_freqs[dialect][norm][collocate],cooc_pool[dialect])
+                            if outmode == "text":
+                                print("\t".join([norm, collocate, str(collocate_freqs[dialect][norm][collocate]), str(assoc)]))
+                            else:
+                                out_colloc.append([norm, collocate, collocate_freqs[dialect][norm][collocate], assoc])
+
+        if outmode == "db":
+            if do_lemma:
+                utf_rows = []
+                for row in rows:
+                    if row[3] == "0" and row[6]=="0":  # Unattested
+                        continue
+                    new_row = []
+                    for field in row:
+                        field = field
+                        new_row.append(field)
+                    new_row.append(dialect)
+                    utf_rows.append(new_row)
+                update_db(utf_rows, dialect=dialect)
+            if do_colloc:
+                utf_rows = []
+                for row in out_colloc:
+                    if row[1] not in norm2pos:
+                        continue
+                    else:
+                        if not any([x in norm2pos[row[1]] for x in ["N","NPROP","V","VSTAT","VIMP","ADV"]]):
+                            continue
+                    if row[0] == row[1]:
+                        continue
+                    if row[1].encode("utf8") in stop_list:
+                        continue
+                    new_row = []
+                    for field in row[:-2]:
+                        new_row.append(field)
+                    new_row += row[-2:]
+                    new_row.append(dialect)
+                    utf_rows.append(new_row)
+                update_db(utf_rows,table="collocates", dialect=dialect)
 
 
 if __name__ == '__main__':

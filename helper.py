@@ -7,34 +7,46 @@ import unicodedata
 from base64 import urlsafe_b64encode
 import sqlite3 as lite
 
+
+def get_con():
+	if platform.system() == 'Windows':
+		con = lite.connect('utils' + os.sep + 'alpha_kyima_rc1.db')
+	else:
+		con = lite.connect('alpha_kyima_rc1.db')
+	con.create_function("REGEXP", 2, lambda expr, item: re.search(expr.lower(), item.lower()) is not None)
+	return con
+
+
 def make_active(html_input,button_id):
 	return re.sub(r'(id="'+button_id+'")',r'class="active" \\1',html_input)
 
-def wrap(html_input):
+
+def wrap(html_input, caller=None):
 	wrapper = open(os.path.dirname(__file__) + os.sep + "templates" + os.sep + "wrapper.html",'r').read()
-	calling_script = __main__.__file__
+	calling_script = __main__.__file__ if caller is None else caller
+	calling_script = calling_script.replace(".cgi","")
 	bug_report = ""
 	bug_string = """<div id="bug_report">
 				Found a bug or a problem? Please report it at: <a href="https://github.com/KELLIA/dictionary/issues">https://github.com/KELLIA/dictionary/issues</a>
 				</div>"""
-	if calling_script.endswith("results.cgi"):
+	if calling_script.endswith("results"):
 		title = "Search results"
 		activate = "none"
 		bug_report += bug_string
-	elif calling_script.endswith("entry.cgi"):
+	elif calling_script.endswith("entry"):
 		title = "Entry detail"
 		activate = "none"
 		bug_report += bug_string
-	elif calling_script.endswith("search.cgi"):
+	elif calling_script.endswith("search"):
 		title = "Search"
 		activate = "home"
-	elif calling_script.endswith("about.cgi"):
+	elif calling_script.endswith("about"):
 		title = "About"
 		activate = "about"
-	elif calling_script.endswith("help.cgi"):
+	elif calling_script.endswith("help"):
 		title = "How to search"
 		activate = "help"
-	elif calling_script.endswith("network.cgi"):
+	elif calling_script.endswith("network"):
 		title = "Term network"
 		activate = "none"
 	else:
@@ -74,13 +86,17 @@ def strip_hyphens(text):
 	return text
 
 
-def get_annis_query(coptic, oref, cs_pos=None):
+def get_annis_query(coptic, oref, cs_pos=None, dialect="S", word_attr="lemma"):
 	coptic = strip_hyphens(coptic).encode("utf8")
 	oref = strip_hyphens(oref).encode("utf8")
 
 	annis_base = "https://annis.copticscriptorium.org/annis/scriptorium#"
-	corpus_list = "_c=YmVzYS5sZXR0ZXJzLHNoZW5vdXRlLmEyMixsaWZlLmpvaG4ua2FseWJpdGVzLGpvaGFubmVzLmNhbm9ucyxwc2V1ZG8uYXRoYW5hc2l1cy5kaXNjb3Vyc2VzLHNoZW5vdXRlLmFicmFoYW0scHNldWRvLmJhc2lsLHNoZW5vdXRlLmRpcnQsc2FoaWRpYy5vdCxkb3JtaXRpb24uam9obixzaGVub3V0ZS5uaWdodCxwaXN0aXMuc29waGlhLGxpZmUucGhpYixwc2V1ZG8uZXBocmVtLGxpZmUub25ub3Bocml1cyxhcG9waHRoZWdtYXRhLnBhdHJ1bSxzaGVub3V0ZS5zZWVrcyxsaWZlLnBhdWwudGFtbWEscHNldWRvLnRpbW90aHkscHNldWRvLmNocnlzb3N0b20sbXlzdGVyaWVzLmpvaG4sc2FoaWRpYy5ydXRoLHBzZXVkby50aGVvcGhpbHVzLHNhaGlkaWNhLm1hcmssZG9jLnBhcHlyaSxwYWNob21pdXMuaW5zdHJ1Y3Rpb25zLHNoZW5vdXRlLmVhZ2VybmVzcyxsaWZlLmFwaG91LGxpZmUuZXVzdGF0aGl1cy50aGVvcGlzdGUsc2hlbm91dGUudW5rbm93bjVfMSxsaWZlLmN5cnVzLHByb2NsdXMuaG9taWxpZXMsam9obi5jb25zdGFudGlub3BsZSxtYWdpY2FsLnBhcHlyaSxwc2V1ZG8uY2VsZXN0aW51cyxzaGVub3V0ZS50aG9zZSxzYWhpZGljYS5udCxzYWhpZGljYS4xY29yaW50aGlhbnMsc2hlbm91dGUucHJpbmNlLHNoZW5vdXRlLmZveCxwc2V1ZG8uZmxhdmlhbnVzLGxpZmUubG9uZ2ludXMubHVjaXVzLGxpZmUucGlzZW50aXVzLG1hcnR5cmRvbS52aWN0b3Isc2hlbm91dGUudGh1bmRlcmVkLHNoZW5vdXRlLnBsYWNlLHNoZW5vdXRlLmNvbnNpZGVyaW5n"
+	if dialect == "B":
+		corpus_list = "_c=Ym9oYWlyaWMuMWNvcmludGhpYW5zLGJvaGFpcmljLm1hcmssYm9oYWlyaWMubGlmZS5pc2FhYyxib2hhaXJpYy5udCxib2hhaXJpYy5vdA"  # Bohairic
+	else:
+		corpus_list = "_c=c2hlbm91dGUuYTIyLGpvaGFubmVzLmNhbm9ucyxzaGVub3V0ZS5hYnJhaGFtLHBzZXVkby5iYXNpbCxzaGVub3V0ZS5kaXJ0LHNhaGlkaWMub3Qsc2hlbm91dGUubmlnaHQscGlzdGlzLnNvcGhpYSxzaGVub3V0ZS50cnVlLHBzZXVkby50aW1vdGh5LHNoZW5vdXRlLnRodW5kZXJlZCxwc2V1ZG8uY2hyeXNvc3RvbSxwc2V1ZG8udGhlb3BoaWx1cyxkb2MucGFweXJpLHBhY2hvbWl1cy5pbnN0cnVjdGlvbnMsc2hlbm91dGUuaG91c2Usc2hlbm91dGUudW5rbm93bjVfMSxzaGVub3V0ZS5saXN0ZW4sbGlmZS5jeXJ1cyxzaGVub3V0ZS5lcnJzLG1hZ2ljYWwucGFweXJpLHBzZXVkby5jZWxlc3RpbnVzLHNoZW5vdXRlLnRob3NlLHNhaGlkaWNhLm50LHNoZW5vdXRlLmNydXNoZWQsbWFydHlyZG9tLnZpY3RvcixiZXNhLmxldHRlcnMsbGlmZS5qb2huLmthbHliaXRlcyxzaGVub3V0ZS51bmNlcnRhaW4ueHIscHNldWRvLmF0aGFuYXNpdXMuZGlzY291cnNlcyxkb3JtaXRpb24uam9obixsaWZlLnBoaWIscHNldWRvLmVwaHJlbSxsaWZlLm9ubm9waHJpdXMsYXBvcGh0aGVnbWF0YS5wYXRydW0sc2hlbm91dGUuc2Vla3MsbGlmZS5wYXVsLnRhbW1hLG15c3Rlcmllcy5qb2huLHNhaGlkaWMucnV0aCxzYWhpZGljYS5tYXJrLHNoZW5vdXRlLnBsYWNlLHNoZW5vdXRlLmVhZ2VybmVzcyxsaWZlLmFwaG91LHNoZW5vdXRlLndpdG5lc3MsbGlmZS5ldXN0YXRoaXVzLnRoZW9waXN0ZSxwcm9jbHVzLmhvbWlsaWVzLGpvaG4uY29uc3RhbnRpbm9wbGUsc2hlbm91dGUuY29uc2lkZXJpbmcsc2FoaWRpY2EuMWNvcmludGhpYW5zLHNoZW5vdXRlLnByaW5jZSxzaGVub3V0ZS5mb3gscHNldWRvLmZsYXZpYW51cyxsaWZlLmxvbmdpbnVzLmx1Y2l1cyxsaWZlLnBpc2VudGl1cyxhY3RzLnBpbGF0ZSxib29rLmJhcnRob2xvbWV3LGhlbGlhcyxsYW1lbnQubWFyeSxtZXJjdXJpdXMsdGhlb2Rvc2l1cy5hbGV4YW5kcmlh"
 	segmentation = "_bt=bm9ybV9ncm91cA"  # Norm segmentation
+	ordering = "o=random"  # Random ordering
 	if " " in coptic:
 		coptic = coptic.replace(" ","")
 		query = "_q=" + urlsafe_b64encode('norm_group=/.*' + coptic + '.*/')
@@ -95,11 +111,14 @@ def get_annis_query(coptic, oref, cs_pos=None):
 		query += " . ".join(norm_list)
 		query = "_q=" + urlsafe_b64encode(query)
 	elif cs_pos in ["VSTAT","VIMP"]: # This is an inflected entry, look for norm and pos
-		query = "_q=" + urlsafe_b64encode('norm="'+ coptic + '" _=_ pos="'+str(cs_pos)+'"')
+		query = "_q=" + urlsafe_b64encode('norm="' + coptic + '" _=_ pos="'+str(cs_pos)+'"')
 	else:
-		query = "_q=" + urlsafe_b64encode('lemma="'+ coptic + '"')
+		if cs_pos in ["N","V"] and word_attr == "norm":  # Could be an inflected verb or noun
+			query = "_q=" + urlsafe_b64encode(word_attr + '="' + coptic + '" _=_ pos="'+str(cs_pos)+'"')
+		else:
+			query = "_q=" + urlsafe_b64encode(word_attr + '="' + coptic + '"')
 
-	return annis_base + "&".join([query,corpus_list,segmentation])
+	return annis_base + "&".join([query,corpus_list,segmentation,ordering])
 
 
 def get_annis_entity_query(coptic, entity_type):
@@ -110,10 +129,11 @@ def get_annis_entity_query(coptic, entity_type):
 	annis_base = "https://annis.copticscriptorium.org/annis/scriptorium#"
 	corpus_list = "_c=Y29wdGljLnRyZWViYW5r"  # Currently just treebank
 	segmentation = "_bt=bm9ybV9ncm91cA"  # norm segmentation
+	ordering = "o=random"  # Random ordering
 	q = 'entity="'+str(entity_type)+'" ->head lemma="' + coptic + '"'
 	query = "_q=" + urlsafe_b64encode(q)
 
-	return annis_base + "&".join([query,corpus_list,segmentation])
+	return annis_base + "&".join([query,corpus_list,segmentation, ordering])
 
 
 def lemma_exists(word):
@@ -132,12 +152,16 @@ def get_lemmas_for_word(word):
 	return generic_query("select Lemma, POS from lemmas where Word = ?;",(word.decode("utf8"),))
 
 
+def get_morphs(word):
+	return generic_query("select parts from morphs where compound = ?;",(word.decode("utf8"),))
+
+
 def generic_query(sql,params):
 
 	if platform.system() == 'Linux':
 		con = lite.connect('alpha_kyima_rc1.db')
 	elif platform.system() == "Windows":
-		con = lite.connect('coptic-dictionary' + os.sep + 'alpha_kyima_rc1.db')
+		con = lite.connect('.' + os.sep + 'alpha_kyima_rc1.db')
 	else:
 		con = lite.connect('alpha_kyima_rc1.db')
 
@@ -151,6 +175,7 @@ def generic_query(sql,params):
 def only_coptic(text):
 	text = re.sub(r'[^ⲁⲃⲅⲇⲉⲍⲏⲑⲓⲕⲗⲙⲛⲥⲟⲝⲡⲣⲥⲧⲫⲭⲩⲱϭϫϩϥϯ]','',text)
 	return text
+
 
 def link_greek(etym):
 
@@ -175,7 +200,8 @@ def link_greek(etym):
 		else:
 			mapped = "".join((list(map(lambda x: updated_map.get(x, x), chars))))
 
-			link = ' <a title="Look up in Perseus" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup='+mapped+'&lang=greek">'+greek + '&nbsp;<img src="img/perseus.png" style="border: 1px solid black;"/></a> '
+			link = ' <a title="Look up in Logeion" href="https://logeion.uchicago.edu/'+greek+'">'+greek + '&nbsp;<img src="img/logeion.png" style="border: 1px solid black;"/></a> '
+			link += '<a title="Look up in Perseus" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup='+mapped+'&lang=greek"><img src="img/perseus.png" style="border: 1px solid black;"/></a> '
 			linked = re.sub(r'(cf\. Gr\.[^<>]*</span>)[^<>]+(<i>)',r'\1'+link+r'\2',etym)
 
 			return linked.encode("utf8")
