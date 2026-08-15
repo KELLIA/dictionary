@@ -15,11 +15,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename={APP_BASENAME || undefined}>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/results.py" element={<App />} /> // This route is kept for backward compatibility with old links
-        <Route path="/entry.py" element={<App />} /> // This route is kept for backward compatibility with old links
         <Route path="/about" element={<About />} />
         <Route path="/help" element={<Help />} />
         <Route path="/entry/:id" element={<Entry />} />
+
+        // Routes kept for backward compatibility with old links
+        <Route path="/results.py" element={<App />} />
+        <Route path="/entry.py" element={<App />} /> 
+        <Route path="/results.cgi" element={<App />} />
+        <Route path="/entry.cgi" element={<App />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

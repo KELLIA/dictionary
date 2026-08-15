@@ -191,7 +191,8 @@ export default function App() {
   const [searchInput, setSearchInput] = useState(query);
 
   useEffect(() => {
-    const legacyPath = location.pathname === '/results.py' || location.pathname === '/entry.py';
+    const legacyPath = location.pathname === '/results.py' || location.pathname === '/entry.py' || 
+      location.pathname === '/results.cgi' || location.pathname === '/entry.cgi';
     const hasLegacyParams =
       searchParams.has('quick_search') ||
       searchParams.has('tla') ||
