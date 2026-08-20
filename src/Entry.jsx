@@ -45,7 +45,6 @@ const BIBL_SOURCES = [
 // ANNIS Search Configuration
 const ANNIS_BASE_URL = "https://annis.copticscriptorium.org/annis/scriptorium#";
 const ANNIS_SUFFIX = "&_bt=bm9ybV9ncm91cA&o=random";
-const ALL_DIALECTS = ['A', 'Ak', 'B', 'F', 'M', 'L', 'P', 'S', 'V', 'W', '?'];
 
 // Add/modify ANNIS corpora for each dialect here
 const ANNIS_CORPORA = {
@@ -196,7 +195,7 @@ const formatBibliography = (biblString, tlaId) => {
       });
     }
 
-    let tooltip = "";
+    let tooltip;
     tooltip = getBiblTooltipHtml(chunk);
     return chunk + tooltip;
   }).join(';');
@@ -639,7 +638,7 @@ export default function Entry() {
                                     {/* 1. ANNIS Link */}
                                     <td className="annis_link">
                                       {getAnnisFormUrl(form.orth, originalPos, form.dialect) && (
-                                        <a href={getAnnisFormUrl(form.orth, originalPos, form.dialect)} target="_blank" rel="noreferrer" title={`Search for form ${form.orth} in Coptic Scriptorium`}>
+                                        <a href={getAnnisFormUrl(form.orth, scriptoriumPos, form.dialect)} target="_blank" rel="noreferrer" title={`Search for form ${form.orth} in Coptic Scriptorium`}>
                                           <img src={withBasePath('img/scriptorium.png')} className="scriptorium_logo" alt="Scriptorium"/>
                                         </a>
                                       )}
