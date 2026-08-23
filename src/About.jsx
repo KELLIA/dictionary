@@ -131,10 +131,10 @@ export default function About() {
                 <h3>Projects</h3>
                 <ul>
                   <li><a href="http://www.copticscriptorium.org/" target="_blank" rel="noreferrer"><em>Coptic Scriptorium</em></a>, Georgetown University, University of the Pacific.</li>
-                  <li><a href="http://coptot.manuscriptroom.com/" target="_blank" rel="noreferrer"><em>CoptOT</em></a><em> - Digital Edition of the Coptic Old Testament</em>, Akademie der Wissenschaften zu Göttingen (<strong>AdWG</strong>), Germany.</li>
+                  <li><a href="http://coptot.manuscriptroom.com/" target="_blank" rel="noreferrer"><strong><em>CoptOT</em></strong></a><em> - Digital Edition of the Coptic Old Testament</em>, Akademie der Wissenschaften zu Göttingen (AdWG), Germany.</li>
                   <li><a href="https://www.geschkult.fu-berlin.de/en/e/ddglc" target="_blank" rel="noreferrer"><em>Database and Dictionary of Greek Loanwords in Coptic</em></a> (<strong>DDGLC</strong>), Freie Universität Berlin, Germany.</li>
-                  <li><a href="http://kellia.uni-goettingen.de/" target="_blank" rel="noreferrer"><em>Koptische/Coptic Electronic Language and Literature International Alliance</em></a> (<strong>KELLIA</strong>), partners: BBAW, Georgetown University, University of Göttingen, University of Münster, University of the Pacific.</li>
-                  <li><a href="https://thesaurus-linguae-aegyptiae.de" target="_blank" rel="noreferrer"><em>Thesaurus Linguae Aegyptiae</em></a> (TLA), <a href="http://aaew.bbaw.de/" target="_blank" rel="noreferrer">Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache</a>, Berlin-Brandenburgische Akademie der Wissenschaften (<strong>BBAW</strong>), Berlin, Germany.</li>
+                  <li><img src={withBasePath('img/ddglc.png')} height="25" alt="DDGLC" /> <a href="http://kellia.uni-goettingen.de/" target="_blank" rel="noreferrer"><em>Koptische/Coptic Electronic Language and Literature International Alliance</em></a> (<strong>KELLIA</strong>), partners: BBAW, Georgetown University, University of Göttingen, University of Münster, University of the Pacific.</li>
+                  <li><img src={withBasePath('img/tla.png')} height="25" alt="Thesaurus Linguae Aegyptiae" /> <a href="https://thesaurus-linguae-aegyptiae.de" target="_blank" rel="noreferrer"><em>Thesaurus Linguae Aegyptiae</em></a> (<strong>TLA</strong>), <a href="http://aaew.bbaw.de/" target="_blank" rel="noreferrer">Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache</a>, Berlin-Brandenburgische Akademie der Wissenschaften (BBAW), Berlin, Germany.</li>
                 </ul>
 
                 <h3>Funding</h3>
