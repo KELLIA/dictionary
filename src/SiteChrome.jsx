@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchNavbar from './SearchNavbar';
 import { withBasePath } from './basePath';
@@ -71,8 +70,8 @@ export function SiteFooter() {
         <div className="row" style={{ textAlign: 'center' }}>
           <div id="inc" style={{ padding: '0 15px' }}>
             <div className="ftext">Lexicon data released under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a> license. Search interface code is released under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> license. </div>
-            <div className="ftext">CSS based on <a href="http://getbootstrap.com" rel="nofollow" target="_blank" rel="noreferrer">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" rel="nofollow" target="_blank" rel="noreferrer">Font Awesome</a>. </div>
-            <div className="ftext">Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow" target="_blank" rel="noreferrer">Google</a>. Theme adapted from <a href="http://thomaspark.co" rel="nofollow" target="_blank" rel="noreferrer">Thomas Park</a> under the <a href="https://github.com/thomaspark/bootswatch/blob/master/LICENSE" target="_blank" rel="noreferrer">MIT License</a>.</div>
+            <div className="ftext">CSS based on <a href="http://getbootstrap.com" rel="nofollow" target="_blank">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" rel="nofollow" target="_blank">Font Awesome</a>. </div>
+            <div className="ftext">Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow" target="_blank">Google</a>. Theme adapted from <a href="http://thomaspark.co" rel="nofollow" target="_blank">Thomas Park</a> under the <a href="https://github.com/thomaspark/bootswatch/blob/master/LICENSE" target="_blank" rel="noreferrer">MIT License</a>.</div>
           </div>
         </div>
 
@@ -86,7 +85,6 @@ export function SiteFooter() {
         }}>
           <a href="https://adw-goe.de/" target="_blank" rel="noreferrer"><img src={withBasePath('img/awg.png')} height="75" alt="ADW Goettingen" /></a>
           <a href="http://www.bbaw.de/" target="_blank" rel="noreferrer"><img src={withBasePath('img/bbaw.gif')} height="75" alt="BBAW" /></a>
-          <!--<a href="https://www.geschkult.fu-berlin.de/en/e/ddglc" target="_blank" rel="noreferrer"><img src={withBasePath('img/ddglc.png')} height="75" alt="DDGLC" /></a>-->
           <a href="http://www.fu-berlin.de/" target="_blank" rel="noreferrer"><img src={withBasePath('img/fu.png')} height="75" alt="FU Berlin" /></a>
           <a href="http://www.georgetown.edu/" target="_blank" rel="noreferrer"><img src={withBasePath('img/gu.gif')} height="75" alt="Georgetown" /></a>
           <a href="http://www.uni-goettingen.de/" target="_blank" rel="noreferrer"><img src={withBasePath('img/ug.png')} width="80" alt="Uni Goettingen" /></a>
