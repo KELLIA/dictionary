@@ -86,7 +86,7 @@ export function SiteFooter() {
         }}>
           <a href="https://adw-goe.de/" target="_blank" rel="noreferrer"><img src={withBasePath('img/awg.png')} height="75" alt="ADW Goettingen" /></a>
           <a href="http://www.bbaw.de/" target="_blank" rel="noreferrer"><img src={withBasePath('img/bbaw.gif')} height="75" alt="BBAW" /></a>
-          <a href="https://www.geschkult.fu-berlin.de/en/e/ddglc" target="_blank" rel="noreferrer"><img src={withBasePath('img/ddglc.png')} height="75" alt="DDGLC" /></a>
+          <!--<a href="https://www.geschkult.fu-berlin.de/en/e/ddglc" target="_blank" rel="noreferrer"><img src={withBasePath('img/ddglc.png')} height="75" alt="DDGLC" /></a>-->
           <a href="http://www.fu-berlin.de/" target="_blank" rel="noreferrer"><img src={withBasePath('img/fu.png')} height="75" alt="FU Berlin" /></a>
           <a href="http://www.georgetown.edu/" target="_blank" rel="noreferrer"><img src={withBasePath('img/gu.gif')} height="75" alt="Georgetown" /></a>
           <a href="http://www.uni-goettingen.de/" target="_blank" rel="noreferrer"><img src={withBasePath('img/ug.png')} width="80" alt="Uni Goettingen" /></a>

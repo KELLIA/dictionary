@@ -92,13 +92,13 @@ export default function About() {
 
                 <h3>Lexicon preparation</h3>
                 <p>
-                  The new <em>Comprehensive Coptic Lexicon</em> is a combination of two parts: the <em><strong>BBAW Lexicon of Coptic Egyptian</strong></em> of the project <em>Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache</em> at the Berlin-Brandenburgische Akademie der Wissenschaften, Berlin, Germany, which includes etymologically Egyptian lexemes of Coptic, and the <em><strong>DDGLC Lexicon of Greek Loanwords in Coptic</strong></em> of the project <em>Database and Dictionary of Greek Loanwords in Coptic</em> at the Ägyptologisches Seminar, Freie Universität Berlin, Germany. Both projects are led by Prof. Tonio Sebastian Richter. The following people mainly contributed to compiling the lexical data:
+                  The underlying <em><strong>Comprehensive Coptic Lexicon (CCL)</strong></em> is a combination of two parts: the <em>BBAW Lexicon of Coptic Egyptian</em> of the <em>Thesaurus Linguae Aegyptiae</em> project <em>Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache</em> at the Berlin-Brandenburgische Akademie der Wissenschaften (BBAW), Berlin, Germany, which includes etymologically Egyptian lexemes of Coptic, and the <em>DDGLC Lexicon of Greek Loanwords in Coptic</em> of the project <em>Database and Dictionary of Greek Loanwords in Coptic</em> at the Ägyptologisches Seminar, Freie Universität Berlin, Germany. Both projects are led by Prof. Tonio Sebastian Richter. The following people mainly contributed to compiling the lexical data:
                 </p>
                 <ul>
-                  <li>Dylan M. Burns (DDGLC)</li>
-                  <li>Frank Feder (BBAW, AdWG)</li>
-                  <li>Katrin John (DDGLC)</li>
-                  <li>Maxim Kupreyev (BBAW)</li>
+                  <li>Dylan M. Burns (DDGLC/FU Berlin)</li>
+                  <li>Frank Feder (TLA/BBAW, CoptOT/AdWG)</li>
+                  <li>Katrin John (DDGLC/FU Berlin)</li>
+                  <li>Maxim Kupreyev (TLA/BBAW)</li>
                 </ul>
                 <p>moreover</p>
                 <ul>
@@ -131,10 +131,10 @@ export default function About() {
                 <h3>Projects</h3>
                 <ul>
                   <li><a href="http://www.copticscriptorium.org/" target="_blank" rel="noreferrer"><em>Coptic Scriptorium</em></a>, Georgetown University, University of the Pacific.</li>
-                  <li><a href="http://coptot.manuscriptroom.com/" target="_blank" rel="noreferrer"><em>CoptOT</em></a><em> - Digital Edition of the Coptic Old Testament</em>, Akademie der Wissenschaften zu Göttingen (<strong>AdWG</strong>), Germany.</li>
+                  <li><a href="http://coptot.manuscriptroom.com/" target="_blank" rel="noreferrer"><strong><em>CoptOT</em></strong></a><em> - Digital Edition of the Coptic Old Testament</em>, Akademie der Wissenschaften zu Göttingen (AdWG), Germany.</li>
                   <li><a href="https://www.geschkult.fu-berlin.de/en/e/ddglc" target="_blank" rel="noreferrer"><em>Database and Dictionary of Greek Loanwords in Coptic</em></a> (<strong>DDGLC</strong>), Freie Universität Berlin, Germany.</li>
-                  <li><a href="http://kellia.uni-goettingen.de/" target="_blank" rel="noreferrer"><em>Koptische/Coptic Electronic Language and Literature International Alliance</em></a> (<strong>KELLIA</strong>), partners: BBAW, Georgetown University, University of Göttingen, University of Münster, University of the Pacific.</li>
-                  <li><a href="https://thesaurus-linguae-aegyptiae.de" target="_blank" rel="noreferrer"><em>Thesaurus Linguae Aegyptiae</em></a> (TLA), <a href="http://aaew.bbaw.de/" target="_blank" rel="noreferrer">Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache</a>, Berlin-Brandenburgische Akademie der Wissenschaften (<strong>BBAW</strong>), Berlin, Germany.</li>
+                  <li><img src={withBasePath('img/ddglc.png')} height="25" alt="DDGLC" /> <a href="http://kellia.uni-goettingen.de/" target="_blank" rel="noreferrer"><em>Koptische/Coptic Electronic Language and Literature International Alliance</em></a> (<strong>KELLIA</strong>), partners: BBAW, Georgetown University, University of Göttingen, University of Münster, University of the Pacific.</li>
+                  <li><img src={withBasePath('img/tla.png')} height="25" alt="Thesaurus Linguae Aegyptiae" /> <a href="https://thesaurus-linguae-aegyptiae.de" target="_blank" rel="noreferrer"><em>Thesaurus Linguae Aegyptiae</em></a> (<strong>TLA</strong>), <a href="http://aaew.bbaw.de/" target="_blank" rel="noreferrer">Strukturen und Transformationen des Wortschatzes der ägyptischen Sprache</a>, Berlin-Brandenburgische Akademie der Wissenschaften (BBAW), Berlin, Germany.</li>
                 </ul>
 
                 <h3>Funding</h3>
