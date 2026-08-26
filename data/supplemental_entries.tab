@@ -1,0 +1,804 @@
+ID	word	pos	lemma	hyperlemma	sahidic_word	tla	CDO	crum_cs_lemmatization_match	crum_cs_pos_match	crum_no_sahidic	sahidic_in_cs	score	freq	page	marcion	lemma_error	pos_error	notes
+2	ϥ	PPERO	ⲛⲑⲟϥ	ⲛⲧⲟϥ	ϥ	C11282		0	0	0	0	0	2041	_	_			
+4	ϥ	PPERS	ⲛⲑⲟϥ	ⲛⲧⲟϥ	ϥ	C11282		0	0	0	0	0	2041	_	_			
+8	ⲛ	ACONJ	ⲛⲧⲉ	ⲛⲧⲉ	ⲛⲧⲉ	C2531		1	1	1	1	1	1215	258b	definite article			
+9	ⲛ	ART	ⲡ	ⲡ	ⲛ	C2352		0	0	0	0	0	1215	_	_			
+10	ⲛ	NEG	ⲛ	ⲛ	ⲛ	C2351		0	0	0	0	0	1215	_	_			
+11	ⲛ	PPERO	ⲁⲛⲟⲛ	ⲁⲛⲟⲛ	ⲛ	C11279		0	0	0	0	0	1215	_	_			This is the TLA ID for the suffix form ⲛ; for the actual form ⲁⲛⲟⲛ there is a separate TLA ID
+13	ⲛ	PPERS	ⲁⲛⲟⲛ	ⲁⲛⲟⲛ	ⲛ	C11279		0	0	0	0	0	1215	_	_			
+15	ⲛ	PREP	ⲛ	ⲛ	ⲛ	C2348		0	0	0	0	0	1215	_	_			
+16	ⲛ	PREP	ⲛⲁ	ⲛⲁ	ⲛ	C2350		0	0	0	0	0	1215	_	_			
+19	ⲟⲩ	ART	ⲟⲩ	ⲟⲩ	ⲟⲩ	C4880		0	0	0	0	0	1200	_	_			
+20	ⲟⲩ	FM	ⲟⲩ	ⲟⲩ	ⲟⲩ	MISSING		0	0	0	0	0	1200	_	_			can't find TLA/DDGLC entry for ⲟⲩ (although there is one for ⲟⲩⲕⲟⲩⲛ)
+21	ⲟⲩ	PINT	ⲟⲩ	ⲟⲩ	ⲟⲩ	C4881		0	0	0	0	0	1200	_	_			
+23	ⲟⲩ	PPERO	ⲛⲑⲱⲟⲩ	ⲛⲧⲟⲟⲩ	ⲟⲩ	C4883		0	0	0	0	0	1200	_	_			note that the TLA ID is for the suffix form ⲟⲩ; for ⲛⲧⲟⲟⲩ there's a separate TLA ID which we should use for the form ⲛⲑⲱⲟⲩ
+25	ⲟⲩ	PPERS	ⲛⲑⲱⲟⲩ	ⲛⲧⲟⲟⲩ	ⲟⲩ	C4883		0	0	0	0	0	1200	_	_			
+27	ⲁ	APST	ⲁ	ⲁ	ⲁ	C2		0	0	0	0	0	1092	_	_			
+28	ⲁ	CFOC	ⲁⲣⲉ	ⲉⲣⲉ	ⲁ	C618		1	1	1	1	1	1092	1a	verbal prefix derived from ⲉⲓⲣⲉ, characterizes (a) perfectum (b) plusquamperfectum (c) aorist tenses			
+29	ⲁ	FUT	ⲛⲁ	ⲛⲁ	ⲁ	C2381		0	0	0	0	0	1092	_	_			fused form following n- (e.g. ⲉ|ⲛ|ⲁ|ⲥⲱⲧⲉⲙ=ⲉ|ⲛ|ⲛⲁ|ⲥⲱⲧⲉⲙ)
+30	ⲁ	PPERS	ⲁⲛⲟⲕ	ⲁⲛⲟⲕ	ⲁ	MISSING		0	0	0	0	0	1092	_	_			closest ID is C11278, but that only lists the 1st person forms ⲓ/ⲧ, no alpha (e.g. ⲉ|ⲧⲣ|ⲁ|ⲥⲱⲧⲙ)
+32	ⲟⲩⲟϩ	CONJ	ⲟⲩⲟϩ	ⲁⲩⲱ	ⲁⲩⲱ	C240		0	0	0	0	0	994	_	_			
+33	ⲟⲩⲟϩ	V	ⲟⲩⲱϩ	ⲟⲩⲱϩ	ⲟⲩⲱϩ	C5304	put, place, add	1	1	1	1	1	994	505b	put, set, be (there) ― intr: S,B,F ― tr: (επιτιθεναι) | intr: be placed, dwell (κατοικειν, κατασκηνουν, μενειν)			
+35	ⲉ	CCIRC	ⲉⲣⲉ	ⲉⲣⲉ	ⲉ	C616		0	0	0	0	0	934	_	_			
+39	ⲉ	NUM	ⲉ	ⲉ	ⲉ	MISSING		0	0	0	0	0	934	_	_			oddly only alpha and iota have TLA IDs as letters, should open an issue
+40	ⲉ	PPERO	ⲛⲑⲟ	ⲛⲧⲟ	ⲉ	C4008		0	0	0	0	0	934	_	_			
+42	ⲉ	PPERS	ⲛⲑⲟ	ⲛⲧⲟ	ⲉ	C4009		0	0	0	0	0	934	_	_			
+43	ⲉ	PREP	ⲉ	ⲉ	ⲉ	C615		0	0	0	0	0	934	_	_			
+45	.	PUNCT	.	.	.	MISSING		0	0	0	0	0	820	_	_			obviously no TLA IDs for punctuation
+46	ⲛⲁ	CPRET	ⲛⲁⲣⲉ	ⲛⲉⲣⲉ	ⲛⲉ	C2385		0	0	0	0	0	732	_	_			
+48	ⲛⲁ	FUT	ⲛⲁ	ⲛⲁ	ⲛⲁ	C2381	those of	1	1	1	1	1	732	259a	possessive article, the ... belonging to, the man of			
+49	ⲛⲁ	PPOS	ⲡⲁ	ⲡⲁ	ⲛⲁ	C2354		0	0	0	0	0	732	_	_			
+50	ⲛⲁ	PPOS	ⲫⲁ	ⲫⲁ	ⲛⲁ	C2354		0	0	0	0	0	732	_	_			
+52	ⲛⲁ	PREP	ⲛⲁ	ⲛⲁ	ⲛⲁ	C2350		0	0	0	0	0	732	_	_			verify lemma not N- (we discussed previously to use NA- lemma for n- na= and N- lemma for N- MMO=) - also see no. 17 above (search C2350)
+53	ⲛⲁ	V	ⲛⲁ	ⲛⲁ	ⲛⲁ	C2371	to go	0	0	0	0	0	732	_	_			
+54	ⲡⲓ	ART	ⲡ	ⲡ	ⲙ	C2783	the	1	0	1	1	0.75	611	258b	definite article			why is Sah_word M?
+57	ⲩ	ART	ⲟⲩ	ⲟⲩ	ⲩ	C4880	a	0	0	0	0	0	607	_	_			
+58	ⲩ	PPERO	ⲛⲑⲱⲟⲩ	ⲛⲧⲟⲟⲩ	ⲩ	C2566	they	0	0	0	0	0	607	_	_			
+59	ⲩ	PPERS	ⲛⲑⲱⲟⲩ	ⲛⲧⲟⲟⲩ	ⲩ	C2566	they	0	0	0	0	0	607	_	_			
+61	ⲉⲧ	APREC	ⲉⲧ	ⲉⲧ	ⲉⲧ	C2561		0	0	0	0	0	586	_	_			verify boh lemma, should be ⲉⲧⲁ, not ⲉⲧ. Also, looking at Boh Mark there are many APREC, but I'm not sure some are segmented correctly. E.g. at Mark 1.43 I see ⲉⲧ|ⲁ|ϥ|ⲥⲣⲉⲙⲣⲱⲙ|ϥ APREC|APST|PPERS|V|PPERO, but should it be ⲉⲧⲁ|ϥ|ⲥⲣⲉⲙⲣⲱⲙ|ϥ APREC|PPERS|V|PPERO?
+63	ⲉⲧ	CFOC	ⲁⲣⲉ	ⲉⲣⲉ	ⲛⲧ	C618		1	1	1	1	1	586	61a	(before liquids & half-vowels), also ⲉⲧⲉ- rel pref			must be ppos err
+64	ⲉⲧ	CREL	ⲉⲧⲉ	ⲉⲧⲉⲣⲉ	ⲉⲧ	C737		0	0	0	0	0	586	_	_			
+66	ϫⲉ	CONJ	ϫⲉ	ϫⲉ	ϫⲉ	C7055	namely, that	1	1	1	1	1	542	772a	or			
+67	ϫⲉ	V	ϫⲱ	ϫⲱ	ϫⲉ	C7089	to say	0	0	1	1	0.5	542	802a	enclitic particle ― then, therefore, but ― again, once more ―― in neg phrase ―― not negative			
+68	ⲥ	PPERO	ⲛⲑⲟⲥ	ⲛⲧⲟⲥ	ⲥ	C3262	she	0	0	0	0	0	523	_	_			
+70	ⲥ	PPERS	ⲛⲑⲟⲥ	ⲛⲧⲟⲥ	ⲥ	C3261	she	0	0	0	0	0	523	_	_			
+72	ⲙ	PREP	ⲛ	ⲛ	ⲙ	C2349	with, by	0	0	0	0	0	497	_	_			
+73	ϧⲉⲛ	PREP	ϧⲉⲛ	ϩⲛ	ϩⲛ	C6668	in, at, on	1	0	1	1	0.75	483	683a	of place in, at, on of time by, with as agent			
+75	ϯ	ART	ⲡⲓ	ⲡ	ⲧ	NONE		0	0	0	0	0	452	_	_			verify that we are not distinguishing between weak/strong art in Boh
+79	ϯ	PPERS	ⲁⲛⲟⲕ	ⲁⲛⲟⲕ	ϯ	C11278		0	0	0	0	0	452	_	_			
+80	ϯ	V	ϯ	ϯ	ϯ	C4050,C4020	smite, hit, fight; give, pay, sell	1	1	1	1	1	452	392a	(intransitive) ― give, pay & related meanings (διδοναι) ― fight (transitive) ― mostly c dat ― pay ― sell S ― smite (τυπτειν) imperative ― with ϯ ― not as imperative B ― ϫⲓⲛⲙ. (qualitative) given, being upon p c, giver			
+81	ⲛⲧⲉ	ACONJ	ⲛⲧⲉ	ⲛⲧⲉ	ⲛⲧⲉ	C2531		1	1	1	1	1	445					
+83	ⲛⲧⲉ	PREP	ⲛⲧⲉ	ⲛⲧⲉ	ⲛⲧⲉ	C2533		0	0	0	0	0	445	230a	particle of genitive, used ― for greater precision than ⲛ- ― where preceding word has indefinite article ― between 2 names (persons or places) ― after foregoing gen or after attribute (adj or rel) ― after strong art ⲛⲧⲁ= &c, indicates possession, ownership (esp in B)			
+84	ⲡ	ART	ⲡ	ⲡ	ⲡ	C2783		0	0	0	0	0	444	_	_			
+86	ⲡ	COP	ⲡⲉ	ⲡⲉ	ⲡ	C2786		0	0	0	0	0	444	_	_			
+87	ⲛⲓ	ART	ⲡ	ⲡ	ⲡ	C2783	the	1	0	1	1	0.75	415	258b	definite article			
+90	ⲫ	ART	ⲡ	ⲡ	ⲡ	C2783	the	1	0	1	1	0.75	358	258b	definite article			
+92	ⲓ	PPERO	ⲁⲛⲟⲕ	ⲁⲛⲟⲕ	ⲓ	C11278		0	0	0	0	0	351	_	_			
+94	ⲓ	PPERS	ⲁⲛⲟⲕ	ⲁⲛⲟⲕ	ⲓ	C11278		0	0	0	0	0	351	_	_			
+95	ⲓ	V	ⲓ	ⲉⲓ	ⲓ	C825,C826	be about to; come, go	1	1	1	1	1	351	70a	(intransitive) come, go (ερχεσθαι, ηκειν) as auxil. or subsidiary, be about to			
+97	ⲉⲃⲟⲗ	ADV	ⲉⲃⲟⲗ	ⲉⲃⲟⲗ	ⲉⲃⲟⲗ	C417	out, forth, outward	0	0	1	1	0.5	341	121b	(transitive) bend, entwine (συγκαμπτειν) stretch out, extend (εκτεινειν)			
+98	ⲙⲙⲟ	PREP	ⲛ	ⲛ	ⲙⲙⲟ	C2348		1	0	1	1	0.75	315	215a	particle ― of genitive ― partitive ―― (εκ) ―― after rel (complementary) ―― esp local with ⲙⲁ B ―― with vbs ⲟⲩⲟⲛ, ⲙⲙⲟⲛ ― adjectival ―― adj after nn ―― nn after adj ― attributive indicating obj of vb ― tr ― intr & qual ―― as, for, εις ― refl			
+99	ⲧⲉⲛ	PPERO	ⲛⲑⲱⲧⲉⲛ	ⲛⲧⲱⲧⲛ	ⲧⲉⲧⲛ	C4610		0	0	0	0	0	302	_	_			
+100	ⲧⲉⲛ	PPERS	ⲛⲑⲱⲧⲉⲛ	ⲛⲧⲱⲧⲛ	ⲧⲉⲧⲛ	C4610		0	0	1	1	0.5	302	445a	(intransitive) arise (ανισταναι, εγειρειν, αιρειν) (transitive) raise, carry (απαιρειν)			
+104	ⲧⲉⲛ	PPOS	ⲡⲉⲛ	ⲡⲉⲛ	ⲧⲉⲛ	MISSING		0	0	0	0	0	302	_	_			
+106	ⲛⲉⲙ	PREP	ⲛⲉⲙ	ⲙⲛ	ⲙⲛ	C1901	with	1	0	1	1	0.75	280	169b	prep, with (μετα, συν, προς, εν, και) conjunct, and			
+107	ⲡⲉ	ART	ⲡ	ⲡ	ⲡⲉ	C2783		0	0	0	0	0	261	_	_			
+108	ⲡⲉ	COP	ⲡⲉ	ⲡⲉ	ⲡⲉ	C2788	sg. masc. copula (nexus pronoun)	1	1	1	1	1	261	260b	enclitic of ⲡⲏ &c, joins subj & predic in nominal clause			
+110	ⲛϫⲉ	PTC	ⲛϫⲉ	ⲛϭⲓ	ⲛϭⲓ	C2723	namely	0	0	1	1	0.5	236	746b	conjunction (from ϫⲱ say) ― apposition, namely ― after vbs call, name ― before direct statement or question ―― οτι ―― καθοτι ―― διοτι ― explicative, because ― final, ινα ―― vb inf ― ellipse ― ει, if, whether ― after Gk particles			
+111	ϩⲁⲛ	ART	ⲟⲩ	ⲟⲩ	ϩⲉⲛ	C4880	indef art	0	0	0	0	0	218	_	_			
+114	ⲁⲛ	NEG	ⲁⲛ	ⲁⲛ	ⲁⲛ	C120		0	0	0	0	0	218	_	_			
+116	ⲁⲛ	PTC	ⲁⲛ	ⲉⲛⲉ	ⲉⲛⲉ	C678,C677	interrogative particle; verbal präfix of unfulfiled condition	1	0	1	1	0.75	218	56b	interrogative particle, precedes subj			
+117	ⲛⲱ	PREP	ⲛⲁ	ⲛⲁ	ⲛⲏ	C2350		0	0	0	0	0	191	_	_			Verify, as above (search C2350), that hyperlemma is not N-
+121	ⲛⲏ	PDEM	ⲫⲏ	ⲡⲏ	ⲛⲏ	C2794		0	0	0	0	0	161	_	_			
+123	ⲛⲏ	PREP	ⲛⲁ	ⲛⲁ	ⲛⲏ	C2794	that (one)	0	0	1	1	0.5	161	260b	demonstrative pronoun (cf ⲡⲁⲓ) (εκεινος, η, ο)			
+125	ϫⲱ	V	ϫⲱ	ϫⲱ	ϫⲱ	C7091,C7097,C7089,C7098	head; singing, song	1	0	1	1	0.75	158	756a	head (κεφαλη) inanimate (κεφαλη, κορυφη)			
+126	ⲣⲏϯ	N	ⲣⲏϯ	ⲣⲏⲧⲉ	ⲣⲏⲧⲉ	C3185	manner, fashion, likeness	1	1	1	1	1	155	304b	manner, fashion, likeness (ειδεα)			
+127	ⲛⲟⲩϯ	N	ⲛⲟⲩϯ	ⲛⲟⲩⲧⲉ	ⲛⲟⲩⲧⲉ	C2535	god	1	1	1	1	1	154	230b	god (θεος) as adj, godly, divine (θειος)			
+131	ⲉⲧⲉ	CREL	ⲉⲧⲉ	ⲉⲧⲉ	ⲉⲧⲉ	C737		0	0	0	0	0	151	_	_			
+133	ⲟⲩⲟⲛ	EXIST	ⲟⲩⲟⲛ	ⲟⲩⲛ	ⲟⲩⲛ	C5038		0	0	0	0	0	146	_	_			
+134	ⲟⲩⲁⲓ	N	ⲟⲩⲁⲓ	ⲟⲩⲁ	ⲟⲩⲁ	C4896,C4894,C4895	one, someone	1	0	1	1	0.75	146	469a	one, someone (εις, τις, ετερος)			
+135	ⲟⲩⲟⲛ	N	ⲟⲩⲟⲛ	ⲟⲩⲟⲛ	ⲟⲩⲟⲛ	C5057	someone, something	1	0	1	1	0.75	146	482a	some one, something, some (τις, πας, αυτος, τοιουτος)			
+136	ⲟⲩⲁⲓ	NUM	ⲟⲩⲁⲓ	ⲟⲩⲁ	ⲟⲩⲁ	C4894,C4895,C4896		0	0	0	0	0	146	_	_			verify - in tagset docs, ⲟⲩⲁ is listed as NUM, but in CDO as N; mixed exx in scriptorium; cf. no135 above
+138	ⲥⲉ	PPERS	ⲛⲑⲱⲟⲩ	ⲛⲧⲟⲟⲩ	ⲥⲉ	C2566	they	0	0	1	1	0.5	144	318a	drink ― intr: (πινειν, ποτιζεσθαι) ― tr: (πινειν, εκπινειν, υδροποτειν) p c, drinker			
+140	ⲥⲉ	PTC	ⲥⲉ	ⲥⲉ	ⲥⲉ	C3285		0	0	0	0	0	144	_	_			
+142	ⲫⲏ	PDEM	ⲫⲏ	ⲡⲏ	ⲡⲏ	C2794		0	0	0	0	0	129	_	_			
+143	ⲕ	PPERO	ⲛⲑⲟⲕ	ⲛⲧⲟⲕ	ⲕ	C1035	you	0	0	0	0	0	128	_	_			
+144	ⲕ	PPERS	ⲛⲑⲟⲕ	ⲛⲧⲟⲕ	ⲕ	C1036	you	0	0	0	0	0	128	_	_			
+145	ⲡⲁⲓ	PDEM	ⲡⲁⲓ	ⲡⲁⲓ	ⲡⲁⲓ	C2800		0	0	0	0	0	126	_	_			
+148	ϣⲱⲡⲓ	N	ϣⲱⲡⲓ	ϣⲱⲡⲉ	ϣⲱⲡⲉ	C6002	cucumber, gourd	1	1	1	1	1	125	580b	cucumber, gourd (σικυς, σικιδιον)			
+149	ϣⲱⲡⲓ	V	ϣⲱⲡⲓ	ϣⲱⲡⲉ	ϣⲱⲡⲉ	C5995	become, befall, be, exist	1	1	1	1	1	125	577b	(intransitive) become, befall (ειναι, γινεσθαι) impersonal, befall (γινεσθαι, συμβαινειν) ― 3d sg f ― 3d sg m (qualitative) be, exist			
+150	ⲧⲏⲣ	IMOD	ⲧⲏⲣ	ⲧⲏⲣ	ⲧⲏⲣ	C4445	all, whole, every	1	0	1	1	0.75	118	424a	adj with suff, all, whole, every (απας)			
+151	ⲉⲣⲟ	PREP	ⲉ	ⲉ	ⲉⲣⲟ	C615	to, for, according to, as regards	1	0	1	1	0.75	116	50a	dative to, for, according to, as regards purpose for, in order to about, because of from, by means of direction towards, to in hostile sense against ethic dative ...			
+152	ⲉⲣⲟ	PREP_PPERO	ⲉ_ⲛⲑⲟ	ⲉ_ⲛⲧⲟ	ⲉⲣⲟ	C615_C2534		0	0	0	0	0	116	_	_			verify - do the combined pos get a tla? for now, I just put the same tla as ERO above
+153	ⲡⲉϫⲁ	VBD	ⲡⲉϫⲉ	ⲡⲉϫⲉ	ⲡⲉϫⲁ	C3017		0	0	0	0	0	110	_	_			
+156	ⲣⲱⲙⲓ	N	ⲣⲱⲙⲓ	ⲣⲱⲙⲉ	ⲣⲱⲙⲉ	C3095,C3094,C3093,C3092	any one, no one (after negation); man, human being; human	1	1	1	1	1	104	294b	man, human being (ανθρωπος, ανηρ) adj, human any one, no one kinsman, friend, serving-man			
+157	ⲧ	ART	ⲡ	ⲡ	ⲧ	C2783	the	1	0	1	1	0.75	103	258b	definite article			
+158	ⲙⲏϣ	N	ⲙⲏϣ	ⲙⲏⲏϣⲉ	ⲙⲏⲏϣⲉ	C2203	multitude (persons or things), crowd, troop	1	1	1	1	1	103	202a	multitude (persons or things), crowd, troop (πολυς, πολλοι, πλητος, λαος, δημος, οχλος) + gen ⲛ- as adj, many, great as adverb, greatly			
+159	ⲧ	PPERO	ⲁⲛⲟⲕ	ⲁⲛⲟⲕ	ⲧ	C11278		0	0	0	0	0	103	_	_			
+160	ⲥⲁϫⲓ	N	ⲥⲁϫⲓ	ⲥⲁϫⲓ	ⲥⲁϫⲓ	C6217	speech	0	0	0	0	0	101	_	_			
+161	ⲥⲁϫⲓ	V	ⲥⲁϫⲓ	ϣⲁϫⲉ	ϣⲁϫⲉ	C6216	speak, say	1	1	1	1	1	101	612b	(intransitive) speak (λαλειν, λεγειν) (transitive) A,B, speak, say (λαλειν, ερευγεσθαι)			
+162	ⲕⲉ	ART	ⲕⲉ	ⲕⲉ	ⲕⲉ	C1042	also, even	0	0	0	0	0	100	_	_			verify - this is listed as N in cdo; I have it as ART, just like the tagset documention says
+166	ⲛⲓⲃⲉⲛ	PINT	ⲛⲓⲃⲉⲛ	ⲛⲓⲙ	ⲛⲓⲙ	C2475	every	1	0	1	1	0.75	98	225b	every ― as pl (oftenest) (πας) ― as sg (πας) ― with sg art or pron (πας) ― no concord shown (πας)			
+167	ⲑⲏⲛⲟⲩ	PPERO	ⲛⲑⲱⲧⲉⲛ	ⲛⲧⲱⲧⲛ	ⲧⲉⲧⲛ	C4610		0	0	0	0	0	89	_	_			
+168	ⲉⲑⲃⲉ	PREP	ⲉⲑⲃⲉ	ⲉⲧⲃⲉ	ⲉⲧⲃⲉ	C739	because of, concerning	1	0	1	1	0.75	87	61a	because of, concerning (δια, ενεκα)			
+169	ϭⲟⲓⲥ	N	ϭⲟⲓⲥ	ϫⲟⲉⲓⲥ	ϫⲟⲉⲓⲥ	C7376	lord, master	0	0	0	0	0	83	_	_			
+170	ⲡⲉϥ	PPOS	ⲡⲉϥ	ⲡⲉϥ	ⲡⲉϥ	MISSING		0	0	0	0	0	82	_	_			
+171	ⲛⲁⲩ	N	ⲛⲁⲩ	ⲛⲁⲩ	ⲛⲁⲩ	C2589	hour, time	1	1	1	1	1	81	234b	hour, time (καιρος, ωρα) daylight | morning, early hour ⲛⲛ., ⲫⲛ. ⲛϣⲱⲣⲡ midday ⲛⲛ. ⲙⲙⲉⲉⲣⲉ evening ⲛⲛ., ⲫⲛ. ⲛⲣⲟⲩϩⲉ, -ϩⲓ, ϩⲁⲛⲁⲣⲟⲩϩⲓ			
+172	ⲛⲁⲩ	V	ⲛⲁⲩ	ⲛⲁⲩ	ⲛⲁⲩ	C2578	look, behold	1	1	1	1	1	81	233b	(intransitive) look, behold ― no obj (οραν, ιδειν, βλεπειν) ―― with ϫⲉ-, see that, how ― c ⲉ-, sometimes + ethic dat ― with ⲉ- dat commodi ―― provide, seek out			
+173	ϣⲁ	AAOR	ϣⲁⲣⲉ	ϣⲁⲣⲉ	ϣⲁ	C6025	AAOR, aorist	1	1	1	1	1	74	629a	particle of apposition before pronoun or art			
+175	ϣⲁ	PREP	ϣⲁ	ϣⲁ	ϣⲁ	C5675	to, toward	0	0	0	0	0	74	_	_			
+176	ϩⲓ	PREP	ϩⲓ	ϩⲓ	ϩⲓ	C6389,C6387	threshing; on, at, in	1	0	1	1	0.75	72	643b	on, at, in in adjectival & participial phrases concerning (περι) with from, out of under, in time of, presence of at time of and ― or			
+177	ϩⲓ	V	ϩⲓⲟⲩⲓ	ϩⲓⲟⲩⲉ	ϩⲓ	C6977	strike, cast, lay	1	1	1	1	1	72	732b	(intransitive) be struck, whetted (οξυνειν) (qualitative) B (transitive) strike, cast, lay (δερειν, καταβαλλειν)			
+179	ϩⲓ	V	ϩⲓⲟⲩⲓ	ϩⲓⲟⲩⲉ	ϩⲓ	x		0	0	0	0	0	72	_	_			error? same as cell 178
+180	ϩⲓ	V	ϩⲓ	ϩⲓ	ϩⲓ	C6386	beat	0	0	0	0	0	72	_	_			
+181	ⲉⲙⲓ	N	ⲉⲙⲓ	ⲉⲓⲙⲉ	ⲉⲓⲙⲉ	C898,C897		0	0	0	0	0	69	_	_			verify - no direct Sah equivalent, do we leave hyperlemma and Sahidic_word as is or?
+182	ⲧⲉⲧⲉⲛ	PPERS	ⲛⲑⲱⲧⲉⲛ	ⲛⲧⲱⲧⲛ	ⲧⲉⲧⲛ	C4610		0	0	0	0	0	69	_	_			
+184	ⲧⲉⲧⲉⲛ	PPOS	ⲡⲉⲧⲉⲛ	ⲡⲉⲧⲛ	ⲡⲉⲧⲛ	MISSING		0	0	0	0	0	69	_	_			
+186	ⲉⲙⲓ	V	ⲉⲙⲓ	ⲉⲓⲙⲉ	ⲉⲓⲙⲉ	C897	know, understand	1	1	1	1	1	69	77b	(intransitive) know, understand ― without obj (γινωσκειν, ειδεναι, συνειδεναι, συνιεναι, μανθανειν, νοειν) ― + ϫⲉ ― with ethic dat ― direct obj, as if constr (rare ? incorrect) ― obj with ⲉ- ― with ⲉⲧⲃⲉ- ― with ⲛ- B (rare)			
+187	ϩⲗⲓ	N	ϩⲗⲓ	ϩⲗⲓ	x	C6534	anyone, anything, something	1	1	0	0	0.5	68	667b	used as pronoun, mostly S,A,sA,F ― positive, anyone, anything, something ― negative, nothing ― with Copt neg (oftenest), no one, nothing ― advb, at all			
+188	ϭⲓ	N	ϭⲓ	ϫⲓ	ϫⲓ	C7069,C7066	breast, nipple; taking, bringing	1	1	1	1	1	67	751b	breast, pap			
+189	ϭⲓ	V	ϭⲓ	ϫⲓ	ϫⲓ	C7058	receive, take	1	1	1	1	1	67	747b	(intransitive) ― receive, take (λαμβανειν, δεχεσθαι, κομιζεσθαι) ― take wife, marry (γαμειν) ― touch, reach, hit (transitive) ― take, get, bring, accept (λαμβανειν) ― have, be provided with ― touch, reach, hit ― learn (by heart) ― buy S			
+190	ϩⲏⲧ	N	ϩⲏⲧ	ϩⲏⲧ	ϩⲏⲧ	C6887	tip, edge	1	1	1	1	1	66	718a	tip, edge (ακρον)			
+191	ϩⲏⲧ	N	ϩⲏ	ϩⲏ	ϩⲏⲧ	C6372,C6373		0	0	0	0	0	66	_	_			
+192	ⲉϣⲱⲡ	CONJ	ⲉϣⲱⲡ	ⲉϣⲱⲡⲉ	ⲉϣⲱⲡⲉ	C6001	when, if	0	0	0	0	0	65	_	_			
+193	ⲙⲙⲱ	PREP	ⲛ	ⲛ	ⲙⲙⲱ	C2349	with, by, in, to, from	0	0	0	0	0	65	_	_			
+194	ⲓⲉ	CONJ	ⲓⲉ	ⲉⲓⲉ	ⲉⲓⲉ	C870	or, whether	1	0	1	1	0.75	64	74a	introducing apodosis, then (αρα, και, αλλα) unless, without interjection strengthening next word, well then, surely conjunction, or, whether ... or			
+195	ⲛⲁⲓ	PDEM	ⲡⲁⲓ	ⲡⲁⲓ	ⲛⲁⲓ	C2800		0	0	0	0	0	64	_	_			
+196	ⲛⲁⲓ	PDEM	ⲫⲁⲓ	ⲡⲁⲓ	ⲛⲁⲓ	C2800		0	0	0	0	0	64	_	_			verify - see cell 147
+197	ⲛⲉϥ	PPOS	ⲡⲉϥ	ⲡⲉϥ	ⲛⲉϥ	MISSING		0	0	1	1	0.5	64	238b	sailor (ναυτης) head sailor sailor at prow, pilot ferryman			
+198	ⲛⲁⲓ	V	ⲛⲁⲓ	ⲛⲁ	ⲛⲁ	C2356	to pity	0	0	1	1	0.5	64	259a	demonstrative pronoun ― absolute, this cf ⲛⲏ ― construct ⲡⲉⲓ-,ⲧⲉⲓ-,ⲛⲉⲓ- SAF, ⲛⲉ- &c S, ⲛⲉⲉⲓ- &c sA, ⲡⲁⲓ-,ⲧⲁⲓ-,ⲛⲁⲓ- BO, ⲡⲓ-,ϯ-,ⲛⲓ- SABFO			
+199	ⲙⲁ	N	ⲙⲁ	ⲙⲁ	ⲙⲁ	C1771	place	1	0	1	1	0.75	63	155b	imperative of ϯ, give, & of causatives formed with ⲧ- (ϯ)			
+201	ⲙⲁ	VIMP	ϯ	ϯ	ⲙⲁ	C1781,C4050,C4020		0	0	0	0	0	63	_	_			
+203	ⲉϧⲟⲩⲛ	ADV	ⲉϧⲟⲩⲛ	ⲉϩⲟⲩⲛ	ⲉϩⲟⲩⲛ	C6679	inward	0	0	0	0	0	62	_	_			
+204	ⲙⲙⲟⲛ	EXIST	ⲙⲙⲟⲛ	ⲙⲙⲛ	ⲙⲙⲛ	C1890	not to be	0	0	0	0	0	62	_	_			
+206	ⲙⲙⲟⲛ	PTC	ⲙⲙⲟⲛ	ⲙⲙⲟⲛ	ⲙⲙⲟⲛ	C1897	really, for	1	0	1	1	0.75	62	169a	verily, for (η μην, και, γαρ)			
+207	ⲉⲣⲉ	CCIRC	ⲉⲣⲉ	ⲉⲣⲉ	ⲉⲣⲉ	C619		1	1	1	1	1	61	52a	2 present, 2 futurum, 3 futurum			
+208	ⲁⲛⲟⲕ	PPERI	ⲁⲛⲟⲕ	ⲁⲛⲟⲕ	ⲁⲛⲟⲕ	C135	I	1	1	1	1	1	61	11b	1 sg mf			
+209	ⲙⲙⲁⲩ	ADV	ⲙⲙⲁⲩ	ⲙⲙⲁⲩ	ⲙⲙⲁⲩ	C2156		0	0	0	0	0	60	_	_			
+210	ⲉⲣⲱ	PREP	ⲉ	ⲉ	ⲉⲣⲱ	C615	to, for, according to, as regards	1	0	1	1	0.75	60	50a	dative to, for, according to, as regards purpose for, in order to about, because of from, by means of direction towards, to in hostile sense against ethic dative ...			
+211	ⲟⲓ	VSTAT	ⲓⲣⲓ	ⲉⲓⲣⲉ	ⲟ	C951	act; become, befall; do	1	1	1	1	1	58	83a	(intransitive) S,A,B,F ― act (ποιειν, πρασσειν) ― become, befall (ειναι, γινεσθαι) ― c dat (transitive) ― make, do ― make, bear fruit ― pass time ― make total, amount to ― make price, value at ― as vb of direction			
+212	ⲟⲓ	VSTAT	ⲁⲓⲁⲓ	ⲁⲓⲁⲓ	ⲟⲓ	C19	to increase	0	0	0	0	0	58	_	_			
+213	ⲭⲁ	V	ⲭⲱ	ⲕⲱ	ⲕⲁⲁ	C1058	place, appoint, set down, make	1	1	1	1	1	57	94b	place, appoint, set down, make (τιθεναι, τασσειν, ισταναι) with dative, have, get, keep preserve permit, set free (ανιεναι, αφιεναι) (qualitative) be loose, limp, unrestrained, permitted as imperative, admit, concede, suppose bequeath quit, abandon, fail (αφιεναι, απωθειν) leave, omit qual + prep or advb, be, exist, lie (κεισθαι) in later SF letters go to, reach, lit enter, qual be in auxil (causative) use			
+215	ⲛⲉ	COP	ⲡⲉ	ⲡⲉ	ⲛⲉ	C2788		0	0	0	0	0	56	_	_			
+217	ⲛⲉ	CPRET	ⲛⲁⲣⲉ	ⲛⲉⲣⲉ	ⲛⲉ	C2385		0	0	0	0	0	56	_	_			
+218	ⲥϩⲓⲙⲓ	N	ⲥϩⲓⲙⲓ	ⲥϩⲓⲙⲉ	ⲥϩⲓⲙⲉ	C3986	woman	1	1	1	1	1	56	385a	woman (ⲥⲁ + ϩⲓⲙⲉ) (γυνη, θηλυς) wife female of animals ϩⲓⲙⲉ &c, wife			
+219	ⲉⲣ	V	ⲓⲣⲓ	ⲉⲓⲣⲉ	ⲣ	C951	act; become, befall; do	0	0	0	0	0	56	_	_			
+220	ⲛⲧ	ACONJ	ⲛⲧⲉ	ⲛⲧⲉ	ⲛ	C2531	conjunctive prefix	0	0	0	0	0	55	_	_			
+222	ⲥⲱⲧⲉⲙ	V	ⲥⲱⲧⲉⲙ	ⲥⲱⲧⲙ	ⲥⲱⲧⲙ	C3812	hear	1	1	1	1	1	55	363b	(intransitive) hear (ακουειν) (transitive) (ακουειν)			
+223	ϣⲉ	N	ϣⲉ	ϣⲉ	ϣⲉ	C5707,C5706	small bronze coin; by (in swearing)	1	0	1	1	0.75	53	547a	by in swearing (νη)			
+224	ϣⲧⲉⲙ	NEG	ϣⲧⲉⲙ	ⲧⲙ	ⲧⲙ	C4282	negative	0	0	0	0	0	53	_	_			
+225	ϣⲉ	V	ϣⲉ	ϣⲉ	ϣⲉ	C5698	go	1	1	1	1	1	53	544b	(intransitive) go ― c ethic dat (πορευεσθαι, απερχεσθαι, βαδιζειν) ― without dat tr (refl ?):			
+226	ⲉϫⲉⲛ	PREP	ⲉϫⲉⲛ	ⲉϫⲉⲛ	ⲉϫⲉⲛ	C7504	upon, over	0	0	0	0	0	52	_	_			
+227	ⲙⲡⲉ	ANEGPST	ⲙⲡⲉ	ⲙⲡⲉ	ⲙⲡⲉ	C1972,C1973	; no;	1	1	1	1	1	51	178a	prefix neg 1 perf ― where action uncompleted, until S = εως αν ― with ⲁⲛ S,F ― with ⲡⲉ- neg pluperf S (rare)			
+229	ⲛⲑⲟϥ	PPERI	ⲛⲑⲟϥ	ⲛⲧⲟϥ	ⲛⲧⲟϥ	C2572	he	1	1	1	1	1	50	232b	3 sg m of personal pronoun used without concord for contrast, opposition, rather, but, or merely again (δε, μαλλον, πλην, τουναντιον)			
+230	ⲟⲛ	ADV	ⲟⲛ	ⲟⲛ	ⲟⲛ	C2754	again, also, still	1	1	1	1	1	49	255b	again, also, still (παλιν, ετι) also, further again still, yet even if			
+231	ϣⲏⲣⲓ	N	ϣⲏⲣⲓ	ϣⲏⲣⲓ	ϣⲏⲣⲓ	C6032	son, child	1	1	0	0	0.5	49	585b	var of ⲉⲣⲓ (αρτος)			
+232	ⲉⲑ	CREL	ⲉⲧⲉ	ⲉⲧⲉⲣⲉ	ⲉⲧⲉⲣⲉ	C737	relative	1	1	1	1	1	48	61a	(before liquids & half-vowels), also ⲉⲧⲉ- rel pref			
+235	ⲡⲁ	PPOS	ⲡⲁ	ⲡⲁ	ⲡⲁ	C2784	my	0	0	0	0	0	48	_	_			
+236	ϫⲟ	V	ϫⲱ	ϫⲱ	ϫⲟⲟ	C7089	say, speak, tell	0	0	1	1	0.5	48	753b	crook-back, ⲟ, ⲟⲓ ⲛ- (κυρτος)			
+239	ⲧⲉϥ	PPOS	ⲡⲉϥ	ⲡⲉϥ	ⲧⲉϥ	MISSING		0	0	0	0	0	46	_	_			
+240	ⲧⲁ	PPERS	ⲁⲛⲟⲕ	ⲁⲛⲟⲕ	ⲧⲁ	C4005		0	0	0	0	0	44	_	_			
+241	ⲧⲁ	PPOS	ⲡⲁ	ⲡⲁ	ⲧⲁ	C2784		0	0	0	0	0	44	_	_			
+243	ϧⲁ	PREP	ϧⲁ	ϩⲁ	ϩⲁ	C6328	under, in, at	1	0	1	1	0.75	44	632a	under, in, at (υπο) dative from (εκ, απο) by reason of (υπο, απο) for, in respect of, on behalf of (υπερ) for of price (αντι) against			
+244	ϩⲱ	IMOD	ϩⲱⲱ	ϩⲱⲱ	ϩⲱ	C6420	self, also, for one's part	0	0	1	1	0.5	43	651b	pron of emphasis or contrast ― self, also, for my, his part ―― with personal pron (και, ουτως) ―― without personal pron (και, και δη, και γε, ομοιως, ωσαυτως) ―― + ⲟⲛ (και, και αυτος) ― but, on other hand ―― with concord ――― S ϩⲱ (var ϩⲱⲱⲧ, B om) (αλλα, ταχα) ――― interrogative (και) ――― + ⲟⲛ ―― ϩⲱ(ⲱ)ϥ without concord, expressing contrast, opposition (και)			
+245	ϩⲱ	IMOD_PPERO	ϩⲱ_ⲁⲛⲟⲕ	ϩⲱⲱ_ⲁⲛⲟⲕ	ϩⲱ	C6420_C135		0	0	0	0	0	43	_	_			
+247	ⲛϧⲏⲧ	PREP	ϧⲉⲛ	ϩⲛ	ⲛϩⲏⲧ	C6668	in, at, on	0	0	0	0	0	43	_	_			
+249	ⲛϧⲏⲧ	PREP_PPERO	ϧⲉⲛ_ⲁⲛⲟⲕ	ϩⲛ_ⲁⲛⲟⲕ	ⲛϩⲏⲧ	C6668_C135		0	0	0	0	0	43	_	_			
+250	ⲙⲁⲣⲉ	AJUS	ⲙⲁⲣⲉ	ⲙⲁⲣⲉ	ⲙⲁⲣⲉ	C2004	verbal pref. causative imperative	1	1	1	1	1	42	182b	verbal prefix optative			
+251	ⲟⲩⲱⲙ	V	ⲟⲩⲱⲙ	ⲟⲩⲱⲙ	ⲟⲩⲱⲙ	C5003	eat, bite	1	1	1	1	1	42	478a	(intransitive) eat, bite (εσθιειν, βιβρωσκειν, τρωγειν) (transitive) ― (εσθιειν, βιβρωσκειν, δακνειν, θηλαζειν) ― swallow, submit to S c ϩⲏⲧ S,B, repent (μετανοειν) p c, eater			
+252	ϩⲱⲃ	N	ϩⲱⲃ	ϩⲱⲃ	ϩⲱⲃ	C6426	thing	0	1	0	0	0.25	40	696a	horn (κερας)			
+253	ⲛⲑⲱⲧⲉⲛ	PPERI	ⲛⲑⲱⲧⲉⲛ	ⲛⲧⲱⲧⲛ	ⲛⲧⲱⲧⲛ	C2565	you pl	0	0	0	0	0	40	_	_			
+254	ⲛⲑⲱⲧⲉⲛ	PPERS	ⲛⲑⲱⲧⲉⲛ	ⲛⲧⲱⲧⲛ	ⲛⲧⲱⲧⲛ	C2565	you pl	0	0	0	0	0	40	_	_			
+255	ⲧⲱⲛ	PINT	ⲧⲱⲛ	ⲧⲱⲛ	ⲧⲱⲛ	C4339	where, whence	0	0	0	0	0	39	_	_			
+256	ⲧⲱⲛ	V	ⲧⲱⲟⲩⲛ	ⲧⲱⲟⲩⲛ	ⲧⲱⲛ	C4674	arise	1	1	1	1	1	39	445a	(intransitive) arise (ανισταναι, εγειρειν, αιρειν) (transitive) raise, carry (απαιρειν)			
+257	ⲏⲓ	N	ⲏⲓ	ⲏⲓ	ⲏⲓ	C783	house	1	1	1	1	1	38	66b	pair, couple (ζευγος)			
+258	ⲛⲥⲱ	PREP	ⲛⲥⲁ	ⲛⲥⲁ	ⲛⲥⲱ	C3268	behind, after	0	0	0	0	0	38	_	_			
+259	ⲓⲥϫⲉ	CONJ	ⲓⲥϫⲉ	ⲉϣϫⲉ	ⲉϣϫⲉ	C769	if	1	1	1	1	1	37	63b	if (ει) as if, as it (καθως, ωσει, ως) exclamatory, how, quam! to be sure, indeed, or as interrog introducing apodosis, then			
+260	ⲙⲟϣⲓ	N	ⲙⲟϣⲓ	ⲙⲟⲟϣⲉ	ⲙⲟⲟϣⲉ	C2221	journey, going	0	0	0	0	0	37	_	_			
+261	ⲙⲟϣⲓ	V	ⲙⲟϣⲓ	ⲙⲟⲟϣⲉ	ⲙⲟⲟϣⲉ	C2219	walk, go (on land or water)	1	1	1	1	1	37	203b	(intransitive) ― walk, go on land or water (πορευεσθαι, περιπατειν, βαδιζειν, διοδευειν, πεζευειν) ― be about to, proceed to			
+262	ⲥⲁⲧⲟⲧ	IMOD	ⲥⲁⲧⲟⲧ	ⲛⲥⲁⲧⲟⲟⲧ	ⲛⲥⲁⲧⲟⲟⲧ	C4483	immediately, forthwith	0	0	0	0	0	36	_	_			
+263	ⲙⲟⲩ	N	ⲙⲟⲩ	ⲙⲟⲟⲩ	ⲙⲟⲟⲩ	C2165	water	0	1	1	1	0.75	36	197b	water (υδωρ)			
+264	ϣϫⲟⲙ	N	ϣϫⲟⲙ	ϣϫⲟⲙ	ϣϫⲟⲙ	C7706	be able, can	0	0	0	0	0	36	_	_			verify tla range
+265	ⲙⲟⲩ	N	ⲙⲁ	ⲙⲁ	ⲙⲁ	C1771	place	0	0	0	0	0	36	_	_			
+266	ⲙⲟⲩ	V	ⲙⲟⲩ	ⲙⲟⲩ	ⲙⲟⲩ	C1809	die	1	1	1	1	1	36	159a	(intransitive) die (euphemisms ⲙⲧⲟⲛ, ⲛⲕⲟⲧⲕ often in place of ⲙⲟⲩ) (θνησκειν) (qualitative) dead (νεκρος)			
+268	ⲛⲉⲙⲁ	PREP	ⲛⲉⲙ	ⲙⲛ	ⲙⲛ	C1901	with	0	0	0	0	0	35	_	_			
+269	ⲧⲉ	ART	ⲡ	ⲡ	ⲧⲉ	C4003		0	0	0	0	0	34	_	_			
+270	ⲧⲉ	COP	ⲡⲉ	ⲡⲉ	ⲧⲉ	C2788	sg. masc. copula (nexus pronoun)	1	1	1	1	1	34	260b	enclitic of ⲡⲏ &c, joins subj & predic in nominal clause			
+271	ⲛⲁϩϯ	N	ⲛⲁϩϯ	ⲛⲁϩⲧⲉ	ⲛⲁϩⲧⲉ	C2678	trust, faith	0	0	0	0	0	34	_	_			
+272	ⲧⲉ	PPERS	ⲛⲑⲟ	ⲛⲧⲟ	ⲧⲉ	C4009		0	0	0	0	0	34	_	_			
+273	ⲧⲉ	PPOS	ⲡⲉ	ⲡⲟⲩ	ⲧⲟⲩ	C11281		0	0	0	0	0	34	_	_			
+274	ⲛⲁϩϯ	V	ⲛⲁϩϯ	ⲛⲁϩⲧⲉ	ⲛⲁϩⲧⲉ	C2677,C2676	trustworthy, faithful; trust, believe	1	1	1	1	1	34	246a	(intransitive) ― trust, believe (πιστευειν) ― with ϫⲉ- (qualitative) trustworthy, faithful (πιστος, γνησιος) (transitive) believe (πιστευειν)			
+277	ⲛⲟⲩ	PPOS	ⲡⲟⲩ	ⲡⲟⲩ	ⲛⲟⲩ	C2787		0	0	0	0	0	33	_	_			
+278	ϩⲁ	PREP	ϩⲁ	ϩⲁ	ϩⲁ	C6333	to, toward	1	0	1	1	0.75	33	634b	to, toward ― of persons (προς) ― not of persons (προς, εις)			
+279	ϩⲓⲧⲉⲛ	PREP	ϩⲓⲧⲉⲛ	ϩⲓⲧⲛ	ϩⲓⲧⲛ	C4488	through, by the hand of	0	0	0	0	0	33	_	_			
+281	ⲭⲏ	VSTAT	ⲭⲱ	ⲕⲱ	ⲕⲏ	C1058	place, appoint, set down, make	1	1	1	1	1	33	94b	place, appoint, set down, make (τιθεναι, τασσειν, ισταναι) with dative, have, get, keep preserve permit, set free (ανιεναι, αφιεναι) (qualitative) be loose, limp, unrestrained, permitted as imperative, admit, concede, suppose bequeath quit, abandon, fail (αφιεναι, απωθειν) leave, omit qual + prep or advb, be, exist, lie (κεισθαι) in later SF letters go to, reach, lit enter, qual be in auxil (causative) use			
+283	ⲉϩⲟⲟⲩ	N	ⲉϩⲟⲟⲩ	ϩⲟⲟⲩ	ϩⲟⲟⲩ	C6965	day	0	1	1	1	0.75	32	730a	day (ημερα)			
+284	ⲉϩⲟⲟⲩ	N	ⲉϩⲟⲟⲩ	ⲉϩⲟⲟⲩ	ⲉϩⲟⲟⲩ	x		0	0	0	0	0	32	_	_			
+285	ⲉⲛ	PPERO	ⲁⲛⲟⲛ	ⲁⲛⲟⲛ	ⲛ	C142	we	0	0	0	0	0	32	_	_			
+287	ⲉⲛ	V	ⲓⲛⲓ	ⲉⲓⲛⲉ	ⲉⲛ	C905	bring, bear	1	1	1	1	1	32	78b	(transitive) bring, bear (αγειν, φερειν)			
+288	ⲛⲉⲙⲱ	PREP	ⲛⲉⲙ	ⲙⲛ	ⲙⲛ	C1901	with, and	0	0	0	0	0	31	_	_			
+289	ⲥⲁ	N	ⲥⲁ	ⲥⲁ	ⲥⲁ	C3263	side, part	1	1	1	1	1	30	316a	man + genitive ⲛ-, man of, maker of, dealer in			should be C3263 side, part
+290	ⲕⲱϯ	N	ⲕⲱϯ	ⲕⲱⲧⲉ	ⲕⲱⲧⲉ	C1431,C1437,C1442,C1444	turning	0	0	0	0	0	30	_	_			
+291	ⲁⲛⲟⲛ	PPERI	ⲁⲛⲟⲛ	ⲁⲛⲟⲛ	ⲁⲛⲟⲛ	C142		0	0	0	0	0	30	_	_			
+292	ⲥⲁ	PREP	ⲥⲁ	ⲛⲥⲁ	ⲛⲥⲁ	C3268		0	0	0	0	0	30	_	_			
+293	ⲕⲱϯ	V	ⲕⲱϯ	ⲕⲱⲧⲉ	ⲕⲱⲧⲉ	C1416,C1418,C1419,C1420,C1423,C1424,C1425,C1426,C1427,C1429,C1430,C1431,	turn, go around	1	1	1	1	1	30	124a	(intransitive) ― turn, go round (κυκλουν, στρεφεσθαι) ― go round with waterwheel, water ― form circle ― wander, stray ― go about seeking, seek (qualitative) S (archaic) turned iteration S,B continue to turn, seek (transitive) ― turn, often of face ― surround refl (oftenest) with suff or ⲙⲙⲟ=, turn self, return, repeat (στρεφεσθαι)			
+294	ⲟϩⲓ	N	ⲟϩⲓ	ⲟϩⲉ	ⲟϩⲉ	C2778	yard (of house), fold (for cattle)	1	1	1	1	1	29	258a	yard of house, fold for cattle, sheep (επαυλις, αυλη, μανδρα) pasture flock, herd (ποιμνη)			
+295	ϫⲓϫ	N	ϫⲓϫ	ϭⲓϫ	ϭⲓϫ	C7995	hand	1	1	1	1	1	29	839b	hand (χειρ, δραξ)			
+296	ϩⲁⲣⲟ	PREP	ϩⲁ	ϩⲁ	ϩⲁⲣⲟ	C6333	to, toward	1	0	1	1	0.75	29	634b	to, toward ― of persons (προς) ― not of persons (προς, εις)			
+297	ⲟϩⲓ	V	ⲟϩⲓ	ⲱϩⲉ	ⲱϩⲉ	C5640	stand, stay, wait	1	1	1	1	1	29	536b	(intransitive) stand, stay, wait (μενειν, ισταναι) with ⲣⲁⲧ=			
+298	ⲉⲣⲟⲩⲱ	V	ⲉⲣⲟⲩⲱ	ⲣⲟⲩⲱ	ⲣⲟⲩⲱ	C4913	to answer	0	0	0	0	0	29	_	_			
+299	ⲓⲣⲓ	V	ⲓⲣⲓ	ⲉⲓⲣⲉ	ⲉⲓⲣⲉ	C951,C952,C953,C954,C955	act; become, befall; do	1	1	1	1	1	28	83a	(intransitive) S,A,B,F ― act (ποιειν, πρασσειν) ― become, befall (ειναι, γινεσθαι) ― c dat (transitive) ― make, do ― make, bear fruit ― pass time ― make total, amount to ― make price, value at ― as vb of direction			
+300	ⲙⲟⲩϯ	V	ⲙⲟⲩϯ	ⲙⲟⲩⲧⲉ	ⲙⲟⲩⲧⲉ	C2101,C2102	speak, call; (magical) call, incantation	1	1	1	1	1	28	191b	(intransitive) ― speak, call (of men, animals, things) (φωνειν, καλειν, ηχειν) ― enchant, charm (transitive) call, pronounce, mostly of name			
+303	ⲛⲏⲟⲩ	VSTAT	ⲓ	ⲉⲓ	ⲛⲏⲩ	C825,C826,C828,C829,C830,C831,C832,C833,C834,C835,C836,C837,C838,C839,C840,C841,C842,C843,C844,C845,C846,C847,C848,C849,C850,C851,C852,C853		0	0	0	0	0	28	_	_			
+305	ⲱⲓⲕ	N	ⲱⲓⲕ	ⲟⲉⲓⲕ	ⲟⲉⲓⲕ	C2740	bread, loaf	1	1	1	1	1	27	254a	bread, loaf (αρτος, ψωμος, χορτασμα)			
+306	ⲣⲱ	N	ⲣⲟ	ⲣⲟ	ⲣⲱ	C3038	mouth	0	0	1	1	0.5	27	290a	enclitic particle, emphatic or explicative, often untranslatable ― same, again, also esp B ― emphasis or contrast indeed, but ― explicative ― emphasis, even, at all, at last ― in question, then ― after various particles, ⲁⲣⲏⲩ, perhaps, indeed			
+307	ⲥⲟⲛ	N	ⲥⲟⲛ	ⲥⲟⲛ	ⲥⲟⲛ	C3583	brother	1	1	1	1	1	27	342b	brother literal & figur (αδελφος)			
+308	ⲟⲩⲱϣ	N	ⲟⲩⲱϣ	ⲟⲩⲱϣ	ⲟⲩⲱϣ	C5258	wish, desire	1	1	1	1	1	27	501b	cleft, gap (οπη, τρυμαλια, χασμα) space, distance (διαστημα) interval, pause, holiday			
+309	ⲛⲧⲟⲧ	PREP	ⲛⲧⲉⲛ	ⲛⲧⲛ	ⲛⲧⲟⲟⲧ	C4485	in, by hand of, with	0	0	0	0	0	27	_	_			
+310	ⲟⲩⲱϣ	V	ⲟⲩⲱϣ	ⲟⲩⲱϣ	ⲟⲩⲱϣ	C5257	wish, desire, love	1	1	1	1	1	27	500a	(intransitive) ― desire, love (θελειν, βουλεσθαι, ευδοκειν) ― as imperative, be pleased to S (θελησον) (transitive) (θελειν, αγαπαν, φιλειν)			
+311	ⲛⲁⲣⲉ	CPRET	ⲛⲁⲣⲉ	ⲛⲉⲣⲉ	ⲛⲉⲣⲉ	C2385	preterite converter	0	0	0	0	0	26	_	_			
+312	ϫⲟⲙ	N	ϫⲟⲙ	ϭⲟⲙ	ϭⲟⲙ	C7706	power, strength, might, authority	1	1	1	1	1	26	815b	power, strength (δυναμις, ισχυς, ανδρεια) as adj			
+313	ⲭⲱ	N	ⲭⲱ	ⲕⲱ	ⲕⲱ	C1062	lossening, slackness	0	0	0	0	0	26	_	_			
+314	ⲡⲉⲕ	PPOS	ⲡⲉⲕ	ⲡⲉⲕ	ⲡⲉⲕ	MISSING		0	0	0	0	0	26	_	_			
+316	ⲭⲱ	V	ⲭⲱ	ⲕⲱ	ⲕⲱ	C1058,C1063,C1064,C1065,C1066,C1067,C1068,C1069,C1070,C1071,C1072,C1073,C1082,C1083,C1084,C1086,C1090,C1091	place, appoint, set down, make	1	1	1	1	1	26	94b	place, appoint, set down, make (τιθεναι, τασσειν, ισταναι) with dative, have, get, keep preserve permit, set free (ανιεναι, αφιεναι) (qualitative) be loose, limp, unrestrained, permitted as imperative, admit, concede, suppose bequeath quit, abandon, fail (αφιεναι, απωθειν) leave, omit qual + prep or advb, be, exist, lie (κεισθαι) in later SF letters go to, reach, lit enter, qual be in auxil (causative) use			
+317	ⲧⲏⲓ	V	ϯ	ϯ	ⲧⲁⲁ	C4050,C4020	smite, hit, fight; give, pay, sell	1	1	1	1	1	26	392a	(intransitive) ― give, pay & related meanings (διδοναι) ― fight (transitive) ― mostly c dat ― pay ― sell S ― smite (τυπτειν) imperative ― with ϯ ― not as imperative B ― ϫⲓⲛⲙ. (qualitative) given, being upon p c, giver			
+318	ⲗⲁⲥ	N	ⲗⲁⲥ	ⲗⲁⲥ	ⲗⲁⲥ	C1684	tongue, language	0	0	1	1	0.5	25	145a	(intransitive) be bruised, crushed (συνθλασθαι) (transitive) bruise, crush (συντριβειν)			
+319	ⲙⲉⲧⲟⲩⲣⲟ	N	ⲙⲉⲧⲟⲩⲣⲟ	ⲙⲛⲧⲣⲣⲟ	ⲙⲛⲧⲣⲣⲟ	C3141	kingdom	0	0	0	0	0	25	_	_			
+320	ⲛⲓⲙ	PINT	ⲛⲓⲙ	ⲛⲓⲙ	ⲛⲓⲙ	C2474,C2473	who?; a certain person or thing, so and so	1	0	1	1	0.75	25	225a	who ? (τις;) what ? as adj + ⲛ-			
+322	ⲁⲣⲉ	CFOC	ⲁⲣⲉ	ⲉⲣⲉ	ⲉⲣⲉ	C618	cfoc	0	0	0	0	0	24	_	_			
+324	ⲁⲣⲉ	CFOC_PPERS	ⲁⲣⲉ_ⲛⲑⲟⲥ	ⲉⲣⲉ_ⲛⲧⲟⲥ	ⲉⲣⲉ	C618_C2562		0	0	0	0	0	24	_	_			
+325	ⲙⲉⲩⲓ	N	ⲙⲉⲩⲓ	ⲙⲉⲉⲩⲉ	ⲙⲉⲉⲩⲉ	C2181		0	0	0	0	0	24	_	_			
+328	ⲁϣ	PINT	ⲁϣ	ⲁϣ	ⲁϣ	C250,C251	who, what, certain	0	0	0	0	0	24	_	_			
+329	ⲁⲙⲟⲛⲓ	V	ⲁⲙⲟⲛⲓ	ⲁⲙⲟⲛⲓ	_	C91	pasture, feed	0	1	1	1	0.75	24	173a	pasture, feed ― intr: ―― flocks as subj (βοσκεσθαι, νεμεσθαι) ―― herdsman as subj (ποιμαινειν, βοσκειν) ― tr: ―― feed, tend cattle (ποιμαινειν) ―― feed on, devour			unique Boh word? Cf. Sa ⲁⲙⲁϩⲧⲉ
+330	ⲁϣ	V	ⲓϣⲓ	ⲉⲓϣⲉ	ⲁϣⲧ	C1010,C1011,C1012,C1013,C1014,C1015,C1016	hang, suspend	0	1	1	1	0.75	24	533a	cry, announce, sound ― intr: (ηχειν, βοαν, κραζειν) ― tr: (βοαν, καλειν) read S,A,sA,B,F ― intr: (αναγινωσκειν) ― tr: (αναγινωσκειν) promise, vow B ― intr: (ευχεσθαι, επαγγελεσθαι) ― tr: (ευχεσθαι, επαγγελεσθαι, ομολογειν) expect S (νομιζειν)			
+331	ⲙⲉⲩⲓ	V	ⲙⲉⲩⲓ	ⲙⲉⲉⲩⲉ	ⲙⲉⲉⲩⲉ	C2178,C2179,C2180	think	1	1	1	1	1	24	199a	(intransitive) think ― no obj (λογιζεσθαι, διανοειν, νομιζειν) ― + ϫⲉ, think that ― + ethic dative ― sim c ⲉ- (refl dat) ― + ⲛ-, meditate doing, be about to do			
+333	ϣⲟⲡ	VSTAT	ϣⲱⲡⲓ	ϣⲱⲡⲉ	ϣⲟⲟⲡ	C5995	become, befall, be, exist	1	1	1	1	1	24	577b	(intransitive) become, befall (ειναι, γινεσθαι) impersonal, befall (γινεσθαι, συμβαινειν) ― 3d sg f ― 3d sg m (qualitative) be, exist			
+334	ⲉⲃⲏⲗ	ADV	ⲉⲃⲏⲗ	ⲛⲃⲗ	ⲛⲃⲗ	C421	except, beyond	0	0	0	0	0	23	_	_			verify; should this be conj, prep, or adv; cf. ⲛⲃⲗ in annis, all prep?
+335	ⲉⲩⲉ	AOPT_PPERS	ⲉⲣⲉ_ⲛⲑⲱⲟⲩ	ⲉⲣⲉ_ⲛⲧⲟⲟⲩ	ⲉⲩⲉ	C619_C2566		0	0	0	0	0	23	_	_			
+337	ϩⲓⲱⲓϣ	N	ϩⲓⲱⲓϣ	ϩⲓⲱⲓϣ	ϩⲓⲱⲓϣ	C2773		0	0	0	0	0	23	_	_			verify; Crum lists S once 
+338	ⲧⲁⲕⲟ	N	ⲧⲁⲕⲟ	ⲧⲁⲕⲟ	ⲧⲁⲕⲟ	C4178	destruction	0	0	0	0	0	23	_	_			
+339	ϩⲉⲙⲥⲓ	N	ϩⲉⲙⲥⲓ	ϩⲙⲟⲟⲥ	ϩⲙⲟⲟⲥ	C6649		0	0	0	0	0	23	_	_			verify; unique Bo word? And verb, not nn? See Crum 679a; cf. below at 344
+340	ⲉⲃⲏⲗ	PREP	ⲉⲃⲏⲗ	ⲛⲃⲗ	ⲛⲃⲗ	C421		0	0	0	0	0	23	_	_			verify; should this be conj, prep, or adv; cf. ⲛⲃⲗ in annis, all prep?
+341	ⲟⲩⲛ	PTC	ⲟⲩⲛ	ⲟⲩⲛ	ⲟⲩⲛ	C9965	Gk, so, then	0	0	0	0	0	23	_	_			
+342	ⲧⲁⲕⲟ	V	ⲧⲁⲕⲟ	ⲧⲁⲕⲟ	ⲧⲁⲕⲟ	C4177	destroy, lose	1	1	1	1	1	23	405a	(transitive) destroy, lose & many related meanings (απολλυναι, φθειρειν) (intransitive) perish, be lost, destroy			
+343	ϩⲉⲙⲥⲓ	V	ϩⲉⲙⲥⲓ	ϩⲙⲟⲟⲥ	ϩⲙⲟⲟⲥ	C6649	sit, remain, dwell	1	1	1	1	1	23	679a	(intransitive) sit, remain, dwell (καθησθαι, καθιζειν, μενειν)			
+344	ϩⲓⲱⲓϣ	V	ϩⲓⲱⲓϣ	ϩⲓⲱⲓϣ	_	C2772	proclaim, preach	0	0	0	0	0	23	_	_			verify; unique Bo word?
+345	ⲥⲁⲃⲟⲗ	ADV	ⲥⲁⲃⲟⲗ	ⲥⲁⲃⲟⲗ	ⲥⲁⲃⲟⲗ	C426	outside, beyond	0	0	0	0	0	22	_	_			
+346	ⲙⲱⲓⲧ	N	ⲙⲱⲓⲧ	ⲙⲟⲉⲓⲧ	ⲙⲟⲉⲓⲧ	C2072	road, path	1	1	1	1	1	22	188a	road, path (mostly B) (οδος, τριβος) place B, (S once)			
+347	ⲛⲓϣϯ	N	ⲛⲓϣϯ	ⲛⲟϭ	ⲛⲟϭ	C2712	great, large	1	1	1	1	1	22	250a	great, large (μεγας) as title, elder, notable (πρωτος)			
+348	ⲥⲁⲃⲟⲗ	PREP	ⲥⲁⲃⲟⲗ	ⲥⲁⲃⲟⲗ	ⲥⲁⲃⲟⲗ	C425		0	0	0	0	0	22	_	_			
+349	ⲁⲓ	V	ⲓⲣⲓ	ⲉⲓⲣⲉ	ⲁⲁ	C951	act; become, befall; do	1	1	1	1	1	22	83a	(intransitive) S,A,B,F ― act (ποιειν, πρασσειν) ― become, befall (ειναι, γινεσθαι) ― c dat (transitive) ― make, do ― make, bear fruit ― pass time ― make total, amount to ― make price, value at ― as vb of direction			
+349	ⲁⲓⲧ	V	ⲓⲣⲓ	ⲉⲓⲣⲉ	ⲁⲁ	C951	act; become, befall; do	1	1	1	1	1	22	83a	(intransitive) S,A,B,F ― act (ποιειν, πρασσειν) ― become, befall (ειναι, γινεσθαι) ― c dat (transitive) ― make, do ― make, bear fruit ― pass time ― make total, amount to ― make price, value at ― as vb of direction			
+352	ⲕⲁϩⲓ	N	ⲕⲁϩⲓ	ⲕⲁϩ	ⲕⲁϩ	C1494	earth, soil	1	1	1	1	1	21	131a	earth, soil (γη, εδαφος, χους, χωμα, πηλος) earth, land, country (γη, γαια)			
+353	ⲣⲁⲛ	N	ⲣⲁⲛ	ⲣⲁⲛ	ⲣⲁⲛ	C3121	name	1	1	1	1	1	21	297b	name (ονομα)			
+354	ⲥⲁϧ	N	ⲥⲁϧ	ⲥⲁϩ	ⲥⲁϩ	C3982,C3981	writer, teacher	0	0	1	1	0.5	21	381a	(intransitive) weave (υφαινειν, εριθευεσθαι) p c, weaver			
+355	ϩⲟⲩⲟ	N	ϩⲟⲩⲟ	ϩⲟⲩⲟ	ϩⲟⲩⲟ	C6982,C6983	greater part, greatness; great, much, greater, more	1	1	1	1	1	21	735a	greater part, greatness (from ϩⲏⲩ + ⲟ) (πολυς, πλειων, περισσος) as adj before nn ― great, much ― greater, more after nn			
+356	ⲉⲣϣⲓϣⲓ	N	ⲉⲣϣⲓϣⲓ	ⲉⲣϣⲓϣⲓ	ⲉⲣϣⲓϣⲓ	C719	power, authority	0	0	0	0	0	21	_	_			
+357	ⲛⲑⲱⲟⲩ	PPERI	ⲛⲑⲱⲟⲩ	ⲛⲧⲟⲟⲩ	ⲛⲧⲟⲟⲩ	C2566		0	0	0	0	0	21	_	_			
+358	ⲡⲉⲛ	PPOS	ⲡⲉⲛ	ⲡⲉⲛ	ⲡⲉⲛ	MISSING		0	0	0	0	0	21	_	_			
+360	ⲉⲣϣⲓϣⲓ	V	ⲉⲣϣⲓϣⲓ	ⲉⲣϣⲓϣⲓ	ⲉⲣϣⲓϣⲓ	C718	to have power, authority; have power, authority	1	1	0	0	0.5	21	59b	tr & intr: have power, authority noun male: power, authority (εξουσια)			
+361	ϯⲥⲃⲱ	V	ϯⲥⲃⲱ	ϯⲥⲃⲱ	ϯⲥⲃⲱ	C3319	to teach, chastise	0	0	0	0	0	21	_	_			
+362	ⲉϩⲣⲏⲓ	ADV	ⲉϩⲣⲏⲓ	ⲉϩⲣⲁⲓ 	ⲉϩⲣⲁⲓ	C6769,C6775		0	0	0	0	0	20	_	_			
+363	ⲉⲛⲉϩ	ADV	ⲉⲛⲉϩ	ⲉⲛⲉϩ	ⲉⲛⲉϩ	C684,C685,C686		0	0	0	0	0	20	_	_			
+364	ⲙⲡⲁ	ANEGAOR	ⲙⲡⲁⲣⲉ	ⲙⲉⲣⲉ	ⲙⲉ	C2005	neg. aor. ANEGAOR	0	0	0	0	0	20	_	_			
+365	ⲉϥⲉ	AOPT_PPERS	ⲉⲣⲉ_ⲛⲑⲟϥ	ⲉⲣⲉ_ⲛⲧⲟϥ	ⲉϥⲉ	C619_C2572		0	0	0	0	0	20	_	_			
+367	ⲉⲛⲉϩ	N	ⲉⲛⲉϩ	ⲉⲛⲉϩ	ⲉⲛⲉϩ	C684,C685,C686	for ever, eternally, ever; eternity; eternal	1	1	1	1	1	20	57a	nn m ― eternity (αιων) ― age, period of time (αιων) with ϣⲁ- (αιωνιος) adj, eternal (αιωνιος) ― with ⲛϣⲁ- (αιωνιος) ― with ϣⲁ- (αιωνιος) adv, for ever, eternally, ever ― in interrog clause (ποτε) ― with neg vb (ποτε, ουδεποτε) ― with ϣⲁ-, ⲛϣⲁ- ― with ϫⲓⲛ-, ⲓⲥϫⲉⲛ- ― as nn			
+369	ⲙⲡⲣ	NEG	ⲙⲡⲉⲣ	ⲙⲡⲣ	ⲙⲡⲣ	C1979	neg. imper.	0	0	0	0	0	20	_	_			
+370	ⲛⲥⲁ	PREP	ⲛⲥⲁ	ⲛⲥⲁ	ⲛⲥⲁ	C3268	behind, after	0	0	0	0	0	20	_	_			
+371	ϭⲓⲧ	V	ϭⲓ	ϫⲓ	ϫⲉⲩ	C7058	receive, take	1	1	1	1	1	20	747b	(intransitive) ― receive, take (λαμβανειν, δεχεσθαι, κομιζεσθαι) ― take wife, marry (γαμειν) ― touch, reach, hit (transitive) ― take, get, bring, accept (λαμβανειν) ― have, be provided with ― touch, reach, hit ― learn (by heart) ― buy S			
+372	ϯϩⲁⲡ	V	ϯϩⲁⲡ	ϯϩⲁⲡ	ϯϩⲁⲡ	C6734	give judgement	0	0	0	0	0	20	_	_			
+373	ⲟⲩⲟⲛϩ	V	ⲟⲩⲱⲛϩ	ⲟⲩⲱⲛϩ	ⲟⲩⲟⲛϩ	C5087		0	0	0	0	0	20	_	_			
+376	ⲛⲁⲛⲉ	VBD	ⲛⲁⲛⲉ	ⲛⲁⲛⲟⲩ	ⲛⲁⲛⲟⲩ	C2491	be good, fair	1	0	1	1	0.75	20	227a	(intransitive) ― nominal vb, be good, fair (καλος, αγαθος) ― impersonal + -ⲥ, it is good, right ― better than c ⲉ- ― c ⲉϩⲟⲩⲟ, ⲛϩⲟⲩⲟ, ⲉϩⲟⲧⲉ rel ⲉⲛ., ⲉⲧⲛ. as adj, good fair			
+377	ⲟⲩⲟⲛϩ	VSTAT	ⲟⲩⲱⲛϩ	ⲟⲩⲱⲛϩ	ⲟⲩⲟⲛϩ	C5087,C5088	revelation, declaration; reveal, be revealed, appear	1	1	1	1	1	20	486a	(intransitive) (mostly B), reveal, be revealed, appear (φαινειν, φανερος ειναι) (transitive) show, make clear (φαινειν, γνωριζειν, ομολογειν, παρρησιαζειν, δεικνυναι)			
+378	ⲉϧⲣⲏⲓ	ADV	ⲉϧⲣⲏⲓ	ⲉϩⲣⲁⲓ 	ⲉϩⲣⲁⲓ	C6775	below, lower	0	0	0	0	0	19	_	_			verify; missing from CDO?
+380	ⲙⲡ	ANEGPST	ⲙⲡⲉ	ⲙⲡⲉ	ⲙⲡ	C1972	neg perf. ANEGPST	0	0	0	0	0	19	_	_			
+381	ϣⲁⲛ	CONJ	ϣⲁⲛ	ϫⲛ	ϫⲛ	C7228	or	1	1	0	0	0.5	19	568b	or (η)			verify, unique Bo word Crum 568b
+382	ⲱⲟⲩ	N	ⲱⲟⲩ	ⲉⲟⲟⲩ	ⲉⲟⲟⲩ	C749	honour, glory	1	1	1	1	1	19	62a	honour, glory (δοξα)			
+383	ⲓⲟⲙ	N	ⲓⲟⲙ	ⲉⲓⲟⲙ	ⲉⲓⲟⲙ	C895,C896	winevat; sea	1	1	1	1	1	19	77a	sea (θαλασσα) metaphorically ― trench, conduit ― wine press (ληνος, προληνιον)			
+384	ⲓⲱⲧ	N	ⲓⲱⲧ	ⲉⲓⲱⲧ	ⲉⲓⲱⲧ	C992,C993	father	1	1	1	1	1	19	86b	father (πατηρ, γονευς) title of abbot, head of congregation			
+385	ϩⲁⲓ	N	ϩⲁⲓ	ϩⲁⲓ	ϩⲁⲓ	C6349	husband	1	1	1	1	1	19	636b	husband (ανηρ)			
+387	ⲃ	NUM	ⲃ	ⲃ	ⲃ	C317	two	0	0	0	0	0	19	_	_			
+388	ⲥⲱ	V	ⲥⲱ	ⲥⲱ	ⲥⲱ	C3303,C3304,C3302	soaked reed, mat of reeds; drink	1	1	1	1	1	19	318a	drink ― intr: (πινειν, ποτιζεσθαι) ― tr: (πινειν, εκπινειν, υδροποτειν) p c, drinker			
+389	ⲱϣ	V	ⲱϣ	ⲱϣ	ⲱϣ	C5595,C5601	cry, announce, sound	1	1	1	1	1	19	533a	cry, announce, sound ― intr: (ηχειν, βοαν, κραζειν) ― tr: (βοαν, καλειν) read S,A,sA,B,F ― intr: (αναγινωσκειν) ― tr: (αναγινωσκειν) promise, vow B ― intr: (ευχεσθαι, επαγγελεσθαι) ― tr: (ευχεσθαι, επαγγελεσθαι, ομολογειν) expect S (νομιζειν)			
+390	ⲱⲟⲩ	V	ⲱⲟⲩ	ⲱⲟⲩ	_	C5589,C5593	be long; length (in ⲱⲟⲩ ⲛⲓⲁⲧ⸗, "blessing ...")	1	1	0	0	0.5	19	533a	(intransitive) be long, in compounds			verify; unique Bo word? see crum 533a
+391	ϩⲓⲧ	V	ϧⲓϯ	ϩⲓⲧⲉ	ϩⲓⲧⲉ	C6898	move	0	0	1	1	0.5	19	718a	pit (βοθρος)			
+392	ϩⲓⲧ	V	ϩⲓⲟⲩⲓ	ϩⲓⲟⲩⲉ	ϩⲓⲧ	C6977	strike, cast, lay	1	1	1	1	1	19	732b	(intransitive) be struck, whetted (οξυνειν) (qualitative) B (transitive) strike, cast, lay (δερειν, καταβαλλειν)			
+393	ϩⲓⲟⲩⲓ	V	ϩⲓⲟⲩⲓ	ϩⲓⲟⲩⲉ	ϩⲓⲟⲩⲉ	C6977	strike, cast, lay	1	1	1	1	1	19	732b	(intransitive) be struck, whetted (οξυνειν) (qualitative) B (transitive) strike, cast, lay (δερειν, καταβαλλειν)			
+394	ϩⲓⲧ	V	ϩⲓⲧⲉ	ϩⲓⲧⲉ	ϩⲓⲧⲉ	C6898	move	0	0	0	0	0	19	_	_			
+395	ⲉⲣϩⲟϯ	V	ⲉⲣϩⲟϯ	ⲣϩⲟⲧⲉ	ⲣϩⲟⲧⲉ	C6905	to fear	0	0	0	0	0	19	_	_			verify; unique Bo word? see Crum 702b
+396	ϩⲓⲧ	V	ϧⲓϯ	ϩⲓⲧⲉ	ϩⲓⲧⲉ	C6898	move	0	0	0	0	0	19	_	_			
+398	ⲉϫⲱ	N	ⲁϫⲱ	ⲁϫⲱ	_	C301	viper	1	1	0	0	0.5	18	25b	viper (εχινος, εχιδνα)			confirm; unique Bo word?
+399	ⲟⲩⲱⲧ	N	ⲟⲩⲱⲧ	ⲟⲩⲱⲧ	ⲟⲩⲱⲧ	C5190	single, alone, any, one and same	1	1	1	1	1	18	494a	single, alone, any, one & same (εις, ο αυτος, ομοιος) f S,sA without ⲛ- S			
+400	ⲕⲱⲧ	N	ⲕⲱⲧ	ⲕⲱⲧ	ⲕⲱⲧ	C1383,C1385	building	0	0	0	0	0	18	_	_			
+401	ϣⲟⲣⲡ	N	ϣⲟⲣⲡ	ϣⲟⲣⲡ	ϣⲟⲣⲡ	C6058,C6059	first	0	0	0	0	0	18	_	_			
+403	ⲡⲉⲧⲉⲛ	PPOS	ⲡⲉⲧⲉⲛ	ⲡⲉⲧⲛ	ⲡⲉⲧⲛ	MISSING		0	0	0	0	0	18	_	_			
+404	ⲡⲉⲥ	PPOS	ⲡⲉⲥ	ⲡⲉⲥ	ⲡⲉⲥ	MISSING		0	0	0	0	0	18	_	_			
+405	ⲡⲉⲥ	PPOS	ⲡⲉϥ	ⲡⲉϥ	ⲡⲉϥ	MISSING		0	0	0	0	0	18	_	_			
+406	ⲉⲣⲁⲧ	PREP	ⲉⲣⲁⲧ	ⲉⲣⲁⲧ	ⲉⲣⲁⲧ	C3173	to foot of, to	0	0	0	0	0	18	_	_			
+407	ϩⲓϫⲉⲛ	PREP	ϩⲓϫⲉⲛ	ϩⲓϫⲛ	ϩⲓϫⲛ	C7508	upon, over	0	0	0	0	0	18	_	_			
+408	ⲉϫⲱ	PREP	ⲉϫⲉⲛ	ⲉϫⲛ	ⲉϫⲱ	C7504	upon, over	0	0	0	0	0	18	_	_			
+410	ⲕⲱⲧ	V	ⲕⲱⲧ	ⲕⲱⲧ	ⲕⲱⲧ	C1383,C1385	build, form	1	1	1	1	1	18	122a	build, form (οικοδομειν) metaph ― tr: edify, encourage spiritually ― intr: be edified			
+411	ⲛⲟϩⲉⲙ	V	ⲛⲟϩⲉⲙ	ⲛⲟⲩϩⲙ	ⲛⲟⲩϩⲙ	C2662	be saved, safe, escape	1	1	1	1	1	18	243b	(intransitive) be saved, safe (σωζεσθαι) (transitive) save, preserve			
+412	ⲥⲱⲟⲩⲛ	V	ⲥⲱⲟⲩⲛ	ⲥⲟⲟⲩⲛ	ⲥⲟⲟⲩⲛ	C3871,C3872	know	1	1	1	1	1	18	369b	(intransitive) know (ειδεναι, επιστασθαι, γινωσκειν) (transitive) ― (γινωσκειν) ― know sexually ― with ϫⲉ- ―― intr: ―― tr:			
+413	ϣⲟⲣⲡ	V	ϣⲱⲣⲡ	ϣⲱⲣⲡ	ϣⲟⲣⲡ	C6055,C6056	morning; be early	1	1	1	1	1	18	586b	(intransitive) be early (qualitative) (ορθριος) tr (refl): (ορθριζειν)			
+416	ⲥϧⲏⲟⲩⲧ	VSTAT	ⲥϧⲁⲓ	ⲥϩⲁⲓ	ⲥⲏϩ	C3972	write	1	1	1	1	1	18	381b	(intransitive) write (γραφειν) (transitive) ― (γραφειν, ζωγραφειν, διαγραφειν) ― register ― draw, paint			
+418	ⲙⲡⲉⲛⲑⲣⲉ	ANEGJUS	ⲙⲡⲉⲛⲑⲣⲉ	ⲙⲡⲣⲧⲣⲉ	ⲙⲡⲣⲧⲣⲉ	MISSING	ANEGJUS	0	0	0	0	0	17	_	_			
+419	ⲁⲗⲟⲩ	N	ⲁⲗⲟⲩ	ⲁⲗⲟⲩ	ⲁⲗⲟⲩ	C49,C48	youth, maiden	1	1	1	1	1	17	5a	youth, maiden (παις, παιδιον, νεος) servant			
+420	ⲙⲁⲩ	N	ⲙⲁⲩ	ⲙⲁⲁⲩ	ⲙⲁⲁⲩ	C2160,C2161	mother	1	1	1	1	1	17	197a	mother (μητηρ) ― church as mother ― as title			
+421	ⲫⲉ	N	ⲫⲉ	ⲡⲉ	ⲡⲉ	C2790	heaven, sky	1	1	1	1	1	17	259a	heaven, sky (ουρανος) | adjectival phrases compounds with preposition with m art + prep ⲉ-			
+422	ⲉⲣⲫⲉⲓ	N	ⲉⲣⲫⲉⲓ	ⲣⲡⲉ	ⲣⲡⲉ	C3129	temple	1	1	1	1	1	17	298b	temple (ναος, ιερον)			
+423	ϩⲙⲟⲧ	N	ϩⲙⲟⲧ	ϩⲙⲟⲧ	ϩⲙⲟⲧ	C6653	grace, gift	1	1	1	1	1	17	681a	grace, gift (χαρις) as adj			
+424	ⲭⲱⲟⲩⲛⲓ	N	ⲕⲉ	ⲕⲉ	ⲕⲟⲟⲩⲉ	C1037,C1038,C1039	another, other, different	0	0	0	0	0	17	_	_			
+426	ⲥⲛⲏⲩ	N	ⲥⲟⲛ	ⲥⲟⲛ	ⲥⲛⲏⲩ	C3583,C3584	brother	0	0	0	0	0	17	_	_			
+428	ϣ	V	ϣ	ϣ	ϣ	C5673	know, be able, permitted	1	1	1	1	1	17	541a	impers vb, lit know, so be able, permitted (δυνασθαι, ισχυειν) ― with pronom subj ―― c neg pref often = adj in α―τος, unable to ―― sim with ⲁⲧ- B ― with nom subj			
+429	ϣⲉⲛ	V	ϣⲓⲛⲓ	ϣⲓⲛⲉ	ϣⲓⲛⲉ	C5922	seek, ask	1	1	1	1	1	17	569a	(intransitive) seek, ask (πυνθανεσθαι, επισκεπτεσθαι, ζητειν, ερωταν) (transitive) ― (ερωταν, εξεταζειν) ― greet			
+432	ⲟⲩⲣⲟ	N	ⲟⲩⲣⲟ	ⲣⲣⲟ	ⲣⲣⲟ	C3138	king	1	1	1	1	1	16	299a	king, queen (βασιλευς, αρχων, τυραννις, καισαρ, ηγουμενος) as adj royal			
+433	ⲧⲉⲕ	N	ⲧⲉⲕ	ⲧⲉⲕ	ⲧⲉⲕ	MISSING		0	0	0	0	0	16	_	_			
+434	ⲧⲁⲓ	PDEM	ⲫⲁⲓ	ⲡⲁⲓ	ⲧⲁⲓ	C4150		0	0	1	1	0.5	16	390a	here hence			
+435	ⲧⲁⲓ	PDEM	ⲡⲁⲓ	ⲡⲁⲓ	ⲧⲁⲓ	C4150		0	0	0	0	0	16	_	_			
+436	ⲧⲁⲓ	PDEM	ⲧⲁⲓ	ⲧⲁⲓ	ⲧⲁⲓ	x		0	0	0	0	0	16	_	_			lemma ⲡⲁⲓ
+437	ⲑⲱⲛ	PINT	ⲑⲱⲛ	ⲧⲱⲛ	ⲧⲱⲛ	C4339	where?	0	0	0	0	0	16	_	_			
+439	ⲛⲑⲟⲕ	PPERI	ⲛⲑⲟⲕ	ⲛⲧⲟⲕ	ⲛⲧⲟⲕ	C2556		0	0	0	0	0	16	_	_			
+440	ⲧⲉⲕ	PPOS	ⲡⲉⲕ	ⲡⲉⲕ	ⲧⲉⲕ	MISSING		0	0	0	0	0	16	_	_			
+441	ⲱⲗⲓ	V	ⲱⲗⲓ	ⲱⲗ	ⲱⲗ	C5464,C5445	striking, blow (in ⲡⲓϩⲓⲱ(ⲓ)ⲗⲓ)	1	0	0	0	0.25	16	522a	striking, blow			
+442	ϯϩⲟ	V	ϯϩⲟ	ϯϩⲟ	ϯϩⲟ	C4760,C6400,C6401		0	0	0	0	0	16	_	_			
+445	ⲡⲉϫⲱ	VBD	ⲡⲉϫⲉ	ⲡⲉϫⲉ	ⲡⲉϫⲁ	C3017		0	0	0	0	0	16	_	_			
+446	ϯⲛⲟⲩ	ADV	ϯⲛⲟⲩ	ⲧⲉⲛⲟⲩ	ⲧⲉⲛⲟⲩ	C5047		0	0	0	0	0	15	_	_			
+447	ⲙⲙⲁⲩⲁⲧ	IMOD	ⲙⲙⲁⲩⲁⲧ	ⲙⲁⲩⲁⲁ	ⲙⲁⲩⲁⲁ	C2176	alone, single	0	0	1	1	0.5	15	198b	alone, single (μονος, εις) own as pronoun, self			
+448	ⲃⲁⲗ	N	ⲃⲁⲗ	ⲃⲱⲗ	ⲃⲱⲗ	C409,C404	loosen, untie [of chains, cords etc.]; solution, interpretation	0	0	1	1	0.5	15	32a	loosen, untie, mostly tr (λυειν) melt unstring interpret, explain scriptures, dreams &c (διερμηνευειν) be softened, persuaded weaken, make faint nullify order, deed dissolve, destroy pay			
+449	ⲉⲛⲭⲁⲓ	N	ⲉⲛⲭⲁⲓ	ⲛⲕⲁ	ⲛⲕⲁ	C2452	thing (in general)	0	1	1	1	0.75	15	223a	thing in general thing to eat, food (προσφαγιον) as vessel (σπονδειον, σκευος) property, belongings (κτησις, υπαρξις)			
+450	ⲥⲏⲟⲩ	N	ⲥⲏⲟⲩ	ⲥⲏⲩ	ⲥⲏⲩ	C3850	time, season	1	1	1	1	1	15	367b	time, season (oftenest B) (καιρος, χρονος)			
+451	ⲥⲛⲏⲟⲩ	N	ⲥⲟⲛ	ⲥⲟⲛ	ⲥⲛⲏⲟⲩ	C3583	brother	1	1	1	1	1	15	342b	brother literal & figur (αδελφος)			
+452	ⲉⲛⲭⲁⲓ	N	ⲛⲭⲁⲓ	ⲛⲕⲁ	ⲛⲕⲁ	C2452	thing (in general)	0	0	0	0	0	15	_	_			
+454	ⲫⲁ	PPOS	ⲫⲁ	ⲡⲁ	ⲡⲁ	C2785	the . . . belonging to, the (man) of	1	0	1	1	0.75	15	259a	possessive article, the ... belonging to, the man of			
+455	ⲡⲟⲩ	PPOS	ⲡⲟⲩ	ⲡⲟⲩ	ⲡⲟⲩ	MISSING		0	0	1	0	0.25	15	260b	possessive pronoun as noun mine, his &c			
+456	ⲛⲉⲧⲉⲛ	PPOS	ⲡⲉⲧⲉⲛ	ⲡⲉⲧⲛ	ⲡⲉⲧⲛ	MISSING		0	0	0	0	0	15	_	_			
+457	ⲛⲉⲧⲉⲛ	PPOS	ⲛⲉⲧⲉⲛ	ⲛⲉⲧⲛ	ⲛⲉⲧⲛ	MISSING		0	0	0	0	0	15	_	_			
+459	ϩⲁⲣⲱ	PREP	ϩⲁ	ϩⲁ	ϩⲁⲣⲱ	C6333		0	0	0	0	0	15	_	_			
+461	ⲑⲱⲟⲩϯ	V	ⲑⲱⲟⲩϯ	ⲧⲟⲟⲩⲧⲉ	ⲧⲟⲟⲩⲧⲉ	C4693	be gathered, be collected, assemble	1	1	1	1	1	15	447b	(intransitive) be gathered, collected (συναγειν, συνεχειν) (transitive) (S once), gather, collect (αγειν, συναγειν)			
+462	ϫⲟⲩϣⲧ	V	ϫⲟⲩϣⲧ	ϭⲱϣⲧ	ϭⲱϣⲧ	C7982	look, see, perceive	1	1	1	1	1	15	837a	(intransitive) look, see (βλεπειν, θεωρειν, οραν, σκοπειν)			
+463	ϭⲟϫⲓ	V	ϭⲟϫⲓ	ϭⲟϫⲓ	_	C8006	run	1	1	0	0	0.5	15	840b	(intransitive) run (τρεχειν, ορμαν)			verify: unique Bo word?
+466	ⲁⲛⲁⲩ	VIMP	ⲛⲁⲩ	ⲛⲁⲩ	ⲁⲛⲁⲩ	C2578	look, behold	1	0	1	1	0.75	15	233b	(intransitive) look, behold ― no obj (οραν, ιδειν, βλεπειν) ―― with ϫⲉ-, see that, how ― c ⲉ-, sometimes + ethic dat ― with ⲉ- dat commodi ―― provide, seek out			
+467	ⲙⲁϣⲉ	VIMP	ϣⲉ	ϣⲉ	ϣⲉ	C5698	go	1	0	1	1	0.75	15	544b	(intransitive) go ― c ethic dat (πορευεσθαι, απερχεσθαι, βαδιζειν) ― without dat tr (refl ?):			verify: unique Bo imp?
+468	ⲑⲣⲉ	ACAUS	ⲑⲣⲉ	ⲧⲣⲉ	ⲧⲣⲉ	C4439	prefix of causative infinitive	1	1	1	1	1	14	430a	(transitive) cause to do (caus of ⲉⲓⲣⲉ) ― c ⲉ- ― without ⲉ- mostly as pref to vb			
+469	ⲁⲫⲟⲧ	N	ⲁⲫⲟⲧ	ⲁⲡⲟⲧ	ⲁⲡⲟⲧ	C179	cup, chalice	1	1	1	1	1	14	14b	cup (ποτηριον)			
+470	ϩⲏ	N	ϩⲏ	ϩⲏ	ϩⲏ	C6372,C6381,C6383,C6384,C6385		1	1	1	1	1	14	643a	season (?) (προδρομος (σταφυλης))			
+471	ⲉⲣϩⲱⲃ	N	ⲉⲣϩⲱⲃ	ⲣϩⲱⲃ	ⲣϩⲱⲃ	C6430		0	0	0	0	0	14	_	_			
+472	ⲣⲉϥϯⲥⲃⲱ	N	ⲣⲉϥϯⲥⲃⲱ	ⲣⲉϥϯⲥⲃⲱ	ⲣⲉϥϯⲥⲃⲱ	C3321		0	0	0	0	0	14	_	_			
+474	ⲓⲃ	NUM	ⲓⲃ	ⲓⲃ	ⲓⲃ	C824_C317	num 12	0	0	0	0	0	14	_	_			
+475	ⲧⲟⲩ	PPOS	ⲡⲟⲩ	ⲡⲟⲩ	ⲧⲟⲩ	C2787		0	0	0	0	0	14	_	_			
+478	ⲙⲉⲛⲉⲛⲥⲁ	PREP	ⲙⲉⲛⲉⲛⲥⲁ	ⲙⲛⲛⲥⲁ	ⲙⲛⲛⲥⲁ	C3269		0	0	0	0	0	14	_	_			
+479	ϩⲓⲱⲧ	PREP	ϩⲓ	ϩⲓ	ϩⲓⲱⲱ	C6389,C6387		0	0	0	0	0	14	_	_			
+480	ⲥⲓⲛⲓ	V	ⲥⲓⲛⲓ	ⲥⲓⲛⲉ	ⲥⲓⲛⲉ	C3574,C3575	pass by, through, beyond, across; ploughshare	1	1	1	1	1	14	343b	(intransitive) pass by, through (παραγειν, παραπορευεσθαι, ερχεσθαι, διερχεσθαι) (qualitative) B (transitive) pass through, across			
+481	ⲉⲣϩⲱⲃ	V	ⲉⲣϩⲱⲃ	ⲣϩⲱⲃ	ⲣϩⲱⲃ	C6430		0	0	0	0	0	14	_	_			
+483	ⲟⲩⲁⲃ	VSTAT	ⲟⲩⲁⲃ	ⲟⲩⲟⲡ	ⲟⲩⲁⲁⲃ	C5096,C5097	be pure, be innocent; purity	0	0	0	0	0	14	_	_			
+484	ⲙⲁⲣ	AJUS	ⲙⲁⲣⲉ	ⲙⲁⲣⲉ	ⲙⲁⲣ	C2004		0	0	0	0	0	13	_	_			
+487	ⲥⲙⲏ	N	ⲥⲙⲏ	ⲥⲙⲏ	ⲥⲙⲏ	C3509	voice (of men and animals), sound (of things)	1	1	1	1	1	13	334b	voice ― of men (φωνη, ηχος) ― of animals ― sound of things ― as adj B, famed			
+488	ⲥⲓϯ	N	ⲥⲓϯ	ⲥⲓⲧ	ⲥⲓⲧ	C3767	basilisk	1	1	1	0	0.75	13	359a	basilisk (βασιλισκος)			
+489	ⲧⲱⲟⲩ	N	ⲧⲱⲟⲩ	ⲧⲟⲟⲩ	ⲧⲟⲟⲩ	C4661	mountain	1	1	1	1	1	13	440b	mountain (ορος) community of hermits, monastery cemetery in desert as adj of the hill, desert, so wild			
+490	ⲟⲩⲁϩⲥⲁϩⲛⲓ	N	ⲟⲩⲁϩⲥⲁϩⲛⲓ	ⲟⲩⲉϩⲥⲁϩⲛⲉ	ⲟⲩⲉϩⲥⲁϩⲛⲉ	C3997	command	0	0	0	0	0	13	_	_			
+492	ⲑⲏ	PDEM	ⲫⲏ	ⲡⲏ	ⲧⲏ	C4019	that (one)	0	0	0	0	0	13	_	_			
+493	ϩⲓⲧⲟⲧ	PREP	ϩⲓⲧⲉⲛ	ϩⲓⲧⲛ	ϩⲓⲧⲟⲟⲧ	C4488	by the hand of, through, by from	0	0	0	0	0	13	_	_			
+495	ⲥⲓϯ	V	ⲥⲓϯ	ⲥⲓⲧⲉ	ⲥⲓⲧⲉ	C3768	throw, sow, put	1	1	1	1	1	13	360b	(intransitive) throw, sow (oftener) & related meanings (σπειρειν, βαλλειν) (transitive) (σπειρειν, ριπτειν)			
+496	ⲟⲩⲱⲣⲡ	V	ⲟⲩⲱⲣⲡ	ⲟⲩⲱⲣⲡ	ⲟⲩⲱⲣⲡ	C5122	send	1	1	1	1	1	13	489a	(intransitive) send (αποστελλειν) (transitive) (αποστελλειν, εξαποστελλειν, πεμπειν)			
+497	ϣⲓⲛⲓ	V	ϣⲓⲛⲓ	ϣⲓⲛⲉ	ϣⲓⲛⲉ	C5922	seek, ask	1	1	1	1	1	13	569a	(intransitive) seek, ask (πυνθανεσθαι, επισκεπτεσθαι, ζητειν, ερωταν) (transitive) ― (ερωταν, εξεταζειν) ― greet			
+498	ⲟⲩⲁϩⲥⲁϩⲛⲓ	V	ⲟⲩⲁϩⲥⲁϩⲛⲓ	ⲟⲩⲉϩⲥⲁϩⲛⲉ	ⲟⲩⲉϩⲥⲁϩⲛⲉ	C3996	to command	0	0	0	0	0	13	_	_			
+499	ⲁⲣⲉϣⲁⲛ	ACOND	ⲁⲣⲉϣⲁⲛ	ⲉⲣϣⲁⲛ	ⲉⲣϣⲁⲛ	C716	if	1	1	1	1	1	12	59a	conditional verbal prefix formed of 2. present + ϣⲁⲛ,ϣⲁ if (εαν)			
+500	ⲁⲓϣⲁⲛ	ACOND_PPERS	ⲁⲣⲉϣⲁⲛ_ⲁⲛⲟⲕ	ⲉⲣϣⲁⲛ_ⲁⲛⲟⲕ	ⲉⲓϣⲁⲛ	C716_C135		0	0	0	0	0	12	_	_			
+501	ⲛϧⲣⲏⲓ	ADV	ⲛϧⲣⲏⲓ	ⲛϩⲣⲁⲓ	ⲛϩⲣⲁⲓ	C6776	below	0	0	0	0	0	12	_	_			
+502	ⲁⲫⲉ	N	ⲁⲫⲉ	ⲁⲡⲉ	ⲁⲡⲉ	C165,C11276	head	1	1	1	1	1	12	13b	head ― of a living being (κεφαλη, κορυφη) ― metaphor ― as title, magistrate, chief ― capital of money			
+503	ⲃⲁⲕⲓ	N	ⲃⲁⲕⲓ	ⲃⲁⲕⲓ	_	C347	city, town	1	1	0	0	0.5	12	30b	city, town (πολις)			verify; unique Bo word
+504	ⲕⲟⲩϫⲓ	N	ⲕⲟⲩϫⲓ	ⲕⲟⲩⲓ	ⲕⲟⲩⲓ	C1052,C1053,C1054	small person/thing	1	1	1	1	1	12	92a	small person or thing, young person (μικρος, ολιγος, νηπιος) adjective ― small ― few ― young advb ― ⲛⲟⲩⲕ., a little (μικρον, ολιγον) ― ⲡⲕⲉⲕ., ⲕⲉⲕ, yet a little ― ⲙⲛⲛⲥⲁⲟⲩⲕ., after a little ― ϩⲁ-, ϧⲁ-, ϩⲓⲑⲏ ⲛⲟⲩⲕ., a little before ― ϣⲁⲧⲛⲟⲩⲕ. S mostly ⲡⲁⲣⲁ, almost ― ⲡⲣⲟⲥ ⲟⲩⲕ., for a little ― ⲕⲁⲧⲁ ⲕ., occasionally ― ⲕⲟⲩⲓ ⲕⲟⲩⲓ, ⲛⲕ. ⲕ., little by little			
+505	ⲛⲟⲃⲓ	N	ⲛⲟⲃⲓ	ⲛⲟⲃⲉ	ⲛⲟⲃⲉ	C2432	sin	1	1	1	1	1	12	222a	sin (αμαρτια, αμαρτημα, παραπτωμα)			
+506	ⲥⲟⲡ	N	ⲥⲟⲡ	ⲥⲟⲡ	ⲥⲟⲡ	C3655	occasion, time (vices), turn, round (of prayer or reading)	1	1	1	1	1	12	349b	noun ― ocassion, time (vices), turn ― ⲥⲟⲡ ... ⲥⲟⲡ, now ... again ― turn, round of prayer or reading adverbial with numerals			
+507	ⲱⲛϧ	N	ⲱⲛϧ	ⲱⲛϩ	ⲱⲛϩ	C5509	life	0	0	0	0	0	12	_	_			
+510	ⲣⲉϥⲙⲱⲟⲩⲧ	N	ⲣⲉϥⲙⲱⲟⲩⲧ	ⲣⲉϥⲙⲟⲟⲩⲧ	ⲣⲉϥⲙⲟⲟⲩⲧ	C1813	dead person	0	0	0	0	0	12	_	_			
+511	ⲅ	NUM	ⲅ	ⲅ	ⲅ	C612	num. three	0	0	0	0	0	12	_	_			
+512	ⲛⲧⲉⲛ	PREP	ⲛⲧⲉⲛ	ⲛⲧⲛ	ⲛⲧⲛ	C4485	in, by the hand of, by, with	0	0	0	0	0	12	_	_			
+513	ⲫⲱϣ	V	ⲫⲱϣ	ⲡⲱϣ	ⲡⲱϣ	C2949	divide, be separate	1	1	1	1	1	12	277a	(intransitive) divide, be separate (διαιρεισθαι, κλασθαι, διαμεριζεσθαι, σχιζεσθαι) (transitive) divide (μεριζειν)			
+514	ⲥⲟⲡ	V	ⲥⲱⲡ	ⲥⲱⲡ	ⲥⲉⲡ	C3673,C3672,C3670,C3669	kohl-stick (for applying k. to eyes); dipped, moistend food; dip, soak; eyelid	1	1	1	0	0.75	12	351a	(intransitive) (once) dip, soak (βαπτειν) (transitive) (βαπτειν, εμβαπτειν, επισταζειν) as noun m, dipped, moistened food &c			
+515	ⲱⲛϧ	V	ⲱⲛϧ	ⲱⲛϩ	ⲱⲛϩ	C5508	live	1	1	1	1	1	12	525a	(intransitive) live (ζην, ζωοποιειν) (transitive)			
+516	ⲉⲣϣⲫⲏⲣⲓ	V	ⲉⲣϣⲫⲏⲣⲓ	ⲣϣⲡⲏⲣⲉ	ⲣϣⲡⲏⲣⲉ	C6009	to be amazed	0	0	0	0	0	12	_	_			
+520	ⲟϣ	VSTAT	ⲁϣⲁⲓ	ⲁϣⲁⲓ	ⲟϣ	C255	to multiply, become many	0	1	1	1	0.75	12	533a	cry, announce, sound ― intr: (ηχειν, βοαν, κραζειν) ― tr: (βοαν, καλειν) read S,A,sA,B,F ― intr: (αναγινωσκειν) ― tr: (αναγινωσκειν) promise, vow B ― intr: (ευχεσθαι, επαγγελεσθαι) ― tr: (ευχεσθαι, επαγγελεσθαι, ομολογειν) expect S (νομιζειν)			
+521	ϩⲏⲇⲏ	ADV	ϩⲏⲇⲏ	ⲏⲇⲏ	ⲏⲇⲏ	C9123	already (Gk.)	0	0	0	0	0	11	_	_			
+522	ⲛⲛⲉ	ANEGOPT	ⲛⲛⲉ	ⲛⲛⲉ	ⲛⲛⲉ	C2504	prefix of neg. 3rd future	1	1	1	1	1	11	228a	pref neg 3 fut (ουκ) ― vetitive ― final			
+525	ⲥⲃⲱ	N	ⲥⲃⲱ	ⲥⲃⲱ	ⲥⲃⲱ	C3314	doctrine, teaching	0	0	0	0	0	11	_	_			
+526	ⲉⲑⲛⲟⲥ	N	ⲉⲑⲛⲟⲥ	ϩⲉⲑⲛⲟⲥ	ϩⲉⲑⲛⲟⲥ	C11079	nation	0	0	0	0	0	11	_	_			
+527	ⲟⲩⲱⲛϩ	N	ⲟⲩⲱⲛϩ	ⲟⲩⲱⲛϩ	ⲟⲩⲱⲛϩ	C5088	revelation	0	0	0	0	0	11	_	_			
+528	ⲁⲑⲛⲁϩϯ	N	ⲁⲑⲛⲁϩϯ	ⲁⲧⲛⲁϩⲧⲉ	ⲁⲧⲛⲁϩⲧⲉ	C2680	unbelieving	0	0	0	0	0	11	_	_			
+529	ϣⲁϥⲉ	N	ϣⲁϥⲉ	ϣⲁϥⲉ	ϣⲁϥⲉ	C6191	desert	0	0	0	0	0	11	_	_			
+530	ⲕⲁϯ	N	ⲕⲁϯ	ⲕⲁϯ	_	C1395	knowledge	0	0	0	0	0	11	_	_			verify; unique Bo word?
+532	ϩⲟⲛϩⲉⲛ	N	ϩⲟⲛϩⲉⲛ	ϩⲟⲛϩⲉⲛ	_	C6730	commandment	0	0	0	0	0	11	_	_			verify; unique Bo word? Cf. Sa ϩⲱⲛ C6689
+533	ⲙⲡⲉⲣ	NEG	ⲙⲡⲉⲣ	ⲙⲡⲣ	ⲙⲡⲣ	C1979	pref. neg.	0	0	0	0	0	11	_	_			
+535	ⲕⲁϯ	V	ⲕⲁϯ	ⲕⲁϯ	ⲕⲁϯ	C1394	to know, understand	1	1	0	0	0.5	11	123a	(intransitive) know, understand (συνιεναι, νοειν) ― with ϫⲉ- ― with ⲉ- (transitive) (obj with ⲛ-, prob erroneous)			
+536	ⲛⲕⲟⲧ	V	ⲉⲛⲕⲟⲧ	ⲛⲕⲟⲧⲕ	ⲛⲕⲟⲧⲕ	C2458	sleep	1	1	1	1	1	11	224a	(intransitive) ― sleep (υπνουν, καθευδειν, κοιμασθαι) ― lie down (κοιμασθαι, κατακεισθαι) ― die (κοιμασθαι)			
+537	ⲟⲩⲱⲛϩ	V	ⲟⲩⲱⲛϩ	ⲟⲩⲱⲛϩ	ⲟⲩⲱⲛϩ	C5087,C5088	revelation, declaration; reveal, be revealed, appear	1	1	1	1	1	11	486a	(intransitive) (mostly B), reveal, be revealed, appear (φαινειν, φανερος ειναι) (transitive) show, make clear (φαινειν, γνωριζειν, ομολογειν, παρρησιαζειν, δεικνυναι)			
+538	ϩⲟⲛϩⲉⲛ	V	ϩⲟⲛϩⲉⲛ	ϩⲟⲛϩⲉⲛ	_	C6729	to command	1	1	0	0	0.5	11	693a	(intransitive) bid (εντελλεσθαι, επιτασσειν) (transitive)			verify; unique Bo word? Cf. Sa ϩⲱⲛ C6688
+540	ⲥⲃⲱ	V	ⲥⲃⲱ	ⲥⲃⲟ	ⲥⲃⲟ	C3313	to learn, teach	0	0	0	0	0	11	_	_			
+541	ⲉⲣⲡⲣⲟⲫⲏⲧⲉⲩⲓⲛ	V	ⲉⲣⲡⲣⲟⲫⲏⲧⲉⲩⲓⲛ	ⲉⲣⲡⲣⲟⲫⲏⲧⲉⲩⲓⲛ	X	MISSING		0	0	0	0	0	11	_	_			verify; unique Bo word?
+542	ⲛⲕⲟⲧ	V	ⲛⲕⲟⲧ	ⲛⲕⲟⲧⲕ	ⲛⲕⲟⲧⲕ	C2458	to sleep	0	0	0	0	0	11	_	_			
+544	ϣⲁⲣⲉ	AAOR	ϣⲁⲣⲉ	ϣⲁⲣⲉ	ϣⲁⲣⲉ	C6025	(habit, continuance)	1	1	1	1	1	10	583a	pref aorist (habit, continuance), opp ⲙⲉⲣⲉ- as fut S + rel ⲉ- + ⲛ-, as last or = if, when + ⲛⲉ- past aor			
+545	ⲁϥϣⲁⲛ	ACOND_PPERS	ⲁⲣⲉϣⲁⲛ_ⲛⲑⲟϥ	ⲉⲣϣⲁⲛ_ⲛⲧⲟϥ	ⲉϥϣⲁⲛ	C6025_C2572		0	0	0	0	0	10	_	_			
+546	ⲃⲱⲕ	N	ⲃⲱⲕ	ⲃⲱⲕ	_	C391	servant, slave	1	1	0	0	0.5	10	30a	servant, slave (δουλος, οικετης)			verify; unique Bo word? But Sa has pl ⲃⲁⲓⲁⲓⲕ
+547	ⲉⲣⲏⲟⲩ	N	ⲉⲣⲏⲟⲩ	ⲉⲣⲏⲩ	ⲉⲣⲏⲩ	C715,C714	fellow, companion	1	1	1	1	1	10	59a	mostly with poss pref & agreeing in gender & mostly number with subj of clause, fellow, companion, hence expressing reciprocity each other, together, mutually &c (πλησιον, ετερος, αλληλων)			
+548	ⲙⲏⲓⲛⲓ	N	ⲙⲏⲓⲛⲓ	ⲙⲁⲉⲓⲛ	ⲙⲁⲉⲓⲛ	C1904	sign, mark	1	1	1	1	1	10	170b	sign, mark (σημειον)			
+549	ⲙϩⲁⲩ	N	ⲙϩⲁⲩ	ⲙϩⲁⲁⲩ	ⲙϩⲁⲁⲩ	C2325	tomb, cavern	1	1	1	1	1	10	212b	tomb, cavern (μνημα, μνημειον, ταφος, σπηλαιον)			
+550	ⲱⲛⲓ	N	ⲱⲛⲓ	ⲱⲛⲉ	ⲱⲛⲉ	C5495,C5496	stone	1	1	1	1	1	10	524a	stone (λιθος, πετρα) as measure as adj (λιθινος, λιθουργικος)			
+551	ϫⲟⲓ	N	ϫⲟⲓ	ϫⲟⲓ	ϫⲟⲓ	C7087	ship, boat	1	1	1	1	1	10	754a	ship, boat (πλοιον, ναυς)			
+552	ϣⲟⲩϣⲟⲩ	N	ϣⲟⲩϣⲟⲩ	ϣⲟⲩϣⲟⲩ	ϣⲟⲩϣⲟⲩ	C6162,C6162	boast, pride	0	0	0	0	0	10	_	_			
+553	ϣⲉⲡϩⲙⲟⲧ	N	ϣⲉⲡϩⲙⲟⲧ	ϣⲡϩⲙⲟⲧ	ϣⲡϩⲙⲟⲧ	C6657		0	0	0	0	0	10	_	_			
+554	ϫⲉⲙϩⲏⲟⲩ	N	ϫⲉⲙϩⲏⲟⲩ	ϭⲛϩⲏⲩ	ϭⲛϩⲏⲩ	C6964	to gain, find profit	0	0	0	0	0	10	_	_			
+555	ϣⲱⲛⲓ	N	ϣⲱⲛⲓ	ϣⲱⲛⲉ	ϣⲱⲛⲉ	C5936,C5937		0	0	0	0	0	10	_	_			
+556	ϩⲃⲱⲥ	N	ϩⲃⲱⲥ	ϩⲃⲟⲟⲥ	ϩⲃⲟⲟⲥ	C6462,C6463,C6464	garment	0	0	0	0	0	10	_	_			
+558	ⲧⲉⲥ	PPOS	ⲡⲉⲥ	ⲡⲉⲥ	ⲧⲉⲥ	MISSING		0	0	1	1	0.5	10	433b	(intransitive) ― become, be hard, stiff, dry (πηγνυναι, ξηραινειν) ― be firm, implanted, fixed (transitive) fix			
+559	ⲓⲛⲓ	V	ⲓⲛⲓ	ⲉⲓⲛⲉ	ⲉⲓⲛⲉ	C905	to bring, bear	1	0	1	1	0.75	10	81a	thumb great toe			
+560	ⲧⲱⲟⲩⲛ	V	ⲧⲱⲟⲩⲛ	ⲧⲱⲟⲩⲛ	ⲧⲱⲟⲩⲛ	C4674,C4675	arise	1	1	1	1	1	10	445a	(intransitive) arise (ανισταναι, εγειρειν, αιρειν) (transitive) raise, carry (απαιρειν)			
+561	ⲟⲩⲟⲙ	V	ⲟⲩⲱⲙ	ⲟⲩⲱⲙ	ⲟⲩⲟⲙ	C5003	eat, bite	1	1	1	1	1	10	478a	(intransitive) eat, bite (εσθιειν, βιβρωσκειν, τρωγειν) (transitive) ― (εσθιειν, βιβρωσκειν, δακνειν, θηλαζειν) ― swallow, submit to S c ϩⲏⲧ S,B, repent (μετανοειν) p c, eater			
+562	ϣⲱⲛⲓ	V	ϣⲱⲛⲓ	ϣⲱⲛⲉ	ϣⲱⲛⲉ	C5936,C5937	be sick, weak	1	1	1	1	1	10	570b	(intransitive) be sick, weak (ασθενειν, νοσειν)			
+563	ϣⲟⲩϣⲟⲩ	V	ϣⲟⲩϣⲟⲩ	ϣⲟⲩϣⲟⲩ	ϣⲟⲩϣⲟⲩ	C6162,C6161	boast, pride oneself; boast, pride	1	1	1	1	1	10	604a	(intransitive) B, boast (καυχασθαι, επαινεσθαι) tr (refl): pride oneself			
+564	ϫⲉⲙ	V	ϫⲓⲙⲓ	ϭⲓⲛⲉ	ϭⲛⲧ	C7750	find	1	1	1	1	1	10	820a	(intransitive) find (ευρισκειν) (transitive) (ευρισκειν, συμβαινειν, προσπιπτειν, τυγχανειν)			
+564	ϫⲉⲙ	V	ϫⲓⲙⲓ	ϭⲓⲛⲉ	ϭⲛ	C7750	find	1	1	1	1	1	10	820a	(intransitive) find (ευρισκειν) (transitive) (ευρισκειν, συμβαινειν, προσπιπτειν, τυγχανειν)			
+564	ϫⲉⲙ	V	ϫⲓⲙⲓ	ϭⲓⲛⲉ	ϭⲙ	C7750	find	1	1	1	1	1	10	820a	(intransitive) find (ευρισκειν) (transitive) (ευρισκειν, συμβαινειν, προσπιπτειν, τυγχανειν)			
+565	ϣⲉⲡϩⲙⲟⲧ	V	ϣⲉⲡϩⲙⲟⲧ	ϣⲡϩⲙⲟⲧ	ϣⲡϩⲙⲟⲧ	C6657	to give thanks	0	0	0	0	0	10	_	_			
+566	ⲉⲣⲉⲧⲓⲛ	V	ⲉⲣⲉⲧⲓⲛ	ⲉⲣⲉⲧⲓⲛ	_	x		0	0	0	0	0	10	_	_			verify; unique Bo word (Gk)?
+567	ϫⲉⲙϫⲟⲙ	V	ϫⲉⲙϫⲟⲙ	ϭⲙϭⲟⲙ	ϭⲙϭⲟⲙ	C7721	to be able, find strength	0	0	0	0	0	10	_	_			
+568	ϫⲉⲙϩⲏⲟⲩ	V	ϫⲉⲙϩⲏⲟⲩ	ϭⲛϩⲏⲩ	ϭⲛϩⲏⲩ	C6964	to gain, find profit	0	0	0	0	0	10	_	_			
+569	ϩⲟⲧⲉ	CONJ	ϩⲟⲧⲉ	ϩⲟⲧⲉ	ϩⲟⲧⲉ	C6911,C11183	beyond, more than	1	0	0	0	0.25	9	722a	with preceding ⲉ-, prep, beyond, more than (υπερ) c following ⲉ- when			
+570	ⲃⲉⲣⲓ	N	ⲃⲉⲣⲓ	ⲃⲣⲣⲉ	ⲃⲣⲣⲉ	C517,C516	new, young; new thing	1	1	1	1	1	9	43a	adj, new, young (καινος, νεος) as noun, new thing			
+571	ⲙⲏⲣ	N	ⲙⲏⲣ	ⲙⲏⲣ	ⲙⲏⲣ	C1990	shore (of river), opposite shore	1	1	1	1	1	9	180a	shore of river, esp opposite shore ― with ⲉ- as prep, to the other side ― with ϩⲓ-, on, at other side ― as nn, on further side			
+572	ⲙⲁϣϫ	N	ⲙⲁϣϫ	ⲙⲁⲁϫⲉ	ⲙⲁⲁϫⲉ	C2328,C2330	ear	1	1	1	1	1	9	212b	ear (ους, ωτιον) as handle of basket			
+573	ⲟⲩⲛⲟⲩ	N	ⲟⲩⲛⲟⲩ	ⲟⲩⲛⲟⲩ	ⲟⲩⲛⲟⲩ	C5040	hour	1	1	1	1	1	9	484b	hour (ωρα, καιρος)			
+574	ϣⲱⲓ	N	ϣⲱⲓ	ϣⲱⲓ	ϣⲱⲓ	C5740,C5738	what is high/above	1	1	0	0	0.5	9	550b	genital organs (?)			
+575	ϣⲫⲏⲣ	N	ϣⲫⲏⲣ	ϣⲃⲏⲣ	ϣⲃⲏⲣ	C5764	friend, comrade	1	1	1	1	1	9	553a	friend, comrade (φιλος, πλησιον)			
+576	ϣⲱⲧ	N	ϣⲱⲧ	ϣⲱⲧ	ϣⲱⲧ	C6083,C6084	meaning unknown; trader, merchant	1	1	1	0	0.75	9	590a	trader, merchant (εμπορος)			
+577	ⲙⲟⲕⲙⲉⲕ	N	ⲙⲟⲕⲙⲉⲕ	ⲙⲟⲕⲙⲉⲕ	ⲙⲟⲕⲙⲉⲕ	C1843	thought, reason	0	0	0	0	0	9	_	_			
+578	ϫⲱⲕ	N	ϫⲱⲕ	ϫⲱⲕ	ϫⲱⲕ	C7119,C7120	completion, end	0	0	0	0	0	9	_	_			
+579	ⲥϣⲉ	N	ⲥϣⲉ	ϣϣⲉ	ϣϣⲉ	C6178	it is fitting, right	0	0	0	0	0	9	_	_			
+580	ϫⲉⲟⲩⲁ	N	ϫⲉⲟⲩⲁ	ϫⲓⲟⲩⲁ	ϫⲓⲟⲩⲁ	C4886,C4885	blasphemy	0	0	0	0	0	9	_	_			
+584	ⲑⲁⲓ	PDEM	ⲫⲁⲓ	ⲡⲁⲓ	ⲡⲁⲓ	C2800		0	0	0	0	0	9	_	_			verify; unique Bo
+585	ⲭ	PPERS	ⲛⲑⲟⲕ	ⲛⲧⲟⲕ	ⲕ	C1036		0	0	0	0	0	9	_	_			
+586	ⲛⲧⲁ	PREP	ⲛⲧⲉ	ⲛⲧⲉ	ⲛⲧⲁ	C2532,C2533	indicating possession, ownership; paticle of genitive	1	0	1	1	0.75	9	230a	particle of genitive, used ― for greater precision than ⲛ- ― where preceding word has indefinite article ― between 2 names (persons or places) ― after foregoing gen or after attribute (adj or rel) ― after strong art ⲛⲧⲁ= &c, indicates possession, ownership (esp in B)			
+587	ⲉϩⲟⲧⲉ	PREP	ⲉϩⲟⲧⲉ	ⲉϩⲟⲩⲟ	ⲉϩⲟⲩⲟ	C6984	beyond, more than	0	0	0	0	0	9	_	_			
+588	ϧⲁⲧⲉⲛ	PREP	ϧⲁⲧⲉⲛ	ϩⲁϩⲧⲛ	ϩⲁϩⲧⲛ	C6883	with, besides	0	0	0	0	0	9	_	_			
+589	ⲛⲧⲁ	PREP	ⲛⲧⲉ	ⲛⲧⲉ	ⲛⲧⲁ	C2532,C2533	indicating possession, ownership; paticle of genitive	0	0	0	0	0	9	_	_			
+590	ⲛⲉⲙⲏ	PREP	ⲛⲉⲙ	ⲙⲛ	ⲛⲙⲙⲁ	C1901,C1902	with, and	0	0	0	0	0	9	_	_			
+591	ⲓⲥ	PTC	ⲓⲥ	ⲉⲓⲥ	ⲉⲓⲥ	C978	behold, lo, here is (used properly before noun)	1	0	1	1	0.75	9	85a	behold, lo, here is, used properly before nn (ιδου)			
+592	ⲙⲟⲕⲙⲉⲕ	V	ⲙⲟⲕⲙⲉⲕ	ⲙⲟⲕⲙⲉⲕ	ⲙⲟⲕⲙⲉⲕ	C1842,C1843	think, ponder; thought	1	1	1	1	1	9	162a	(intransitive) think, ponder (λογιζεσθαι, νοεισθαι, ενθυμεισθαι) (transitive) meditate, intend refl (oftenest), consider ― with suff ― with ⲙⲙⲟ=			
+593	ⲥⲟⲛϩ	V	ⲥⲱⲛϩ	ⲥⲱⲛϩ	ⲥⲟⲛϩ	C3643	to be bound, fettered	1	1	1	1	1	9	348b	(intransitive) be bound, fettered (πεδασθαι) (transitive) bind (δεειν)			
+595	ⲟⲩⲟⲣⲡ	V	ⲟⲩⲱⲣⲡ	ⲟⲩⲱⲣⲡ	ⲟⲩⲱⲣⲡ	C5122	send	1	1	1	1	1	9	489a	(intransitive) send (αποστελλειν) (transitive) (αποστελλειν, εξαποστελλειν, πεμπειν)			
+596	ⲟⲩⲉⲧ	V	ⲟⲩⲱϯ	ⲟⲩⲱⲱⲧⲉ	ⲟⲩⲁⲁⲧⲉ	C5194	send, separated (qual.)	1	1	1	1	1	9	495a	send ― intr: ― tr: (εξαποστελλειν, αφιεναι) ― qual: S, separated, choice			
+597	ϣⲱⲧ	V	ϣⲓϯ	ϣⲓⲧⲉ	ϣⲓⲧⲉ	C6099	demand, extort	1	1	1	1	1	9	594a	(intransitive) demand, extort (απαιτειν) (transitive) (απαιτειν)			
+598	ⲥϣⲉ	V	ⲥϣⲉ	ϣϣⲉ	ϣϣⲉ	C6178	it is fitting, right	1	1	1	1	1	9	607b	impersonal vb, it is fitting, right			
+599	ϩⲉⲓ	V	ϩⲉⲓ	ϩⲉ	ϩⲉ	C6354	fall	1	1	1	1	1	9	637a	(intransitive) ― fall (πιπτειν) ― light upon, find (ευρισκειν, τυγχανειν)			
+600	ϫⲱⲕ	V	ϫⲱⲕ	ϫⲱⲕ	ϫⲱⲕ	C7119	be completed, full, end (life)	1	1	1	1	1	9	761a	(intransitive) be completed, full, end life (τελεισθαι) (transitive) complete, finish (τελειν)			
+601	ϭⲓⲱⲙⲥ	V	ϭⲓⲱⲙⲥ	ϭⲓⲱⲙⲥ	_	C5490,C5489,C5487,C5488		0	0	0	0	0	9	_	_			verify; unique Bo word?
+602	ϫⲉⲟⲩⲁ	V	ϫⲉⲟⲩⲁ	ϫⲓⲟⲩⲁ	ϫⲓⲟⲩⲁ	C4885,C4886	to blaspheme	0	0	0	0	0	9	_	_			
+603	ⲟⲩⲟⲣⲡ	V	ⲟⲩⲟⲣⲡ	ⲟⲩⲱⲣⲡ	ⲟⲩⲱⲣⲡ	C5122	to send	0	0	0	0	0	9	_	_			
+604	ⲉⲣⲉⲡⲓⲧⲓⲙⲁⲛ	V	ⲉⲣⲉⲡⲓⲧⲓⲙⲁⲛ	ⲉⲣⲉⲡⲓⲧⲓⲙⲁⲛ	_	_	to warn, rebuke	0	0	0	0	0	9	_	_			verify; should we use this Sa equivalent? Gk
+605	ⲙⲱⲟⲩⲧ	VSTAT	ⲙⲟⲩ	ⲙⲟⲩⲟⲩⲧ	ⲙⲟⲟⲩⲧ	C2192	kill	0	1	1	1	0.75	9	201a	(transitive) kill (κτεινειν, θανατουν, απολλυναι, αναιρειν, νεκρουν) intr (rare):			
+606	ⲙⲏⲣ	VSTAT	ⲙⲟⲩⲣ	ⲙⲟⲩⲣ	ⲙⲏⲣ	C1991	bind, gird, tie	1	1	1	1	1	9	180a	(transitive) bind, gird, tie (δειν, δεσμευειν, ζωννυειν) ― c acc of thing bound ― c ⲛ- of that wherewith bound ― c ϩⲛ-, ϧⲉⲛ- sim ― c ⲛ- of that upon, to, in which bound ― c ⲉ- sim ― c ⲉϫⲛ- sim ― c ϩⲛ-, ϧⲉⲛ- of place where bound ― c ⲛⲥⲁ- S, tie behind ― gird with monastic habit ― bind, oblige by oath, adjure (qualitative) bound, girt (intransitive) S, bind			
+607	ϩⲱⲟⲩ	VSTAT	ϩⲱⲟⲩ	ϩⲱⲟⲩ	ϩⲱⲟⲩ	C6974,C6973	rain, moisture; rain	1	1	1	1	1	9	732a	(intransitive) rain (βρεχειν, σταζειν)			
+608	ⲁⲩϣⲁⲛ	ACOND_PPERS	ⲁⲣⲉϣⲁⲛ_ⲛⲑⲱⲟⲩ	ⲉⲣϣⲁⲛ_ⲛⲧⲟⲟⲩ	ⲉⲣϣⲁⲛ	C6025_C2566		0	0	0	0	0	8	_	_			
+609	ⲉⲙⲁϣⲱ	ADV	ⲉⲙⲁϣⲱ	ⲉⲙⲁϣⲟ	ⲉⲙⲁϣⲟ	C2198	very, greatly	0	0	0	0	0	8	_	_			
+610	ⲓⲥϫⲉⲛ	CONJ	ⲓⲥϫⲉⲛ	ϫⲓⲛ	ϫⲓⲛ	C7232	from, since	0	0	0	0	0	8	_	_			
+612	ⲙⲙⲓⲛⲙⲙⲟ	IMOD	ⲙⲙⲓⲛⲙⲙⲟ	ⲙⲙⲓⲛⲙⲙⲟ	ⲙⲙⲓⲛⲙⲙⲟ	C1896		0	0	0	0	0	8	_	_			
+613	ⲣⲟⲩϩⲓ	N	ⲣⲟⲩϩⲓ	ⲣⲟⲩϩⲉ	ⲣⲟⲩϩⲉ	C3235	evening	1	1	1	1	1	8	310b	evening (εσπερα, οψε) adverbial, at evening			
+614	ϣⲱⲡ	N	ϣⲟⲡ	ϣⲟⲡ	ϣⲟⲡ	C5969,C5970	palm, handbreath	0	1	1	1	0.75	8	576b	moment, instant, c ϩⲛⲟⲩ- suddenly (εν ατοιμω, προς μιαν ροπην, αφνω) as adj			
+615	ϧⲁⲉ	N	ϧⲁⲉ	ϩⲁⲉ	ϩⲁⲉ	C6339,C6338,C6340	last thing, end	1	1	1	1	1	8	635a	properly adj, so, last thing, end (εσχατος) adj, last ― before nn ― after nn			
+616	ϩⲱϯ	N	ϩⲱϯ	ϩⲱϯ	ϩⲱϯ	C6914	necessity	1	1	1	0	0.75	8	722b	necessity, as impers vb it is needful (δειν)			
+617	ⲫⲱⲣϫ	N	ⲫⲱⲣϫ	ⲡⲱⲣϣ	ⲡⲱⲣϣ	C2896,C2895	spread	0	0	0	0	0	8	_	_			
+618	ⲧⲟⲩⲃⲟ	N	ⲧⲟⲩⲃⲟ	ⲧⲃⲃⲟ	ⲧⲃⲃⲟ	C4099,C4100	pure, purity	0	0	0	0	0	8	_	_			
+619	ⲥⲩⲛⲏⲇⲉⲥⲓⲥ	N	ⲥⲩⲛⲏⲇⲉⲥⲓⲥ	ⲥⲩⲛⲉⲓⲇⲏⲥⲓⲥ	ⲥⲩⲛⲉⲓⲇⲏⲥⲓⲥ	C10617	knowledge, expertise	0	0	0	0	0	8	_	_			
+620	ⲣⲱⲓⲥ	N	ⲣⲱⲓⲥ	ⲣⲟⲉⲓⲥ	ⲣⲟⲉⲓⲥ	C3060,C3058	watch, guard	0	0	0	0	0	8	_	_			
+623	ⲫⲱⲧ	N	ⲫⲱⲧ	ⲡⲱⲧ	ⲡⲱⲧ	C2925,C2928	run, flee	0	0	0	0	0	8	_	_			
+624	ⲍ	NUM	ⲍ	ⲍ	ⲍ	C779	num. seven	0	0	0	0	0	8	_	_			
+625	ⲛⲉⲛ	PPOS	ⲡⲉⲛ	ⲡⲉⲛ	ⲛⲉⲛ	MISSING		0	0	1	1	0.5	8	258b	definite article			
+626	ⲛⲉⲕ	PPOS	ⲡⲉⲕ	ⲡⲉⲕ	ⲛⲉⲕ	MISSING		0	0	0	0	0	8	_	_			
+628	ⲓⲥϫⲉⲛ	PREP	ⲓⲥϫⲉⲛ	ϫⲓⲛ	ϫⲓⲛ	C7233,C7232	from, since; while, since	1	0	1	1	0.75	8	772b	from (starting from), since ― before nn ― before vb prefixed other prep with nn intervening, from ... to ― or advb ―― ⲉⲃⲟⲗ, from ... outward ―― ⲉϩⲣⲁⲓ ―― ⲉⲡⲉⲥⲏⲧ S, ⲉϧⲣⲏⲓ B, downward preceded by other prep			
+629	ⲉⲗ	V	ⲱⲗⲓ	ⲱⲗ	ⲱⲗ	C5445	hold, contain, enclose	1	1	1	1	1	8	520a	(intransitive) (mostly S) ― hold, contain, enclose (χωρειν) ― gather in harvest (αμαν) (transitive) (mostly B), take, lay hold of, gather (αιρειν, αναιρειν)			
+630	ⲕⲱⲣϥ	V	ⲕⲱⲣϥ	ⲕⲱⲣϥ	ⲕⲱⲣϥ	C1336	bring to naught, cancel, destroy	1	1	1	1	1	8	118a	(transitive) bring to naught, cancel, destroy (καταργειν, λυειν) (intransitive) be idle, deficient (αργος ισταναι)			
+632	ⲫⲱⲧ	V	ⲫⲱⲧ	ⲡⲱⲧ	ⲡⲱⲧ	C2925	run, flee, go	1	1	1	1	1	8	274a	(intransitive) ― run, flee, go (φευγειν, τρεχειν) ― with ethic dat, depart ― with cogn acc			
+633	ⲣⲱⲓⲥ	V	ⲣⲱⲓⲥ	ⲣⲟⲉⲓⲥ	ⲣⲟⲉⲓⲥ	C3058	be awake, watch	1	1	1	1	1	8	300b	(intransitive) be awake, watch (γρηγορειν, αγρυπνειν, εκνηφειν) (transitive) S (rare), keep, observe			
+634	ⲣⲁϣⲓ	V	ⲣⲁϣⲓ	ⲣⲱϣⲉ	ⲣⲱϣⲉ	C3224	suffice	0	1	1	1	0.75	8	309a	(intransitive) ― suffice (αρκειν) ― be concerned, responsible (transitive) S,A,B,F, suffice, content			
+635	ⲥⲙⲟⲩ	V	ⲥⲙⲟⲩ	ⲥⲙⲟⲩ	ⲥⲙⲟⲩ	C3519	bless, praise, thank	1	1	1	1	1	8	335a	(intransitive) bless, praise (ευλογειν, αινειν)			
+636	ⲧⲟⲩⲃⲟ	V	ⲧⲟⲩⲃⲟ	ⲧⲟⲩⲟ	ⲧⲟⲩⲟ	C4617	show, teach	1	1	1	1	1	8	443b	(transitive) ― show, teach (δεικνυναι, διδασκειν) ― send (πεμπειν) hence ? send forth rays, light (εξαστραπτειν) (intransitive) learn (δεχεσθαι, μανθανειν)			
+637	ⲧⲱⲃϩ	V	ⲧⲱⲃϩ	ⲧⲱⲃϩ	ⲧⲱⲃϩ	C4143,C4144	pray, entreat	1	1	1	1	1	8	402a	(intransitive) pray, entreat (ευχεσθαι, δεισθαι) (transitive) entreat, console			
+638	ϣⲱⲡ	V	ϣⲱⲡ	ϣⲱⲡ	ϣⲱⲡ	C5971,C5975	receive, take	1	1	1	1	1	8	574b	(intransitive) ― receive, contain, take, suffer (αναλαμβανειν, χωρειν, πασχειν, δεχεσθαι) ― buy (αγοραζειν, κτασθαι) (qualitative) acceptable (δεκτος) p c sA,B, receiver			
+639	ϣⲉⲡ	V	ϣⲱⲡ	ϣⲱⲡ	ϣⲉⲡ	C5971,C5975	receive, take	1	1	1	1	1	8	574b	(intransitive) ― receive, contain, take, suffer (αναλαμβανειν, χωρειν, πασχειν, δεχεσθαι) ― buy (αγοραζειν, κτασθαι) (qualitative) acceptable (δεκτος) p c sA,B, receiver			
+640	ϧⲟⲑⲃ	V	ϧⲱⲧⲉⲃ	ϩⲱⲧⲃ	ϩⲟⲧⲃ	C6925,C6924	kill; slaughter, murder	1	1	1	1	1	8	723b	(intransitive) kill (αποκτεινειν, θανατουν) (transitive) (αποκτεινειν, θανατουν, αναιρειν)			
+642	ⲉⲣϣⲟⲣⲡ	V	ⲉⲣϣⲟⲣⲡ	ⲣϣⲟⲣⲡ	ⲣϣⲟⲣⲡ	C6062	be first	0	0	0	0	0	8	_	_			
+643	ⲑⲁϩⲉⲙ	V	ⲑⲱϩⲉⲙ	ⲧⲱϩⲙ	ⲧⲱϩⲙ	C4798,C4799	calling, convocation	0	0	0	0	0	8	_	_			
+644	ϭⲛⲉϫⲱ	V	ϭⲛⲉϫⲱ	ϭⲛⲉϫⲱ	_	C7771	submit	0	0	0	0	0	8	_	_			verify; unique Bo word?
+645	ⲉⲣⲥⲕⲁⲛⲇⲁⲗⲓⲍⲉⲥⲑⲉ	V	ⲉⲣⲥⲕⲁⲛⲇⲁⲗⲓⲍⲉⲥⲑⲉ	ⲉⲣⲥⲕⲁⲛⲇⲁⲗⲓⲍⲉⲥⲑⲉ	_	_		0	0	0	0	0	8	_	_			verify; okay to equate Bo and Sa here?
+646	ⲑⲁϩⲉⲙ	VSTAT	ⲑⲱϩⲉⲙ	ⲧⲱϩⲙ	ⲧⲁϩⲙ	C4798	knock on the door, summon, invite, chase, urge, pursue	1	1	1	1	1	8	458b	(intransitive) knock (on door) (κρουειν) , hence summon, invite (καλειν) (transitive) summon (προσκαλειν, προτρεπεσθαι)			
+647	ϣⲁⲧⲉ	ALIM	ϣⲁⲧⲉ	ϣⲁⲛⲧⲉ	ϣⲁⲛⲧⲉ	C5956	until, so that	1	1	1	1	1	7	573a	until (εως ου, εως αν) so that (οπως)			
+648	ⲙⲡⲁⲧⲉ	ANY	ⲙⲡⲁⲧⲉ	ⲙⲡⲁⲧⲉ	ⲙⲡⲁⲧⲉ	C1981	(of what) has not yet happened	1	1	1	1	1	7	179a	pref neg perf of what has not yet happened (πριν, προ του, ουπω) with ⲛⲉ- pluperf of same			
+650	ϣⲁⲧⲉ	CONJ	ϣⲁⲧⲉ	ϣⲁⲛⲧⲉ	ϣⲁⲛⲧⲉ	C5956	until	0	0	0	0	0	7	_	_			
+652	ⲙⲙⲟⲛⲧⲉ	EXIST	ⲙⲙⲟⲛⲧⲉ	ⲙⲛⲧⲉ	ⲙⲛⲧⲉ	C1891		0	0	0	0	0	7	_	_			
+653	ⲟⲩⲟⲛⲧⲁ	EXIST	ⲟⲩⲟⲛⲧⲉ	ⲟⲩⲛⲧⲉ	ⲟⲩⲛⲧⲉ	C5038	be, exist; there is	0	0	0	0	0	7	_	_			
+654	ⲙⲙⲟⲛⲧⲉ	EXIST	ⲙⲙⲟⲛⲧⲉ	ⲙⲛⲧⲉ	ⲙⲛⲧⲉ	C1891		0	0	0	0	0	7	_	_			lemma ⲙⲙⲟⲛ
+655	ⲭⲣⲱⲙ	N	ⲭⲣⲱⲙ	ⲕⲣⲱⲙ	ⲕⲣⲱⲙ	C1302	fire	1	1	1	1	1	7	115b	fire (πυρ) as adj, of fire, fiery (πυρινος)			
+656	ⲙⲑⲟ	N	ⲙⲑⲟ	ⲙⲧⲟ	ⲙⲧⲟ	C2116	face, presence	1	1	1	1	1	7	193a	face, presence (εναντι, απεναντι)			
+657	ⲥⲛⲟϥ	N	ⲥⲛⲟϥ	ⲥⲛⲟϥ	ⲥⲛⲟϥ	C3637	blood	1	1	1	1	1	7	348a	blood (αιμα)			
+658	ϯⲙⲓ	N	ϯⲙⲓ	ϯⲙⲉ	ϯⲙⲉ	C4290	village	1	1	1	1	1	7	414a	village (κωμη)			
+659	ⲑⲏⲟⲩ	N	ⲑⲏⲟⲩ	ⲧⲏⲩ	ⲧⲏⲩ	C4635	wind, breath	1	1	1	1	1	7	439b	wind (ανεμος, πνευμα, πνοη) south wind ⲧⲟⲩⲣⲏⲥ, ⲑⲟⲩⲣ., ⲑⲏⲟⲩ ⲣ. north wind breath (πνοη)			
+660	ⲟⲩⲓⲛⲁⲙ	N	ⲟⲩⲓⲛⲁⲙ	ⲟⲩⲛⲁⲙ	ⲟⲩⲛⲁⲙ	C5073	right hand	1	1	1	1	1	7	483b	right hand (δεξια)			
+661	ⲱⲙⲥ	N	ⲱⲙⲥ	ⲱⲙⲥ	ⲱⲙⲥ	C5476,C5483	be sunk, be submerged	1	0	1	1	0.75	7	523a	(intransitive) be sunk, submerged (καταποντιζειν, βυθιζειν, δυειν) (transitive) sink, dip (καταποντιζειν, καταδυειν, εμπιμπλαναι)			
+662	ϣⲉⲣⲓ	N	ϣⲏⲣⲓ	ϣⲏⲣⲉ	ϣⲉⲉⲣⲉ	C6032,C6033	son, child (fem.)	1	1	1	1	1	7	584a	son, child (υιος, τεκνον) daughter (θυγατηρ)			
+663	ϩⲟ	N	ϩⲟ	ϩⲟ	ϩⲟ	C6398	face	1	1	1	1	1	7	646b	face (προσωπον, οψις, μορφη) side, edge			
+664	ϩⲁⲡ	N	ϩⲁⲡ	ϩⲁⲡ	ϩⲁⲡ	C6732	judgment, inquest	1	1	1	1	1	7	693b	judgement, inquest (κριμα, κρισις)			
+665	ϭⲓⲥⲓ	N	ϭⲓⲥⲓ	ϫⲓⲥⲉ	ϫⲓⲥⲉ	C7393,C7394,C7382,C7385,C7387	height, top; a land measure; back	1	1	1	1	1	7	790b	back (νωτος) spine, vertebra (ραχις)			
+666	ϭⲁⲗⲁⲩϫ	N	ϭⲁⲗⲟϫ	ϭⲁⲗⲟϫ	_	C7691		1	1	1	1	1	7	814a	foot, knee (πους)			verify; CD814a, lists only pl for Sa under ϭⲁⲗⲟϫ; perhaps link with ϭⲱⲗϫ, just below in CD?
+667	ϭⲗⲟϫ	N	ϭⲗⲟϫ	ϭⲗⲟϭ	ϭⲗⲟϭ	C7696,C7697	gourd; bed, bier	1	1	1	1	1	7	815a	gourd			
+668	ⲙⲉⲧⲙⲉⲑⲣⲉ	N	ⲙⲉⲧⲙⲉⲑⲣⲉ	ⲙⲛⲧⲙⲛⲧⲣⲉ	ⲙⲛⲧⲙⲛⲧⲣⲉ	C1967,C1968	testimony	0	0	0	0	0	7	_	_			
+669	ϫⲱⲣⲓ	N	ϫⲱⲣⲓ	ϫⲱⲱⲣⲉ	ϫⲱⲱⲣⲉ	C7340,C7341	power, strength	0	0	0	0	0	7	_	_			
+670	ⲙⲉⲛⲣⲓⲧ	N	ⲙⲉⲛⲣⲓⲧ	ⲙⲉⲣⲓⲧ	ⲙⲉⲣⲓⲧ	C1788	beloved	0	0	0	0	0	7	_	_			
+671	ⲃⲟⲗ	N	ⲃⲱⲗ	ⲃⲱⲗ	ⲃⲱⲗ	C404,C409	loosen; solution, interpretation	0	0	0	0	0	7	_	_			
+672	ⲧⲏⲣϥ	N	ⲧⲏⲣϥ	ⲧⲏⲣϥ	ⲧⲏⲣϥ	_		0	0	0	0	0	7	_	_			should be ⲧⲏⲣ-ϥ
+674	ⲉⲓⲱⲧ	N	ⲉⲓⲱⲧ	ⲉⲓⲱⲧ	ⲉⲓⲱⲧ	C992,C993,C998	father, barely	0	0	0	0	0	7	_	_			
+676	ⲣ	NUM	ⲣ	ⲣ	ⲣ	C3028	num. 100	0	0	0	0	0	7	_	_			
+678	ϩⲏⲡⲡⲉ	PTC	ϩⲏⲡⲡⲉ	ϩⲏⲏⲧⲉ	ϩⲏⲏⲧⲉ	C986		0	0	0	0	0	7	_	_			
+679	ⲁⲗⲏⲓ	V	ⲁⲗⲏⲓ	ⲁⲗⲉ	ⲁⲗⲉ	C37	mount, go up	1	1	1	1	1	7	4a	(intransitive) mount, go up, go on, board (αναβαινειν, επιβαινειν) (transitive) S			
+680	ⲃⲟⲗ	V	ⲃⲱⲗ	ⲃⲱⲗ	ⲃⲟⲗ	C409,C404	loosen, untie [of chains, cords etc.]; solution, interpretation	1	1	1	1	1	7	32a	loosen, untie, mostly tr (λυειν) melt unstring interpret, explain scriptures, dreams &c (διερμηνευειν) be softened, persuaded weaken, make faint nullify order, deed dissolve, destroy pay			
+681	ⲙⲉⲛⲣⲓⲧ	V	ⲙⲉⲓ	ⲙⲉ	ⲙⲉⲣⲓⲧ	C1785,C1786	love	1	1	1	1	1	7	156a	(transitive) love (αγαπαν)			
+682	ⲡⲉϫⲉ	V	ⲡⲉϫⲉ	ⲡⲉϫⲉ	ⲡⲉϫⲉ	C3017	say (that which . . . said)	1	1	1	1	1	7	285a	what ... saith ― say + suff S ― with initial ⲙ- ― with following nn ― mostly + ϫⲉ- ― c ⲛ- ― c ⲉϩⲟⲩⲛ ϩⲛ- S,F, more emphatic or formal than ⲛ- ― gk ειπειν, λεγειν			
+683	ⲧⲟⲩⲛⲟⲥ	V	ⲧⲟⲩⲛⲟⲥ	ⲧⲟⲩⲛⲟⲥ	ⲧⲟⲩⲛⲟⲥ	C4683	wake, raise, set up	1	1	1	1	1	7	446b	(transitive) wake, raise, set up (εγειρειν, εξανατελλειν, εξαιρειν, εξυπνιζειν)			
+684	ϭⲓⲥⲓ	V	ϭⲓⲥⲓ	ϫⲓⲥⲉ	ϫⲓⲥⲉ	C7382,C7385,C7387,C7393,C7394	become, be high	1	1	1	1	1	7	788b	(intransitive) become, be high (υψουσθαι, μεγαλυνεσθαι) (qualitative) (υψιστος, υψηλος, μετεωρος) (transitive) exalt (υψουν) p c, who raises, mounts			
+686	ⲉⲣⲛⲟⲃⲓ	V	ⲉⲣⲛⲟⲃⲓ	ⲣⲛⲟⲃⲉ	ⲣⲛⲟⲃⲉ	C2436	to sin	0	0	0	0	0	7	_	_			
+687	ⲉⲣⲡⲓⲣⲁⲍⲓⲛ	V	ⲉⲣⲡⲓⲣⲁⲍⲓⲛ	ⲣⲡⲉⲓⲣⲁⲥⲙⲟⲥ	ⲣⲡⲓⲣⲁⲥⲙⲟⲥ	C10173	to tempt, test	0	0	0	0	0	7	_	_			verify; unique Bo word?
+688	ϣϫⲉⲙϫⲟⲙ	V	ϣϫⲉⲙϫⲟⲙ	ϣϭⲙϭⲟⲙ	ϣϭⲙϭⲟⲙ	C7722	find strength, able	0	0	0	0	0	7	_	_			
+692	ⲉⲣⲡⲣⲟⲥⲉⲩⲭⲉⲥⲑⲉ	V	ⲉⲣⲡⲣⲟⲥⲉⲩⲭⲉⲥⲑⲉ	ⲉⲣⲡⲣⲟⲥⲉⲩⲭⲉⲥⲑⲉ	ⲉⲣⲡⲣⲟⲥⲉⲩⲭⲉⲥⲑⲉ	x		0	0	0	0	0	7	_	_			verify; link to Sah ⲡⲣⲟⲥⲉⲩⲭⲉ?
+694	ϩⲁⲣⲁ	ADV	ϩⲁⲣⲁ	ⲁⲣⲁ	ⲁⲣⲁ	C8419	so, therefore	0	0	0	0	0	6	_	_			
+696	ⲟⲩⲟⲛⲧⲉ	EXIST	ⲟⲩⲟⲛⲧⲉ	ⲟⲩⲛⲧⲉ	ⲟⲩⲛⲧⲉ	C5038	there is, exists	0	0	0	0	0	6	_	_			
+697	ⲓⲟϩⲓ	N	ⲓⲟϩⲓ	ⲟϩⲉ	ⲟϩⲉ	C2778	yard (of house), fold (for cattle)	0	1	1	1	0.75	6	258a	yard of house, fold for cattle, sheep (επαυλις, αυλη, μανδρα) pasture flock, herd (ποιμνη)			
+698	ⲛⲟⲩϫ	N	ⲛⲟⲩϫ	ⲛⲟϭ	ⲛⲟϭ	C2712	great, large	0	1	1	1	0.75	6	250a	great, large (μεγας) as title, elder, notable (πρωτος)			
+699	ⲫⲏⲟⲩⲓ	N	ⲫⲉ	ⲡⲉ	ⲡⲏⲩⲉ	C2790	heaven, sky	1	1	1	1	1	6	259a	heaven, sky (ουρανος) | adjectival phrases compounds with preposition with m art + prep ⲉ-			
+700	ⲥⲁⲃⲉ	N	ⲥⲁⲃⲉ	ⲥⲁⲃⲉ	ⲥⲁⲃⲉ	C3330,C3327	wise person; wise	1	1	1	1	1	6	319a	wise person (σοφος, σοφιστης, φρονιμος, συνετος) as adj (φρονιμος)			
+701	ⲥⲁⲃⲉⲩ	N	ⲥⲁⲃⲉ	ⲥⲁⲃⲉ	ⲥⲁⲃⲉⲉⲩ	C3330,C3327	wise person; wise	1	1	1	1	1	6	319a	wise person (σοφος, σοφιστης, φρονιμος, συνετος) as adj (φρονιμος)			
+702	ⲥⲟⲩⲣⲓ	N	ⲥⲟⲩⲣⲓ	ⲥⲟⲩⲣⲉ	ⲥⲟⲩⲣⲉ	C3690	thorn, spike, dart	1	1	1	1	1	6	354a	thorn, spike, dart (ακανθα, σκολοψ, τριβολος, καλαμη, κεντρον, βολις) needle &c			
+703	ⲧⲉⲃⲧ	N	ⲧⲉⲃⲧ	ⲧⲃⲧ	ⲧⲃⲧ	C4130	fish	1	1	1	1	1	6	401b	fish (ιχθυς) catch fish fish-catcher fish-monger			
+704	ⲟⲩⲉⲓ	N	ⲟⲩⲉⲓ	ⲟⲩⲉ	ⲟⲩⲉ	C4902,C4903	be distant	1	0	1	1	0.75	6	470b	(intransitive) be distant, far-reaching (μακρυνειν, μακραν ποιειν) (qualitative) (μακρος)			
+705	ⲟⲩⲏⲣ	N	ⲟⲩⲏⲣ	ⲟⲩⲏⲣ	ⲟⲩⲏⲣ	C5113	how great, how many, how much?	1	0	1	1	0.75	6	488b	how great, many, much? ― independent (ποσος; πηλικος;) ― c preceding ⲛ-, by how much? (ποσω) ― c ⲛ- gen ― without ⲛ- S,sA ― c ⲁ- about (circa) ― ⲉⲡⲁⲩⲏⲣ, ⲉⲡⲁⲃⲏⲣ B, to what extent? so in vain			
+706	ϣⲉⲙⲏⲣ	N	ϣⲉⲙⲏⲣ	ϣⲉⲙⲏⲣ	_	x		1	1	0	0	0.5	6	567a	leaven (ζυμη)			verify; unique bo word?
+707	ϩⲟϯ	N	ϩⲟϯ	ϩⲟⲧⲉ	ϩⲟⲧⲉ	C6909	hour, moment	1	1	1	1	1	6	721b	hour, moment (ωρα)			
+708	ϩⲟⲩⲓⲧ	N	ϩⲟⲩⲓⲧ	ϩⲟⲩⲉⲓⲧ	ϩⲟⲩⲉⲓⲧ	C6992	first	1	1	1	1	1	6	738a	first (πρωτος, αρχη) nn f, beginning, first (αρχη, αρχαιος)			
+709	ϭⲏⲡⲓ	N	ϭⲏⲡⲓ	ϭⲏⲡⲉ	ϭⲏⲡⲉ	C7827	cloud	1	1	1	1	1	6	825b	cloud (νεφελη, νεφος)			
+710	ⲉϫⲱⲣϩ	N	ϫⲱⲣϩ	ϭⲱⲣϩ	ϭⲱⲣⲁϩ	C7880,C7881	night; nightly	1	1	1	1	1	6	829b	night (νυξ) as adj (νυκτερινος)			
+711	ϭⲱⲣⲡ	N	ϭⲱⲣⲡ	ϭⲱⲗⲡ	ϭⲱⲗⲡ	C7668	reveal	0	0	0	0	0	6	_	_			
+712	ⲙⲉⲧⲥⲟϫ	N	ⲙⲉⲧⲥⲟϫ	ⲙⲛⲧⲥⲟϭ	ⲙⲛⲧⲥⲟϭ	x		0	0	0	0	0	6	_	_			verify; unique bo word?
+713	ⲙⲉⲑⲙⲏⲓ	N	ⲙⲉⲑⲙⲏⲓ	ⲙⲛⲧⲙⲉ	ⲙⲛⲧⲙⲉ	C1791	truth	0	0	0	0	0	6	_	_			
+714	ϯⲙⲁϯ	N	ϯⲙⲁϯ	ϯⲙⲁⲧⲉ	ϯⲙⲁⲧⲉ	C2087	reach, obtain	0	0	0	0	0	6	_	_			
+715	ⲥⲱⲛⲓ	N	ⲥⲱⲛⲓ	ⲥⲱⲛⲉ	ⲥⲱⲛⲉ	C3587,C3588	sister	0	0	0	0	0	6	_	_			
+716	ϩⲟϫϩⲉϫ	N	ϩⲟϫϩⲉϫ	ϩⲟϫϩϫ	ϩⲟϫϩϫ	C7037,C7038	distress	0	0	0	0	0	6	_	_			
+717	ⲓⲁϩⲁⲗⲟⲗⲓ	N	ⲓⲁϩⲁⲗⲟⲗⲓ	ⲉⲓⲉϩⲉⲗⲟⲟⲗⲉ	ⲉⲓⲉϩⲉⲗⲟⲟⲗⲉ	C659	vineyard	0	0	0	0	0	6	_	_			
+719	ⲣⲉϥⲉⲣⲛⲟⲃⲓ	N	ⲣⲉϥⲉⲣⲛⲟⲃⲓ	ⲣⲉϥⲣⲛⲟⲃⲉ	ⲣⲉϥⲣⲛⲟⲃⲉ	C2437	sinner	0	0	0	0	0	6	_	_			
+720	ϩⲃⲟⲥ	N	ϩⲃⲟⲥ	ϩⲃⲟⲟⲥ	ϩⲃⲟⲟⲥ	C6462,C6463,C6464	garment	0	0	0	0	0	6	_	_			
+721	ⲟⲩϫⲁⲓ	N	ⲟⲩϫⲁⲓ	ⲟⲩϫⲁⲓ	ⲟⲩϫⲁⲓ	C5349,C5350,C5351,C5352	heatlh, safety	0	0	0	0	0	6	_	_			
+722	ⲕⲟⲧ	N	ⲕⲱϯ	ⲕⲟⲧ	ⲕⲟⲧ	C1443,C1442,C1437	wheel, basket	0	0	0	0	0	6	_	_			
+723	ⲣⲱⲧⲉⲃ	N	ⲣⲱⲧⲉⲃ	ⲣⲱⲧⲃ	ⲣⲱⲧⲃ	C3194	recline	0	0	0	0	0	6	_	_			
+724	ϥⲓⲣⲱⲟⲩϣ	N	ϥⲓⲣⲱⲟⲩϣ	ϥⲓⲣⲟⲟⲩϣ	ϥⲓⲣⲟⲟⲩϣ	C3212,C3211	care, thought	0	0	0	0	0	6	_	_			
+725	ϣⲑⲟⲣⲧⲉⲣ	N	ϣⲑⲟⲣⲧⲉⲣ	ϣⲧⲟⲣⲧⲣ	ϣⲧⲟⲣⲧⲣ	C6120,C6121	disturbance	0	0	0	0	0	6	_	_			
+726	ϣⲟ	NUM	ϣⲟ	ϣⲟ	ϣⲟ	C5731,C5732	yes; thousand	1	0	1	1	0.75	6	549b	thousand (χιλιοι, χιλιας)			
+727	ⲟⲩⲏⲣ	PINT	ⲟⲩⲏⲣ	ⲟⲩⲏⲣ	ⲟⲩⲏⲣ	C5113	how great, how many	0	0	0	0	0	6	_	_			
+728	ⲛⲑⲟⲥ	PPERI	ⲛⲑⲟⲥ	ⲛⲧⲟⲥ	ⲛⲧⲟⲥ	C2562	she	0	0	0	0	0	6	_	_			
+730	ⲧⲉⲧⲛ	PPERS	ⲛⲑⲱⲧⲛ	ⲛⲧⲱⲧⲛ	ⲧⲉⲧⲛ	C2565	you pl	0	0	0	0	0	6	_	_			
+732	ⲉⲑⲃⲏⲧ	PREP	ⲉⲑⲃⲉ	ⲉⲧⲃⲉ	ⲉⲧⲃⲉ	C739	because of, concerning	1	0	1	1	0.75	6	61a	because of, concerning (δια, ενεκα)			
+737	ϧⲁϫⲱ	PREP	ϧⲁϫⲉⲛ	ϩⲁϫⲛ	ϩⲁϫⲱ	C7506	before	0	0	0	0	0	6	_	_			
+738	ⲉⲧⲟⲧ	PREP	ⲉⲧⲉⲛ	ⲉⲧⲛ	ⲉⲧⲟⲟⲧ	C4484	to hand of, to	0	0	0	0	0	6	_	_			
+739	ϩⲁⲣⲁ	PTC	ϩⲁⲣⲁ	ϩⲁⲣⲁ	ϩⲁⲣⲁ	C8419	so, then, thus	0	0	0	0	0	6	_	_			
+740	ⲕⲟⲧ	V	ⲕⲱϯ	ⲕⲱⲧⲉ	ⲕⲟⲧ	C1416	turn, go around	1	1	1	1	1	6	124a	(intransitive) ― turn, go round (κυκλουν, στρεφεσθαι) ― go round with waterwheel, water ― form circle ― wander, stray ― go about seeking, seek (qualitative) S (archaic) turned iteration S,B continue to turn, seek (transitive) ― turn, often of face ― surround refl (oftenest) with suff or ⲙⲙⲟ=, turn self, return, repeat (στρεφεσθαι)			
+741	ⲛⲟⲩϫ	V	ⲛⲟⲩϫ	ⲛⲟⲩϫⲉ	ⲛⲟⲩϫⲉ	C2691,C2704	throw, cast	1	1	1	1	1	6	247a	(transitive) throw, cast (βαλλειν) (qualitative) thrown down, lying, reclining (intransitive) S ⲛ. ⲉⲃⲟⲗ, cast forth			
+742	ⲣⲓⲙⲓ	V	ⲣⲓⲙⲓ	ⲣⲓⲙⲉ	ⲣⲓⲙⲉ	C3088	weep	1	1	1	1	1	6	294a	(intransitive) weep (κλαιειν, δακρυειν, θρηνειν)			
+743	ⲣⲱⲧⲉⲃ	V	ⲣⲱⲧⲉⲃ	ⲣⲱⲧⲃ	ⲣⲱⲧⲃ	C3194	recline	1	1	1	0	0.75	6	305b	(intransitive) recline (κλινεσθαι, ανακεισθαι, αναπιπτειν) (transitive) B,F, make to recline			
+744	ⲥⲁⲧ	V	ⲥⲓϯ	ⲥⲓⲧⲉ	ⲥⲁⲧ	C3768	throw, sow, put	1	1	1	1	1	6	360b	(intransitive) throw, sow (oftener) & related meanings (σπειρειν, βαλλειν) (transitive) (σπειρειν, ριπτειν)			
+745	ⲥⲟⲩⲱⲛ	V	ⲥⲱⲟⲩⲛ	ⲥⲟⲟⲩⲛ	ⲥⲟⲩⲱⲛ	C3871	know	1	1	1	1	1	6	369b	(intransitive) know (ειδεναι, επιστασθαι, γινωσκειν) (transitive) ― (γινωσκειν) ― know sexually ― with ϫⲉ- ―― intr: ―― tr:			
+746	ϣⲟϣ	V	ϣⲱϣ	ϣⲱϣ	ϣⲟϣ	C6173	make equal, level, straight	1	1	1	1	1	6	606a	(transitive) make equal, level, straight (ομαλιζειν) (qualitative) B (rare) (ομαλιζειν)			
+747	ⲟⲩⲁϣ	V	ⲟⲩⲱϣ	ⲟⲩⲱϣ	ⲟⲩⲱϣ	C5257	wish, desire, love	1	1	1	1	1	6	500a	(intransitive) ― desire, love (θελειν, βουλεσθαι, ευδοκειν) ― as imperative, be pleased to S (θελησον) (transitive) (θελειν, αγαπαν, φιλειν)			
+748	ⲟⲩⲉϣ	V	ⲟⲩⲱϣ	ⲟⲩⲱϣ	ⲟⲩⲉϣ	C5257	wish, desire, love	1	1	1	1	1	6	500a	(intransitive) ― desire, love (θελειν, βουλεσθαι, ευδοκειν) ― as imperative, be pleased to S (θελησον) (transitive) (θελειν, αγαπαν, φιλειν)			
+749	ⲟⲩϫⲁⲓ	V	ⲟⲩϫⲁⲓ	ⲟⲩϫⲁⲓ	ⲟⲩϫⲁⲓ	C5349	be whole, be intact, be safe, be sound	1	1	1	1	1	6	511b	(intransitive) be whole, safe, sound (σωζεσθαι, υγιαζειν, ιασθαι, ρυεσθαι) (qualitative) (υγιης, ορθος, τελειος)			
+750	ⲟⲗ	V	ⲱⲗⲓ	ⲱⲗ	ⲟⲗ	C5445	hold, contain, enclose	1	1	1	1	1	6	520a	(intransitive) (mostly S) ― hold, contain, enclose (χωρειν) ― gather in harvest (αμαν) (transitive) (mostly B), take, lay hold of, gather (αιρειν, αναιρειν)			
+751	ϣⲑⲟⲣⲧⲉⲣ	V	ϣⲑⲟⲣⲧⲉⲣ	ϣⲧⲟⲣⲧⲣ	ϣⲧⲟⲣⲧⲣ	C6120	be disturbed, in haste, disturb	1	1	1	1	1	6	597b	(intransitive) be disturbed, troubled, in haste (ταρασσειν, θορυβεισθαι, σπουδαζειν) | qual: (θορυβεισθαι) (transitive) disturb, cause to hasten (ταρασσειν)			
+752	ϣⲟϣ	V	ϣⲟϣ	ϣⲟϣ	ϣⲟϣ	C6170,C6169	kind of antelope (bubalis buselaphus)	1	0	1	1	0.75	6	605a	kind of antelope, hartebeest (bubalis busephalus) (βουβαλος)			
+753	ϩⲟϫϩⲉϫ	V	ϩⲟϫϩⲉϫ	ϩⲟϫϩϫ	ϩⲟϫϩϫ	C7037	be distressed, straighten, compel	1	1	1	1	1	6	743b	(intransitive) be distressed, restricted, narrow (θλιβειν, στενειν, διαπονειν, προσοχθιζειν) (qualitative) (στενος) (transitive) straighten, compel (αποθλιβειν, εκθλιβειν, ενοχλειν, κακουν, συνεχειν, εκπιεζειν)			
+754	ϭⲱⲣⲡ	V	ϭⲱⲣⲡ	ϭⲟⲣϥ	ϭⲟⲣϥ	C7879	nip off	1	1	1	1	1	6	829b	(transitive) nip off (αποκνιζειν)			
+755	ϣⲉⲛⲛⲟⲩϥⲓ	V	ϣⲉⲛⲛⲟⲩϥⲓ	ϣⲙⲛⲟⲩϥⲉ	ϣⲙⲛⲟⲩϥⲉ	C5927	good news	0	0	0	0	0	6	_	_			verify; taking as equivalents?
+756	ϯⲙⲁϯ	V	ϯⲙⲁϯ	ϯⲙⲁⲧⲉ	ϯⲙⲁⲧⲉ	C2087,C2088	reach, obtain, enjoy	0	0	0	0	0	6	_	_			
+758	ⲕⲟⲧ	V	ⲕⲱⲧ	ⲕⲱⲧ	ⲕⲟⲧ	C1383,C1385	build	0	0	0	0	0	6	_	_			
+759	ϥⲓⲣⲱⲟⲩϣ	V	ϥⲓⲣⲱⲟⲩϣ	ϥⲓⲣⲟⲟⲩϣ	ϥⲓⲣⲟⲟⲩϣ	C3211,C3212	take care, thought	0	0	0	0	0	6	_	_			
+760	ⲉⲣⲭⲣⲓⲁ	V	ⲉⲣⲭⲣⲓⲁ	ⲭⲣⲉⲓⲁ	ⲭⲣⲉⲓⲁ	C10982,C10983	to need	0	0	0	0	0	6	_	_			verify; taking as equivalents?
+761	ϣⲟⲩⲓⲧ	V	ϣⲟⲩⲓⲧ	ϣⲟⲩⲉⲓⲧ	ϣⲟⲩⲉⲓⲧ	C6151	empty	0	0	0	0	0	6	_	_			
+762	ⲉⲣⲛⲏⲥⲧⲉⲩⲓⲛ	V	ⲉⲣⲛⲏⲥⲧⲉⲩⲓⲛ	ⲉⲣⲛⲏⲥⲧⲉⲩⲓⲛ	_	C9859	to fast	0	0	0	0	0	6	_	_			verify; taking as equivalents?
+764	ⲣⲟⲧⲉⲃ	V	ⲣⲟⲧⲉⲃ	ⲣⲱⲧⲃ	ⲣⲱⲧⲃ	C3194	recline	0	0	0	0	0	6	_	_			
+765	ⲟⲩⲁϣ	V	ⲟⲩⲃⲁϣ	ⲟⲩⲃⲁϣ	ⲟⲩⲃⲁϣ	_		0	0	0	0	0	6	_	_			
+766	ⲣⲟⲧⲉⲃ	VSTAT	ⲣⲱⲧⲉⲃ	ⲣⲱⲧⲃ	ⲣⲱⲧⲃ	C3194	recline	1	1	1	0	0.75	6	305b	(intransitive) recline (κλινεσθαι, ανακεισθαι, αναπιπτειν) (transitive) B,F, make to recline			
+767	ϣⲟⲩⲓⲧ	VSTAT	ϣⲟⲩⲟ	ϣⲟⲩⲟ	ϣⲟⲩⲟⲉⲓⲧ	C6150	flow	0	0	0	0	0	6	_	_			
+769	ⲑⲣ	ACAUS	ⲑⲣⲉ	ⲧⲣⲉ	ⲧⲣⲉ	C4439	causative	0	0	0	0	0	5	_	_			
+770	ⲁⲥϣⲁⲛ	ACOND_PPERS	ⲁⲣⲉϣⲁⲛ_ⲛⲑⲟⲥ	ⲉⲣϣⲁⲛ_ⲛⲧⲟⲥ	ⲉⲥϣⲁⲛ	C716_C2562		0	0	0	0	0	5	_	_			
+771	ⲁⲣⲉⲧⲉⲛϣⲁⲛ	ACOND_PPERS	ⲁⲣⲉϣⲁⲛ_ⲛⲑⲱⲧⲉⲛ	ⲉⲣϣⲁⲛ_ⲛⲧⲱⲧⲛ	ⲉⲧⲉⲧⲛϣⲁⲛ	C716_C2565		0	0	0	0	0	5	_	_			
+773	ⲟⲩⲏⲓ	ADV	ⲟⲩⲏⲓ	ⲟⲩⲏⲓ	ⲟⲩⲏⲓ	C4934	indeed, verily	1	1	0	0	0.5	5	471b	indeed, verily with preceding ϫⲉ- for (οτι, διοτι, καθοτι)			
+774	ⲛϩⲣⲏⲓ	ADV	ⲛϩⲣⲏⲓ	ⲛϩⲣⲁⲓ	ⲛϩⲣⲁⲓ	C6770		0	0	0	0	0	5	_	_			
+776	ⲛⲛ	ANEGOPT	ⲛⲛⲉ	ⲛⲛⲉ	ⲛⲛ	C2504	prefix neg 3rd fut, ANEGOPT	0	0	0	0	0	5	_	_			
+777	ⲉⲓⲉ	AOPT_PPERS	ⲉⲣⲉ_ⲁⲛⲟⲕ	ⲉⲣⲉ_ⲁⲛⲟⲕ	ⲉⲓⲉ	C619		0	0	0	0	0	5	_	_			
+779	ⲉⲡⲓⲇⲏ	CONJ	ⲉⲡⲓⲇⲏ	ⲉⲡⲉⲓⲇⲏ	ⲉⲡⲉⲓⲇⲏ	C8985	when, after	0	0	0	0	0	5	_	_			
+780	ⲉⲛⲉ	CONJ	ⲉⲛⲉ	ⲉⲛⲉ	ⲉⲛⲉ	C678,C677	interrogative particle; verbal präfix of unfulfiled condition	0	0	0	0	0	5	_	_			
+781	ⲁⲗⲱⲟⲩⲓ	N	ⲁⲗⲟⲩ	ⲁⲗⲟⲩ	ⲁⲗⲟⲩ	C49,C48	youth, maiden	1	1	1	1	1	5	5a	youth, maiden (παις, παιδιον, νεος) servant			
+782	ⲁⲡⲁⲥ	N	ⲁⲡⲁⲥ	ⲁⲥ	ⲁⲥ	C207	old	0	1	1	1	0.75	5	17a	old (παλαιος, αρχαιος, χρονιος)			
+783	ⲃⲱ	N	ⲃⲱ	ⲃⲱ	ⲃⲱ	C323	tree	1	1	1	1	1	5	28a	tree where its fruit specified, opp ϣⲏⲛ, tree in general			
+784	ϥⲁⲓ	N	ⲃⲁⲓ	ⲃⲁⲓ	ⲃⲁⲓ	C338,C337	night raven; spirit	1	1	1	0	0.75	5	28a	night raven (νυκτικοραξ) screech-owl			
+785	ⲃⲉⲭⲉ	N	ⲃⲉⲭⲉ	ⲃⲉⲕⲉ	ⲃⲉⲕⲉ	C350	wage	1	1	1	1	1	5	30b	wage (μισθος)			
+786	ⲃⲉⲗⲗⲉ	N	ⲃⲉⲗⲗⲉ	ⲃⲗⲗⲉ	ⲃⲗⲗⲉ	C448,C449	blind; blind person	1	1	1	1	1	5	38a	blind person (τυφλος) adj, blind			
+787	ⲉⲥⲏⲧ	N	ⲉⲥⲏⲧ	ⲉⲥⲏⲧ	ⲉⲥⲏⲧ	C725	ground, bottom, lowest part	1	1	1	1	1	5	60a	ground, so bottom, lowest part (γη) as adv with preceding prep + art, mostly = verbal κατα- (-αγειν, -αιρειν, -βαινειν, -βαλλειν &c)			
+788	ⲉⲥⲱⲟⲩ	N	ⲉⲥⲱⲟⲩ	ⲉⲥⲟⲟⲩ	ⲉⲥⲟⲟⲩ	C734	sheep	1	1	1	1	1	5	61a	sheep (προβατον)			
+789	ⲏⲣⲡ	N	ⲏⲣⲡ	ⲏⲣⲡ	ⲏⲣⲡ	C794,C795	wine	1	1	1	1	1	5	66b	f twice, wine (οινος)			
+790	ⲕⲟⲓ	N	ⲕⲟⲓ	ⲕⲟⲓⲉ	ⲕⲟⲓⲉ	C1050	field (high lying as tillage or pasture)	1	1	1	1	1	5	92b	oftenest B, field (high lying) as tillage or pasture (αγρος, πεδιον, γεωργιον)			
+791	ⲕⲉⲛⲧⲉ	N	ⲕⲉⲛⲧⲉ	ⲕⲛⲧⲉ	ⲕⲛⲧⲉ	C1258	fig	1	1	1	1	1	5	112b	fig (συκον)			
+792	ⲭⲟϩ	N	ⲭⲟϩ	ⲕⲟⲟϩ	ⲕⲟⲟϩ	C1504,C1505	angle, corner	1	1	1	1	1	5	132a	angle, corner (γωνια) point, top (ακρον) fragment, piece			
+793	ⲗⲁⲕϩ	N	ⲗⲁⲕϩ	ⲗⲁⲕϩ	ⲗⲁⲕϩ	C1624	corner, extremity, top	1	1	1	1	1	5	140b	(f once) corner, extremity, top (ακρος, αγκωνισκος, γωνια, κρασπεδον) piece, fragment (κλασμα, ψωμος) builder's square			
+794	ⲙⲉⲑⲣⲉ	N	ⲙⲉⲑⲣⲉ	ⲙⲛⲧⲣⲉ	ⲙⲛⲧⲣⲉ	C1967	witness, testimony	1	1	1	1	1	5	177a	witness, testimony (μαρτυς, μαρτυριον)			
+795	ⲙⲏϯ	N	ⲙⲏϯ	ⲙⲏⲧⲉ	ⲙⲏⲧⲉ	C2096	middle	1	1	1	1	1	5	190b	middle ― as nn (το μεσον, μεσοτης) ― as prep			
+796	ⲙⲱⲟⲩ	N	ⲙⲱⲟⲩ	ⲙⲟⲟⲩ	ⲙⲟⲟⲩ	C2165	water	1	1	1	1	1	5	197b	water (υδωρ)			
+797	ⲫⲁϩⲟⲩ	N	ⲫⲁϩⲟⲩ	ⲡⲁϩⲟⲩ	ⲡⲁϩⲟⲩ	C3006,C3005	buttocks, hinder part, back; hinder, past	1	1	1	1	1	5	284b	originally dual buttocks, so hinder part, back (τα οπισω) As adj, hinder, past			
+798	ⲣⲏ	N	ⲣⲏ	ⲣⲏ	ⲣⲏ	C3034,C3035	sun; sun-god Re	1	1	1	1	1	5	287b	sun (ηλιος) sun's ― light ― shine ― rise ― set sun tree			
+800	ϫⲟⲗ	N	ϫⲟⲗ	ϭⲱⲱⲗⲉ	ϭⲱⲱⲗⲉ	C7629	flat cake, loaf	1	1	1	1	1	5	810a	flat cake, loaf			
+801	ϫⲟⲛⲥ	N	ϫⲟⲛⲥ	ϭⲟⲛⲥ	ϭⲟⲛⲥ	C7776,C7775	might, violence, injustice (?); violent, forcible	1	1	1	1	1	5	822a	might, violence or sim, as adj (βιαιος) adverbial ― (βιαιως) ― hardly B (μολις)			
+802	ϩⲓⲣⲏⲛⲏ	N	ϩⲓⲣⲏⲛⲏ	ⲉⲓⲣⲏⲛⲏ	ⲉⲓⲣⲏⲛⲏ	C8885	peace	0	0	0	0	0	5	_	_			
+803	ϧⲓⲥⲓ	N	ϧⲓⲥⲓ	ϩⲓⲥⲉ	ϩⲓⲥⲉ	C6852	toil	0	0	0	0	0	5	_	_			
+804	ⲥⲟϭⲛⲓ	N	ⲥⲟϭⲛⲓ	ϣⲟϫⲛⲉ	ϣⲟϫⲛⲉ	C6236,C6237	take counsel	0	0	0	0	0	5	_	_			
+805	ⲧⲁⲓⲟ	N	ⲧⲁⲓⲟ	ⲧⲁⲉⲓⲟ	ⲧⲁⲉⲓⲟ	C4152,C4153	honor	0	0	0	0	0	5	_	_			
+806	ⲁⲡⲁⲥ	N	ⲁⲡⲁⲥ	ⲁⲥ	ⲁⲥ	C207	old	0	0	0	0	0	5	_	_			
+807	ⲁⲣⲉϩ	N	ⲁⲣⲉϩ	ϩⲁⲣⲉϩ	ϩⲁⲣⲉϩ	C6833,C6834	keep, guard	0	0	0	0	0	5	_	_			
+808	ⲁⲧⲉⲙⲓ	N	ⲁⲧⲉⲙⲓ	ⲁⲧⲉⲓⲙⲉ	ⲁⲧⲉⲓⲙⲉ	C899	innocent	0	0	0	0	0	5	_	_			
+809	ⲥⲱⲧⲡ	N	ⲥⲱⲧⲡ	ⲥⲱⲧⲡ	ⲥⲱⲧⲡ	C3828,C3831	chosen, elect	0	0	0	0	0	5	_	_			
+810	ⲣⲉϥϯⲱⲙⲥ	N	ⲣⲉϥϯⲱⲙⲥ	ⲣⲉϥϯⲱⲙⲥ	_	C5486		0	0	0	0	0	5	_	_			verify; unique bo word? 
+813	ϩⲏⲕⲓ	N	ϩⲏⲕⲓ	ϩⲏⲕⲉ	ϩⲏⲕⲉ	C6489	poor	0	0	0	0	0	5	_	_			
+816	ⲛⲧⲱ	PREP	ⲛⲧⲉ	ⲛⲧⲉ	ⲛⲧⲁ	C2531,C2532,C2533		0	0	0	0	0	5	_	_			
+817	ϩⲓϫⲱ	PREP	ϩⲓϫⲉⲛ	ϩⲓϫⲛ	ϩⲓϫⲱ	C7508	upon, over	0	0	0	0	0	5	_	_			
+820	ⲭⲟϩ	V	ⲭⲟϩ	ⲕⲱϩ	ⲕⲱϩ	C1509,C1507	be envious, zealous, emulate; envy, zeal	1	1	1	1	1	5	132b	(intransitive) be envious, zealous, emulate (ζηλουν) ― obj with ⲉ- ― with ⲉϫⲛ-			
+822	ⲫⲁϣ	V	ⲫⲱϣ	ⲡⲱϣ	ⲡⲟϣ	C2949	divide, be separate	1	1	1	1	1	5	277a	(intransitive) divide, be separate (διαιρεισθαι, κλασθαι, διαμεριζεσθαι, σχιζεσθαι) (transitive) divide (μεριζειν)			
+823	ⲥⲓ	V	ⲥⲓ	ⲥⲉⲓ	ⲥⲉⲓ	C3288	be filled, satisfied, enjoy	1	1	1	1	1	5	316b	(intransitive) ― be filled, satisfied, enjoy (πιμπλαναι, χορταζεσθαι, κορεννυναι, κραιπαλαν) ― filled with			
+824	ⲥⲱⲃⲓ	V	ⲥⲱⲃⲓ	ⲥⲱⲃⲉ	ⲥⲱⲃⲉ	C3344	laugh, play	1	1	1	1	1	5	320b	(intransitive) laugh, play (γελαν, παιζειν, χλευαζειν, μειδιαν) (transitive) deride, mock			
+825	ⲥⲱⲧⲡ	V	ⲥⲱⲧⲡ	ⲥⲱⲧⲡ	ⲥⲱⲧⲡ	C3828	choose	1	1	1	1	1	5	365a	(intransitive) choose (transitive) (εκλεγειν, αιρεισθαι) (qualitative) ― chosen, exquisite (εκλεκτος) ― choicer, better (κρεισσων)			
+826	ⲥϧⲁⲓ	V	ⲥⲁⲓ	ⲥϩⲁⲓ	ⲥϩⲁⲓ	C3972	write	0	1	1	1	0.75	5	381b	(intransitive) write (γραφειν) (transitive) ― (γραφειν, ζωγραφειν, διαγραφειν) ― register ― draw, paint			
+828	ⲧⲁⲙⲟ	V	ⲧⲁⲙⲟ	ⲧⲁⲙⲟ	ⲧⲁⲙⲟ	C4286	tell, make know, inform	1	1	1	1	1	5	413b	(transitive) tell, inform (caus of ⲉⲓⲙⲉ) (αναγγελλειν, γνωριζειν) with ϫⲉ-			
+829	ⲧⲁϩⲟ	V	ⲧⲁϩⲟ	ⲧⲁϩⲟ	ⲧⲁϩⲟ	C4740	make to stand, set up	1	1	1	1	1	5	455a	(transitive) ― make to stand, set up (causative of ⲱϩⲉ) (ισταναι, εγειρειν) ― reach, befall, touch (λαμβανειν, επιτυγχανειν, φθανειν) ― meet ― catch, arrest (intransitive) attain, be able (καταλαμβανειν)			
+830	ϣⲱⲟⲩⲓ	V	ϣⲱⲟⲩⲓ	ϣⲟⲟⲩⲉ	ϣⲟⲟⲩⲉ	C6149	be dry, wither	1	1	1	1	1	5	601b	(intransitive) be dry (ξηραινειν) (qualitative) dry, stale (ξηραινειν, ξηρος)			
+831	ⲥⲟϭⲛⲓ	V	ⲥⲟϭⲛⲓ	ϣⲟϫⲛⲉ	ϣⲟϫⲛⲉ	C6236	take counsel, consider	1	1	1	1	1	5	615b	(intransitive) take counsel, consider (βουλευεσθαι, λογιζεσθαι) (transitive) (λογιζεσθαι)			
+832	ϥⲁⲓ	V	ϥⲁⲓ	ϥⲓ	ϥⲓ	C6260	bear, carry, take	0	1	1	1	0.75	5	620a	(intransitive) bear, carry, take (φερειν, βασταζειν) (transitive) (αιρειν, εξαιρειν) p c S,A,sA,B,F,O, carrier			
+833	ϧⲱⲛⲧ	V	ϧⲱⲛⲧ	ϩⲱⲛⲧ	ϩⲱⲛⲧ	C6718	approach	0	1	1	1	0.75	5	691b	(intransitive) approach (εγγιζειν, εφισταναι) (qualitative) (εγγυς)			
+834	ⲁⲣⲉϩ	V	ⲁⲣⲉϩ	ϩⲁⲣⲉϩ	ϩⲁⲣⲉϩ	C6833	keep, guard	1	1	1	1	1	5	707b	(intransitive) keep, guard (φυλασσειν, τηρειν)			
+835	ϧⲓⲥⲓ	V	ϧⲓⲥⲓ	ϩⲓⲥⲉ	ϩⲓⲥⲉ	C6852	toil, be troubled, difficult	1	1	1	1	1	5	710b	(intransitive) ― toil, be troubled, difficult (κοπιαν, σπουδαζειν, πονειν) ― be wearied, suffering (transitive) trouble, weary (mostly refl) ― + advb (qualitative)			
+836	ϧⲟⲧϧⲉⲧ	V	ϧⲟⲧϧⲉⲧ	ϩⲟⲧϩⲧ	ϩⲟⲧϩⲧ	C6956	inquire, examine	1	1	1	1	1	5	728a	(intransitive) inquire, examine (ερευναν, εκζητειν, εξιχνιαζειν) (transitive) (ερευναν)			
+837	ϫⲟⲗ	V	ϫⲱⲗ	ϭⲱⲱⲗⲉ	ϭⲟⲟⲗ	C7623	swathe, clothe, cover	1	1	1	1	1	5	809a	(transitive) swathe, clothe, cover (ενδυειν, περιστελλειν) (refl) (περιβαλλειν) (qualitative) (κρυπτος)			
+838	ϫⲓⲙⲓ	V	ϫⲓⲙⲓ	ϭⲓⲛⲉ	ϭⲓⲛⲉ	C7750	find	1	1	1	1	1	5	820a	(intransitive) find (ευρισκειν) (transitive) (ευρισκειν, συμβαινειν, προσπιπτειν, τυγχανειν)			
+839	ϯⲱⲙⲥ	V	ϯⲱⲙⲥ	ϯⲱⲙⲥ	_	C5485	baptize	0	0	0	0	0	5	_	_			verify; unique Bo word?
+840	ϯϣⲓⲡⲓ	V	ϯϣⲓⲡⲓ	ϯϣⲓⲡⲉ	ϯϣⲓⲡⲉ	C5991	shame	0	0	0	0	0	5	_	_			
+843	ⲉⲙⲡϣⲁ	V	ⲙⲡϣⲁ	ⲙⲡϣⲁ	ⲉⲙⲡϣⲁ	C1982,C1987,C1989	worth, worthy	0	0	0	0	0	5	_	_			
+844	ⲥϧⲁⲓ	V	ⲥϧⲁⲓ	ⲥϩⲁⲓ	ⲥϩⲁⲓ	C3972,C3976	write	0	0	0	0	0	5	_	_			
+845	ϯⲟⲩⲱ	V	ϯⲟⲩⲱ	ϯⲟⲩⲱ	ϯⲟⲩⲱ	C4907,C4914,C4922,C4923	release, make cease	0	0	0	0	0	5	_	_			
+846	ⲉⲣⲫⲁϧⲣⲓ	V	ⲉⲣⲫⲁϧⲣⲓ	ⲉⲣⲫⲁϧⲣⲓ	_	x		0	0	0	0	0	5	_	_			unique Bo word? 
+847	ⲛⲁϩⲙⲉ	V	ⲛⲟϩⲉⲙ	ⲛⲟⲩϩⲙ	ⲛⲉϩⲙ	C2662,C2663		0	0	0	0	0	5	_	_			
+848	ϩⲓⲑⲁϥ	V	ϩⲓⲑⲁϥ	ϩⲓⲑⲁϥ	ϩⲓⲑⲁϥ	C4734	split	0	0	0	0	0	5	_	_			verify; Bo lemma ⲑⲁϥ? CD 453A
+849	ⲥⲉⲃⲧⲱⲧ	V	ⲥⲟⲃϯ	ⲥⲟⲃⲧⲉ	ⲥⲟⲃⲧⲉ	C3366,C3367	prepare	0	0	0	0	0	5	_	_			
+850	ⲁⲙⲟⲩ	VIMP	ⲓ	ⲉⲓ	ⲁⲙⲟⲩ	C84	come!	0	0	1	1	0.5	5	7b	2d sg m, used as imperativ of ⲉⲓ, come, often where several are addressed (δευρο, ελθε)			
+851	ⲥⲉⲃⲧⲱⲧ	VSTAT	ⲥⲟⲃϯ	ⲥⲟⲃⲧⲉ	ⲥⲃⲧⲱⲧ	C3366,C3367	become, be ready, prepare, set in order	1	1	1	1	1	5	323a	(intransitive) be ready, prepare, set in order (ετοιμαζειν) (qualitative) ready (transitive) prepare, set in order, often refl (ετοιμαζειν)			
+852	ϣⲏⲗ	VSTAT	ϣⲱⲗ	ϣⲱⲗ	ϣⲏⲗ	C5812,C5814	flow; spoiling	1	1	1	1	1	5	558a	(intransitive) flow c ⲉ- (διαχεειν) (transitive) loosen, dissolve, paralyse (qualitative) c ⲉⲃⲟⲗ, loosened, paralysed			
+853	ϩⲏⲡ	VSTAT	ϩⲱⲡ	ϩⲱⲡ	ϩⲏⲡ	C6740	be hidden, hide	1	1	1	1	1	5	695a	(intransitive) be hidden, hide (λανθανειν, κρυπτειν) (qualitative) (κρυφαιος, αποκρυφος) (transitive) (κρυπτειν)			
+854	ϭⲟⲥⲓ	VSTAT	ϭⲓⲥⲓ	ϫⲓⲥⲉ	ϫⲟⲥⲉ	C7382	become, be high	1	1	1	1	1	5	788b	(intransitive) become, be high (υψουσθαι, μεγαλυνεσθαι) (qualitative) (υψιστος, υψηλος, μετεωρος) (transitive) exalt (υψουν) p c, who raises, mounts			
+855	ⲑⲣⲟ	ACAUS	ⲑⲣⲉ	ⲧⲣⲉ	ⲧⲣ	C4439	prefix of causative infinitive	1	1	1	1	1	4	430a	(transitive) cause to do (caus of ⲉⲓⲣⲉ) ― c ⲉ- ― without ⲉ- mostly as pref to vb			
+856	ⲙⲛⲁⲓ	ADV	ⲙⲛⲁⲓ	ⲙⲛⲁⲓ	_	C1936	here, hence	1	1	0	0	0.5	4	174a	here, hence, hither (? for ⲉⲙⲛⲁⲓ) (ωδε)			verify; unique Bo word?
+858	ⲙⲁⲓ	N	ⲙⲁ	ⲙⲁ	ⲙⲁ	C1771	place	1	1	1	1	1	4	153a	(ⲙⲁ F before gen ⲛ-) place ― in general (τοπος) ― ⲡⲉⲓⲙⲁ, this world ― dwelling place ― chamber, monk's cell ― temple, shrine, monastery ― part, district ― part, duty			
+859	ⲙⲁⲓ	N	ⲙⲁⲓ	ⲙⲁ	ⲙⲁ	C1771	place	0	0	1	1	0.5	4	415b	(transitive) justify, praise (δικαιουν, αινειν) (intransitive) be justified			
+860	ⲙⲟϩ	N	ⲙⲟϩ	ⲙⲁϩ	ⲙⲁϩ	C2282	nest, brood (of young)	1	1	1	1	1	4	208a	nest, brood of young (νοσσια)			
+861	ⲛⲱⲓⲕ	N	ⲛⲱⲓⲕ	ⲛⲟⲉⲓⲕ	ⲛⲟⲉⲓⲕ	C2446	adulterer	1	1	1	1	1	4	222b	adulterer (μοιχος) as adj (μοιχος, μοιχαλις)			
+863	ⲣⲉⲙϩⲉ	N	ⲣⲉⲙϩⲉ	ⲣⲙϩⲉ	ⲣⲙϩⲉ	C3115	free person	1	1	1	1	1	4	297a	free person (ελευθερος)			
+864	ⲥⲉⲡⲓ	N	ⲥⲉⲡⲓ	ⲥⲉⲉⲡⲉ	ⲥⲉⲉⲡⲉ	C3651	remain over, be remainder	1	0	1	1	0.75	4	351a	(intransitive) remain over, be remainder (περισσευειν, κοιμασθαι) (transitive) S, leave remaining, spare			
+865	ⲥⲓⲟⲩ	N	ⲥⲓⲟⲩ	ⲥⲓⲟⲩ	ⲥⲓⲟⲩ	C3860	star	1	1	1	1	1	4	368a	star (αστηρ, αστρον)			
+866	ϣⲱϣ	N	ϣⲟϣ	ϣⲱϣ	ϣⲟϣ	C6174,C6175	twist (rope); equality, sameness	0	0	1	1	0.5	4	607a	(intransitive) twist rope &c (κλωθειν)			
+867	ⲥⲏϫ	N	ⲥⲏϫ	ⲥⲏϭ	ⲥⲏϭ	x		1	1	1	1	1	4	388a	foal of ass, horse (πωλος)			verify; no CDO entry? But in Crum 388A
+868	ⲟⲩⲧⲁϩ	N	ⲟⲩⲧⲁϩ	ⲟⲩⲧⲁϩ	ⲟⲩⲧⲁϩ	C5229	fruit	1	1	1	1	1	4	498a	fruit (καρπος, καρπωμα, γεννημα)			
+869	ϣⲁⲓ	N	ϣⲁⲓ	ϣⲁ	ϣⲁ	C5691,C5690	nose; keep festival (rare)	1	1	1	1	1	4	543b	nose (μυκτηρ, οσφρησις)			
+870	ⲉϩⲛⲁ	N	ⲉϩⲛⲉ	ϩⲛⲉ	ϩⲛⲁ	C6707,C6708	will, desire, be willing; will, desire	1	1	1	1	1	4	690a	will, desire (εκουσιως, κατα εκουσιον, εν ευδοκια, εκων, αυθαιρετος)			
+871	ϧⲣⲉ	N	ϧⲣⲉ	ϩⲣⲉ	ϩⲣⲉ	C6780,C6779	food, fodder; need	1	1	1	1	1	4	701a	food ― of men (βρωμα) ― of beasts, fodder (βρωμα)			
+872	ϧⲣⲏⲟⲩⲓ	N	ϧⲣⲉ	ϩⲣⲉ	ϩⲣⲉ	C6780,C6779	food, fodder; need	1	1	1	1	1	4	701a	food ― of men (βρωμα) ― of beasts, fodder (βρωμα)			
+873	ϫⲱⲟⲩ	N	ϫⲱⲟⲩ	ϫⲱⲟⲩ	ϫⲱⲟⲩ	C7424	generation	1	1	0	0	0.5	4	793b	generation (γενεα)			
+874	ϫⲁϭⲏ	N	ϫⲁϭⲏ	ϫⲁϭⲏ	_	x		1	1	0	0	0.5	4	800b	left hand (αριστερος, ευωνυμος) as adj			verify; unique Bo word?
+875	ϫⲣⲟϫ	N	ϫⲣⲟϫ	ϭⲣⲟϭ	ϭⲣⲟϭ	C7908,C7906	sown, fertilized; seed (of plants)	1	1	1	1	1	4	831b	seed (σπερμα, σπορος)			
+876	ⲥⲑⲉⲣⲧⲉⲣ	N	ⲥⲑⲉⲣⲧⲉⲣ	ⲥⲧⲣⲧⲣ	ⲥⲧⲣⲧⲣ	C3837,C3838	tremble	0	0	0	0	0	4	_	_			
+877	ⲣⲉϥϣⲱⲛⲓ	N	ⲣⲉϥϣⲱⲛⲓ	ⲣⲉϥϣⲱⲛⲉ	ⲣⲉϥϣⲱⲛⲉ	C5938	sickness	0	0	0	0	0	4	_	_			
+878	ⲡⲓⲣⲁⲥⲙⲟⲥ	N	ⲡⲓⲣⲁⲥⲙⲟⲥ	ⲡⲉⲓⲣⲁⲥⲙⲟⲥ	ⲡⲉⲓⲣⲁⲥⲙⲟⲥ	C10121	test, trial	0	0	0	0	0	4	_	_			
+879	ⲃⲱⲗ	N	ⲃⲱⲗ	ⲃⲱⲗ	ⲃⲱⲗ	C409,C404	loosen, untie	0	0	0	0	0	4	_	_			
+880	ⲙⲁϩⲅ	N	ⲙⲁϩⲅ	ⲙⲉϩⲅ	ⲙⲉϩⲅ	x		0	0	0	0	0	4	_	_			ⲙⲁϩ-ⲅ ("third")
+881	ⲣⲉⲙⲛⲕⲁϩⲓ	N	ⲣⲉⲙⲛⲕⲁϩⲓ	ⲣⲙⲛⲕⲁϩ	ⲣⲙⲛⲕⲁϩ	C1498	man of earth	0	0	0	0	0	4	_	_			
+882	ϭⲣⲟ	N	ϭⲣⲟ	ϫⲣⲟ	ϫⲣⲟ	C7333,C7332	strength	0	0	0	0	0	4	_	_			
+883	ϫⲉⲙⲛⲟⲙϯ	N	ϫⲉⲙⲛⲟⲙϯ	ϭⲙⲛⲟⲙϯ	ϭⲙⲛⲟⲙϯ	C2485	find strength	0	0	0	0	0	4	_	_			
+884	ⲍⲉⲃⲉⲇⲉⲟⲥ	N	ⲍⲉⲃⲉⲇⲉⲟⲥ	ⲍⲉⲃⲉⲇⲁⲓⲟⲥ	ⲍⲉⲃⲉⲇⲁⲓⲟⲥ	MISSING		0	0	0	0	0	4	_	_			
+885	ⲡⲁⲧϣⲉⲗⲉⲧ	N	ⲡⲁⲧϣⲉⲗⲉⲧ	ⲡⲁⲧϣⲉⲗⲉⲉⲧ	ⲡⲁⲧϣⲉⲗⲉⲉⲧ	C5842	bridegroom	0	0	0	0	0	4	_	_			
+886	ⲫⲱϧ	N	ⲫⲱϧ	ⲡⲱϩ	ⲡⲱϩ	C2973	break, tear, divide 	0	0	0	0	0	4	_	_			
+887	ⲑⲟϣ	N	ⲑⲟϣ	ⲧⲟϣ	ⲧⲟϣ	C4720	border, limit	0	0	0	0	0	4	_	_			
+888	ⲥⲱϥ	N	ⲥⲱϥ	ⲥⲱⲱϥ	ⲥⲱⲱϥ	C3942,C3945,C3943,C3310	pollution	0	0	0	0	0	4	_	_			
+890	ϧⲱⲧⲉⲃ	N	ϧⲱⲧⲉⲃ	ϩⲱⲧⲃ	ϩⲱⲧⲃ	C6925,C6924	kill; slaughter, murder	0	0	0	0	0	4	_	_			
+891	ⲙⲁⲅⲇⲁⲗⲓⲛⲏ	N	ⲙⲁⲅⲇⲁⲗⲓⲛⲏ	ⲙⲁⲅⲇⲁⲗⲏⲛⲏ	ⲙⲁⲅⲇⲁⲗⲏⲛⲏ	C9675		0	0	0	0	0	4	_	_			
+892	ⲥⲛⲟⲩϯ	NUM	ⲥⲛⲟⲩϯ	ⲥⲛⲁⲩ	ⲥⲛⲁⲩ	C3616,C3618	two	0	0	1	1	0.5	4	346b	two ― as noun (δυο) ― as adj ―― before nn ―― after nn			
+895	ⲁϫⲟ	V	ϫⲱ	ϫⲱ	ⲁϫⲟⲟ	C7089	say, speak, tell	1	1	1	1	1	4	754a	(intransitive) say, speak, tell (ερειν, αντειπειν) (transitive) ― (ειπειν, λεγειν, λαλειν) ― as for saying | sing (same ?) S,A,sA,B,F ― tr: (αδειν) ― intr: (αδειν, υμνειν)			
+896	ⲃⲱⲗ	V	ⲃⲱⲗ	ⲃⲱⲗ	ⲃⲱⲗ	C409,C404	loosen, untie [of chains, cords etc.]; solution, interpretation	1	1	1	1	1	4	32a	loosen, untie, mostly tr (λυειν) melt unstring interpret, explain scriptures, dreams &c (διερμηνευειν) be softened, persuaded weaken, make faint nullify order, deed dissolve, destroy pay			
+897	ⲙⲕⲁϩ	V	ⲙⲕⲁϩ	ⲙⲕⲁϩ	ⲙⲕⲁϩ	C1857	be painful, difficult, be grieved	1	1	1	1	1	4	163a	(intransitive) be painful, difficult, be grieved (αλγειν, λυπεισθαι) (qualitative) ― c ⲛ-, ⲉ-, ⲉⲧⲣⲉ- often = δυς-, difficult, hard to ― c ⲉ- ―― of painful part ―― or as dat commodi ― c ⲙⲛ-			
+898	ⲙⲟⲛⲓ	V	ⲙⲟⲛⲓ	ⲙⲟⲟⲛⲉ	ⲙⲟⲟⲛⲉ	C1934	nurse	1	0	1	1	0.75	4	174a	nurse (τροφος, τιθηνος) as adj, foster-mother &c (τροφος)			
+899	ⲙⲡϣⲁ	V	ⲙⲡϣⲁ	ⲙⲡϣⲁ	ⲙⲡϣⲁ	C1982,C1987,C1989	be worthy, worth	1	1	1	1	1	4	179a	(intransitive) be worthy, worth ― with gen ⲛ- (αξιουσθαι, οφειλειν) ― with ⲉ-, worthy to, or to be ― with subjunct ― be meet, entitled, obliged ― without obj, be worthy, fitting ― impersonal B, it is right, needful			
+900	ⲙⲟϩ	V	ⲙⲟϩ	ⲙⲟⲩϩ	ⲙⲟⲩϩ	C2285,C2299,C2298	look; burning, inflammation	1	1	1	1	1	4	210b	(intransitive) look (ατενιζειν εις, νευειν) as nn m B, appearance			
+901	ⲉⲛⲕⲟⲧ	V	ⲉⲛⲕⲟⲧ	ⲛⲕⲟⲧⲕ	ⲛⲕⲟⲧⲕ	C2458	sleep	1	1	1	1	1	4	224a	(intransitive) ― sleep (υπνουν, καθευδειν, κοιμασθαι) ― lie down (κοιμασθαι, κατακεισθαι) ― die (κοιμασθαι)			
+902	ⲫⲱϧ	V	ⲫⲱϧ	ⲡⲱϩ	ⲡⲱϩ	C2973	break, burst, tear, divide	1	1	1	1	1	4	280a	(intransitive) break, burst, tear (ρηγνυναι, σχιζειν) (transitive) S,A,sA,B,F, meanings same			
+903	ⲥⲟ	V	ⲥⲱ	ⲥⲱ	ⲥⲟⲟ	C3303,C3304,C3302	soaked reed, mat of reeds; drink	1	1	1	1	1	4	318a	drink ― intr: (πινειν, ποτιζεσθαι) ― tr: (πινειν, εκπινειν, υδροποτειν) p c, drinker			
+904	ⲥⲟⲧⲡ	V	ⲥⲱⲧⲡ	ⲥⲱⲧⲡ	ⲥⲟⲧⲡ	C3828	choose	1	1	1	1	1	4	365a	(intransitive) choose (transitive) (εκλεγειν, αιρεισθαι) (qualitative) ― chosen, exquisite (εκλεκτος) ― choicer, better (κρεισσων)			
+905	ⲥⲑⲉⲣⲧⲉⲣ	V	ⲥⲑⲉⲣⲧⲉⲣ	ⲥⲧⲣⲧⲣ	ⲥⲧⲣⲧⲣ	C3837,C3838	tremble; trembling	1	1	1	1	1	4	366a	(intransitive) tremble (τρεμων ειναι, εντρομος γινεσθαι) nn m, trembling			
+906	ⲥⲱϥ	V	ⲥⲱϥ	ⲥⲱⲱϥ	ⲥⲱⲱϥ	C3942,C3945,C3943,C3310	strain	1	1	0	0	0.5	4	378b	(transitive) strain			
+907	ⲧⲥⲟ	V	ⲧⲥⲟ	ⲧⲥⲟ	ⲧⲥⲟ	C4543	give to drink, slake	1	1	1	1	1	4	434a	(transitive) give to drink, slake (caus of ⲥⲱ, confused with ⲧⲥⲓⲟ) ― (ποτιζειν, μεθυειν) ― c 2d acc (thing drunk) ― without ⲛ- (intransitive) (ποτιζειν, μεθυειν)			
+908	ⲑⲁϣ	V	ⲑⲱϣ	ⲧⲱϣ	ⲧⲉϣ	C4707	be boundary, be fixed, be moderate	1	1	1	1	1	4	449b	(intransitive) be boundary, be fixed, be moderate (οριζειν, τασσειν) (transitive) limit, determine, appoint (οριζειν)			
+909	ⲧⲁϩⲛⲟ	V	ⲧⲁϩⲛⲟ	ⲧⲁϩⲛⲟ	ⲧⲁϩⲛⲟ	C4810,C4811	hinder	1	1	1	1	1	4	460a	(S once) (transitive) hinder (κωλυειν, εγκοπτειν, παυειν) (intransitive) be hindered (συνεχεσθαι, εγκοπτεσθαι)			
+910	ϣⲁⲓ	V	ϣⲁⲓ	ϣⲁ	ϣⲁ	C5676,C5679	begin; rise (of sun)	1	1	1	1	1	4	542b	(intransitive) rise of sun &c (ανατελλειν, ρηγνυναι) (transitive) B(once) | as vb S, keep festival (εορταζειν)			
+911	ϣⲉⲙϣⲓ	V	ϣⲉⲙϣⲓ	ϣⲙϣⲉ	ϣⲙϣⲉ	C5909	serve, worship	1	1	1	1	1	4	567a	(intransitive) serve, worship (λειτουργειν, θεραπευειν, λατρευειν, διακονειν) (transitive) c ⲛ-, ⲙⲙⲟ= suff p c B, worshipper (θεοσεβης, ειδωλολατρης)			
+912	ϣⲁⲧ	V	ϣⲱⲱⲧ	ϣⲱⲱⲧ	ϣⲉⲧ	C5956	until, so that	0	0	1	1	0.5	4	573a	until (εως ου, εως αν) so that (οπως)			
+913	ϣⲧⲉⲣⲑⲱⲣ	V	ϣⲑⲟⲣⲧⲉⲣ	ϣⲧⲟⲣⲧⲣ	ϣⲧⲣⲧⲱⲣ	C6120	be disturbed, in haste, disturb	1	1	1	1	1	4	597b	(intransitive) be disturbed, troubled, in haste (ταρασσειν, θορυβεισθαι, σπουδαζειν) | qual: (θορυβεισθαι) (transitive) disturb, cause to hasten (ταρασσειν)			
+914	ϧⲱⲧⲉⲃ	V	ϧⲱⲧⲉⲃ	ϩⲱⲧⲃ	ϩⲱⲧⲃ	C6925,C6924	kill; slaughter, murder	1	1	1	1	1	4	723b	(intransitive) kill (αποκτεινειν, θανατουν) (transitive) (αποκτεινειν, θανατουν, αναιρειν)			
+915	ϭⲣⲟ	V	ϭⲣⲟ	ϫⲣⲟ	ϫⲣⲟ	C7332	be or become strong, firm	1	1	1	1	1	4	783a	(intransitive) be, become strong, firm, victorious (ανδριζεσθαι, ισχυειν, νικαν)			
+918	ⲉⲣⲇⲓⲁⲕⲣⲓⲛⲓⲛ	V	ⲉⲣⲇⲓⲁⲕⲣⲓⲛⲓⲛ	ⲉⲣⲇⲓⲁⲕⲣⲓⲛⲓⲛ	_	C8743	to separate, distinguish	0	0	0	0	0	4	_	_			verify; taking as equivalents?
+919	ⲉⲣϣⲫⲏⲣ	V	ⲉⲣϣⲫⲏⲣ	ⲣϣⲃⲏⲣ	ⲣϣⲃⲏⲣ	C5766	be friend	0	0	0	0	0	4	_	_			
+920	ⲟⲛⲓ	V	ⲟⲛⲓ	ⲉⲓⲛⲉ 	ⲉⲓⲛⲉ	C928,C929	to be like	0	0	0	0	0	4	_	_			
+921	ⲉⲣⲕⲗⲏⲣⲟⲛⲟⲙⲓⲛ	V	ⲉⲣⲕⲗⲏⲣⲟⲛⲟⲙⲓⲛ	ⲉⲣⲕⲗⲏⲣⲟⲛⲟⲙⲓⲛ	_	C9454,C9452		0	0	0	0	0	4	_	_			verify; taking as equivalents?
+922	ⲉϩⲛⲁ	V	ⲉϩⲛⲉ	ϩⲛⲉ	ϩⲛⲉ	C6708	desire	0	0	0	0	0	4	_	_			
+923	ⲉⲣϩⲉⲗⲡⲓⲥ	V	ⲉⲣⲕⲗⲏⲣⲟⲛⲟⲙⲓⲛ	ⲉⲣⲕⲗⲏⲣⲟⲛⲟⲙⲓⲛ	_	C11088	hope	0	0	0	0	0	4	_	_			verify; taking as equivalents?
+925	ⲉⲣⲙⲉⲛⲉⲩⲓⲛ	V	ⲉⲣⲙⲉⲛⲉⲩⲓⲛ	ϩⲉⲣⲙⲏⲛⲉⲩⲉ	ϩⲉⲣⲙⲏⲛⲉⲩⲉ	C11100		0	0	0	0	0	4	_	_			verify; taking as equivalents?
+926	ϫⲉⲙⲛⲟⲙϯ	V	ϫⲉⲙⲛⲟⲙϯ	ϫⲙⲛⲟⲙϯ	ϫⲙⲛⲟⲙϯ	C2485	strength	0	0	0	0	0	4	_	_			
+928	ϣⲉⲛϩⲏⲧ	V	ϣⲉⲛϩⲏⲧ	ϣⲛϩⲏⲧ	ϣⲛϩⲏⲧ	C6881	to have pity	0	0	0	0	0	4	_	_			
+929	ϯⲟⲩⲧⲁϩ	V	ϯⲟⲩⲧⲁϩ	ϯⲟⲩⲧⲁϩ	_	C5234	give fruit	0	0	0	0	0	4	_	_			unique Bo word?
+930	ⲟⲛⲓ	VSTAT	ⲓⲛⲓ	ⲉⲓⲛⲉ	_	C929,C928	likeness, aspect	1	1	1	1	1	4	80b	(transitive) resemble, be like, c ⲛ-, ⲙⲙⲟ- (ομοιουν)			Sa stative?
+931	ⲙⲉϩ	VSTAT	ⲙⲟϩ	ⲙⲟⲩϩ	ⲙⲉϩ	C2285	look; burning, inflammation	1	1	1	1	1	4	210b	(intransitive) burn, glow (καιειν, φλεγειν, αναπτειν, φαινειν) (qualitative) (πεπυρωμενος)			
+932	ⲥⲓⲛⲓⲱⲟⲩ	VSTAT	ⲥⲓⲛⲓ	ⲥⲓⲛⲉ	_	C3574,C3575	pass by, through, beyond, across; ploughshare	1	1	1	1	1	4	343b	(intransitive) pass by, through (παραγειν, παραπορευεσθαι, ερχεσθαι, διερχεσθαι) (qualitative) B (transitive) pass through, across			Sa stative?
+933	ϣⲏϣ	VSTAT	ϣⲱϣ	ϣⲱϣ	ϣⲏϣ	C6174,C6175	twist (rope); equality, sameness	1	1	1	1	1	4	607a	(intransitive) twist rope &c (κλωθειν)			
+934	ⲧϩⲉⲙⲕⲏⲟⲩⲧ	VSTAT	ⲧϩⲉⲙⲕⲟ	ⲑⲙⲕⲟ	ⲑⲙⲕⲏⲩ	C4803,C4804	afflict	1	1	1	1	1	4	459b	(transitive) ill use, afflict, humiliate (caus of ⲙⲟⲩⲕϩ) (κακουν, κακοποιειν, καταπονειν, καταδυναστευειν, τιμωρειν, κολαζειν, βασανιζειν, ταπεινουν, πατασσειν, θλαν, οδυναν, εκθλιβειν, εκτριβειν, συντριβειν, κατατεινειν, εμπαιζειν, κολαβριζειν) (intransitive) (κακοποιειν) (qualitative) (κακως εχειν)			
+935	ϣⲁⲧ	VSTAT	ϣⲱⲧ	ϣⲱⲱⲧ	ϣⲁⲁⲧ	C6089,C6091	cut	0	1	0	0	0.25	4	594b	(intransitive) leap, gush, vomit (πηδαν, εξαλλεσθαι, εμειν)			
+937	ⲁⲕϣⲁⲛ	ACOND_PPERS	ⲁⲣⲉϣⲁⲛ_ⲛⲑⲟⲕ	ⲉⲣϣⲁⲛ_ⲛⲧⲟⲕ	ⲉⲕϣⲁⲛ	C716		0	0	0	0	0	3	_	_			
+938	ⲁⲣⲏⲟⲩ	ADV	ⲁⲣⲏⲟⲩ	ⲁⲣⲏⲩ	ⲁⲣⲏⲩ	C197	perhaps, if	0	0	1	1	0.5	3	59a	mostly with poss pref & agreeing in gender & mostly number with subj of clause, fellow, companion, hence expressing reciprocity each other, together, mutually &c (πλησιον, ετερος, αλληλων)			
+939	ⲥⲁϧⲟⲩⲛ	ADV	ⲥⲁϧⲟⲩⲛ	ⲥⲁϩⲟⲩⲛ	ⲥⲁϩⲟⲩⲛ	C6681	within	0	0	0	0	0	3	_	_			
+940	ⲙⲡⲁⲣⲉ	ANEGAOR	ⲙⲡⲁⲣⲉ	ⲙⲉⲣⲉ	ⲙⲉⲣⲉ	C2005		0	0	0	0	0	3	_	_			
+942	ⲣⲁ	FUT	ⲛⲁ	ⲛⲁ	ⲣⲁ	C2381		1	1	1	1	1	3	287a	state, condition with vb, until, even			
+943	ⲕⲉⲗⲓ	N	ⲕⲉⲗⲓ	ⲕⲗⲗⲉ	ⲕⲗⲗⲉ	C1156,C1157	bolt	1	1	1	1	1	3	103b	bolt (κλειθρον) knee (γονυ) other joints			
+944	ⲕⲟⲩⲣ	N	ⲕⲟⲩⲣ	ⲕⲟⲩⲣ	ⲕⲟⲩⲣ	C1287,C1290,C1286	blow (prob. deafening blow); deaf person; deaf	1	1	1	1	1	3	114b	deaf person (κωφος) adj, deaf			
+945	ⲛⲟⲩⲛⲓ	N	ⲛⲟⲩⲛⲓ	ⲛⲟⲩⲛⲉ	ⲛⲟⲩⲛⲉ	C2502	root	1	1	1	1	1	3	227b	root (ριζα)			
+946	ⲛⲉϫⲓ	N	ⲛⲉϫⲓ	ⲛⲏϭⲉ	ⲛⲏϭⲉ	C2722	belly, womb	1	1	1	1	1	3	252a	belly, womb (μητρα, γαστηρ)			
+947	ⲣⲓⲣ	N	ⲣⲓⲣ	ⲣⲓⲣ	ⲣⲓⲣ	C3132	swine, pig	1	1	1	1	1	3	299a	swine, pig (υς, χοιρος)			
+948	ⲥⲟⲛⲓ	N	ⲥⲟⲛⲓ	ⲥⲟⲟⲛⲉ	ⲥⲟⲟⲛⲉ	C3582		1	1	1	1	1	3	344b	robber (ληστης, κλεπτης, κακουργος)			
+949	ⲥⲱⲛⲧ	N	ⲥⲱⲛⲧ	ⲥⲱⲛⲧ	ⲥⲱⲛⲧ	C3614,C3606,C3607	look	1	1	1	1	1	3	346a	custom (εθος, συνηθεια)			
+950	ⲥⲁⲑⲉⲣⲓ	N	ⲥⲁⲑⲉⲣⲓ	ⲥⲁⲧⲉⲉⲣⲉ	ⲥⲁⲧⲉⲉⲣⲉ	C3835	stater (coin and weight)	1	1	1	1	1	3	366a	stater, coin & weight (στατηρ, δραχμη, διδραχμον, δεναριον)			
+951	ⲥⲟⲩⲉⲛ	N	ⲥⲟⲩⲉⲛ	ⲥⲟⲩⲉⲛ	ⲥⲟⲩⲉⲛ	C3870	value, price	1	1	1	1	1	3	369b	value, price (τιμη)			
+952	ⲥⲏϥⲓ	N	ⲥⲏϥⲓ	ⲥⲏϥⲉ	ⲥⲏϥⲉ	C3939,C3940	sword, knife	1	1	1	1	1	3	379a	(m once), sword, knife (ρομφαια, ξιφος, μαχαιρα)			
+953	ⲥⲟϫ	N	ⲥⲟϫ	ⲥⲟϭ	ⲥⲟϭ	x		0	1	1	1	0.75	3	388a	fool (μωρος) as adj, foolish			verify; unique bo word? ⲥⲟϭ not in CDO?
+954	ⲥⲟϫⲉⲛ	N	ⲥⲟϫⲉⲛ	ⲥⲟϭⲛ	ⲥⲟϭⲛ	x		1	1	1	1	1	3	388b	ointment (μυρον, ηδυσμα, αλειμμα)			verify; 'ointment' not in CDO?
+955	ϣⲫⲏⲣⲓ	N	ϣⲫⲏⲣⲓ	ϣⲡⲏⲣⲉ	ϣⲡⲏⲣⲉ	C6006,C6007	wonder, amazement	1	1	1	1	1	3	581a	wonder, amazement (θαυμα, τερας, σημειον) do wonders c ⲉⲓⲣⲉ, ⲓⲣⲓ as adj, wonderful			
+956	ϩⲃⲏⲟⲩⲓ	N	ϩⲱⲃ	ϩⲱⲃ	ϩⲱⲃ	C6426	thing, work, matter, event	1	1	1	1	1	3	653a	thing, work, matter, event (εργον, πραγμα, ποιημα)			
+957	ϩⲁⲗⲁϯ	N	ϩⲁⲗⲏⲧ	ϩⲁⲗⲏⲧ	ϩⲁⲗⲁⲁⲧⲉ	C6576	flying creature, bird	1	1	1	1	1	3	671b	flying creature, bird (ορνεον, ορνις, πετεινος)			
+958	ϩⲙⲟⲩ	N	ϩⲙⲟⲩ	ϩⲙⲟⲩ	ϩⲙⲟⲩ	C6627	salt	1	1	1	1	1	3	676b	salt (αλας)			
+959	ϫⲁⲗ	N	ϫⲁⲗ	ϫⲁⲗ	_	C7148	branch	1	1	0	0	0.5	3	765b	branch (κλαδος, κλημα) hayfork			verify; unique Bo word?
+960	ϫⲱⲓⲧ	N	ϫⲱⲓⲧ	ϫⲟⲉⲓⲧ	ϫⲟⲉⲓⲧ	C7400	olive tree	1	1	1	1	1	3	790b	olive tree, its fruit (ελαια)			
+961	ϫⲁϫⲓ	N	ϫⲁϫⲓ	ϫⲁϫⲉ	ϫⲁϫⲉ	C7522,C7516,C7521,C7517,C7523	hostile; hard, rough; enemy; harshness	1	1	1	1	1	3	799b	enemy (εχθρος, εναντιος) as adj (εχθρος)			
+962	ϫⲱⲃ	N	ϫⲱⲃ	ϭⲃⲃⲉ	ϭⲃⲃⲉ	C7566	become, be feeble, timid	0	0	1	1	0.5	3	805a	(intransitive) become, be feeble, timid (ασθενειν, δειλιαν) (qualitative) (λεπτος, ασθενης, δειλος)			
+963	ϭⲁⲗⲟϫ	N	ϭⲁⲗⲟϫ	ϫⲁⲗⲁⲩ	ϫⲁⲗⲁⲩ	C7691	foot	1	1	1	1	1	3	814a	foot, knee (πους)			
+964	ⲙⲉⲧϣⲫⲏⲣ	N	ⲙⲉⲧϣⲫⲏⲣ	ⲙⲛⲧϣⲃⲏⲣ	ⲙⲛⲧϣⲃⲏⲣ	C5765	friendship	0	0	0	0	0	3	_	_			
+965	ⲑⲱϩⲉⲙ	N	ⲑⲱϩⲉⲙ	ⲧⲱϩⲙ	ⲧⲱϩⲙ	C4798	invite	0	0	0	0	0	3	_	_			
+966	ⲥⲉⲛϯ	N	ⲥⲉⲛϯ	ⲥⲛⲧⲉ	ⲥⲛⲧⲉ	C3613	foundation	0	0	0	0	0	3	_	_			
+967	ⲁⲧϣⲉⲙⲏⲣ	N	ⲁⲧϣⲉⲙⲏⲣ	ⲁⲧϣⲉⲙⲏⲣ	_	x		0	0	0	0	0	3	_	_			unique Bo word? cf. sa ⲁⲧⲑⲁⲃ
+968	ⲣⲉϥϭⲓⲛϫⲟⲛⲥ	N	ⲣⲉϥϭⲓⲛϫⲟⲛⲥ	ⲣⲉϥϫⲓⲛϭⲟⲛⲥ	ⲣⲉϥϫⲓⲛϭⲟⲛⲥ	C7785		0	0	0	0	0	3	_	_			verify; pair with ϫⲓ ⲛϭⲟⲛⲥ?
+969	ⲣⲉϥϩⲱⲗⲉⲙ	N	ⲣⲉϥϩⲱⲗⲉⲙ	ⲣⲉϥϩⲱⲗⲉⲙ	_	x		0	0	0	0	0	3	_	_			verify; pair with sa ⲣⲉϥϩⲱϥⲧ or ⲣⲉϥϫⲓⲟⲩⲉ?
+970	ⲣⲉϥϣⲁⲙϣⲉⲓⲇⲱⲗⲟⲛ	N	ⲣⲉϥϣⲁⲙϣⲉⲓⲇⲱⲗⲟⲛ	ⲣⲉϥϣⲙϣⲉⲉⲓⲇⲱⲗⲟⲛ	ⲣⲉϥϣⲙϣⲉⲉⲓⲇⲱⲗⲟⲛ	C8877	idolator 	0	0	0	0	0	3	_	_			
+971	ⲡⲉⲧϩⲱⲟⲩ	N	ⲡⲉⲧϩⲱⲟⲩ	ⲡⲉⲧϩⲟⲟⲩ	ⲡⲉⲧϩⲟⲟⲩ	C6972		0	0	0	0	0	3	_	_			verify; unique bo word?
+972	ⲙⲉⲧⲁⲧⲥⲉⲃⲓ	N	ⲙⲉⲧⲁⲧⲥⲉⲃⲓ	ⲙⲉⲧⲁⲧⲥⲉⲃⲓ	_	x		0	0	0	0	0	3	_	_			verify; no cdo?
+974	ϩⲉⲃⲥ	N	ϩⲉⲃⲥ	ϩⲱⲃⲥ	ϩⲱⲃⲥ	C6460	lid, covering	0	0	0	0	0	3	_	_			
+975	ϣⲉⲃⲓⲱ	N	ϣⲉⲃⲓⲱ	ϣⲃⲓⲱ	ϣⲃⲓⲱ	C5756	change	0	0	0	0	0	3	_	_			
+976	ⲉⲣⲏⲩ	N	ⲉⲣⲏⲩ	ⲉⲣⲏⲩ	ⲉⲣⲏⲩ	C714		0	0	0	0	0	3	_	_			
+977	ⲙⲁϩⲃ	N	ⲙⲁϩⲃ	ⲙⲉϩⲃ	ⲙⲉϩⲃ	x		0	0	0	0	0	3	_	_			verify; pair with ⲙⲉϩⲥⲛⲁⲩ?
+978	ⲧⲁⲗϭⲟ	N	ⲧⲁⲗϭⲟ	ⲧⲁⲗϭⲟ	ⲧⲁⲗϭⲟ	C4273	healing	0	0	0	0	0	3	_	_			
+980	ⲑⲙⲏⲓ	N	ⲑⲙⲏⲓ	ⲑⲙⲏⲓ	ⲑⲙⲏⲓ	C1795,C1796		0	0	0	0	0	3	_	_			
+981	ⲙⲉⲧⲁⲗⲟⲩ	N	ⲙⲉⲧⲁⲗⲟⲩ	ⲙⲉⲧⲁⲗⲟⲩ	_	C50,C48	time of youth	0	0	0	0	0	3	_	_			verify; okay to pair?
+982	ⲓⲇⲓⲱⲧⲏⲥ	N	ⲓⲇⲓⲱⲧⲏⲥ	ϩⲓⲇⲓⲱⲧⲏⲥ	ϩⲓⲇⲓⲱⲧⲏⲥ	C11122	idiot, fool	0	0	0	0	0	3	_	_			
+983	ϫⲫⲓⲟ	N	ϫⲫⲓⲟ	ϫⲡⲓⲟ	ϫⲡⲓⲟ	C7295,C7296	blame	0	0	0	0	0	3	_	_			
+984	ⲙⲉⲧⲁⲧⲧⲁⲕⲟ	N	ⲙⲉⲧⲁⲧⲧⲁⲕⲟ	ⲙⲛⲧⲁⲧⲧⲁⲕⲟ	ⲙⲛⲧⲁⲧⲧⲁⲕⲟ	C4180	incorruption	0	0	0	0	0	3	_	_			
+985	ⲣⲉⲙⲙⲫⲉ	N	ⲣⲉⲙⲙⲫⲉ	ⲣⲉⲙⲙⲫⲉ	_	x		0	0	0	0	0	3	_	_			verify; unique bo word?
+986	ⲣⲉⲙⲛⲁⲍⲁⲣⲉⲑ	N	ⲣⲉⲙⲛⲁⲍⲁⲣⲉⲑ	ⲛⲁⲍⲁⲣⲏⲛⲟⲥ	ⲛⲁⲍⲁⲣⲏⲛⲟⲥ	C9844	Nazarene	0	0	0	0	0	3	_	_			verify, okay to pair?
+987	ⲙⲃⲟⲛ	N	ⲙⲃⲟⲛ	ⲙⲃⲟⲛ	ⲙⲃⲟⲛ	C1833,C1831	wrath	0	0	0	0	0	3	_	_			
+988	ⲑⲱⲙ	N	ⲑⲱⲙ	ⲧⲱⲙ	ⲧⲱⲙ	C4301,C4296	shut	0	0	0	0	0	3	_	_			
+989	ⲥⲱϫⲡ	N	ⲥⲱϫⲡ	ϣⲱϫⲡ	ϣⲱϫⲡ	C6241,C6242	leave behind	0	0	0	0	0	3	_	_			
+990	ϣⲓ	N	ϣⲓ	ϣⲓ	ϣⲓ	C5713,C5714,C5723		0	0	0	0	0	3	_	_			
+991	ⲓⲱⲥⲏⲧⲟⲥ	NPROP	ⲓⲱⲥⲏⲧⲟⲥ	ⲓⲱⲥⲏⲧⲟⲥ	ⲓⲱⲥⲏⲧⲟⲥ	x		0	0	0	0	0	3	_	_			verify, no cdo?
+992	ⲧⲟⲧ	N	ⲧⲱⲣⲓ	ⲧⲱⲣⲉ	ⲧⲱⲣⲉ	C4453		0	0	0	0	0	3	_	_			
+993	ⲁⲧⲥⲁϫⲓ	N	ⲁⲧⲥⲁϫⲓ	ⲁⲧϣⲁϫⲉ	ⲁⲧϣⲁϫⲉ	C6220	unspeakable	0	0	0	0	0	3	_	_			
+997	ⲁⲣⲓⲡⲣⲟⲥⲉⲩⲭⲉⲥⲑⲉ	N	ⲁⲣⲓⲡⲣⲟⲥⲉⲩⲭⲉⲥⲑⲉ	ⲁⲣⲓⲡⲣⲟⲥⲉⲩⲭⲉⲥⲑⲉ	ⲁⲣⲓⲡⲣⲟⲥⲉⲩⲭⲉⲥⲑⲉ	x		0	0	0	0	0	3	_	_			
+998	ⲥⲟⲃϯ	N	ⲥⲟⲃϯ	ⲥⲟⲃⲧⲉ	ⲥⲟⲃⲧⲉ	C3367,C3366		0	0	0	0	0	3	_	_			
+3518	ⲥⲉⲧⲡ	V	ⲥⲱⲧⲡ	ⲥⲱⲧⲡ	ⲥⲉⲧⲡ	C3828	choose	1	1	1	1	1	0	365a	(intransitive) choose (transitive) (εκλεγειν, αιρεισθαι) (qualitative) ― chosen, exquisite (εκλεκτος) ― choicer, better (κρεισσων)			
+3519	ϩⲓⲛⲓⲙ	N	ϩⲓⲛⲓⲙ	ϩⲓⲛⲏⲃ	ϩⲓⲛⲏⲃ	C6711	sleep	0	0	0	0	0	0	691a	sleep			
+3520	ⲛⲟⲩⲓ	V	ⲛⲟⲩⲓ	ⲛⲟⲩ	ⲛⲟⲩ	C2395	go, about to	0	0	0	0	0	0	691	go, about to			
+3521	ⲑⲁⲙⲓⲟ	V	ⲑⲁⲙⲓⲟ	ⲧⲁⲙⲓⲟ	ⲧⲁⲙⲓⲟ	C4311	make, create	0	0	0	0	0	0	691	make, create			
+3522	ⲫⲟϩ	V	ⲫⲟϩ	ⲡⲱϩ	ⲡⲱϩ	C2879	reach, reach maturity, attain, arrive	0	0	0	0	0	0	281ab	reach, reach maturity, attain, arrive			
+3523	ⲫⲉϩ	V	ⲫⲟϩ	ⲡⲱϩ	ⲡⲉϩ	C2879	reach, reach maturity, attain, arrive	0	0	0	0	0	0	281ab	reach, reach maturity, attain, arrive			
+3524	ⲫⲉϩ	VSTAT	ⲫⲟϩ	ⲡⲱϩ	ⲡⲏϩ	C2879	reach, reach maturity, attain, arrive	0	0	0	0	0	0	281ab	reach, reach maturity, attain, arrive			
+3525	ⲧⲁⲥⲑⲟ	V	ⲧⲁⲥⲑⲟ	ⲥⲧⲟ	ⲥⲧⲟ	C4581	bring back, pay back, repeat	0	0	0	0	0	0	436a	bring back, pay back, repeat			
+3526	ⲧⲁⲥⲑⲟ	V	ⲧⲁⲥⲑⲟ	ⲥⲧⲟ	ⲧⲥⲧⲟ	C4581	bring back, pay back, repeat	0	0	0	0	0	0	436a	bring back, pay back, repeat			
+3527	ⲧⲉⲛ	V	ⲧⲱⲟⲩⲛ	ⲧⲱⲟⲩⲛ	ⲧⲟⲩⲛ	C4674	arise	0	0	0	0	0	0	445a	arise			
