@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { withBasePath } from './basePath';
 
 const DEFAULT_LANGUAGES = ['en', 'fr', 'de'];
@@ -168,10 +168,10 @@ export default function SearchNavbar({
             type="text"
             style={{ 
               fontFamily: 'antinoouRegular', 
+              minWidth: '225px',
               width: '100%' // 3. The input just takes up whatever space the group gives it
             }}
             className="form-control"
-            style={{minWidth: '220px'}}
             placeholder="Search (e.g. ⲥⲱⲧⲙ, hear, _sOtm_)"
             value={searchInput}
             onChange={e => {
