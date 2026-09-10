@@ -12,6 +12,7 @@ import { SearchExampleLink } from './Help';
 
 const COPTIC_REGEX = /[\u03E2-\u03EF\u2C80-\u2CFF]/;
 const ALL_DIALECTS = ['A', 'Ak', 'B', 'F', 'M', 'L', 'P', 'S', 'V', 'W', '?'];
+const DEFAULT_LANGUAGES = ['en', 'fr', 'de'];
 
 const translateAsciiToCoptic = (text) => {
   if (!text) return '';
@@ -72,7 +73,6 @@ const parseVideTable = (tableText) => {
     const trimmedLine = line.trim();
     if (!trimmedLine || trimmedLine.startsWith('#')) return;
 
-    // Split by whitespace (spaces or tabs)
     const parts = trimmedLine.split(/\s+/);
     
     if (parts.length >= 2) {
@@ -188,7 +188,15 @@ export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const query = searchParams.get('q') || '';
+
   const [searchInput, setSearchInput] = useState(query);
+  const [prevQuery, setPrevQuery] = useState(query);
+
+  // Sync search input without triggering setState inside useEffect
+  if (query !== prevQuery) {
+    setPrevQuery(query);
+    setSearchInput(query);
+  }
 
   useEffect(() => {
     const legacyPath = location.pathname === '/results.py' || location.pathname === '/entry.py' || 
@@ -202,8 +210,8 @@ export default function App() {
     if (!legacyPath && !hasLegacyParams) return;
 
     const normalizeLegacyToken = (value) =>
-      (value || '')
-        .replace(/[\u0000-\u001F\u007F]/g, '')
+      // eslint-disable-next-line no-control-regex
+      (value || '').replace(/[\u0000-\u001F\u007F]/g, '')
         .trim();
 
     const queryParts = [
@@ -251,19 +259,14 @@ export default function App() {
   const [videMap, setVideMap] = useState(() => new Map());
   const [isVideReady, setIsVideReady] = useState(false);
 
-  useEffect(() => {
-    if (query !== searchInput) {
-      setSearchInput(query);
-    }
-  }, [query]);
-  
+  const sharedSettings = useSharedSearchNavbarSettings();
   const {
     dialects,
     languages,
     searchType,
     posFilter,
     navbarSettingsProps,
-  } = useSharedSearchNavbarSettings();
+  } = sharedSettings;
   
   const [sortBy, setSortBy] = useState('relevance');
   
@@ -334,15 +337,6 @@ export default function App() {
     };
   }, []);
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const q = formData.get('q');
-    if (q) {
-      navigate(`/?q=${encodeURIComponent(q)}`);
-    }
-  };
-
   // Convert any ASCII mapped search text to Coptic for internal matching
   const processedQuery = useMemo(() => translateAsciiToCoptic(query), [query]);
 
@@ -403,6 +397,7 @@ export default function App() {
         try {
           regex = buildSearchRegex(term, searchType, isCopticTerm, useRegexToken);
         } catch (e) {
+          console.error(`Invalid regex for term "${term}":`, e);
           return false;
         }
 
@@ -414,6 +409,90 @@ export default function App() {
       });
     });
   }, [processedQuery, indexData, posFilter, dialects, languages, searchType]);
+
+  // Check whether any filters are active
+  const hasFiltersOn = useMemo(() => {
+    if (posFilter && posFilter !== 'any') return true;
+    if (searchType && searchType !== 'substring') return true;
+    if (dialects && dialects.size < ALL_DIALECTS.length) return true;
+    if (languages && languages.size < DEFAULT_LANGUAGES.length) return true;
+    return false;
+  }, [posFilter, searchType, dialects, languages, DEFAULT_LANGUAGES]);
+
+  // Background permissive search with no filters applied
+  const permissiveResults = useMemo(() => {
+    if (!processedQuery?.trim() || !isIndexReady || !hasFiltersOn) return [];
+
+    const terms = processedQuery.trim().split(/\s+/).filter(Boolean);
+    const tokenSearches = terms.map(term => ({
+      term,
+      idCriterion: parseIdCriterion(term),
+      isCopticTerm: COPTIC_REGEX.test(term),
+      useRegexToken: hasRegexOperators(term),
+    }));
+
+    return indexData.filter(entry => {
+      // Allow all forms (ignore dialect restrictions)
+      const formsToSearch = entry.forms && entry.forms.length > 0
+        ? entry.forms.map(f => f.orth)
+        : [entry.lemma];
+
+      // Allow all definition languages
+      const matchesDefinitions = (regex) => {
+        return entry.senses?.some(sense => {
+          return Object.entries(sense.translations || {}).some(([, defs]) => {
+            return defs.some(def => regex.test(def));
+          });
+        });
+      };
+
+      return tokenSearches.every(({ term, idCriterion, isCopticTerm, useRegexToken }) => {
+        if (idCriterion) {
+          return matchesEntryIdCriterion(entry, idCriterion);
+        }
+
+        // Permissive mode always uses substring match
+        let regex;
+        try {
+          regex = buildSearchRegex(term, 'substring', isCopticTerm, useRegexToken);
+        } catch (e) {
+          console.error(`Invalid regex for term "${term}":`, e);
+          return false;
+        }
+
+        if (isCopticTerm) {
+          return formsToSearch.some(orth => regex.test(orth));
+        }
+
+        return matchesDefinitions(regex);
+      });
+    });
+  }, [processedQuery, indexData, isIndexReady, hasFiltersOn]);
+
+  const handleTurnOffFilters = () => {
+    if (typeof sharedSettings.resetFilters === 'function') {
+      sharedSettings.resetFilters();
+      return;
+    }
+    if (typeof sharedSettings.resetSettings === 'function') {
+      sharedSettings.resetSettings();
+      return;
+    }
+    if (typeof navbarSettingsProps?.resetFilters === 'function') {
+      navbarSettingsProps.resetFilters();
+      return;
+    }
+
+    const setDialects = sharedSettings.setDialects || navbarSettingsProps?.onDialectsChange || navbarSettingsProps?.setDialects;
+    const setLanguages = sharedSettings.setLanguages || navbarSettingsProps?.onLanguagesChange || navbarSettingsProps?.setLanguages;
+    const setSearchType = sharedSettings.setSearchType || navbarSettingsProps?.onSearchTypeChange || navbarSettingsProps?.setSearchType;
+    const setPosFilter = sharedSettings.setPosFilter || navbarSettingsProps?.onPosFilterChange || navbarSettingsProps?.setPosFilter;
+
+    if (setDialects) setDialects(new Set(ALL_DIALECTS));
+    if (setLanguages) setLanguages(new Set(DEFAULT_LANGUAGES));
+    if (setSearchType) setSearchType('substring');
+    if (setPosFilter) setPosFilter('any');
+  };
 
   useEffect(() => {
     if (query && filteredResults.length === 1) {
@@ -654,7 +733,24 @@ export default function App() {
                                   </a>
                                 </div>
                               ) : (
-                                <span className="text-muted">No results found.</span>
+                                <div>
+                                  <span className="text-muted">No results found.</span>
+                                  {hasFiltersOn && permissiveResults.length > 0 && (
+                                    <div style={{ marginTop: '8px' }}>
+                                      {permissiveResults.length} possible result{permissiveResults.length === 1 ? '' : 's'} not shown due to filters -{' '}
+                                      <a
+                                        href="#"
+                                        onClick={(event) => {
+                                          event.preventDefault();
+                                          handleTurnOffFilters();
+                                        }}
+                                      >
+                                        turn off filters and search again
+                                      </a>
+                                      ?
+                                    </div>
+                                  )}
+                                </div>
                               )}
                             </td>
                           </tr>
