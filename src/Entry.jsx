@@ -925,7 +925,7 @@ export default function Entry() {
                                   </ul>
                                   {annisLemmaUrl && (
                                     <p className="ex-more text-muted" style={{ fontSize: '0.9em', marginLeft: '10px' }}>
-                                      Search for <a href={annisLemmaUrl} target="_blank" rel="noreferrer">more examples</a> for the lemma {lemmaForDialect} with any sense in {dialect} (ANNIS search)
+                                      Search for <a href={annisLemmaUrl} target="_blank" rel="noreferrer">more examples</a> for the lemma {lemmaForDialect} with any sense in {dialect.charAt(0).toUpperCase() + dialect.slice(1)} (ANNIS search)
                                     </p>
                                   )}
                                       </>
