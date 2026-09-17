@@ -508,6 +508,13 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
     total_sense_count = 0
     os.makedirs(details_dir, exist_ok=True)
 
+    # Reporting counters, tallied across all entries (including supplemental/inflection forms)
+    no_colloc_count = 0
+    no_examples_count = 0
+    few_examples_count = 0
+    no_network_count = 0
+    dialect_form_counts = defaultdict(int)
+
     hyperlemma_mapping = load_hyperlemma_mapping(data_dir)
     entity_mapping = load_entity_mapping(data_dir)
     corpus_data = load_corpus_data(data_dir, hyperlemma_mapping)
@@ -667,6 +674,18 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
             if normalized_coptic:
                 unique_example_sentences.add(normalized_coptic)
 
+        if not any(detail_data["collocations"].values()):
+            no_colloc_count += 1
+        example_count = len(detail_data["examples"])
+        if example_count == 0:
+            no_examples_count += 1
+        elif example_count < 3:
+            few_examples_count += 1
+        if not detail_data["network"]:
+            no_network_count += 1
+        for d in {f.get("dialect") for f in all_forms if f.get("dialect")}:
+            dialect_form_counts[d] += 1
+
         if lemma_freqs_by_dialect:
             detail_data["lemma_freqs"] = lemma_freqs_by_dialect
         if entry_type: detail_data["type"] = entry_type
@@ -720,6 +739,22 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
 
     with open("data/covered_base_forms.tab", 'w', encoding="utf-8", newline="\n") as f:
         f.write("\n".join(sorted(unique_forms)))
+
+    def pct(n):
+        return round(100 * n / len(index_data), 1) if index_data else 0.0
+
+    print("\n=== Dictionary Data Report ===")
+    print(f"Entries read: {len(index_data)}")
+    print(f"Entries with no collocation data: {no_colloc_count} ({pct(no_colloc_count)}%)")
+    print(f"Entries with no example usages: {no_examples_count} ({pct(no_examples_count)}%)")
+    print(f"Entries with 1-2 example usages: {few_examples_count} ({pct(few_examples_count)}%)")
+    print(f"Entries with no usage graphs: {no_network_count} ({pct(no_network_count)}%)")
+    print("Forms per dialect:")
+    for d in sorted(dialect_form_counts):
+        count = dialect_form_counts[d]
+        print(f"  Dialect {d}: {count} entries / {pct(count)}% have a form in this dialect")
+    print("===============================\n")
+
     print("Build complete!")
 
 
