@@ -526,6 +526,10 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
     for entry in root.findall('.//tei:entry', NS):
         if is_redundant_ref_subentry(entry):
             continue
+        # Check if there is @change indicating deprecation, for example"
+        # <entry xml:id="..." change="#deprecated #v1.2">
+        if entry.get('change') and 'deprecated' in entry.get('change'):
+            continue
         entry_id, entry_type = entry.get(f'{XML_NS}id'), entry.get('type')
         all_forms, lemma_str, lemma_form_index, is_placeholder_entry = [], "", -1, False
 
