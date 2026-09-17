@@ -382,6 +382,9 @@ def extract_entry_grammar(entry_node):
     else:
         # Some entries keep grammatical analyses at the form level
         form_nodes = entry_node.findall('./tei:form', NS)
+        # Filter out any deprecated forms like this:
+        # <form xml:id="..." change="#deprecated #v1.2" corresp="...">
+        form_nodes = [f for f in form_nodes if not (f.get('change') and 'deprecated' in f.get('change'))]
         lemma_form_node = next((f for f in form_nodes if f.get('type') == 'lemma'), None)
         ordered_forms = []
         if lemma_form_node is not None:
@@ -514,6 +517,8 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
     few_examples_count = 0
     no_network_count = 0
     dialect_form_counts = defaultdict(int)
+    deprecated_entry_count = 0
+    deprecated_form_count = 0
 
     hyperlemma_mapping = load_hyperlemma_mapping(data_dir)
     entity_mapping = load_entity_mapping(data_dir)
@@ -536,11 +541,17 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
         # Check if there is @change indicating deprecation, for example"
         # <entry xml:id="..." change="#deprecated #v1.2">
         if entry.get('change') and 'deprecated' in entry.get('change'):
+            deprecated_entry_count += 1
             continue
         entry_id, entry_type = entry.get(f'{XML_NS}id'), entry.get('type')
         all_forms, lemma_str, lemma_form_index, is_placeholder_entry = [], "", -1, False
 
         for form_node in entry.findall('./tei:form', NS):
+            # Skip deprecated forms like this:
+            # <form xml:id="..." change="#deprecated #v1.2" corresp="...">
+            if form_node.get('change') and 'deprecated' in form_node.get('change'):
+                deprecated_form_count += 1
+                continue
             form_id = form_node.get(f'{XML_NS}id')
             orth = form_node.findtext('./tei:orth', default="", namespaces=NS).strip()
             if orth == '___':
@@ -608,7 +619,7 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
         # Build index structures
         index_forms = []
         form_ids = []
-        for f in details_forms:  # FIXED: We now iterate over details_forms to build index lists
+        for f in details_forms:
             idx_form = {"orth": f["orth"]}
             if f.get("dialect"): idx_form["dialect"] = f["dialect"]
             if f.get("id"):
@@ -660,6 +671,10 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
             sense_detail = {"id": sense_id, "bibliography": bibl_text}
             if cu_id: sense_detail["cu_ID"] = cu_id
             details_senses.append(sense_detail)
+
+        # Now that redundant lemmas are filtered, remove the type key of all details_forms
+        for f in details_forms:
+            if "type" in f: del f["type"]
 
         detail_data = {
             "id": entry_id, "forms": details_forms, "grammar": grammar,
@@ -745,6 +760,8 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
 
     print("\n=== Dictionary Data Report ===")
     print(f"Entries read: {len(index_data)}")
+    print(f"Deprecated entries skipped: {deprecated_entry_count}")
+    print(f"Deprecated forms skipped: {deprecated_form_count}")
     print(f"Entries with no collocation data: {no_colloc_count} ({pct(no_colloc_count)}%)")
     print(f"Entries with no example usages: {no_examples_count} ({pct(no_examples_count)}%)")
     print(f"Entries with 1-2 example usages: {few_examples_count} ({pct(few_examples_count)}%)")
