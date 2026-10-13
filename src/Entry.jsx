@@ -48,7 +48,7 @@ const ANNIS_SUFFIX = "&_bt=bm9ybV9ncm91cA&o=random";
 
 // Add/modify ANNIS corpora for each dialect here
 const ANNIS_CORPORA = {
-  'B': 'bohairic.1corinthians,bohairic.mark,bohairic.life.isaac,bohairic.nt,bohairic.ot',
+  'B': 'bohairic.1corinthians,bohairic.mark,bohairic.life.isaac,bohairic.nt,bohairic.ot,bohairic.habakkuk,bohairic.lausiac,bohairic.life.shenoute',
   'S': 'shenoute.a22,johannes.canons,shenoute.abraham,pseudo.basil,shenoute.dirt,sahidic.ot,shenoute.night,pistis.sophia,shenoute.true,pseudo.timothy,shenoute.thundered,pseudo.chrysostom,pseudo.theophilus,doc.papyri,pachomius.instructions,shenoute.house,shenoute.unknown5_1,shenoute.listen,life.cyrus,shenoute.errs,magical.papyri,pseudo.celestinus,shenoute.those,sahidica.nt,shenoute.crushed,martyrdom.victor,besa.letters,life.john.kalybites,shenoute.uncertain.xr,pseudo.athanasius.discourses,dormition.john,life.phib,pseudo.ephrem,life.onnophrius,apophthegmata.patrum,shenoute.seeks,life.paul.tamma,mysteries.john,sahidic.ruth,sahidica.mark,shenoute.place,shenoute.eagerness,life.aphou,shenoute.witness,life.eustathius.theopiste,proclus.homilies,john.constantinople,shenoute.considering,sahidica.1corinthians,shenoute.prince,shenoute.fox,pseudo.flavianus,life.longinus.lucius,life.pisentius,acts.pilate,book.bartholomew,helias,lament.mary,mercurius,theodosius.alexandria,thomas.gospel,sahidic.jonah',
 };
 
