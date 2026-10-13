@@ -100,14 +100,14 @@ const getEntitySearchUrl = (lemma, entityType) => {
 };
 
 // URL generators for ANNIS
-const getAnnisFormUrl = (form, pos, dialect) => {
+const getAnnisFormUrl = (form, lemma, pos, dialect) => {
   form = form.replace(/[⸗-]/g, '');
   if (!dialect) return null;
   const corpora = ANNIS_CORPORA[dialect];
   if (!corpora) return null;
   
   const queryString = pos && pos !== "?" 
-    ? `norm="${form}" _=_ pos="${pos}"`
+    ? `norm="${form}" _=_ pos="${pos}" _=_ lemma="${lemma.replace(/[()†⸗-]/g, '')}"`
     : `norm="${form}"`;
     
   return `${ANNIS_BASE_URL}_q=${unicodeBase64Encode(queryString)}&_c=${unicodeBase64Encode(corpora)}${ANNIS_SUFFIX}`;
