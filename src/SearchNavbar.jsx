@@ -32,13 +32,36 @@ const shouldReuseSelectionState = (value) => {
   return isFresh && lastSearchInputState.value === value;
 };
 
+const DIALECT_NAMES = {
+  A: 'Akhmimic',
+  Ak: 'Sub-Akhmimic',
+  B: 'Bohairic',
+  F: 'Fayyumic',
+  M: 'Mesokemic',
+  L: 'Lycopolitan',
+  P: 'Proto-Theban',
+  S: 'Sahidic',
+  V: 'South Fayyumic Greek',
+  W: 'Crypto-Mesokemic Greek',
+  '?': 'Unknown'
+};
+
+const CheckMark = () => (
+  <span aria-hidden="true" style={{
+    position: 'absolute', top: '2px', right: '4px',
+    fontSize: '9px', lineHeight: 1, color: '#1a5f7a'
+  }}>✓</span>
+);
+
+// Symmetric horizontal padding keeps the label centered and leaves room for the check mark
 const getToggleStyle = (isSelected) => ({
-  padding: '4px 8px',
+  position: 'relative',
+  padding: '4px 12px',
   borderRadius: '4px',
   border: 'none',
   cursor: 'pointer',
   userSelect: 'none',
-  fontSize: '13px',
+  fontSize: '12px',
   fontWeight: 'bold',
   backgroundColor: isSelected ? '#add8e6' : '#e0e0e0',
   color: isSelected ? '#000' : '#777',
@@ -374,12 +397,13 @@ export default function SearchNavbar({
           </div>
 
           <div style={{ display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
               <strong style={{ marginRight: '5px' }}>Dialects:</strong>
               {allDialects.map(d => (
                 <button
                   type="button"
                   key={d}
+                  title={DIALECT_NAMES[d]}
                   style={getToggleStyle(dialects.has(d))}
                   onClick={() => {
                     const nextDialects = new Set(dialects);
@@ -387,9 +411,29 @@ export default function SearchNavbar({
                     onDialectsChange(nextDialects);
                   }}
                 >
+                  {dialects.has(d) && <CheckMark />}
                   {d}
                 </button>
               ))}
+              <button
+                type="button"
+                title={allDialects.every(d => dialects.has(d)) ? 'Turn all dialects off' : 'Turn all dialects on'}
+                style={{
+                  ...getToggleStyle(false),
+                  backgroundColor: '#fff',
+                  color: '#333',
+                  border: '1px dashed #777',
+                  fontWeight: 'normal',
+                  fontSize: '12px',
+                  padding: '4px 8px'
+                }}
+                onClick={() => {
+                  const allOn = allDialects.every(d => dialects.has(d));
+                  onDialectsChange(allOn ? new Set() : new Set(allDialects));
+                }}
+              >
+                {allDialects.every(d => dialects.has(d)) ? 'None' : 'All'}
+              </button>
             </div>
 
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -405,6 +449,7 @@ export default function SearchNavbar({
                     onLanguagesChange(nextLangs);
                   }}
                 >
+                  {languages.has(l) && <CheckMark />}
                   {l.toUpperCase()}
                 </button>
               ))}
