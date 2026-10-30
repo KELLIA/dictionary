@@ -5,6 +5,7 @@ import { preloadIndexData } from './indexDataCache';
 import { SiteHeader, SiteFooter } from './SiteChrome';
 import useSharedSearchNavbarSettings from './useSharedSearchNavbarSettings';
 import { withBasePath } from './basePath';
+import renderDagger from './renderDagger';
 
 // -- CACHE DEFINITION --
 // Persists detail file JSONs in memory for the duration of the session
@@ -617,15 +618,27 @@ export default function Entry() {
                             </thead>
                             <tbody>
                               {orderedForms.map((form, i) => {
-                                const collocationsForForm = getCollocationsForDialect(entry.collocations, form.dialect);
-                                const showsScriptoriumFallback = !form.id;
+                                const dialectTopForm = getTopFormForDialect(entry.forms, form.dialect);
+                                const isDialectLemma = !!dialectTopForm && (dialectTopForm === form || dialectTopForm.orth === form.orth);
+                                const collocationsForForm = isDialectLemma
+                                  ? getCollocationsForDialect(entry.collocations, form.dialect)
+                                  : [];
+                                const hasFreqData = ['rate', 'rank'].some(
+                                  (key) => getFreqStatValue(form.freq_form, key)
+                                );
+                                const formIdFallback = !form.id
+                                  ? '(from Coptic Scriptorium)'
+                                  : !String(form.id).startsWith('C')
+                                    ? "(from Crum's dictionary)"
+                                    : null;
+                                const lemmaForDialect = dialectTopForm?.orth || lemmaForm.orth;
                                 return (
                                   <tr key={i} style={{ transition: 'all 0.3s ease' }}>
-                                    <td className="orth_entry">{form.orth}</td>
+                                    <td className="orth_entry">{renderDagger(form.orth)}</td>
                                     <td className="dialect">{form.dialect || '?'}</td>
-                                    {showsScriptoriumFallback ? (
+                                    {formIdFallback ? (
                                       <td colSpan="2" className="tla_orth_id text-muted" style={{ fontSize: '0.9em', border: 'none', padding: '8px', whiteSpace: 'nowrap' }}>
-                                        <span className="suppl_orth_id">(from Coptic Scriptorium)</span>
+                                        <span className={`suppl_orth_id${formIdFallback.includes('Crum') ? ' suppl_orth_id-crum' : ''}`}>{formIdFallback}</span>
                                       </td>
                                     ) : (
                                       <>
@@ -638,8 +651,8 @@ export default function Entry() {
                                     
                                     {/* 1. ANNIS Link */}
                                     <td className="annis_link">
-                                      {getAnnisFormUrl(form.orth, originalPos, form.dialect) && (
-                                        <a href={getAnnisFormUrl(form.orth, scriptoriumPos, form.dialect)} target="_blank" rel="noreferrer" title={`Search for form ${form.orth} in Coptic Scriptorium`}>
+                                      {hasFreqData && getAnnisFormUrl(form.orth, lemmaForDialect, originalPos, form.dialect) && (
+                                        <a href={getAnnisFormUrl(form.orth, lemmaForDialect, scriptoriumPos, form.dialect)} target="_blank" rel="noreferrer" title={`Search for form ${form.orth} in Coptic Scriptorium`}>
                                           <img src={withBasePath('img/scriptorium.png')} className="scriptorium_logo" alt="Scriptorium"/>
                                         </a>
                                       )}
@@ -647,6 +660,7 @@ export default function Entry() {
 
                                     {/* 2. Frequency Tooltip */}
                                     <td className="freq">
+                                      {hasFreqData && (
                                       <div className="custom-tooltip-container">
                                         <a className="dict_tooltip">
                                         <i className="fa fa-sort-numeric-asc freq_icon"></i>
@@ -659,11 +673,12 @@ export default function Entry() {
                                         </div>
                                         </a>
                                       </div>
+                                      )}
                                     </td>
 
                                     {/* 3. Collocations Tooltip */}
                                     <td className="colloc" style={{ maxWidth: '20px' }}>
-                                      {isDetailLoading ? (
+                                      {!isDialectLemma ? null : isDetailLoading ? (
                                         <span className="text-muted" style={{ fontSize: '0.7em' }}><i className="fa fa-spinner fa-spin"></i></span>
                                       ) : collocationsForForm.length > 0 && (
                                         <div className="custom-tooltip-container">
