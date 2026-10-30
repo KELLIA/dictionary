@@ -7,11 +7,18 @@ import { withBasePath } from './basePath';
 
 const formatNumber = (value) => new Intl.NumberFormat('en-US').format(value);
 
+const STAT_CARDS = [
+  { key: 'entries', icon: 'fa-book', label: 'dictionary entries' },
+  { key: 'uniqueForms', icon: 'fa-font', label: 'unique forms' },
+  { key: 'senses', icon: 'fa-sitemap', label: 'recorded senses' },
+  { key: 'uniqueExampleSentences', icon: 'fa-quote-left', label: 'unique example sentences' },
+];
+
 export default function About() {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
   const { availablePos, navbarSettingsProps } = useSharedSearchNavbarSettings();
-  const [stats, setStats] = useState({ entries: null, senses: null, uniqueExampleSentences: null });
+  const [stats, setStats] = useState({ entries: null, uniqueForms: null, senses: null, uniqueExampleSentences: null });
 
   useEffect(() => {
     let active = true;
@@ -26,6 +33,7 @@ export default function About() {
 
         setStats({
           entries: data.entries,
+          uniqueForms: data.uniqueForms,
           senses: data.senses,
           uniqueExampleSentences: data.uniqueExampleSentences,
         });
@@ -69,25 +77,16 @@ export default function About() {
                   To learn more about using this dictionary, check out our quick <Link to="/help">how-to guide</Link>.
                 </p>
 
-                <div className="row" style={{ marginTop: '20px', marginBottom: '20px' }}>
-                  <div className="col-sm-4">
-                    <div style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid #ddd', borderRadius: '6px', padding: '14px' }}>
-                      <div style={{ fontSize: '28px', fontWeight: 'bold' }}>{stats.entries == null ? '...' : formatNumber(stats.entries)}</div>
-                      <div className="text-muted">dictionary entries</div>
+                <div className="cdo-stats-grid">
+                  {STAT_CARDS.map(({ key, icon, label }) => (
+                    <div className="cdo-stat-card" key={key}>
+                      <div className="cdo-stat-icon"><i className={`fa ${icon}`} aria-hidden="true"></i></div>
+                      <div>
+                        <div className="cdo-stat-value">{stats[key] == null ? '...' : formatNumber(stats[key])}</div>
+                        <div className="text-muted">{label}</div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-sm-4">
-                    <div style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid #ddd', borderRadius: '6px', padding: '14px' }}>
-                      <div style={{ fontSize: '28px', fontWeight: 'bold' }}>{stats.senses == null ? '...' : formatNumber(stats.senses)}</div>
-                      <div className="text-muted">recorded senses</div>
-                    </div>
-                  </div>
-                  <div className="col-sm-4">
-                    <div style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid #ddd', borderRadius: '6px', padding: '14px' }}>
-                      <div style={{ fontSize: '28px', fontWeight: 'bold' }}>{stats.uniqueExampleSentences == null ? '...' : formatNumber(stats.uniqueExampleSentences)}</div>
-                      <div className="text-muted">unique example sentences</div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
                 <h3>Lexicon preparation</h3>
@@ -125,7 +124,7 @@ export default function About() {
                   <a href="https://www.perseus.tufts.edu/" target="_blank" rel="noreferrer">Perseus</a>{' '}
                   Greek lexicon and to{' '}
                   <a href="https://logeion.uchicago.edu/" target="_blank" rel="noreferrer">Logeion</a>.
-                  Ancient Egyptian etymologies were aligned to Coptic TLA entries by TLA / Simon D. Schweitzer.
+                  Ancient Egyptian etymologies were aligned to Coptic TLA entries by TLA / Simon D. Schweitzer. Additional word forms derived from Crum's dictionary were graciously contributed from Randy Komforty's <a href="https://coptic.wiki/">Coptic Wiki</a> and processed by <a href="https://remnqymi.com/">ⲣⲉⲙⲛ̀Ⲭⲏⲙⲓ</a> before being semi-automatically aligned to the TLA's lemma identifiers.
                 </p>
 
                 <h3>Projects</h3>
