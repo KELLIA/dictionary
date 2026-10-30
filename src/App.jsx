@@ -7,6 +7,7 @@ import { getCachedIndexData, preloadIndexData } from './indexDataCache';
 import { SiteHeader, SiteFooter } from './SiteChrome';
 import useSharedSearchNavbarSettings from './useSharedSearchNavbarSettings';
 import { withBasePath } from './basePath';
+import renderDagger from './renderDagger';
 import { ASCII_TO_COPTIC_MAP } from './SearchNavbar';
 import { SearchExampleLink } from './Help';
 
@@ -86,11 +87,25 @@ const parseVideTable = (tableText) => {
   return nextMap;
 };
 
+// Closed class of Coptic grammatical and morphological markers:
+// - pre-nominal (-), pre-suffixal (⸗ or =), stative († or ‡), reconstructed (*)
+const COPTIC_CONTROL_CHARS_CLASS = '[-⸗†‡=*]';
+const TRAILING_COPTIC_CONTROL_REGEX = /[-⸗†‡=*]+$/u;
+const ALL_COPTIC_CONTROL_REGEX = /[*⸗†‡=︦̄-]/g;
+
+const cleanCopticOrth = (value) => {
+  return (value || '')
+    .trim()
+    .toLowerCase()
+    .replace(ALL_COPTIC_CONTROL_REGEX, '');
+};
+
 const normalizeWordToken = (value) => {
   return (value || '')
     .trim()
     .toLowerCase()
-    .replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '');
+    .replace(ALL_COPTIC_CONTROL_REGEX, '')
+    .replace(/^[^\p{L}\p{M}\p{N}]+|[^\p{L}\p{M}\p{N}]+$/gu, '');
 };
 
 const tokenizeWords = (value) => {
@@ -140,23 +155,30 @@ const matchesWholeWord = (term, value) => {
 };
 
 const buildSearchRegex = (term, searchType, isCopticTerm, useRegexToken) => {
+  // Strip any trailing control characters the user may have typed
+  const strippedTerm = isCopticTerm ? term.replace(TRAILING_COPTIC_CONTROL_REGEX, '') : term;
+
   if (!useRegexToken) {
+    const escaped = escapeRegExp(strippedTerm);
+
     if (searchType === 'whole') {
       return isCopticTerm
-        ? new RegExp(`^${escapeRegExp(term)}$`, 'i')
+        ? new RegExp(`^${escaped}${COPTIC_CONTROL_CHARS_CLASS}?$`, 'i')
         : new RegExp(`\\b${escapeRegExp(term)}\\b`, 'i');
     }
 
     if (searchType === 'startsWith') {
       return isCopticTerm
-        ? new RegExp(`^${escapeRegExp(term)}`, 'i')
+        ? new RegExp(`^${escaped}`, 'i')
         : new RegExp(`\\b${escapeRegExp(term)}`, 'i');
     }
 
-    return new RegExp(escapeRegExp(term), 'i');
+    return isCopticTerm
+      ? new RegExp(escaped, 'i')
+      : new RegExp(escapeRegExp(term), 'i');
   }
 
-  let pattern = term;
+  let pattern = strippedTerm;
 
   if (searchType === 'startsWith') {
     if (isCopticTerm) {
@@ -169,7 +191,11 @@ const buildSearchRegex = (term, searchType, isCopticTerm, useRegexToken) => {
   if (searchType === 'whole') {
     if (isCopticTerm) {
       if (!pattern.startsWith('^')) pattern = `^${pattern}`;
-      if (!pattern.endsWith('$')) pattern = `${pattern}$`;
+      if (pattern.endsWith('$')) {
+        pattern = pattern.slice(0, -1) + `${COPTIC_CONTROL_CHARS_CLASS}?$`;
+      } else {
+        pattern = `${pattern}${COPTIC_CONTROL_CHARS_CLASS}?$`;
+      }
     } else {
       if (!pattern.startsWith('^') && !pattern.startsWith('\\b')) {
         pattern = `\\b${pattern}`;
@@ -181,6 +207,18 @@ const buildSearchRegex = (term, searchType, isCopticTerm, useRegexToken) => {
   }
 
   return new RegExp(pattern, 'i');
+};
+
+// Tokens with regex operators that fail to compile are matched literally instead.
+const resolveUseRegexToken = (term, searchType, isCopticTerm, warn) => {
+  if (!hasRegexOperators(term)) return false;
+  try {
+    buildSearchRegex(term, searchType, isCopticTerm, true);
+    return true;
+  } catch (e) {
+    if (warn) console.warn(`Invalid regex "${term}" interpreted as a literal string:`, e.message);
+    return false;
+  }
 };
 
 export default function App() {
@@ -344,12 +382,15 @@ export default function App() {
     if (!processedQuery?.trim()) return [];
 
     const terms = processedQuery.trim().split(/\s+/).filter(Boolean);
-    const tokenSearches = terms.map(term => ({
-      term,
-      idCriterion: parseIdCriterion(term),
-      isCopticTerm: COPTIC_REGEX.test(term),
-      useRegexToken: hasRegexOperators(term),
-    }));
+    const tokenSearches = terms.map(term => {
+      const isCopticTerm = COPTIC_REGEX.test(term);
+      return {
+        term,
+        idCriterion: parseIdCriterion(term),
+        isCopticTerm,
+        useRegexToken: resolveUseRegexToken(term, searchType, isCopticTerm, true),
+      };
+    });
 
     return indexData.filter(entry => {
       if (posFilter !== 'any' && entry.pos !== posFilter) return false;
@@ -424,12 +465,15 @@ export default function App() {
     if (!processedQuery?.trim() || !isIndexReady || !hasFiltersOn) return [];
 
     const terms = processedQuery.trim().split(/\s+/).filter(Boolean);
-    const tokenSearches = terms.map(term => ({
-      term,
-      idCriterion: parseIdCriterion(term),
-      isCopticTerm: COPTIC_REGEX.test(term),
-      useRegexToken: hasRegexOperators(term),
-    }));
+    const tokenSearches = terms.map(term => {
+      const isCopticTerm = COPTIC_REGEX.test(term);
+      return {
+        term,
+        idCriterion: parseIdCriterion(term),
+        isCopticTerm,
+        useRegexToken: resolveUseRegexToken(term, 'substring', isCopticTerm, false),
+      };
+    });
 
     return indexData.filter(entry => {
       // Allow all forms (ignore dialect restrictions)
@@ -511,19 +555,29 @@ export default function App() {
     if (!processedQuery?.trim()) return { results: [], totalCount: 0 };
 
     const qRaw = processedQuery.trim().toLowerCase();
+    const qClean = cleanCopticOrth(qRaw);
     const filtered = [...filteredResults];
 
     filtered.forEach(entry => {
       let score = 0;
-      const lemma = (entry.lemma || '').toLowerCase().replace(/[*⸗︦̄-]/g, '');
-      const forms = entry.forms ? entry.forms.map(f => (f.orth || '').toLowerCase()) : [];
+      const rawLemma = (entry.lemma || '').toLowerCase();
+      const lemma = cleanCopticOrth(rawLemma);
+
+      const rawForms = entry.forms ? entry.forms.map(f => (f.orth || '').toLowerCase()) : [];
+      const forms = rawForms.map(cleanCopticOrth);
       
-      if (lemma === qRaw) score += 100000;
-      if (forms.includes(qRaw)) score += 10000;
-      if (lemma.startsWith(qRaw)) score += 1000;
-      if (forms.some(f => f.startsWith(qRaw))) score += 100;
-      if (lemma.includes(qRaw)) score += 50;
-      if (forms.some(f => f.includes(qRaw))) score += 5;
+      // Exact matches on stripped representations
+      if (lemma === qClean) score += 100000;
+      if (forms.includes(qClean)) score += 10000;
+
+      // Small tie-breaker if user typed the literal character that matches the entry
+      if (rawLemma === qRaw) score += 5000;
+      if (rawForms.includes(qRaw)) score += 500;
+
+      if (lemma.startsWith(qClean)) score += 1000;
+      if (forms.some(f => f.startsWith(qClean))) score += 100;
+      if (lemma.includes(qClean)) score += 50;
+      if (forms.some(f => f.includes(qClean))) score += 5;
       
       const allDefs = (entry.senses || []).flatMap(s => 
         Object.values(s.translations || {}).flat()
@@ -677,7 +731,7 @@ export default function App() {
                                 </Link>
                               </td>
                               <td className="second_orth_cell" style={{ width: '30%', color: '#666', border: 'none', padding: '8px 0', wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
-                                {altForms.length > 0 ? altForms.join(', ') : '--'}
+                                {altForms.length > 0 ? renderDagger(altForms.join(', ')) : '--'}
                               </td>
                               <td className="sense_cell" style={{ border: 'none', padding: '8px 0', wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                                 {previewDefs.length > 1 ? (
