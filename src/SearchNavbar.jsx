@@ -13,6 +13,15 @@ const ASCII_COPTIC_PAIRS = [
 
 export const ASCII_TO_COPTIC_MAP = Object.fromEntries(ASCII_COPTIC_PAIRS);
 
+// Each key is [unshifted, shifted]. Special keys: Bksp, Shift
+const letterRow = (letters) => [...letters].map(l => [l, l.toUpperCase()]);
+const KEYBOARD_ROWS = [
+  [["`", "~"], ["1", "!"], ["2", "@"], ["3", "#"], ["4", "$"], ["5", "%"], ["6", "^"], ["7", "&"], ["8", "*"], ["9", "("], ["0", ")"], ["Bksp", "Bksp"]],
+  letterRow('ϭϣⲉⲣⲧⲩⲑⲓⲟⲡⳉ'),
+  letterRow('ⲁⲥⲇϫϥⲅⲏϩⲝⲕⲗ'),
+  [["Shift", "Shift"], ...letterRow('ⲍⲭϧⲯⲱⲃⲛⲙⲫϯ')],
+];
+
 let lastSearchInputState = {
   value: '',
   selectionStart: null,
@@ -20,6 +29,17 @@ let lastSearchInputState = {
   selectionDirection: 'none',
   hadFocus: false,
   timestamp: 0,
+};
+
+const rememberCaret = (value, caret) => {
+  lastSearchInputState = {
+    value,
+    selectionStart: caret,
+    selectionEnd: caret,
+    selectionDirection: 'none',
+    hadFocus: true,
+    timestamp: Date.now(),
+  };
 };
 
 const clampSelection = (position, valueLength) => {
@@ -91,6 +111,28 @@ export default function SearchNavbar({
   const isRestoringSelectionRef = useRef(true);
   
   const [showAsciiHelp, setShowAsciiHelp] = useState(false);
+  const [showKeyboard, setShowKeyboard] = useState(false);
+  const [shifted, setShifted] = useState(false);
+
+  const handleVirtualKey = (key) => {
+    const inputElement = inputRef.current;
+    const value = searchInput ?? '';
+    const start = clampSelection(inputElement?.selectionStart, value.length);
+    const end = clampSelection(inputElement?.selectionEnd, value.length);
+    let nextValue;
+    let caret;
+    if (key === 'Bksp') {
+      const from = start === end ? Math.max(0, start - 1) : start;
+      nextValue = value.slice(0, from) + value.slice(end);
+      caret = from;
+    } else {
+      nextValue = value.slice(0, start) + key + value.slice(end);
+      caret = start + key.length;
+    }
+    rememberCaret(nextValue, caret);
+    onSearchInputChange(nextValue);
+    if (shifted && key !== 'Bksp') setShifted(false);
+  };
 
   const captureInputState = (inputElement) => {
     if (!inputElement) return;
@@ -153,27 +195,38 @@ export default function SearchNavbar({
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        if (showAsciiHelp) setShowAsciiHelp(false);
+        if (showKeyboard) setShowKeyboard(false);
+        else if (showAsciiHelp) setShowAsciiHelp(false);
         else if (showAdvanced && onToggleAdvanced) onToggleAdvanced();
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [showAdvanced, showAsciiHelp, onToggleAdvanced]);
+  }, [showAdvanced, showAsciiHelp, showKeyboard, onToggleAdvanced]);
 
   // Handler to open ASCII help and close Advanced Settings
   const handleToggleAsciiHelp = () => {
-    if (!showAsciiHelp && showAdvanced && onToggleAdvanced) {
-      onToggleAdvanced(); // Close advanced settings if opening help
+    if (!showAsciiHelp) {
+      if (showAdvanced && onToggleAdvanced) onToggleAdvanced();
+      setShowKeyboard(false);
     }
     setShowAsciiHelp(!showAsciiHelp);
   };
 
+  const handleToggleKeyboard = () => {
+    if (!showKeyboard) {
+      if (showAdvanced && onToggleAdvanced) onToggleAdvanced();
+      setShowAsciiHelp(false);
+    }
+    setShowKeyboard(!showKeyboard);
+  };
+
   // Handler to open Advanced Settings and close ASCII help
   const handleToggleAdvancedClick = () => {
-    if (!showAdvanced && showAsciiHelp) {
-      setShowAsciiHelp(false); // Close help if opening advanced settings
+    if (!showAdvanced) {
+      setShowAsciiHelp(false);
+      setShowKeyboard(false);
     }
     if (onToggleAdvanced) onToggleAdvanced();
   };
@@ -182,7 +235,67 @@ export default function SearchNavbar({
     <>
     <form className="navbar-form navbar-left cdo-search-form" onSubmit={e => e.preventDefault()} role="search">
       {/* 1. Ensure the form-group fills the available space on mobile */}
-      <div className="form-group" style={{ width: '100%' }}>
+      <div className="form-group" style={{ width: '100%', position: 'relative' }}>
+        {showAdvancedSettings && showKeyboard && (
+          <div
+            className="coptic-keyboard-dropdown"
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              width: '100%',
+              maxWidth: '450px',
+              marginTop: '1px',
+              zIndex: 1001,
+              backgroundColor: '#f8f9fa',
+              border: '1px solid #ddd',
+              borderRadius: '0 0 4px 4px',
+              padding: '8px',
+              boxShadow: '0 6px 12px rgba(0,0,0,0.175)'
+            }}
+            // Keep focus in the search input while clicking keys
+            onMouseDown={e => e.preventDefault()}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+              {KEYBOARD_ROWS.map((row, r) => (
+                <div key={r} style={{ display: 'flex', gap: '3px' }}>
+                  {row.map(([base, shift], c) => {
+                    const key = shifted ? shift : base;
+                    const isShift = key === 'Shift';
+                    const isBksp = key === 'Bksp';
+                    return (
+                      <button
+                        type="button"
+                        key={c}
+                        className={`btn btn-default ${isShift && shifted ? 'active' : ''}`}
+                        onClick={() => (isShift ? setShifted(!shifted) : handleVirtualKey(key))}
+                        aria-label={isBksp ? 'Backspace' : isShift ? 'Shift' : undefined}
+                        style={{
+                          fontFamily: 'antinoouRegular',
+                          fontSize: '15px',
+                          flex: isShift || isBksp ? '1.6 1 0' : '1 1 0',
+                          minWidth: 0,
+                          padding: '3px 0',
+                        }}
+                      >
+                        {isBksp ? <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
+                          : isShift ? <i className="fa fa-arrow-up" aria-hidden="true"></i>
+                          : key}
+                      </button>
+                    );
+                  })}
+                </div>
+              ))}
+              <button
+                type="button"
+                className="btn btn-default"
+                aria-label="Space"
+                onClick={() => handleVirtualKey(' ')}
+                style={{ width: '60%', alignSelf: 'center', padding: '3px 0' }}
+              >&nbsp;</button>
+            </div>
+          </div>
+        )}
         
         {/* 2. Constrain the overall group (Input + Buttons) to max 450px on desktop, but 100% on mobile */}
         <div className="input-group cdo-search-group" style={{ width: '100%', maxWidth: '450px' }}>
@@ -215,13 +328,24 @@ export default function SearchNavbar({
             <span className="input-group-btn">
               <button
                 type="button"
+                className={`btn btn-default ${showKeyboard ? 'active' : ''}`}
+                onClick={handleToggleKeyboard}
+                title="Coptic Virtual Keyboard"
+                aria-label="Toggle Coptic virtual keyboard"
+                aria-expanded={showKeyboard}
+                style={{ height: '34px', paddingLeft: '8px', paddingRight: '8px' }}
+              >
+                <i className="fa fa-keyboard-o fa-fw" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
                 className={`btn btn-default ${showAsciiHelp ? 'active' : ''}`}
                 onClick={handleToggleAsciiHelp}
                 title="ASCII Input Help"
                 aria-label="Toggle ASCII Help"
-                style={{ height: '34px' }}
+                style={{ height: '34px', paddingLeft: '8px', paddingRight: '8px' }}
               >
-                <i className="fa fa-question-circle" aria-hidden="true"></i>
+                <i className="fa fa-question-circle fa-fw" aria-hidden="true"></i>
               </button>
               <button
                 type="button"
@@ -301,7 +425,7 @@ export default function SearchNavbar({
           </button>
           <h5 style={{ margin: '0 0 10px 0', fontSize: '14px' }}>Latin to Coptic Keyboard Mapping</h5>
           <p style={{ fontSize: '12px', color: '#666', marginBottom: '10px' }}>
-            If you don't have a Coptic keyboard, you can type Latin characters and enclose them in underscores (e.g. <strong>_sOtm_</strong>)
+            If you don't have a Coptic keyboard, you can use the virtual keyboard button above to open the keyboard, or type Latin characters and enclose them in underscores (e.g. <strong>_sOtm_</strong>)
           </p>
           <div style={{ overflowX: 'auto' }}>
             <table className="table table-bordered table-condensed" style={{ margin: 0, textAlign: 'center', backgroundColor: '#fff' }}>
