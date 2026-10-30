@@ -1,9 +1,8 @@
 """
-Script to read dictonary entry data from CCL XML file and produce .json
+Script to read dictionary entry data from CCL XML file and produce .json
 files for dictionary front end search
 """
 
-from turtle import pos
 import xml.etree.ElementTree as ET
 import json
 import os
@@ -11,26 +10,31 @@ import shutil
 import math
 import glob
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 
 # TEI Namespace
 NS = {'tei': 'http://www.tei-c.org/ns/1.0'}
 XML_NS = '{http://www.w3.org/XML/1998/namespace}'
-
+coptic_chars = "ⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲥⲣⲧⲩⲫⲭϭϫϣϯϧⳉⳗϩⲯⲱϥϩⳟⲹⳑⲿ"
+coptic_chars = set(coptic_chars) | set(coptic_chars.upper())
 
 def pos_map(pos, subc, orthstring, tla_id):
     pos = str(pos).replace('?', '')
     subc = str(subc)
     orthstring = str(orthstring)
 
-    if tla_id in ["C1896","C6420","C4445","C2176","C2177","C4901"]: return "IMOD"
-    if tla_id in ["C6534","C1900"]: return "N"  # B. man, hli
+    if tla_id in ["C1896", "C6420", "C4445", "C2176", "C2177", "C4901"]: return "IMOD"
+    if tla_id in ["C6534", "C1900"]: return "N"  # B. man, hli
     if tla_id in ["C220"]: return "CONJ"  # B. ⲁⲥⲑⲉⲙ
+    if tla_id in ["C1890", "C5038", "C5039", "C1891"]: return "EXIST"  # ⲙⲙⲛ
+    if tla_id in ["C6708","C2200"]: return "VBD"  # ϩⲛⲉ, ⲙⲉϣⲉ
     if pos in ["Subst.", "Adj.", "Nominalpräfix", "Adjektivpräfix", "Kompositum"]: return 'N'
     if "Ausdruck der Nichtexistenz" in subc or "Ausdruck des Nicht-Habens" in subc: return 'EXIST'
     if pos == "Adv.": return 'ADV'
     if pos in ["Vb.", "unpersönlicher Ausdruck"]:
         if subc == "Qualitativ": return 'VSTAT'
         if subc == "Suffixkonjugation": return 'VBD'
+        if subc == "Adjektivverb": return 'VBD'
         if subc == "Imperativ": return 'VIMP'
         if "ⲟⲩⲛ-" in orthstring or "ⲟⲩⲛⲧⲉ-" in orthstring: return "EXIST"
         return 'V'
@@ -95,20 +99,6 @@ def is_zero_freq(stats):
 
 
 def load_entity_mapping(data_dir):
-    """
-    json data like:
-    {
-    "ⲡⲁⲩⲗⲟⲥ": [
-        "person"
-    ],
-    "ⲓⲏⲥⲟⲩⲥ": [
-        "person"
-    ],
-    "ⲟⲩⲱϣ": [
-        "abstract",
-        "place"
-    ],...
-    """
     entity_mapping = {}
     mapping_file = os.path.join(data_dir, "entities.json")
     if os.path.exists(mapping_file):
@@ -118,13 +108,6 @@ def load_entity_mapping(data_dir):
 
 
 def load_hyperlemma_mapping(data_dir):
-    """
-    Load data like:
-
-    word	pos	lemma	hyperlemma
-    ⲁ	CFOC	ⲁⲣⲉ	ⲉⲣⲉ
-    ⲁⲓⲁⲓ	V	ⲁⲓⲁⲓ	ⲁⲓⲁⲓ
-    """
     hyperlemma_mapping = {}
     mapping_file = os.path.join(data_dir, "hyperlemmas.tab")
     if os.path.exists(mapping_file):
@@ -145,7 +128,6 @@ def load_collocations(filepath, lemma_freqs, norm_freqs, total_n, collocations_d
             if len(parts) == 3:
                 lemma, collocate, co_freq_str = parts
                 if dialect != "S":
-                    # Needs hyperlemma mapping
                     lemma = hyperlemma_mapping.get(lemma, lemma)
                 if collocate == '·': continue
                 co_freq = int(co_freq_str)
@@ -159,15 +141,13 @@ def load_collocations(filepath, lemma_freqs, norm_freqs, total_n, collocations_d
     for lemma in collocations_dict:
         if dialect in collocations_dict[lemma]:
             collocations_dict[lemma][dialect].sort(key=lambda x: x[2], reverse=True)
-            collocations_dict[lemma][dialect] = collocations_dict[lemma][dialect][:20]  # Top 20!
+            collocations_dict[lemma][dialect] = collocations_dict[lemma][dialect][:20]
 
 
 def load_networks(filepath, networks_dict, dialect, top_k=20):
     if not os.path.exists(filepath): return
 
-    # Step 1: Collect all phrases per lemma
     lemma_phrases = defaultdict(list)
-
     with open(filepath, 'r', encoding='utf-8') as f:
         for line in f:
             parts = line.strip().split('\t')
@@ -175,9 +155,7 @@ def load_networks(filepath, networks_dict, dialect, top_k=20):
                 lemma, phrase, freq = parts[1], parts[2], int(parts[3])
                 lemma_phrases[lemma].append((phrase, freq))
 
-    # Step 2: Sort, slice, and build the network for each lemma
     for lemma, phrases in lemma_phrases.items():
-        # Sort phrases by frequency (index 1) descending
         phrases.sort(key=lambda x: x[1], reverse=True)
         top_phrases = phrases[:top_k]
 
@@ -186,8 +164,6 @@ def load_networks(filepath, networks_dict, dialect, top_k=20):
 
         for phrase, freq in top_phrases:
             tokens = phrase.split()
-
-            # Legacy logic: cap at 6 tokens, and ensure the target node is present
             if len(tokens) > 6:
                 tokens = tokens[:6]
                 if f"{lemma}_0_node" not in tokens:
@@ -205,11 +181,9 @@ def load_networks(filepath, networks_dict, dialect, top_k=20):
             for token in processed_tokens:
                 nodes[token] += freq
                 if prev_token is not None:
-                    # Edge weight increases by 1 per phrase occurrence, as in legacy code
                     edges[(prev_token, token)] += 1
                 prev_token = token
 
-        # Save to the main dictionary
         networks_dict[lemma][dialect] = {
             "nodes": [[node, count] for node, count in nodes.items()],
             "edges": [[src, tgt, count] for (src, tgt), count in edges.items()]
@@ -254,13 +228,32 @@ def load_inflections(filepath):
                     for form in cell.split(','):
                         form = form.strip()
                         if form and form != '_':
-                            # TODO: Support infl forms with other dialects - defaults to "S"
-                            form = form.replace("=","⸗")
+                            form = form.replace("=", "⸗")
                             inf_forms[tla].append({"orth": form, "dialect": "S", "id": None})
-            elif len(parts) == 3:  # irregular noun plurals
+            elif len(parts) == 3:
                 tla, lemma, variant = parts
                 inf_forms[tla].append({"orth": variant, "dialect": "S", "id": None})
     return inf_forms
+
+
+def load_crum_entries(filepath):
+    """
+    Loads aligned forms from crum_aligned.json and groups them by TLA ID
+    for O(1) entry-level form expansion.
+    """
+    crum_by_tla = defaultdict(list)
+    if not os.path.exists(filepath):
+        return crum_by_tla
+    with open(filepath, 'r', encoding='utf-8') as f:
+        crum_data = json.load(f)
+    for lemma, items in crum_data.items():
+        if isinstance(items, list):
+            for item in items:
+                if isinstance(item, dict):
+                    tla_id = item.get("tla", "").strip()
+                    if tla_id:
+                        crum_by_tla[tla_id].append(item)
+    return crum_by_tla
 
 
 def load_egyptian_etymologies(filepath):
@@ -304,7 +297,6 @@ def load_examples(data_dir):
 
 
 def normalize_example_sentence(text):
-    # Example strings can differ only by '*' highlighting; normalize those away.
     return " ".join((text or "").replace("*", "").split())
 
 
@@ -317,7 +309,6 @@ def load_corpus_data(data_dir='.', hyperlemma_mapping={}):
     colloc_files = glob.glob(os.path.join(data_dir, 'tt_collocs_*.tab'))
     dialects = [os.path.basename(f).replace('tt_collocs_', '').replace('.tab', '') for f in colloc_files]
 
-    # Map the long filenames to the XML's short sigla
     LONG_TO_SHORT = {
         "sahidic": "S",
         "bohairic": "B",
@@ -329,7 +320,6 @@ def load_corpus_data(data_dir='.', hyperlemma_mapping={}):
 
     print(f"Discovered dialects: {', '.join(dialects)}")
     for dialect in dialects:
-        # Get the short siglum (fallback to the long name if it's not in the map)
         short_dialect = LONG_TO_SHORT.get(dialect, dialect)
         print(f"Processing {dialect} corpus data as '{short_dialect}'...")
 
@@ -380,10 +370,7 @@ def extract_entry_grammar(entry_node):
     if gram_node is not None:
         merge_gramgrp(gram_node)
     else:
-        # Some entries keep grammatical analyses at the form level
         form_nodes = entry_node.findall('./tei:form', NS)
-        # Filter out any deprecated forms like this:
-        # <form xml:id="..." change="#deprecated #v1.2" corresp="...">
         form_nodes = [f for f in form_nodes if not (f.get('change') and 'deprecated' in f.get('change'))]
         lemma_form_node = next((f for f in form_nodes if f.get('type') == 'lemma'), None)
         ordered_forms = []
@@ -396,7 +383,6 @@ def extract_entry_grammar(entry_node):
             if form_gram_node is not None:
                 merge_gramgrp(form_gram_node)
 
-    # Subc fallback
     if "subc" not in grammar or not grammar["subc"]:
         fallback_subc = entry_node.find('.//tei:subc', NS)
         if fallback_subc is not None and fallback_subc.text:
@@ -432,21 +418,14 @@ def extract_preferred_gloss(entry_node):
 
 
 def is_redundant_ref_subentry(entry_node):
-    # Exclude redundant lemma subentries (e.g., C12454) whose lemma form is a ref
-    # to another form target; these duplicate data already represented by that target.
     lemma_form = entry_node.find('./tei:form[@type="lemma"]', NS)
     if lemma_form is None:
         return False
-
-    # Normal entries carry orth/usg directly under form and should be kept.
     if lemma_form.find('./tei:orth', NS) is not None:
         return False
-
     form_ref = lemma_form.find('./tei:ref[@type="form"]', NS)
     if form_ref is None or not form_ref.get('target'):
         return False
-
-    # Keep the exclusion narrow to the observed redundant pattern.
     return form_ref.find('./tei:orth', NS) is not None
 
 
@@ -501,17 +480,69 @@ def build_superentry_crossrefs(root_node):
     return superentry_refs
 
 
+def deduplicate_hyphens(forms, by_dialect=False):
+    # Remove forms without trailing [-⸗†‡=*] if an identical form exists with a trailing character
+    chars = set("-⸗†‡=*")
+    dialect2form = defaultdict(set)
+
+    if by_dialect:  # Each item is (form, dialect)    
+        for form in forms:
+            if isinstance(form, tuple) and len(form) == 2:
+                this_form, dialect = form
+            else:
+                dialect = form.get("dialect", "")
+                this_form = form["orth"]
+            dialect2form[dialect].add(this_form)
+    else:
+        form_set = set(forms)
+
+    output = []
+    for form in forms:
+        if by_dialect:
+            if isinstance(form, tuple) and len(form) == 2:
+                this_form, dialect = form
+            else:
+                dialect = form.get("dialect", "")
+                this_form = form["orth"]
+            if any(this_form + c in dialect2form[dialect] for c in chars):
+                continue
+            output.append(form)
+        else:
+            if any(form + c in form_set for c in chars):
+                continue
+            output.append(form)
+
+    return output
+
+
+def clean_hyphens(form):
+    if isinstance(form, dict):
+        orth = form.get("orth", "")
+        cleaned = orth.rstrip("-⸗†‡=*")
+        form["orth"] = cleaned
+        return form
+    elif isinstance(form, str):
+        return form.rstrip("-⸗†‡=*")
+    return form
+
+
+def write_text(path, text):
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(text)
+
+
 def process_dictionary(xml_file, output_dir="public", data_dir="data"):
     tree = ET.parse(xml_file)
     root = tree.getroot()
     index_data = []
-    details_dir = os.path.join('local-data', 'details')  # Needs to be copied to details/ on deployed server
-    unique_forms = set([])  # Store to serialize forms, we'll use the list to exclude them from seg_data etc.
+    index_no_crum_data = []
+    details_dir = os.path.join('local-data', 'details')
+    unique_forms = set()
     unique_example_sentences = set()
     total_sense_count = 0
     os.makedirs(details_dir, exist_ok=True)
 
-    # Reporting counters, tallied across all entries (including supplemental/inflection forms)
+    # Reporting counters
     no_colloc_count = 0
     no_examples_count = 0
     few_examples_count = 0
@@ -519,36 +550,42 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
     dialect_form_counts = defaultdict(int)
     deprecated_entry_count = 0
     deprecated_form_count = 0
+    added_crum_forms = 0
+    skipped_non_coptic = 0
 
+    allowed_crum_dialects = ["S", "B", "A", "F", "L", "M", "P", "W", "V"]
+    in_page_id = defaultdict(int)
+
+    # Preemptively load all external resources upfront
     hyperlemma_mapping = load_hyperlemma_mapping(data_dir)
     entity_mapping = load_entity_mapping(data_dir)
     corpus_data = load_corpus_data(data_dir, hyperlemma_mapping)
     sup_entries_data = load_supplemental_entries(os.path.join(data_dir, 'supplemental_entries.tab'))
     inflections_data = load_inflections(os.path.join(data_dir, 'inflections.tab'))
+    crum_entries_data = load_crum_entries(os.path.join(data_dir, 'crum_aligned.json'))
     egy_etym_data = load_egyptian_etymologies(os.path.join(data_dir, 'egyptian_etymologies.tab'))
     examples_data = load_examples(data_dir)
     superentry_crossrefs = build_superentry_crossrefs(root)
 
-    # Polysemous TLA IDs with special entity handling
     manual_entity_exceptions = {
         "C998": ["plant"], "C992": ["person"], "C993": ["person"],  # ⲉⲓⲱⲧ
     }
 
-    print("Processing XML entries...")
+    writer_pool = ThreadPoolExecutor(max_workers=16)
+    write_futures = []
+
+    print("Processing XML entries and merging forms...")
     for entry in root.findall('.//tei:entry', NS):
         if is_redundant_ref_subentry(entry):
             continue
-        # Check if there is @change indicating deprecation, for example"
-        # <entry xml:id="..." change="#deprecated #v1.2">
         if entry.get('change') and 'deprecated' in entry.get('change'):
             deprecated_entry_count += 1
             continue
+
         entry_id, entry_type = entry.get(f'{XML_NS}id'), entry.get('type')
         all_forms, lemma_str, lemma_form_index, is_placeholder_entry = [], "", -1, False
 
         for form_node in entry.findall('./tei:form', NS):
-            # Skip deprecated forms like this:
-            # <form xml:id="..." change="#deprecated #v1.2" corresp="...">
             if form_node.get('change') and 'deprecated' in form_node.get('change'):
                 deprecated_form_count += 1
                 continue
@@ -578,27 +615,86 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
             all_forms[0]["type"] = "lemma"
             lemma_str, lemma_form_index = all_forms[0]["orth"], 0
 
-        existing_orths = {(f.get("orth").replace("-","").replace("+","").replace("⸗","").strip(), f.get("dialect")) for f in all_forms}
+        # Extract grammar and POS early so Crum POS matching can validate against it
+        grammar = extract_entry_grammar(entry)
+        raw_pos = grammar.get("pos", "") or ""
+        raw_subc = grammar.get("subc", "") or ""
+        scriptorium_pos = pos_map(raw_pos, raw_subc, lemma_str, entry_id)
+        grammar["tlapos"] = raw_pos
+        grammar["pos"] = scriptorium_pos
+
+        existing_orths = {
+            #(f.get("orth", "").replace("-", "").replace("+", "").replace("†", "").replace("⸗", "").strip(), f.get("dialect"))
+            (f.get("orth", "").strip(), f.get("dialect"))
+            for f in all_forms
+        }
+
+        # 1. Supplemental entries
         for sup_form in sup_entries_data.get(entry_id, []):
-            if (sup_form["orth"], sup_form["dialect"]) not in existing_orths:
+            #clean = sup_form["orth"].replace("-", "").replace("+", "").replace("†", "").replace("⸗", "").strip()
+            clean = sup_form["orth"].strip()
+            if (clean, sup_form["dialect"]) not in existing_orths:
                 all_forms.append(sup_form)
-                existing_orths.add((sup_form["orth"].replace("-","").replace("+","").replace("⸗","").strip(), sup_form["dialect"]))
+                existing_orths.add((clean, sup_form["dialect"]))
                 unique_forms.add(sup_form["orth"])
+
+        # 2. Inflection entries
         for inf_form in inflections_data.get(entry_id, []):
-            clean = inf_form["orth"].replace("-","").replace("+","").replace("⸗","").strip()
-            if clean == "ⲃⲏⲗ":
-                a=4
+            #clean = inf_form["orth"].replace("-", "").replace("+", "").replace("†", "").replace("⸗", "").strip()
+            clean = inf_form["orth"].strip()
             if (clean, "S") not in existing_orths:
                 all_forms.append(inf_form)
-                existing_orths.add((inf_form["orth"].replace("-","").replace("+","").replace("⸗","").strip(), inf_form["dialect"]))
-                unique_forms.add(sup_form["orth"])
+                existing_orths.add((clean, inf_form["dialect"]))
+                unique_forms.add(inf_form["orth"])
+        existing_orth_pre_crum = len(existing_orths)
+
+        # 3. Crum aligned entries (preemptively attached before frequency harvesting)
+        for crum_item in crum_entries_data.get(entry_id, []):
+            match_pos = crum_item.get("index_pos", "")
+            file_id = crum_item.get("file", "").replace(".html", "")
+            if not match_pos or not file_id:
+                continue
+            if scriptorium_pos != match_pos:
+                print(f"Warning: Crum pos '{match_pos}' does not match entry pos '{scriptorium_pos}' for TLA {entry_id}")
+                continue
+            for dialect in allowed_crum_dialects:
+                if dialect in crum_item:
+                    for raw_orth in crum_item[dialect]:
+                        orth = raw_orth.replace("-", "").replace("+", "").replace("†", "").replace("⸗", "").strip()
+                        if not all(c in coptic_chars for c in orth):
+                            print(f"Warning: Crum form '{raw_orth}' contains non-Coptic characters {''.join(c for c in orth if c not in coptic_chars)} for TLA {entry_id}, skipping")
+                            skipped_non_coptic += 1
+                            continue
+                        if (orth, dialect) not in existing_orths and (raw_orth, dialect) not in existing_orths:
+                            in_page_id[file_id] += 1
+                            form_id = f"{file_id}.{in_page_id[file_id]}"
+                            all_forms.append({
+                                "orth": raw_orth,
+                                "dialect": dialect,
+                                "id": form_id,
+                                "from_crum": True
+                            })
+                            existing_orths.add((raw_orth, dialect))
+                            unique_forms.add(raw_orth)
+                        elif (orth, dialect) in existing_orths:  # Already exists, but replace with raw orth if raw has a trailing hyphen or special character
+                            for f in all_forms:
+                                if f.get("orth") == orth and f.get("dialect") == dialect:
+                                    if raw_orth != orth and (raw_orth.endswith("-") or raw_orth.endswith("⸗") or raw_orth.endswith("†") or raw_orth.endswith("‡") or raw_orth.endswith("=") or raw_orth.endswith("*")):
+                                        f["orth"] = raw_orth
+                                    break
+
+        # Deduplicate forms with and without control characters
+        all_forms = deduplicate_hyphens(all_forms,by_dialect=True)
+        existing_orths = set(deduplicate_hyphens(list(existing_orths),by_dialect=True))
+
+        added_crum_forms += len(existing_orths) - existing_orth_pre_crum
 
         lemma_freqs_by_dialect = {}
 
-        # Inject form frequency stats into forms and collect lemma frequency stats per dialect
+        # Harvest form & lemma frequency stats across all collected forms (including Crum)
         for form in all_forms:
             d = form.get("dialect")
-            o = form.get("orth")
+            o = clean_hyphens(form.get("orth"))
             form_stats = {"rate": 0.0, "rank": 0, "count": 0}
             lemma_stats = {"rate": 0.0, "rank": 0, "count": 0}
             if d and d in corpus_data['freq_stats']:
@@ -606,19 +702,42 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
                 lemma_stats = corpus_data['freq_stats'][d]['lemma'].get(lemma_str, lemma_stats)
             if not is_zero_freq(form_stats):
                 form["freq_form"] = form_stats
+                # Also purge the Crum ID if present, since this is now data from Scriptorium
+                if "from_crum" in form:
+                    if form["from_crum"] is True:
+                        del form["from_crum"]
+                        del form["id"]
             if not is_zero_freq(lemma_stats):
                 lemma_freqs_by_dialect[d] = lemma_stats
 
         details_forms = all_forms.copy()
-        lemma_form = all_forms[lemma_form_index]
+        # Deduplication above may have shifted indices, so locate the lemma form by its type
+        lemma_form = next((f for f in all_forms if f.get("type") == "lemma"), all_forms[0])
         is_redundant = any(
-            f != lemma_form and f.get('orth') == lemma_form.get('orth') and f.get('dialect') == lemma_form.get(
-                'dialect') for f in all_forms)
-        if is_redundant: details_forms.pop(lemma_form_index)
+            f != lemma_form and f.get('orth') == lemma_form.get('orth') and f.get('dialect') == lemma_form.get('dialect')
+            for f in all_forms
+        )
+        if is_redundant: details_forms.pop(details_forms.index(lemma_form))
 
-        # Build index structures
+        # Within each dialect, list forms identical to the lemma first (even if not adjacent in the XML)
+        lemma_orth = lemma_form.get('orth')
+        positions_by_dialect = defaultdict(list)
+        for i, f in enumerate(details_forms):
+            positions_by_dialect[f.get('dialect')].append(i)
+        reordered = list(details_forms)
+        for positions in positions_by_dialect.values():
+            group = [details_forms[i] for i in positions]
+            group = [f for f in group if f.get('orth') == lemma_orth] + [f for f in group if f.get('orth') != lemma_orth]
+            for i, f in zip(positions, group):
+                reordered[i] = f
+        details_forms = reordered
+
+        # Build index structures for both index.json and index_no_crum.json
         index_forms = []
+        index_forms_no_crum = []
         form_ids = []
+        form_ids_no_crum = []
+
         for f in details_forms:
             idx_form = {"orth": f["orth"]}
             if f.get("dialect"): idx_form["dialect"] = f["dialect"]
@@ -627,15 +746,20 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
                 if f["id"] not in form_ids:
                     form_ids.append(f["id"])
 
-            if idx_form not in index_forms: index_forms.append(idx_form)
+            if idx_form not in index_forms:
+                index_forms.append(idx_form)
 
-        grammar = extract_entry_grammar(entry)
+            # Preserve core forms without Crum for index_no_crum.json
+            if not f.get("from_crum"):
+                if f.get("id") and f["id"] not in form_ids_no_crum:
+                    form_ids_no_crum.append(f["id"])
+                if idx_form not in index_forms_no_crum:
+                    index_forms_no_crum.append(idx_form)
 
-        raw_pos = grammar.get("pos", "") or ""
-        raw_subc = grammar.get("subc", "") or ""
-        scriptorium_pos = pos_map(raw_pos, raw_subc, lemma_str, entry_id)
-        grammar["tlapos"] = raw_pos
-        grammar["pos"] = scriptorium_pos
+        # Strip internal temporary keys before dumping details
+        for f in details_forms:
+            if "type" in f: del f["type"]
+            if "from_crum" in f: del f["from_crum"]
 
         etym_data = {}
         etym_node = entry.find('./tei:etym', NS)
@@ -672,10 +796,6 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
             if cu_id: sense_detail["cu_ID"] = cu_id
             details_senses.append(sense_detail)
 
-        # Now that redundant lemmas are filtered, remove the type key of all details_forms
-        for f in details_forms:
-            if "type" in f: del f["type"]
-
         detail_data = {
             "id": entry_id, "forms": details_forms, "grammar": grammar,
             "senses": details_senses, "examples": examples_data.get(entry_id, []),
@@ -698,6 +818,8 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
             few_examples_count += 1
         if not detail_data["network"]:
             no_network_count += 1
+
+        # Accurately count dialects across all attested forms including Crum
         for d in {f.get("dialect") for f in all_forms if f.get("dialect")}:
             dialect_form_counts[d] += 1
 
@@ -708,10 +830,12 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
         if superentry_crossrefs.get(entry_id): detail_data["superEntryReferences"] = superentry_crossrefs[entry_id]
         if etym_data: detail_data["etym"] = etym_data
 
-        with open(os.path.join(details_dir, f"{entry_id}.json"), 'w', encoding='utf-8') as f:
-            json.dump(detail_data, f, ensure_ascii=False, indent=2)
+        # Serialize detail JSON (now fully populated with Crum forms and frequencies)
+        # File creation dominates runtime, so write on worker threads (I/O releases the GIL)
+        write_futures.append(writer_pool.submit(
+            write_text, os.path.join(details_dir, f"{entry_id}.json"),
+            json.dumps(detail_data, ensure_ascii=False)))#, indent=2)))
 
-        # Calculate absolute lemma frequency across all available dialects for this entry
         total_lemma_freq = 0
         for d in corpus_data['freq_stats']:
             total_lemma_freq += corpus_data['freq_stats'][d]['lemma'].get(lemma_str, {}).get("count", 0)
@@ -729,7 +853,6 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
 
         if lemma_str in entity_mapping:
             if scriptorium_pos in ["N", "NPROP", "ART", "PDEM", "NUM", "PPOS"]:
-                # Exceptions
                 if entry_id in manual_entity_exceptions:
                     index_entry["entities"] = manual_entity_exceptions[entry_id]
                 else:
@@ -739,6 +862,32 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
             index_entry["lemma_freq"] = total_lemma_freq
         if etym_data: index_entry["etym"] = etym_data
         index_data.append(index_entry)
+
+        index_entry_no_crum = {
+            "id": entry_id,
+            "lemma": lemma_str,
+            "pos": scriptorium_pos,
+            "tlapos": grammar.get("tlapos") or "",
+            "subc": grammar.get("subc") or "",
+            "form_ids": form_ids_no_crum,
+            "forms": index_forms_no_crum,
+            "senses": index_senses
+        }
+        if "entities" in index_entry: index_entry_no_crum["entities"] = index_entry["entities"]
+        if "lemma_freq" in index_entry: index_entry_no_crum["lemma_freq"] = index_entry["lemma_freq"]
+        if "etym" in index_entry: index_entry_no_crum["etym"] = index_entry["etym"]
+        index_no_crum_data.append(index_entry_no_crum)
+
+    for future in write_futures:
+        future.result()
+    writer_pool.shutdown()
+    print(f"Added {added_crum_forms} supplemental forms from Crum data.")
+    print(f"Skipped {skipped_non_coptic} Crum forms with non-Coptic characters.")
+    unique_forms = set(deduplicate_hyphens(unique_forms))
+
+    # Write both index artifacts
+    with open(os.path.join(output_dir, 'index_no_crum.json'), 'w', encoding='utf-8') as f:
+        json.dump(index_no_crum_data, f, ensure_ascii=False, separators=(',', ':'))
 
     with open(os.path.join(output_dir, 'index.json'), 'w', encoding='utf-8') as f:
         json.dump(index_data, f, ensure_ascii=False, separators=(',', ':'))
@@ -752,7 +901,7 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
     with open(os.path.join(output_dir, 'stats.json'), 'w', encoding='utf-8') as f:
         json.dump(stats_data, f, ensure_ascii=False, separators=(',', ':'))
 
-    with open("data/covered_base_forms.tab", 'w', encoding="utf-8", newline="\n") as f:
+    with open(os.path.join(data_dir, "covered_base_forms.tab"), 'w', encoding="utf-8", newline="\n") as f:
         f.write("\n".join(sorted(unique_forms)))
 
     def pct(n):
@@ -777,7 +926,6 @@ def process_dictionary(xml_file, output_dir="public", data_dir="data"):
 
 if __name__ == "__main__":
     if not os.path.exists("data/coptic_dict.xml"):
-        # Copy from old xml/Comprehensive_Coptic_Lexicon-v1.2-2020.xml - may not contain hot fixes
         shutil.copyfile("xml/Comprehensive_Coptic_Lexicon-v1.2-2020.xml", "data/coptic_dict.xml")
-        
+
     process_dictionary("data/coptic_dict.xml", output_dir="public", data_dir="data")
