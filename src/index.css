@@ -515,7 +515,10 @@ a.sense_id {
     padding-left: 1px;
     font-size: 90%;
 	border-radius: 3px;
-    display: inline;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    white-space: nowrap;
     text-decoration: none !important;
 	margin-right: 2px;
 }
