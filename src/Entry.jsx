@@ -187,12 +187,17 @@ const formatGreekReferences = (referenceString) => {
 // Helper to inject tooltips and special hyperlinks into the bibliography string
 const formatBibliography = (biblString, tlaId) => {
   if (!biblString) return "";
-  
+
   return biblString.split(';').map(chunk => {
-    const cdRegex = /(CD ([0-9]+[ab]?)-?[0-9]*[ab]?)/;
+    // p2 = start page plus optional column letter, e.g. "123a", or an
+    // Addenda page in Roman numerals (XV–XXIV), e.g. "XVIb" or "XVII a".
+    // The space before a column letter is only allowed when no other letter
+    // follows, so "CD 814ab" keeps both columns and "CD 123 and" isn't grabbed.
+    const cdRegex = /(CD ((?:[0-9]+|[XVI]+)(?:[ab]| [ab](?![a-z]))?)-?[0-9]*[ab]?)/;
     if (cdRegex.test(chunk)) {
       return chunk.replace(cdRegex, (match, p1, p2) => {
-        return `<a href="https://coptot.manuscriptroom.com/crum-coptic-dictionary/?docID=800000&pageID=${p2}&tla=${tlaId}" target="_blank" rel="noreferrer" style="text-decoration-style: solid;">${p1}</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>`;
+        const page = p2.replace(/\s/g, '');
+        return `<a href="https://remnqymi.com/crum/?mode=book&query=${page}&tla=${tlaId}" target="_blank" rel="noreferrer" style="text-decoration-style: solid;">${p1}</a><a class="hint" data-tooltip="W.E. Crum's Dictionary">?</a>`;
       });
     }
 
